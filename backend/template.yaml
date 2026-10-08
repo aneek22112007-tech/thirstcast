@@ -1,0 +1,143 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: ThirstCast SAM Stack
+
+Globals:
+  Function:
+    Timeout: 10
+    MemorySize: 256
+    Runtime: python3.12
+    Architectures:
+      - x86_64
+
+Resources:
+  DataBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      LifecycleConfiguration:
+        Rules:
+          - Id: ExpireCache
+            Prefix: cache/
+            Status: Enabled
+            ExpirationInDays: 14
+
+  ClimatologyTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: district
+          AttributeType: S
+        - AttributeName: doy
+          AttributeType: N
+      KeySchema:
+        - AttributeName: district
+          KeyType: HASH
+        - AttributeName: doy
+          KeyType: RANGE
+
+  StatusTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: district
+          AttributeType: S
+      KeySchema:
+        - AttributeName: district
+          KeyType: HASH
+
+  ConfigTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: pk
+          AttributeType: S
+      KeySchema:
+        - AttributeName: pk
+          KeyType: HASH
+
+  CoreLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      ContentUri: core/
+      CompatibleRuntimes:
+        - python3.12
+    Metadata:
+      BuildMethod: python3.12
+
+  HttpApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      CorsConfiguration:
+        AllowOrigins:
+          - "http://localhost:8080"
+          - "http://127.0.0.1:8080"
+          - "http://localhost:3000"
+      DefaultRouteSettings:
+        ThrottlingBurstLimit: 10
+        ThrottlingRateLimit: 5
+
+  ApiFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: functions/api/
+      Handler: app.lambda_handler
+      Layers:
+        - !Ref CoreLayer
+      Environment:
+        Variables:
+          CLIMATOLOGY_TABLE: !Ref ClimatologyTable
+          STATUS_TABLE: !Ref StatusTable
+          CONFIG_TABLE: !Ref ConfigTable
+          BUCKET_NAME: !Ref DataBucket
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref ClimatologyTable
+        - DynamoDBReadPolicy:
+            TableName: !Ref StatusTable
+        - DynamoDBReadPolicy:
+            TableName: !Ref ConfigTable
+        - S3ReadPolicy:
+            BucketName: !Ref DataBucket
+      Events:
+        GetDistricts:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HttpApi
+            Path: /districts
+            Method: GET
+
+  ApiFunctionLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub "/aws/lambda/${ApiFunction}"
+      RetentionInDays: 7
+
+  # TODO: DetectorFunction
+  # TODO: AgentFunction
+  # TODO: EventBridge schedule
+  # TODO: SNS topic
+
+Outputs:
+  ApiUrl:
+    Description: "API Gateway endpoint URL"
+    Value: !Sub "https://${HttpApi}.execute-api.${AWS::Region}.amazonaws.com/"
+  BucketName:
+    Description: "Data Bucket Name"
+    Value: !Ref DataBucket
+  ClimatologyTableName:
+    Description: "Climatology Table Name"
+    Value: !Ref ClimatologyTable
+  StatusTableName:
+    Description: "Status Table Name"
+    Value: !Ref StatusTable
+  ConfigTableName:
+    Description: "Config Table Name"
+    Value: !Ref ConfigTable

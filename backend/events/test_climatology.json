@@ -1,0 +1,23 @@
+[
+  {
+    "district": "Bengaluru_Urban",
+    "doy": 1,
+    "et0_p90": 4.5,
+    "tmax_p90": 32.1,
+    "et0_mean": 3.8
+  },
+  {
+    "district": "Kolar",
+    "doy": 1,
+    "et0_p90": 5.2,
+    "tmax_p90": 34.5,
+    "et0_mean": 4.2
+  },
+  {
+    "district": "Mandya",
+    "doy": 1,
+    "et0_p90": 4.8,
+    "tmax_p90": 33.0,
+    "et0_mean": 4.0
+  }
+]
