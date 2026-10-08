@@ -1,0 +1,7 @@
+.venv
+__pycache__
+.aws-sam/
+.env
+*.zip
+.DS_Store
+node_modules
