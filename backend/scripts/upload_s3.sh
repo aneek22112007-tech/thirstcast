@@ -10,3 +10,4 @@ PROJECT_ROOT="$(dirname "$(dirname "$SCRIPT_DIR")")"
 
 aws s3 sync "$PROJECT_ROOT/data/raw" "s3://$BUCKET/raw/" --profile thirstcast
 aws s3 sync "$PROJECT_ROOT/data/out/replay" "s3://$BUCKET/replay/" --profile thirstcast
+aws s3 cp "$PROJECT_ROOT/frontend/data/pilot_districts.geojson" "s3://$BUCKET/geo/pilot_districts.geojson" --profile thirstcast

@@ -1,0 +1,90 @@
+{
+ "district": "Bengaluru_Urban",
+ "status": "WATCH",
+ "day_in_wave": 0,
+ "run_date": "2023-10-05",
+ "forecast": [
+  {
+   "date": "2023-10-05",
+   "et0": 4.84,
+   "p90": 4.53,
+   "flag": true,
+   "tmax": 29.7,
+   "tmax_p90": 28.1,
+   "tmax_flag": true
+  },
+  {
+   "date": "2023-10-06",
+   "et0": 3.92,
+   "p90": 4.53,
+   "flag": false,
+   "tmax": 28.1,
+   "tmax_p90": 28.2,
+   "tmax_flag": false
+  },
+  {
+   "date": "2023-10-07",
+   "et0": 3.95,
+   "p90": 4.58,
+   "flag": false,
+   "tmax": 28.7,
+   "tmax_p90": 28.2,
+   "tmax_flag": true
+  },
+  {
+   "date": "2023-10-08",
+   "et0": 3.56,
+   "p90": 4.6,
+   "flag": false,
+   "tmax": 28.8,
+   "tmax_p90": 28.2,
+   "tmax_flag": true
+  },
+  {
+   "date": "2023-10-09",
+   "et0": 2.67,
+   "p90": 4.62,
+   "flag": false,
+   "tmax": 27.8,
+   "tmax_p90": 28.2,
+   "tmax_flag": false
+  },
+  {
+   "date": "2023-10-10",
+   "et0": 3.79,
+   "p90": 4.6,
+   "flag": false,
+   "tmax": 28.6,
+   "tmax_p90": 28.2,
+   "tmax_flag": true
+  },
+  {
+   "date": "2023-10-11",
+   "et0": 3.25,
+   "p90": 4.62,
+   "flag": false,
+   "tmax": 28.1,
+   "tmax_p90": 28.2,
+   "tmax_flag": false
+  }
+ ],
+ "excess_mm_7d": 0.31,
+ "forecast_wave": null,
+ "excess_definition": "Sum over the 7 forecast days of max(bias-adjusted ET0 - day-of-year p90, 0)",
+ "extra_litres_per_acre": {},
+ "extra_litres_lakes": {
+  "Bellandur": {
+   "value": 1194227,
+   "label": "estimate"
+  },
+  "Varthur": {
+   "value": 588504,
+   "label": "estimate"
+  }
+ },
+ "bias_offset_mm": 0.0,
+ "bias_note": "",
+ "updated_at": "2023-10-05T06:00:00+05:30",
+ "caveat": "District-centroid estimate (~10 km grid)",
+ "mock_note": "MOCK: historical ERA5 data for 2023-10-05 evaluated as if it were a forecast (no bias correction). Not live."
+}
