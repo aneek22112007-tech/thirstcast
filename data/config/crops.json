@@ -1,0 +1,18 @@
+[
+  {"id": "paddy", "name": "Paddy (rice)", "name_hi": "धान", "kc": 1.20, "stage": "mid-season (Kc mid)",
+   "fao56_row": "Table 12, i. Cereals: Rice (Kc ini 1.05, Kc mid 1.20, Kc end 0.90-0.60)",
+   "source": "Allen et al. (1998) FAO Irrigation and Drainage Paper 56, Table 12", "url": "https://www.fao.org/4/x0490e/x0490e0b.htm",
+   "verified": true, "verified_on": "2026-10-09"},
+  {"id": "sugarcane", "name": "Sugarcane", "name_hi": "गन्ना", "kc": 1.25, "stage": "mid-season (Kc mid)",
+   "fao56_row": "Table 12, k. Sugar Cane (Kc ini 0.40, Kc mid 1.25, Kc end 0.75)",
+   "source": "Allen et al. (1998) FAO Irrigation and Drainage Paper 56, Table 12", "url": "https://www.fao.org/4/x0490e/x0490e0b.htm",
+   "verified": true, "verified_on": "2026-10-09"},
+  {"id": "tomato", "name": "Tomato", "name_hi": "टमाटर", "kc": 1.15, "stage": "mid-season (Kc mid)",
+   "fao56_row": "Table 12, b. Vegetables - Solanum Family: Tomato (Kc mid 1.15, Kc end 0.70-0.90)",
+   "source": "Allen et al. (1998) FAO Irrigation and Drainage Paper 56, Table 12", "url": "https://www.fao.org/4/x0490e/x0490e0b.htm",
+   "verified": true, "verified_on": "2026-10-09"},
+  {"id": "ragi", "name": "Ragi (finger millet)", "name_hi": "रागी", "kc": 1.00, "stage": "mid-season (Kc mid)",
+   "fao56_row": "Table 12, i. Cereals: Millet (Kc mid 1.00, Kc end 0.30). FAO-56 has no separate finger-millet row; the generic 'Millet' row is used.",
+   "source": "Allen et al. (1998) FAO Irrigation and Drainage Paper 56, Table 12", "url": "https://www.fao.org/4/x0490e/x0490e0b.htm",
+   "verified": true, "verified_on": "2026-10-09"}
+]

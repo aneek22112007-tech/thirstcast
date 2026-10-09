@@ -1,0 +1,23 @@
+[
+  {"id": "Bellandur", "name": "Bellandur Lake", "district": "Bengaluru_Urban",
+   "area_m2": 3668900, "area_text": "366.89 ha (906 acres 25 guntas)",
+   "area_basis": "Legal lake extent from revenue records (RTC), as reported by IISc. Upper bound of the open-water surface; the current water spread is smaller (KTCDA 2026 compliance report: 794 acres 26 guntas of water-spread area).",
+   "kc": 1.05, "kc_source": "FAO-56 Table 12: Open Water, < 2 m depth or in subhumid climates or tropics, Kc 1.05",
+   "source": "Ramachandra T.V. et al. (2017) Bellandur and Varthur Lakes Rejuvenation Blueprint, ENVIS Technical Report 116 / Sahyadri Conservation Series 34, EWRG, CES, IISc, sec. 2.1.1",
+   "url": "https://wgbis.ces.iisc.ac.in/energy/water/paper/ETR116/sec2.html", "year": 2017,
+   "verified": true, "verified_on": "2026-10-09"},
+  {"id": "Varthur", "name": "Varthur Lake", "district": "Bengaluru_Urban",
+   "area_m2": 1808000, "area_text": "180.8 ha (447 acres 14 guntas)",
+   "area_basis": "Lake extent from revenue records, as reported by IISc. Upper bound of the open-water surface (another IISc study gives a 220 ha water spread; an older morphometric survey gives 147.8 ha).",
+   "kc": 1.05, "kc_source": "FAO-56 Table 12: Open Water, < 2 m depth or in subhumid climates or tropics, Kc 1.05",
+   "source": "Ramachandra T.V. et al. (2017) Bellandur and Varthur Lakes Rejuvenation Blueprint, ENVIS Technical Report 116 / Sahyadri Conservation Series 34, EWRG, CES, IISc, sec. 2.1.2",
+   "url": "https://wgbis.ces.iisc.ac.in/energy/water/paper/ETR116/sec2.html", "year": 2017,
+   "verified": true, "verified_on": "2026-10-09"},
+  {"id": "KRS", "name": "KRS reservoir (Krishna Raja Sagara)", "district": "Mandya",
+   "area_m2": 130000000, "area_text": "130 km2 water-spread area at full reservoir level (124.8 ft)",
+   "area_basis": "Water spread at FULL reservoir level. In dry months the reservoir is lower, so this is an upper bound.",
+   "kc": 1.05, "kc_source": "FAO-56 Table 12: Open Water, < 2 m depth or in subhumid climates or tropics, Kc 1.05",
+   "source": "Assessment of sedimentation in Krishnaraja Sagar reservoir of Karnataka, India using remote sensing, International Research Journal of Engineering and Technology (IRJET) Vol 6 Issue 9 (2019), study area section",
+   "url": "https://irjet.net/archives/V6/i9/IRJET-V6I9196.pdf", "year": 2019,
+   "verified": true, "verified_on": "2026-10-09"}
+]

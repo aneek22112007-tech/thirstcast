@@ -5,3 +5,7 @@ __pycache__
 *.zip
 .DS_Store
 node_modules
+# local run outputs (regenerate with data/scripts/run_detector_local.py)
+data/out/status/
+data/raw/forecast/
+.pytest_cache/
