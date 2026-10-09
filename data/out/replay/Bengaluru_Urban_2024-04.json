@@ -1,0 +1,413 @@
+{
+ "district": "Bengaluru_Urban",
+ "name": "Bengaluru Urban",
+ "period": {
+  "start": "2024-04-01",
+  "end": "2024-04-30"
+ },
+ "days": [
+  {
+   "date": "2024-04-01",
+   "et0": 6.15,
+   "p90": 7.25,
+   "flag": false,
+   "in_wave": false,
+   "excess_mm": 0.0,
+   "cum_excess_mm": 0.0,
+   "tmax": 34.7,
+   "tmax_p90": 34.9,
+   "tmax_flag": false
+  },
+  {
+   "date": "2024-04-02",
+   "et0": 6.97,
+   "p90": 7.2,
+   "flag": false,
+   "in_wave": false,
+   "excess_mm": 0.0,
+   "cum_excess_mm": 0.0,
+   "tmax": 36.0,
+   "tmax_p90": 34.9,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-03",
+   "et0": 7.16,
+   "p90": 7.13,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 0.03,
+   "cum_excess_mm": 0.03,
+   "tmax": 35.6,
+   "tmax_p90": 34.9,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-04",
+   "et0": 7.3,
+   "p90": 7.12,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 0.18,
+   "cum_excess_mm": 0.21,
+   "tmax": 35.9,
+   "tmax_p90": 34.9,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-05",
+   "et0": 7.45,
+   "p90": 7.1,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 0.35,
+   "cum_excess_mm": 0.56,
+   "tmax": 36.8,
+   "tmax_p90": 35.0,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-06",
+   "et0": 7.61,
+   "p90": 7.1,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 0.51,
+   "cum_excess_mm": 1.07,
+   "tmax": 37.0,
+   "tmax_p90": 35.0,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-07",
+   "et0": 7.26,
+   "p90": 7.1,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 0.16,
+   "cum_excess_mm": 1.23,
+   "tmax": 36.3,
+   "tmax_p90": 35.0,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-08",
+   "et0": 7.45,
+   "p90": 7.1,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 0.35,
+   "cum_excess_mm": 1.58,
+   "tmax": 36.2,
+   "tmax_p90": 35.1,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-09",
+   "et0": 7.5,
+   "p90": 7.09,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 0.41,
+   "cum_excess_mm": 1.99,
+   "tmax": 34.8,
+   "tmax_p90": 35.1,
+   "tmax_flag": false
+  },
+  {
+   "date": "2024-04-10",
+   "et0": 7.42,
+   "p90": 7.04,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 0.38,
+   "cum_excess_mm": 2.37,
+   "tmax": 35.2,
+   "tmax_p90": 35.1,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-11",
+   "et0": 7.09,
+   "p90": 7.01,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 0.08,
+   "cum_excess_mm": 2.45,
+   "tmax": 35.3,
+   "tmax_p90": 35.1,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-12",
+   "et0": 6.08,
+   "p90": 6.94,
+   "flag": false,
+   "in_wave": false,
+   "excess_mm": 0.0,
+   "cum_excess_mm": 2.45,
+   "tmax": 33.9,
+   "tmax_p90": 35.1,
+   "tmax_flag": false
+  },
+  {
+   "date": "2024-04-13",
+   "et0": 6.58,
+   "p90": 6.9,
+   "flag": false,
+   "in_wave": false,
+   "excess_mm": 0.0,
+   "cum_excess_mm": 2.45,
+   "tmax": 34.3,
+   "tmax_p90": 35.1,
+   "tmax_flag": false
+  },
+  {
+   "date": "2024-04-14",
+   "et0": 7.27,
+   "p90": 6.82,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 0.45,
+   "cum_excess_mm": 2.9,
+   "tmax": 34.6,
+   "tmax_p90": 35.1,
+   "tmax_flag": false
+  },
+  {
+   "date": "2024-04-15",
+   "et0": 7.85,
+   "p90": 6.73,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 1.12,
+   "cum_excess_mm": 4.02,
+   "tmax": 35.7,
+   "tmax_p90": 35.1,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-16",
+   "et0": 7.29,
+   "p90": 6.73,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 0.56,
+   "cum_excess_mm": 4.58,
+   "tmax": 36.2,
+   "tmax_p90": 35.1,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-17",
+   "et0": 6.97,
+   "p90": 6.73,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 0.24,
+   "cum_excess_mm": 4.82,
+   "tmax": 37.0,
+   "tmax_p90": 35.2,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-18",
+   "et0": 6.26,
+   "p90": 6.73,
+   "flag": false,
+   "in_wave": false,
+   "excess_mm": 0.0,
+   "cum_excess_mm": 4.82,
+   "tmax": 36.5,
+   "tmax_p90": 35.2,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-19",
+   "et0": 5.61,
+   "p90": 6.73,
+   "flag": false,
+   "in_wave": false,
+   "excess_mm": 0.0,
+   "cum_excess_mm": 4.82,
+   "tmax": 35.5,
+   "tmax_p90": 35.2,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-20",
+   "et0": 5.3,
+   "p90": 6.72,
+   "flag": false,
+   "in_wave": false,
+   "excess_mm": 0.0,
+   "cum_excess_mm": 4.82,
+   "tmax": 34.1,
+   "tmax_p90": 35.2,
+   "tmax_flag": false
+  },
+  {
+   "date": "2024-04-21",
+   "et0": 6.95,
+   "p90": 6.7,
+   "flag": true,
+   "in_wave": false,
+   "excess_mm": 0.25,
+   "cum_excess_mm": 5.07,
+   "tmax": 36.1,
+   "tmax_p90": 35.1,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-22",
+   "et0": 6.61,
+   "p90": 6.7,
+   "flag": false,
+   "in_wave": false,
+   "excess_mm": 0.0,
+   "cum_excess_mm": 5.07,
+   "tmax": 36.3,
+   "tmax_p90": 35.1,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-23",
+   "et0": 7.79,
+   "p90": 6.7,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 1.09,
+   "cum_excess_mm": 6.16,
+   "tmax": 36.4,
+   "tmax_p90": 35.1,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-24",
+   "et0": 7.78,
+   "p90": 6.7,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 1.08,
+   "cum_excess_mm": 7.24,
+   "tmax": 36.1,
+   "tmax_p90": 35.1,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-25",
+   "et0": 7.8,
+   "p90": 6.7,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 1.1,
+   "cum_excess_mm": 8.34,
+   "tmax": 36.8,
+   "tmax_p90": 35.0,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-26",
+   "et0": 7.86,
+   "p90": 6.64,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 1.22,
+   "cum_excess_mm": 9.56,
+   "tmax": 36.8,
+   "tmax_p90": 35.0,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-27",
+   "et0": 7.87,
+   "p90": 6.61,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 1.26,
+   "cum_excess_mm": 10.82,
+   "tmax": 37.1,
+   "tmax_p90": 35.0,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-28",
+   "et0": 7.9,
+   "p90": 6.54,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 1.36,
+   "cum_excess_mm": 12.18,
+   "tmax": 37.9,
+   "tmax_p90": 34.9,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-29",
+   "et0": 7.14,
+   "p90": 6.53,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 0.61,
+   "cum_excess_mm": 12.79,
+   "tmax": 37.0,
+   "tmax_p90": 34.9,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-30",
+   "et0": 6.96,
+   "p90": 6.48,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 0.48,
+   "cum_excess_mm": 13.27,
+   "tmax": 37.5,
+   "tmax_p90": 34.9,
+   "tmax_flag": true
+  }
+ ],
+ "summary": {
+  "days_above_p90": 22,
+  "days_total": 30,
+  "days_in_wave": 21,
+  "cum_excess_mm": 13.27,
+  "cum_excess_definition": "Sum of daily ET0 above the local day-of-year p90 threshold",
+  "litres_per_acre_reference": 53704,
+  "litres_per_acre_reference_note": "Reference crop (Kc = 1): cum_excess_mm x 4047 L/acre per mm. Estimate.",
+  "extra_litres_per_acre": {},
+  "tmax_days_above_p90": 24,
+  "lakes": {
+   "Bellandur": {
+    "value": 51120618,
+    "label": "estimate"
+   },
+   "Varthur": {
+    "value": 25191768,
+    "label": "estimate"
+   }
+  },
+  "april_rank_1994_2024": 1,
+  "april_years_compared": 31,
+  "runs": [
+   {
+    "start": "2024-04-03",
+    "end": "2024-04-11",
+    "days": 9
+   },
+   {
+    "start": "2024-04-14",
+    "end": "2024-04-17",
+    "days": 4
+   },
+   {
+    "start": "2024-04-23",
+    "end": "2024-04-30",
+    "days": 8
+   }
+  ],
+  "bias_correction": "none (archive data only)"
+ },
+ "caveat": "District-centroid estimate (~10 km grid)",
+ "source": "Open-Meteo historical weather API, models=era5_seamless (ERA5 + ERA5-Land), et0_fao_evapotranspiration, temperature_2m_max"
+}

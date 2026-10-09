@@ -1,0 +1,129 @@
+[
+ {
+  "pk": "district#Bengaluru_Urban",
+  "type": "district",
+  "id": "Bengaluru_Urban",
+  "name": "Bengaluru Urban",
+  "lat": 12.9508,
+  "lon": 77.5959,
+  "crops": [],
+  "lakes": [
+   "Bellandur",
+   "Varthur"
+  ]
+ },
+ {
+  "pk": "district#Kolar",
+  "type": "district",
+  "id": "Kolar",
+  "name": "Kolar",
+  "lat": 13.1393,
+  "lon": 78.2177,
+  "crops": [
+   "tomato",
+   "ragi"
+  ],
+  "lakes": []
+ },
+ {
+  "pk": "district#Mandya",
+  "type": "district",
+  "id": "Mandya",
+  "name": "Mandya",
+  "lat": 12.6104,
+  "lon": 76.798,
+  "crops": [
+   "paddy",
+   "sugarcane"
+  ],
+  "lakes": [
+   "KRS"
+  ]
+ },
+ {
+  "pk": "crop#paddy",
+  "type": "crop",
+  "id": "paddy",
+  "name": "Paddy (rice)",
+  "name_hi": "धान",
+  "kc": 1.2,
+  "source": "Allen et al. (1998) FAO Irrigation and Drainage Paper 56, Table 12 (Table 12, i. Cereals: Rice (Kc ini 1.05, Kc mid 1.20, Kc end 0.90-0.60))",
+  "url": "https://www.fao.org/4/x0490e/x0490e0b.htm",
+  "verified": true
+ },
+ {
+  "pk": "crop#sugarcane",
+  "type": "crop",
+  "id": "sugarcane",
+  "name": "Sugarcane",
+  "name_hi": "गन्ना",
+  "kc": 1.25,
+  "source": "Allen et al. (1998) FAO Irrigation and Drainage Paper 56, Table 12 (Table 12, k. Sugar Cane (Kc ini 0.40, Kc mid 1.25, Kc end 0.75))",
+  "url": "https://www.fao.org/4/x0490e/x0490e0b.htm",
+  "verified": true
+ },
+ {
+  "pk": "crop#tomato",
+  "type": "crop",
+  "id": "tomato",
+  "name": "Tomato",
+  "name_hi": "टमाटर",
+  "kc": 1.15,
+  "source": "Allen et al. (1998) FAO Irrigation and Drainage Paper 56, Table 12 (Table 12, b. Vegetables - Solanum Family: Tomato (Kc mid 1.15, Kc end 0.70-0.90))",
+  "url": "https://www.fao.org/4/x0490e/x0490e0b.htm",
+  "verified": true
+ },
+ {
+  "pk": "crop#ragi",
+  "type": "crop",
+  "id": "ragi",
+  "name": "Ragi (finger millet)",
+  "name_hi": "रागी",
+  "kc": 1.0,
+  "source": "Allen et al. (1998) FAO Irrigation and Drainage Paper 56, Table 12 (Table 12, i. Cereals: Millet (Kc mid 1.00, Kc end 0.30). FAO-56 has no separate finger-millet row; the generic 'Millet' row is used.)",
+  "url": "https://www.fao.org/4/x0490e/x0490e0b.htm",
+  "verified": true
+ },
+ {
+  "pk": "lake#Bellandur",
+  "type": "lake",
+  "id": "Bellandur",
+  "name": "Bellandur Lake",
+  "district": "Bengaluru_Urban",
+  "area_m2": 3668900,
+  "area_text": "366.89 ha (906 acres 25 guntas)",
+  "area_basis": "Legal lake extent from revenue records (RTC), as reported by IISc. Upper bound of the open-water surface; the current water spread is smaller (KTCDA 2026 compliance report: 794 acres 26 guntas of water-spread area).",
+  "kc": 1.05,
+  "source": "Ramachandra T.V. et al. (2017) Bellandur and Varthur Lakes Rejuvenation Blueprint, ENVIS Technical Report 116 / Sahyadri Conservation Series 34, EWRG, CES, IISc, sec. 2.1.1",
+  "url": "https://wgbis.ces.iisc.ac.in/energy/water/paper/ETR116/sec2.html",
+  "verified": true
+ },
+ {
+  "pk": "lake#Varthur",
+  "type": "lake",
+  "id": "Varthur",
+  "name": "Varthur Lake",
+  "district": "Bengaluru_Urban",
+  "area_m2": 1808000,
+  "area_text": "180.8 ha (447 acres 14 guntas)",
+  "area_basis": "Lake extent from revenue records, as reported by IISc. Upper bound of the open-water surface (another IISc study gives a 220 ha water spread; an older morphometric survey gives 147.8 ha).",
+  "kc": 1.05,
+  "source": "Ramachandra T.V. et al. (2017) Bellandur and Varthur Lakes Rejuvenation Blueprint, ENVIS Technical Report 116 / Sahyadri Conservation Series 34, EWRG, CES, IISc, sec. 2.1.2",
+  "url": "https://wgbis.ces.iisc.ac.in/energy/water/paper/ETR116/sec2.html",
+  "verified": true
+ },
+ {
+  "pk": "lake#KRS",
+  "type": "lake",
+  "id": "KRS",
+  "name": "KRS reservoir (Krishna Raja Sagara)",
+  "district": "Mandya",
+  "area_m2": 130000000,
+  "area_text": "130 km2 water-spread area at full reservoir level (124.8 ft)",
+  "area_basis": "Water spread at FULL reservoir level. In dry months the reservoir is lower, so this is an upper bound.",
+  "kc": 1.05,
+  "source": "Assessment of sedimentation in Krishnaraja Sagar reservoir of Karnataka, India using remote sensing, International Research Journal of Engineering and Technology (IRJET) Vol 6 Issue 9 (2019), study area section",
+  "url": "https://irjet.net/archives/V6/i9/IRJET-V6I9196.pdf",
+  "verified": true
+ }
+]

@@ -1,0 +1,40 @@
+[
+  {
+    "id": "Bengaluru_Urban",
+    "name": "Bengaluru Urban",
+    "lat": 12.9508,
+    "lon": 77.5959,
+    "crops": [],
+    "lakes": [
+      "Bellandur",
+      "Varthur"
+    ],
+    "centroid_source": "Polygon centroid of DataMeet Census-2011 district boundary"
+  },
+  {
+    "id": "Kolar",
+    "name": "Kolar",
+    "lat": 13.1393,
+    "lon": 78.2177,
+    "crops": [
+      "tomato",
+      "ragi"
+    ],
+    "lakes": [],
+    "centroid_source": "Polygon centroid of DataMeet Census-2011 district boundary"
+  },
+  {
+    "id": "Mandya",
+    "name": "Mandya",
+    "lat": 12.6104,
+    "lon": 76.798,
+    "crops": [
+      "paddy",
+      "sugarcane"
+    ],
+    "lakes": [
+      "KRS"
+    ],
+    "centroid_source": "Polygon centroid of DataMeet Census-2011 district boundary"
+  }
+]

@@ -1,0 +1,7667 @@
+[
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 1,
+  "et0_p90": 4.73,
+  "tmax_p90": 27.8,
+  "et0_mean": 4.02
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 2,
+  "et0_p90": 4.75,
+  "tmax_p90": 27.91,
+  "et0_mean": 4.03
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 3,
+  "et0_p90": 4.76,
+  "tmax_p90": 28.0,
+  "et0_mean": 4.03
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 4,
+  "et0_p90": 4.77,
+  "tmax_p90": 28.1,
+  "et0_mean": 4.05
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 5,
+  "et0_p90": 4.8,
+  "tmax_p90": 28.11,
+  "et0_mean": 4.08
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 6,
+  "et0_p90": 4.85,
+  "tmax_p90": 28.2,
+  "et0_mean": 4.12
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 7,
+  "et0_p90": 4.9,
+  "tmax_p90": 28.4,
+  "et0_mean": 4.16
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 8,
+  "et0_p90": 4.93,
+  "tmax_p90": 28.4,
+  "et0_mean": 4.2
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 9,
+  "et0_p90": 4.96,
+  "tmax_p90": 28.5,
+  "et0_mean": 4.22
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 10,
+  "et0_p90": 4.98,
+  "tmax_p90": 28.6,
+  "et0_mean": 4.24
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 11,
+  "et0_p90": 5.02,
+  "tmax_p90": 28.6,
+  "et0_mean": 4.27
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 12,
+  "et0_p90": 5.03,
+  "tmax_p90": 28.7,
+  "et0_mean": 4.29
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 13,
+  "et0_p90": 5.04,
+  "tmax_p90": 28.8,
+  "et0_mean": 4.32
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 14,
+  "et0_p90": 5.1,
+  "tmax_p90": 28.9,
+  "et0_mean": 4.36
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 15,
+  "et0_p90": 5.17,
+  "tmax_p90": 28.91,
+  "et0_mean": 4.41
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 16,
+  "et0_p90": 5.19,
+  "tmax_p90": 29.0,
+  "et0_mean": 4.44
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 17,
+  "et0_p90": 5.25,
+  "tmax_p90": 29.1,
+  "et0_mean": 4.49
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 18,
+  "et0_p90": 5.27,
+  "tmax_p90": 29.2,
+  "et0_mean": 4.53
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 19,
+  "et0_p90": 5.29,
+  "tmax_p90": 29.3,
+  "et0_mean": 4.56
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 20,
+  "et0_p90": 5.31,
+  "tmax_p90": 29.31,
+  "et0_mean": 4.58
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 21,
+  "et0_p90": 5.31,
+  "tmax_p90": 29.4,
+  "et0_mean": 4.59
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 22,
+  "et0_p90": 5.33,
+  "tmax_p90": 29.4,
+  "et0_mean": 4.61
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 23,
+  "et0_p90": 5.34,
+  "tmax_p90": 29.4,
+  "et0_mean": 4.64
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 24,
+  "et0_p90": 5.36,
+  "tmax_p90": 29.4,
+  "et0_mean": 4.68
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 25,
+  "et0_p90": 5.42,
+  "tmax_p90": 29.5,
+  "et0_mean": 4.72
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 26,
+  "et0_p90": 5.48,
+  "tmax_p90": 29.5,
+  "et0_mean": 4.76
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 27,
+  "et0_p90": 5.51,
+  "tmax_p90": 29.5,
+  "et0_mean": 4.79
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 28,
+  "et0_p90": 5.54,
+  "tmax_p90": 29.6,
+  "et0_mean": 4.82
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 29,
+  "et0_p90": 5.56,
+  "tmax_p90": 29.6,
+  "et0_mean": 4.85
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 30,
+  "et0_p90": 5.62,
+  "tmax_p90": 29.61,
+  "et0_mean": 4.88
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 31,
+  "et0_p90": 5.67,
+  "tmax_p90": 29.7,
+  "et0_mean": 4.9
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 32,
+  "et0_p90": 5.73,
+  "tmax_p90": 29.8,
+  "et0_mean": 4.92
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 33,
+  "et0_p90": 5.76,
+  "tmax_p90": 29.9,
+  "et0_mean": 4.93
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 34,
+  "et0_p90": 5.79,
+  "tmax_p90": 30.0,
+  "et0_mean": 4.95
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 35,
+  "et0_p90": 5.8,
+  "tmax_p90": 30.1,
+  "et0_mean": 4.99
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 36,
+  "et0_p90": 5.83,
+  "tmax_p90": 30.1,
+  "et0_mean": 5.03
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 37,
+  "et0_p90": 5.87,
+  "tmax_p90": 30.11,
+  "et0_mean": 5.07
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 38,
+  "et0_p90": 5.9,
+  "tmax_p90": 30.2,
+  "et0_mean": 5.1
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 39,
+  "et0_p90": 5.95,
+  "tmax_p90": 30.3,
+  "et0_mean": 5.13
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 40,
+  "et0_p90": 6.01,
+  "tmax_p90": 30.4,
+  "et0_mean": 5.16
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 41,
+  "et0_p90": 6.08,
+  "tmax_p90": 30.5,
+  "et0_mean": 5.19
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 42,
+  "et0_p90": 6.12,
+  "tmax_p90": 30.61,
+  "et0_mean": 5.23
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 43,
+  "et0_p90": 6.17,
+  "tmax_p90": 30.8,
+  "et0_mean": 5.27
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 44,
+  "et0_p90": 6.21,
+  "tmax_p90": 31.1,
+  "et0_mean": 5.31
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 45,
+  "et0_p90": 6.26,
+  "tmax_p90": 31.2,
+  "et0_mean": 5.34
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 46,
+  "et0_p90": 6.34,
+  "tmax_p90": 31.4,
+  "et0_mean": 5.38
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 47,
+  "et0_p90": 6.41,
+  "tmax_p90": 31.6,
+  "et0_mean": 5.44
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 48,
+  "et0_p90": 6.49,
+  "tmax_p90": 31.7,
+  "et0_mean": 5.49
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 49,
+  "et0_p90": 6.58,
+  "tmax_p90": 31.81,
+  "et0_mean": 5.55
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 50,
+  "et0_p90": 6.6,
+  "tmax_p90": 32.0,
+  "et0_mean": 5.59
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 51,
+  "et0_p90": 6.66,
+  "tmax_p90": 32.2,
+  "et0_mean": 5.64
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 52,
+  "et0_p90": 6.7,
+  "tmax_p90": 32.34,
+  "et0_mean": 5.69
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 53,
+  "et0_p90": 6.82,
+  "tmax_p90": 32.4,
+  "et0_mean": 5.74
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 54,
+  "et0_p90": 6.88,
+  "tmax_p90": 32.5,
+  "et0_mean": 5.8
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 55,
+  "et0_p90": 6.97,
+  "tmax_p90": 32.6,
+  "et0_mean": 5.86
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 56,
+  "et0_p90": 7.01,
+  "tmax_p90": 32.6,
+  "et0_mean": 5.9
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 57,
+  "et0_p90": 7.05,
+  "tmax_p90": 32.7,
+  "et0_mean": 5.94
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 58,
+  "et0_p90": 7.08,
+  "tmax_p90": 32.84,
+  "et0_mean": 5.97
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 59,
+  "et0_p90": 7.13,
+  "tmax_p90": 32.94,
+  "et0_mean": 6.0
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 60,
+  "et0_p90": 7.17,
+  "tmax_p90": 33.0,
+  "et0_mean": 6.04
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 61,
+  "et0_p90": 7.19,
+  "tmax_p90": 33.0,
+  "et0_mean": 6.06
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 62,
+  "et0_p90": 7.21,
+  "tmax_p90": 33.0,
+  "et0_mean": 6.07
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 63,
+  "et0_p90": 7.23,
+  "tmax_p90": 33.1,
+  "et0_mean": 6.09
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 64,
+  "et0_p90": 7.25,
+  "tmax_p90": 33.1,
+  "et0_mean": 6.12
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 65,
+  "et0_p90": 7.25,
+  "tmax_p90": 33.2,
+  "et0_mean": 6.13
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 66,
+  "et0_p90": 7.25,
+  "tmax_p90": 33.2,
+  "et0_mean": 6.13
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 67,
+  "et0_p90": 7.26,
+  "tmax_p90": 33.3,
+  "et0_mean": 6.14
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 68,
+  "et0_p90": 7.29,
+  "tmax_p90": 33.3,
+  "et0_mean": 6.13
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 69,
+  "et0_p90": 7.31,
+  "tmax_p90": 33.3,
+  "et0_mean": 6.12
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 70,
+  "et0_p90": 7.34,
+  "tmax_p90": 33.4,
+  "et0_mean": 6.12
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 71,
+  "et0_p90": 7.35,
+  "tmax_p90": 33.51,
+  "et0_mean": 6.13
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 72,
+  "et0_p90": 7.35,
+  "tmax_p90": 33.8,
+  "et0_mean": 6.13
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 73,
+  "et0_p90": 7.38,
+  "tmax_p90": 33.9,
+  "et0_mean": 6.13
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 74,
+  "et0_p90": 7.35,
+  "tmax_p90": 33.91,
+  "et0_mean": 6.13
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 75,
+  "et0_p90": 7.35,
+  "tmax_p90": 34.1,
+  "et0_mean": 6.12
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 76,
+  "et0_p90": 7.35,
+  "tmax_p90": 34.21,
+  "et0_mean": 6.14
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 77,
+  "et0_p90": 7.38,
+  "tmax_p90": 34.4,
+  "et0_mean": 6.15
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 78,
+  "et0_p90": 7.44,
+  "tmax_p90": 34.41,
+  "et0_mean": 6.16
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 79,
+  "et0_p90": 7.43,
+  "tmax_p90": 34.5,
+  "et0_mean": 6.16
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 80,
+  "et0_p90": 7.38,
+  "tmax_p90": 34.5,
+  "et0_mean": 6.16
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 81,
+  "et0_p90": 7.36,
+  "tmax_p90": 34.61,
+  "et0_mean": 6.16
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 82,
+  "et0_p90": 7.35,
+  "tmax_p90": 34.7,
+  "et0_mean": 6.15
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 83,
+  "et0_p90": 7.34,
+  "tmax_p90": 34.7,
+  "et0_mean": 6.14
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 84,
+  "et0_p90": 7.34,
+  "tmax_p90": 34.8,
+  "et0_mean": 6.1
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 85,
+  "et0_p90": 7.33,
+  "tmax_p90": 34.8,
+  "et0_mean": 6.07
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 86,
+  "et0_p90": 7.33,
+  "tmax_p90": 34.8,
+  "et0_mean": 6.04
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 87,
+  "et0_p90": 7.33,
+  "tmax_p90": 34.8,
+  "et0_mean": 6.04
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 88,
+  "et0_p90": 7.33,
+  "tmax_p90": 34.9,
+  "et0_mean": 6.03
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 89,
+  "et0_p90": 7.33,
+  "tmax_p90": 34.9,
+  "et0_mean": 6.03
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 90,
+  "et0_p90": 7.32,
+  "tmax_p90": 34.9,
+  "et0_mean": 6.03
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 91,
+  "et0_p90": 7.25,
+  "tmax_p90": 34.9,
+  "et0_mean": 6.01
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 92,
+  "et0_p90": 7.2,
+  "tmax_p90": 34.9,
+  "et0_mean": 5.97
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 93,
+  "et0_p90": 7.13,
+  "tmax_p90": 34.9,
+  "et0_mean": 5.94
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 94,
+  "et0_p90": 7.12,
+  "tmax_p90": 34.9,
+  "et0_mean": 5.91
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 95,
+  "et0_p90": 7.1,
+  "tmax_p90": 35.0,
+  "et0_mean": 5.88
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 96,
+  "et0_p90": 7.1,
+  "tmax_p90": 35.0,
+  "et0_mean": 5.86
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 97,
+  "et0_p90": 7.1,
+  "tmax_p90": 35.01,
+  "et0_mean": 5.85
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 98,
+  "et0_p90": 7.1,
+  "tmax_p90": 35.1,
+  "et0_mean": 5.84
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 99,
+  "et0_p90": 7.09,
+  "tmax_p90": 35.1,
+  "et0_mean": 5.84
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 100,
+  "et0_p90": 7.04,
+  "tmax_p90": 35.1,
+  "et0_mean": 5.83
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 101,
+  "et0_p90": 7.01,
+  "tmax_p90": 35.11,
+  "et0_mean": 5.81
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 102,
+  "et0_p90": 6.94,
+  "tmax_p90": 35.1,
+  "et0_mean": 5.77
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 103,
+  "et0_p90": 6.9,
+  "tmax_p90": 35.1,
+  "et0_mean": 5.75
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 104,
+  "et0_p90": 6.82,
+  "tmax_p90": 35.1,
+  "et0_mean": 5.73
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 105,
+  "et0_p90": 6.73,
+  "tmax_p90": 35.1,
+  "et0_mean": 5.68
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 106,
+  "et0_p90": 6.73,
+  "tmax_p90": 35.1,
+  "et0_mean": 5.66
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 107,
+  "et0_p90": 6.73,
+  "tmax_p90": 35.2,
+  "et0_mean": 5.65
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 108,
+  "et0_p90": 6.73,
+  "tmax_p90": 35.2,
+  "et0_mean": 5.64
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 109,
+  "et0_p90": 6.73,
+  "tmax_p90": 35.2,
+  "et0_mean": 5.63
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 110,
+  "et0_p90": 6.72,
+  "tmax_p90": 35.2,
+  "et0_mean": 5.64
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 111,
+  "et0_p90": 6.7,
+  "tmax_p90": 35.1,
+  "et0_mean": 5.63
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 112,
+  "et0_p90": 6.7,
+  "tmax_p90": 35.11,
+  "et0_mean": 5.62
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 113,
+  "et0_p90": 6.7,
+  "tmax_p90": 35.1,
+  "et0_mean": 5.62
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 114,
+  "et0_p90": 6.7,
+  "tmax_p90": 35.1,
+  "et0_mean": 5.63
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 115,
+  "et0_p90": 6.7,
+  "tmax_p90": 35.0,
+  "et0_mean": 5.63
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 116,
+  "et0_p90": 6.64,
+  "tmax_p90": 35.0,
+  "et0_mean": 5.61
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 117,
+  "et0_p90": 6.61,
+  "tmax_p90": 35.0,
+  "et0_mean": 5.6
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 118,
+  "et0_p90": 6.54,
+  "tmax_p90": 34.91,
+  "et0_mean": 5.58
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 119,
+  "et0_p90": 6.53,
+  "tmax_p90": 34.9,
+  "et0_mean": 5.54
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 120,
+  "et0_p90": 6.48,
+  "tmax_p90": 34.9,
+  "et0_mean": 5.5
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 121,
+  "et0_p90": 6.46,
+  "tmax_p90": 34.71,
+  "et0_mean": 5.47
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 122,
+  "et0_p90": 6.4,
+  "tmax_p90": 34.51,
+  "et0_mean": 5.44
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 123,
+  "et0_p90": 6.38,
+  "tmax_p90": 34.4,
+  "et0_mean": 5.42
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 124,
+  "et0_p90": 6.33,
+  "tmax_p90": 34.3,
+  "et0_mean": 5.38
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 125,
+  "et0_p90": 6.27,
+  "tmax_p90": 34.2,
+  "et0_mean": 5.33
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 126,
+  "et0_p90": 6.27,
+  "tmax_p90": 34.2,
+  "et0_mean": 5.3
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 127,
+  "et0_p90": 6.27,
+  "tmax_p90": 34.11,
+  "et0_mean": 5.29
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 128,
+  "et0_p90": 6.27,
+  "tmax_p90": 34.0,
+  "et0_mean": 5.26
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 129,
+  "et0_p90": 6.27,
+  "tmax_p90": 33.9,
+  "et0_mean": 5.22
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 130,
+  "et0_p90": 6.26,
+  "tmax_p90": 33.8,
+  "et0_mean": 5.19
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 131,
+  "et0_p90": 6.26,
+  "tmax_p90": 33.8,
+  "et0_mean": 5.18
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 132,
+  "et0_p90": 6.27,
+  "tmax_p90": 33.8,
+  "et0_mean": 5.17
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 133,
+  "et0_p90": 6.27,
+  "tmax_p90": 33.71,
+  "et0_mean": 5.16
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 134,
+  "et0_p90": 6.28,
+  "tmax_p90": 33.71,
+  "et0_mean": 5.16
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 135,
+  "et0_p90": 6.28,
+  "tmax_p90": 33.8,
+  "et0_mean": 5.18
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 136,
+  "et0_p90": 6.28,
+  "tmax_p90": 33.71,
+  "et0_mean": 5.19
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 137,
+  "et0_p90": 6.28,
+  "tmax_p90": 33.7,
+  "et0_mean": 5.19
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 138,
+  "et0_p90": 6.26,
+  "tmax_p90": 33.61,
+  "et0_mean": 5.16
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 139,
+  "et0_p90": 6.27,
+  "tmax_p90": 33.51,
+  "et0_mean": 5.15
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 140,
+  "et0_p90": 6.26,
+  "tmax_p90": 33.5,
+  "et0_mean": 5.14
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 141,
+  "et0_p90": 6.21,
+  "tmax_p90": 33.5,
+  "et0_mean": 5.12
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 142,
+  "et0_p90": 6.21,
+  "tmax_p90": 33.5,
+  "et0_mean": 5.08
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 143,
+  "et0_p90": 6.15,
+  "tmax_p90": 33.41,
+  "et0_mean": 5.05
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 144,
+  "et0_p90": 6.12,
+  "tmax_p90": 33.41,
+  "et0_mean": 5.03
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 145,
+  "et0_p90": 6.11,
+  "tmax_p90": 33.4,
+  "et0_mean": 5.01
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 146,
+  "et0_p90": 6.08,
+  "tmax_p90": 33.2,
+  "et0_mean": 4.95
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 147,
+  "et0_p90": 6.02,
+  "tmax_p90": 33.1,
+  "et0_mean": 4.91
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 148,
+  "et0_p90": 5.9,
+  "tmax_p90": 33.0,
+  "et0_mean": 4.87
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 149,
+  "et0_p90": 5.88,
+  "tmax_p90": 32.9,
+  "et0_mean": 4.81
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 150,
+  "et0_p90": 5.8,
+  "tmax_p90": 32.9,
+  "et0_mean": 4.76
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 151,
+  "et0_p90": 5.78,
+  "tmax_p90": 32.7,
+  "et0_mean": 4.7
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 152,
+  "et0_p90": 5.73,
+  "tmax_p90": 32.51,
+  "et0_mean": 4.64
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 153,
+  "et0_p90": 5.72,
+  "tmax_p90": 32.4,
+  "et0_mean": 4.6
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 154,
+  "et0_p90": 5.71,
+  "tmax_p90": 32.3,
+  "et0_mean": 4.55
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 155,
+  "et0_p90": 5.69,
+  "tmax_p90": 32.0,
+  "et0_mean": 4.49
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 156,
+  "et0_p90": 5.64,
+  "tmax_p90": 31.9,
+  "et0_mean": 4.42
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 157,
+  "et0_p90": 5.58,
+  "tmax_p90": 31.61,
+  "et0_mean": 4.35
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 158,
+  "et0_p90": 5.49,
+  "tmax_p90": 31.5,
+  "et0_mean": 4.28
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 159,
+  "et0_p90": 5.42,
+  "tmax_p90": 31.12,
+  "et0_mean": 4.22
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 160,
+  "et0_p90": 5.37,
+  "tmax_p90": 31.0,
+  "et0_mean": 4.19
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 161,
+  "et0_p90": 5.34,
+  "tmax_p90": 30.8,
+  "et0_mean": 4.16
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 162,
+  "et0_p90": 5.31,
+  "tmax_p90": 30.6,
+  "et0_mean": 4.12
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 163,
+  "et0_p90": 5.26,
+  "tmax_p90": 30.3,
+  "et0_mean": 4.07
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 164,
+  "et0_p90": 5.22,
+  "tmax_p90": 29.9,
+  "et0_mean": 4.04
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 165,
+  "et0_p90": 5.19,
+  "tmax_p90": 29.9,
+  "et0_mean": 3.99
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 166,
+  "et0_p90": 5.16,
+  "tmax_p90": 29.7,
+  "et0_mean": 3.96
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 167,
+  "et0_p90": 5.05,
+  "tmax_p90": 29.6,
+  "et0_mean": 3.93
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 168,
+  "et0_p90": 4.96,
+  "tmax_p90": 29.5,
+  "et0_mean": 3.91
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 169,
+  "et0_p90": 4.89,
+  "tmax_p90": 29.4,
+  "et0_mean": 3.9
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 170,
+  "et0_p90": 4.87,
+  "tmax_p90": 29.21,
+  "et0_mean": 3.88
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 171,
+  "et0_p90": 4.87,
+  "tmax_p90": 29.1,
+  "et0_mean": 3.88
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 172,
+  "et0_p90": 4.86,
+  "tmax_p90": 28.91,
+  "et0_mean": 3.87
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 173,
+  "et0_p90": 4.86,
+  "tmax_p90": 28.9,
+  "et0_mean": 3.85
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 174,
+  "et0_p90": 4.87,
+  "tmax_p90": 28.9,
+  "et0_mean": 3.84
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 175,
+  "et0_p90": 4.86,
+  "tmax_p90": 28.8,
+  "et0_mean": 3.82
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 176,
+  "et0_p90": 4.86,
+  "tmax_p90": 28.7,
+  "et0_mean": 3.8
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 177,
+  "et0_p90": 4.85,
+  "tmax_p90": 28.7,
+  "et0_mean": 3.78
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 178,
+  "et0_p90": 4.86,
+  "tmax_p90": 28.7,
+  "et0_mean": 3.76
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 179,
+  "et0_p90": 4.85,
+  "tmax_p90": 28.7,
+  "et0_mean": 3.75
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 180,
+  "et0_p90": 4.85,
+  "tmax_p90": 28.8,
+  "et0_mean": 3.74
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 181,
+  "et0_p90": 4.81,
+  "tmax_p90": 28.7,
+  "et0_mean": 3.72
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 182,
+  "et0_p90": 4.77,
+  "tmax_p90": 28.6,
+  "et0_mean": 3.69
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 183,
+  "et0_p90": 4.75,
+  "tmax_p90": 28.6,
+  "et0_mean": 3.67
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 184,
+  "et0_p90": 4.73,
+  "tmax_p90": 28.6,
+  "et0_mean": 3.64
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 185,
+  "et0_p90": 4.67,
+  "tmax_p90": 28.6,
+  "et0_mean": 3.61
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 186,
+  "et0_p90": 4.65,
+  "tmax_p90": 28.5,
+  "et0_mean": 3.61
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 187,
+  "et0_p90": 4.65,
+  "tmax_p90": 28.51,
+  "et0_mean": 3.6
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 188,
+  "et0_p90": 4.61,
+  "tmax_p90": 28.5,
+  "et0_mean": 3.59
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 189,
+  "et0_p90": 4.54,
+  "tmax_p90": 28.4,
+  "et0_mean": 3.56
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 190,
+  "et0_p90": 4.46,
+  "tmax_p90": 28.3,
+  "et0_mean": 3.52
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 191,
+  "et0_p90": 4.43,
+  "tmax_p90": 28.3,
+  "et0_mean": 3.5
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 192,
+  "et0_p90": 4.4,
+  "tmax_p90": 28.2,
+  "et0_mean": 3.48
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 193,
+  "et0_p90": 4.39,
+  "tmax_p90": 28.1,
+  "et0_mean": 3.47
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 194,
+  "et0_p90": 4.35,
+  "tmax_p90": 28.1,
+  "et0_mean": 3.47
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 195,
+  "et0_p90": 4.34,
+  "tmax_p90": 28.1,
+  "et0_mean": 3.46
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 196,
+  "et0_p90": 4.33,
+  "tmax_p90": 28.1,
+  "et0_mean": 3.44
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 197,
+  "et0_p90": 4.32,
+  "tmax_p90": 28.01,
+  "et0_mean": 3.43
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 198,
+  "et0_p90": 4.32,
+  "tmax_p90": 28.0,
+  "et0_mean": 3.42
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 199,
+  "et0_p90": 4.3,
+  "tmax_p90": 27.9,
+  "et0_mean": 3.41
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 200,
+  "et0_p90": 4.29,
+  "tmax_p90": 27.9,
+  "et0_mean": 3.4
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 201,
+  "et0_p90": 4.28,
+  "tmax_p90": 27.8,
+  "et0_mean": 3.39
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 202,
+  "et0_p90": 4.27,
+  "tmax_p90": 27.8,
+  "et0_mean": 3.39
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 203,
+  "et0_p90": 4.28,
+  "tmax_p90": 27.8,
+  "et0_mean": 3.39
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 204,
+  "et0_p90": 4.3,
+  "tmax_p90": 27.8,
+  "et0_mean": 3.4
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 205,
+  "et0_p90": 4.29,
+  "tmax_p90": 27.8,
+  "et0_mean": 3.42
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 206,
+  "et0_p90": 4.3,
+  "tmax_p90": 27.8,
+  "et0_mean": 3.44
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 207,
+  "et0_p90": 4.32,
+  "tmax_p90": 27.8,
+  "et0_mean": 3.45
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 208,
+  "et0_p90": 4.32,
+  "tmax_p90": 27.8,
+  "et0_mean": 3.46
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 209,
+  "et0_p90": 4.29,
+  "tmax_p90": 27.8,
+  "et0_mean": 3.45
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 210,
+  "et0_p90": 4.28,
+  "tmax_p90": 27.8,
+  "et0_mean": 3.44
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 211,
+  "et0_p90": 4.28,
+  "tmax_p90": 27.8,
+  "et0_mean": 3.45
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 212,
+  "et0_p90": 4.27,
+  "tmax_p90": 27.7,
+  "et0_mean": 3.45
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 213,
+  "et0_p90": 4.26,
+  "tmax_p90": 27.7,
+  "et0_mean": 3.45
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 214,
+  "et0_p90": 4.26,
+  "tmax_p90": 27.61,
+  "et0_mean": 3.45
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 215,
+  "et0_p90": 4.23,
+  "tmax_p90": 27.6,
+  "et0_mean": 3.45
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 216,
+  "et0_p90": 4.23,
+  "tmax_p90": 27.6,
+  "et0_mean": 3.44
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 217,
+  "et0_p90": 4.23,
+  "tmax_p90": 27.6,
+  "et0_mean": 3.43
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 218,
+  "et0_p90": 4.23,
+  "tmax_p90": 27.51,
+  "et0_mean": 3.43
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 219,
+  "et0_p90": 4.22,
+  "tmax_p90": 27.6,
+  "et0_mean": 3.43
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 220,
+  "et0_p90": 4.21,
+  "tmax_p90": 27.6,
+  "et0_mean": 3.44
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 221,
+  "et0_p90": 4.21,
+  "tmax_p90": 27.6,
+  "et0_mean": 3.42
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 222,
+  "et0_p90": 4.19,
+  "tmax_p90": 27.6,
+  "et0_mean": 3.41
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 223,
+  "et0_p90": 4.17,
+  "tmax_p90": 27.6,
+  "et0_mean": 3.42
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 224,
+  "et0_p90": 4.14,
+  "tmax_p90": 27.6,
+  "et0_mean": 3.42
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 225,
+  "et0_p90": 4.17,
+  "tmax_p90": 27.7,
+  "et0_mean": 3.43
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 226,
+  "et0_p90": 4.22,
+  "tmax_p90": 27.7,
+  "et0_mean": 3.43
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 227,
+  "et0_p90": 4.27,
+  "tmax_p90": 27.7,
+  "et0_mean": 3.43
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 228,
+  "et0_p90": 4.3,
+  "tmax_p90": 27.7,
+  "et0_mean": 3.45
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 229,
+  "et0_p90": 4.32,
+  "tmax_p90": 27.7,
+  "et0_mean": 3.45
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 230,
+  "et0_p90": 4.33,
+  "tmax_p90": 27.7,
+  "et0_mean": 3.46
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 231,
+  "et0_p90": 4.34,
+  "tmax_p90": 27.71,
+  "et0_mean": 3.47
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 232,
+  "et0_p90": 4.34,
+  "tmax_p90": 27.71,
+  "et0_mean": 3.48
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 233,
+  "et0_p90": 4.38,
+  "tmax_p90": 27.71,
+  "et0_mean": 3.48
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 234,
+  "et0_p90": 4.38,
+  "tmax_p90": 27.7,
+  "et0_mean": 3.47
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 235,
+  "et0_p90": 4.4,
+  "tmax_p90": 27.7,
+  "et0_mean": 3.47
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 236,
+  "et0_p90": 4.39,
+  "tmax_p90": 27.71,
+  "et0_mean": 3.47
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 237,
+  "et0_p90": 4.41,
+  "tmax_p90": 27.8,
+  "et0_mean": 3.49
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 238,
+  "et0_p90": 4.43,
+  "tmax_p90": 27.9,
+  "et0_mean": 3.5
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 239,
+  "et0_p90": 4.47,
+  "tmax_p90": 27.9,
+  "et0_mean": 3.51
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 240,
+  "et0_p90": 4.52,
+  "tmax_p90": 27.9,
+  "et0_mean": 3.52
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 241,
+  "et0_p90": 4.52,
+  "tmax_p90": 28.0,
+  "et0_mean": 3.52
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 242,
+  "et0_p90": 4.52,
+  "tmax_p90": 28.0,
+  "et0_mean": 3.53
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 243,
+  "et0_p90": 4.45,
+  "tmax_p90": 27.9,
+  "et0_mean": 3.52
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 244,
+  "et0_p90": 4.44,
+  "tmax_p90": 27.9,
+  "et0_mean": 3.52
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 245,
+  "et0_p90": 4.44,
+  "tmax_p90": 27.91,
+  "et0_mean": 3.54
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 246,
+  "et0_p90": 4.46,
+  "tmax_p90": 27.91,
+  "et0_mean": 3.56
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 247,
+  "et0_p90": 4.51,
+  "tmax_p90": 27.91,
+  "et0_mean": 3.58
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 248,
+  "et0_p90": 4.51,
+  "tmax_p90": 28.0,
+  "et0_mean": 3.59
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 249,
+  "et0_p90": 4.53,
+  "tmax_p90": 28.0,
+  "et0_mean": 3.61
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 250,
+  "et0_p90": 4.53,
+  "tmax_p90": 28.01,
+  "et0_mean": 3.61
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 251,
+  "et0_p90": 4.54,
+  "tmax_p90": 28.01,
+  "et0_mean": 3.62
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 252,
+  "et0_p90": 4.53,
+  "tmax_p90": 28.0,
+  "et0_mean": 3.61
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 253,
+  "et0_p90": 4.48,
+  "tmax_p90": 28.0,
+  "et0_mean": 3.61
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 254,
+  "et0_p90": 4.49,
+  "tmax_p90": 28.0,
+  "et0_mean": 3.62
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 255,
+  "et0_p90": 4.54,
+  "tmax_p90": 28.0,
+  "et0_mean": 3.63
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 256,
+  "et0_p90": 4.57,
+  "tmax_p90": 28.0,
+  "et0_mean": 3.65
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 257,
+  "et0_p90": 4.58,
+  "tmax_p90": 28.0,
+  "et0_mean": 3.67
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 258,
+  "et0_p90": 4.65,
+  "tmax_p90": 28.1,
+  "et0_mean": 3.72
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 259,
+  "et0_p90": 4.71,
+  "tmax_p90": 28.11,
+  "et0_mean": 3.76
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 260,
+  "et0_p90": 4.73,
+  "tmax_p90": 28.2,
+  "et0_mean": 3.77
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 261,
+  "et0_p90": 4.75,
+  "tmax_p90": 28.2,
+  "et0_mean": 3.78
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 262,
+  "et0_p90": 4.76,
+  "tmax_p90": 28.2,
+  "et0_mean": 3.78
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 263,
+  "et0_p90": 4.75,
+  "tmax_p90": 28.2,
+  "et0_mean": 3.79
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 264,
+  "et0_p90": 4.75,
+  "tmax_p90": 28.2,
+  "et0_mean": 3.78
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 265,
+  "et0_p90": 4.72,
+  "tmax_p90": 28.2,
+  "et0_mean": 3.78
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 266,
+  "et0_p90": 4.71,
+  "tmax_p90": 28.2,
+  "et0_mean": 3.77
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 267,
+  "et0_p90": 4.71,
+  "tmax_p90": 28.2,
+  "et0_mean": 3.76
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 268,
+  "et0_p90": 4.71,
+  "tmax_p90": 28.2,
+  "et0_mean": 3.77
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 269,
+  "et0_p90": 4.71,
+  "tmax_p90": 28.2,
+  "et0_mean": 3.77
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 270,
+  "et0_p90": 4.71,
+  "tmax_p90": 28.3,
+  "et0_mean": 3.76
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 271,
+  "et0_p90": 4.71,
+  "tmax_p90": 28.3,
+  "et0_mean": 3.76
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 272,
+  "et0_p90": 4.68,
+  "tmax_p90": 28.2,
+  "et0_mean": 3.73
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 273,
+  "et0_p90": 4.66,
+  "tmax_p90": 28.2,
+  "et0_mean": 3.71
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 274,
+  "et0_p90": 4.6,
+  "tmax_p90": 28.2,
+  "et0_mean": 3.68
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 275,
+  "et0_p90": 4.58,
+  "tmax_p90": 28.1,
+  "et0_mean": 3.65
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 276,
+  "et0_p90": 4.54,
+  "tmax_p90": 28.1,
+  "et0_mean": 3.64
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 277,
+  "et0_p90": 4.53,
+  "tmax_p90": 28.1,
+  "et0_mean": 3.62
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 278,
+  "et0_p90": 4.53,
+  "tmax_p90": 28.1,
+  "et0_mean": 3.6
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 279,
+  "et0_p90": 4.53,
+  "tmax_p90": 28.2,
+  "et0_mean": 3.59
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 280,
+  "et0_p90": 4.58,
+  "tmax_p90": 28.2,
+  "et0_mean": 3.6
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 281,
+  "et0_p90": 4.6,
+  "tmax_p90": 28.2,
+  "et0_mean": 3.6
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 282,
+  "et0_p90": 4.62,
+  "tmax_p90": 28.2,
+  "et0_mean": 3.6
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 283,
+  "et0_p90": 4.6,
+  "tmax_p90": 28.2,
+  "et0_mean": 3.6
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 284,
+  "et0_p90": 4.62,
+  "tmax_p90": 28.2,
+  "et0_mean": 3.58
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 285,
+  "et0_p90": 4.65,
+  "tmax_p90": 28.2,
+  "et0_mean": 3.56
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 286,
+  "et0_p90": 4.6,
+  "tmax_p90": 28.2,
+  "et0_mean": 3.55
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 287,
+  "et0_p90": 4.65,
+  "tmax_p90": 28.2,
+  "et0_mean": 3.54
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 288,
+  "et0_p90": 4.67,
+  "tmax_p90": 28.2,
+  "et0_mean": 3.52
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 289,
+  "et0_p90": 4.72,
+  "tmax_p90": 28.2,
+  "et0_mean": 3.5
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 290,
+  "et0_p90": 4.76,
+  "tmax_p90": 28.3,
+  "et0_mean": 3.51
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 291,
+  "et0_p90": 4.85,
+  "tmax_p90": 28.3,
+  "et0_mean": 3.52
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 292,
+  "et0_p90": 4.86,
+  "tmax_p90": 28.3,
+  "et0_mean": 3.52
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 293,
+  "et0_p90": 4.89,
+  "tmax_p90": 28.3,
+  "et0_mean": 3.53
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 294,
+  "et0_p90": 4.88,
+  "tmax_p90": 28.2,
+  "et0_mean": 3.52
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 295,
+  "et0_p90": 4.88,
+  "tmax_p90": 28.2,
+  "et0_mean": 3.51
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 296,
+  "et0_p90": 4.89,
+  "tmax_p90": 28.2,
+  "et0_mean": 3.51
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 297,
+  "et0_p90": 4.88,
+  "tmax_p90": 28.2,
+  "et0_mean": 3.51
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 298,
+  "et0_p90": 4.87,
+  "tmax_p90": 28.2,
+  "et0_mean": 3.48
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 299,
+  "et0_p90": 4.87,
+  "tmax_p90": 28.1,
+  "et0_mean": 3.45
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 300,
+  "et0_p90": 4.83,
+  "tmax_p90": 28.0,
+  "et0_mean": 3.43
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 301,
+  "et0_p90": 4.83,
+  "tmax_p90": 27.82,
+  "et0_mean": 3.42
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 302,
+  "et0_p90": 4.81,
+  "tmax_p90": 27.8,
+  "et0_mean": 3.41
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 303,
+  "et0_p90": 4.78,
+  "tmax_p90": 27.8,
+  "et0_mean": 3.4
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 304,
+  "et0_p90": 4.73,
+  "tmax_p90": 27.7,
+  "et0_mean": 3.38
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 305,
+  "et0_p90": 4.69,
+  "tmax_p90": 27.5,
+  "et0_mean": 3.37
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 306,
+  "et0_p90": 4.66,
+  "tmax_p90": 27.5,
+  "et0_mean": 3.36
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 307,
+  "et0_p90": 4.62,
+  "tmax_p90": 27.4,
+  "et0_mean": 3.35
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 308,
+  "et0_p90": 4.61,
+  "tmax_p90": 27.4,
+  "et0_mean": 3.35
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 309,
+  "et0_p90": 4.6,
+  "tmax_p90": 27.4,
+  "et0_mean": 3.36
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 310,
+  "et0_p90": 4.59,
+  "tmax_p90": 27.4,
+  "et0_mean": 3.37
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 311,
+  "et0_p90": 4.61,
+  "tmax_p90": 27.4,
+  "et0_mean": 3.37
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 312,
+  "et0_p90": 4.63,
+  "tmax_p90": 27.3,
+  "et0_mean": 3.39
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 313,
+  "et0_p90": 4.63,
+  "tmax_p90": 27.3,
+  "et0_mean": 3.42
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 314,
+  "et0_p90": 4.64,
+  "tmax_p90": 27.3,
+  "et0_mean": 3.45
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 315,
+  "et0_p90": 4.66,
+  "tmax_p90": 27.3,
+  "et0_mean": 3.47
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 316,
+  "et0_p90": 4.66,
+  "tmax_p90": 27.3,
+  "et0_mean": 3.48
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 317,
+  "et0_p90": 4.66,
+  "tmax_p90": 27.3,
+  "et0_mean": 3.5
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 318,
+  "et0_p90": 4.66,
+  "tmax_p90": 27.3,
+  "et0_mean": 3.51
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 319,
+  "et0_p90": 4.64,
+  "tmax_p90": 27.3,
+  "et0_mean": 3.49
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 320,
+  "et0_p90": 4.64,
+  "tmax_p90": 27.3,
+  "et0_mean": 3.48
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 321,
+  "et0_p90": 4.63,
+  "tmax_p90": 27.3,
+  "et0_mean": 3.48
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 322,
+  "et0_p90": 4.63,
+  "tmax_p90": 27.3,
+  "et0_mean": 3.49
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 323,
+  "et0_p90": 4.63,
+  "tmax_p90": 27.3,
+  "et0_mean": 3.48
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 324,
+  "et0_p90": 4.64,
+  "tmax_p90": 27.3,
+  "et0_mean": 3.47
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 325,
+  "et0_p90": 4.64,
+  "tmax_p90": 27.3,
+  "et0_mean": 3.46
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 326,
+  "et0_p90": 4.63,
+  "tmax_p90": 27.3,
+  "et0_mean": 3.45
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 327,
+  "et0_p90": 4.58,
+  "tmax_p90": 27.3,
+  "et0_mean": 3.44
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 328,
+  "et0_p90": 4.58,
+  "tmax_p90": 27.21,
+  "et0_mean": 3.45
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 329,
+  "et0_p90": 4.58,
+  "tmax_p90": 27.2,
+  "et0_mean": 3.44
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 330,
+  "et0_p90": 4.58,
+  "tmax_p90": 27.2,
+  "et0_mean": 3.43
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 331,
+  "et0_p90": 4.58,
+  "tmax_p90": 27.2,
+  "et0_mean": 3.42
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 332,
+  "et0_p90": 4.58,
+  "tmax_p90": 27.2,
+  "et0_mean": 3.43
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 333,
+  "et0_p90": 4.58,
+  "tmax_p90": 27.1,
+  "et0_mean": 3.45
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 334,
+  "et0_p90": 4.58,
+  "tmax_p90": 27.1,
+  "et0_mean": 3.49
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 335,
+  "et0_p90": 4.58,
+  "tmax_p90": 27.1,
+  "et0_mean": 3.5
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 336,
+  "et0_p90": 4.58,
+  "tmax_p90": 27.2,
+  "et0_mean": 3.51
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 337,
+  "et0_p90": 4.58,
+  "tmax_p90": 27.2,
+  "et0_mean": 3.5
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 338,
+  "et0_p90": 4.6,
+  "tmax_p90": 27.2,
+  "et0_mean": 3.51
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 339,
+  "et0_p90": 4.6,
+  "tmax_p90": 27.2,
+  "et0_mean": 3.52
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 340,
+  "et0_p90": 4.6,
+  "tmax_p90": 27.2,
+  "et0_mean": 3.51
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 341,
+  "et0_p90": 4.6,
+  "tmax_p90": 27.2,
+  "et0_mean": 3.52
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 342,
+  "et0_p90": 4.62,
+  "tmax_p90": 27.2,
+  "et0_mean": 3.54
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 343,
+  "et0_p90": 4.63,
+  "tmax_p90": 27.3,
+  "et0_mean": 3.56
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 344,
+  "et0_p90": 4.62,
+  "tmax_p90": 27.3,
+  "et0_mean": 3.57
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 345,
+  "et0_p90": 4.62,
+  "tmax_p90": 27.21,
+  "et0_mean": 3.6
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 346,
+  "et0_p90": 4.61,
+  "tmax_p90": 27.3,
+  "et0_mean": 3.63
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 347,
+  "et0_p90": 4.61,
+  "tmax_p90": 27.3,
+  "et0_mean": 3.63
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 348,
+  "et0_p90": 4.6,
+  "tmax_p90": 27.3,
+  "et0_mean": 3.64
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 349,
+  "et0_p90": 4.61,
+  "tmax_p90": 27.3,
+  "et0_mean": 3.65
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 350,
+  "et0_p90": 4.61,
+  "tmax_p90": 27.31,
+  "et0_mean": 3.69
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 351,
+  "et0_p90": 4.61,
+  "tmax_p90": 27.31,
+  "et0_mean": 3.72
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 352,
+  "et0_p90": 4.62,
+  "tmax_p90": 27.4,
+  "et0_mean": 3.75
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 353,
+  "et0_p90": 4.66,
+  "tmax_p90": 27.4,
+  "et0_mean": 3.78
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 354,
+  "et0_p90": 4.68,
+  "tmax_p90": 27.41,
+  "et0_mean": 3.82
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 355,
+  "et0_p90": 4.66,
+  "tmax_p90": 27.5,
+  "et0_mean": 3.86
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 356,
+  "et0_p90": 4.66,
+  "tmax_p90": 27.5,
+  "et0_mean": 3.87
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 357,
+  "et0_p90": 4.64,
+  "tmax_p90": 27.5,
+  "et0_mean": 3.89
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 358,
+  "et0_p90": 4.61,
+  "tmax_p90": 27.5,
+  "et0_mean": 3.88
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 359,
+  "et0_p90": 4.61,
+  "tmax_p90": 27.5,
+  "et0_mean": 3.9
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 360,
+  "et0_p90": 4.62,
+  "tmax_p90": 27.5,
+  "et0_mean": 3.93
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 361,
+  "et0_p90": 4.64,
+  "tmax_p90": 27.6,
+  "et0_mean": 3.95
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 362,
+  "et0_p90": 4.65,
+  "tmax_p90": 27.6,
+  "et0_mean": 3.98
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 363,
+  "et0_p90": 4.66,
+  "tmax_p90": 27.6,
+  "et0_mean": 4.0
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 364,
+  "et0_p90": 4.69,
+  "tmax_p90": 27.7,
+  "et0_mean": 4.01
+ },
+ {
+  "district": "Bengaluru_Urban",
+  "doy": 365,
+  "et0_p90": 4.69,
+  "tmax_p90": 27.71,
+  "et0_mean": 4.01
+ },
+ {
+  "district": "Kolar",
+  "doy": 1,
+  "et0_p90": 4.48,
+  "tmax_p90": 27.6,
+  "et0_mean": 3.73
+ },
+ {
+  "district": "Kolar",
+  "doy": 2,
+  "et0_p90": 4.49,
+  "tmax_p90": 27.7,
+  "et0_mean": 3.74
+ },
+ {
+  "district": "Kolar",
+  "doy": 3,
+  "et0_p90": 4.5,
+  "tmax_p90": 27.7,
+  "et0_mean": 3.74
+ },
+ {
+  "district": "Kolar",
+  "doy": 4,
+  "et0_p90": 4.51,
+  "tmax_p90": 27.7,
+  "et0_mean": 3.76
+ },
+ {
+  "district": "Kolar",
+  "doy": 5,
+  "et0_p90": 4.55,
+  "tmax_p90": 27.8,
+  "et0_mean": 3.79
+ },
+ {
+  "district": "Kolar",
+  "doy": 6,
+  "et0_p90": 4.61,
+  "tmax_p90": 27.9,
+  "et0_mean": 3.84
+ },
+ {
+  "district": "Kolar",
+  "doy": 7,
+  "et0_p90": 4.7,
+  "tmax_p90": 28.0,
+  "et0_mean": 3.89
+ },
+ {
+  "district": "Kolar",
+  "doy": 8,
+  "et0_p90": 4.72,
+  "tmax_p90": 28.1,
+  "et0_mean": 3.94
+ },
+ {
+  "district": "Kolar",
+  "doy": 9,
+  "et0_p90": 4.74,
+  "tmax_p90": 28.21,
+  "et0_mean": 3.97
+ },
+ {
+  "district": "Kolar",
+  "doy": 10,
+  "et0_p90": 4.77,
+  "tmax_p90": 28.3,
+  "et0_mean": 4.0
+ },
+ {
+  "district": "Kolar",
+  "doy": 11,
+  "et0_p90": 4.82,
+  "tmax_p90": 28.31,
+  "et0_mean": 4.03
+ },
+ {
+  "district": "Kolar",
+  "doy": 12,
+  "et0_p90": 4.86,
+  "tmax_p90": 28.41,
+  "et0_mean": 4.05
+ },
+ {
+  "district": "Kolar",
+  "doy": 13,
+  "et0_p90": 4.91,
+  "tmax_p90": 28.5,
+  "et0_mean": 4.08
+ },
+ {
+  "district": "Kolar",
+  "doy": 14,
+  "et0_p90": 4.96,
+  "tmax_p90": 28.7,
+  "et0_mean": 4.12
+ },
+ {
+  "district": "Kolar",
+  "doy": 15,
+  "et0_p90": 4.98,
+  "tmax_p90": 28.8,
+  "et0_mean": 4.18
+ },
+ {
+  "district": "Kolar",
+  "doy": 16,
+  "et0_p90": 4.99,
+  "tmax_p90": 28.81,
+  "et0_mean": 4.22
+ },
+ {
+  "district": "Kolar",
+  "doy": 17,
+  "et0_p90": 5.03,
+  "tmax_p90": 28.9,
+  "et0_mean": 4.27
+ },
+ {
+  "district": "Kolar",
+  "doy": 18,
+  "et0_p90": 5.04,
+  "tmax_p90": 29.0,
+  "et0_mean": 4.31
+ },
+ {
+  "district": "Kolar",
+  "doy": 19,
+  "et0_p90": 5.06,
+  "tmax_p90": 29.1,
+  "et0_mean": 4.34
+ },
+ {
+  "district": "Kolar",
+  "doy": 20,
+  "et0_p90": 5.08,
+  "tmax_p90": 29.1,
+  "et0_mean": 4.36
+ },
+ {
+  "district": "Kolar",
+  "doy": 21,
+  "et0_p90": 5.08,
+  "tmax_p90": 29.1,
+  "et0_mean": 4.37
+ },
+ {
+  "district": "Kolar",
+  "doy": 22,
+  "et0_p90": 5.09,
+  "tmax_p90": 29.1,
+  "et0_mean": 4.38
+ },
+ {
+  "district": "Kolar",
+  "doy": 23,
+  "et0_p90": 5.11,
+  "tmax_p90": 29.31,
+  "et0_mean": 4.41
+ },
+ {
+  "district": "Kolar",
+  "doy": 24,
+  "et0_p90": 5.16,
+  "tmax_p90": 29.4,
+  "et0_mean": 4.45
+ },
+ {
+  "district": "Kolar",
+  "doy": 25,
+  "et0_p90": 5.2,
+  "tmax_p90": 29.4,
+  "et0_mean": 4.49
+ },
+ {
+  "district": "Kolar",
+  "doy": 26,
+  "et0_p90": 5.23,
+  "tmax_p90": 29.4,
+  "et0_mean": 4.52
+ },
+ {
+  "district": "Kolar",
+  "doy": 27,
+  "et0_p90": 5.26,
+  "tmax_p90": 29.4,
+  "et0_mean": 4.55
+ },
+ {
+  "district": "Kolar",
+  "doy": 28,
+  "et0_p90": 5.3,
+  "tmax_p90": 29.5,
+  "et0_mean": 4.59
+ },
+ {
+  "district": "Kolar",
+  "doy": 29,
+  "et0_p90": 5.32,
+  "tmax_p90": 29.6,
+  "et0_mean": 4.62
+ },
+ {
+  "district": "Kolar",
+  "doy": 30,
+  "et0_p90": 5.36,
+  "tmax_p90": 29.6,
+  "et0_mean": 4.66
+ },
+ {
+  "district": "Kolar",
+  "doy": 31,
+  "et0_p90": 5.41,
+  "tmax_p90": 29.8,
+  "et0_mean": 4.69
+ },
+ {
+  "district": "Kolar",
+  "doy": 32,
+  "et0_p90": 5.45,
+  "tmax_p90": 29.8,
+  "et0_mean": 4.71
+ },
+ {
+  "district": "Kolar",
+  "doy": 33,
+  "et0_p90": 5.51,
+  "tmax_p90": 29.9,
+  "et0_mean": 4.74
+ },
+ {
+  "district": "Kolar",
+  "doy": 34,
+  "et0_p90": 5.57,
+  "tmax_p90": 30.0,
+  "et0_mean": 4.76
+ },
+ {
+  "district": "Kolar",
+  "doy": 35,
+  "et0_p90": 5.58,
+  "tmax_p90": 30.1,
+  "et0_mean": 4.81
+ },
+ {
+  "district": "Kolar",
+  "doy": 36,
+  "et0_p90": 5.63,
+  "tmax_p90": 30.3,
+  "et0_mean": 4.86
+ },
+ {
+  "district": "Kolar",
+  "doy": 37,
+  "et0_p90": 5.66,
+  "tmax_p90": 30.3,
+  "et0_mean": 4.91
+ },
+ {
+  "district": "Kolar",
+  "doy": 38,
+  "et0_p90": 5.69,
+  "tmax_p90": 30.4,
+  "et0_mean": 4.94
+ },
+ {
+  "district": "Kolar",
+  "doy": 39,
+  "et0_p90": 5.73,
+  "tmax_p90": 30.5,
+  "et0_mean": 4.97
+ },
+ {
+  "district": "Kolar",
+  "doy": 40,
+  "et0_p90": 5.8,
+  "tmax_p90": 30.5,
+  "et0_mean": 5.01
+ },
+ {
+  "district": "Kolar",
+  "doy": 41,
+  "et0_p90": 5.87,
+  "tmax_p90": 30.7,
+  "et0_mean": 5.06
+ },
+ {
+  "district": "Kolar",
+  "doy": 42,
+  "et0_p90": 5.93,
+  "tmax_p90": 30.9,
+  "et0_mean": 5.1
+ },
+ {
+  "district": "Kolar",
+  "doy": 43,
+  "et0_p90": 5.98,
+  "tmax_p90": 31.01,
+  "et0_mean": 5.14
+ },
+ {
+  "district": "Kolar",
+  "doy": 44,
+  "et0_p90": 6.02,
+  "tmax_p90": 31.2,
+  "et0_mean": 5.18
+ },
+ {
+  "district": "Kolar",
+  "doy": 45,
+  "et0_p90": 6.08,
+  "tmax_p90": 31.3,
+  "et0_mean": 5.22
+ },
+ {
+  "district": "Kolar",
+  "doy": 46,
+  "et0_p90": 6.1,
+  "tmax_p90": 31.61,
+  "et0_mean": 5.26
+ },
+ {
+  "district": "Kolar",
+  "doy": 47,
+  "et0_p90": 6.17,
+  "tmax_p90": 31.8,
+  "et0_mean": 5.31
+ },
+ {
+  "district": "Kolar",
+  "doy": 48,
+  "et0_p90": 6.24,
+  "tmax_p90": 32.0,
+  "et0_mean": 5.36
+ },
+ {
+  "district": "Kolar",
+  "doy": 49,
+  "et0_p90": 6.33,
+  "tmax_p90": 32.2,
+  "et0_mean": 5.42
+ },
+ {
+  "district": "Kolar",
+  "doy": 50,
+  "et0_p90": 6.41,
+  "tmax_p90": 32.3,
+  "et0_mean": 5.48
+ },
+ {
+  "district": "Kolar",
+  "doy": 51,
+  "et0_p90": 6.48,
+  "tmax_p90": 32.5,
+  "et0_mean": 5.53
+ },
+ {
+  "district": "Kolar",
+  "doy": 52,
+  "et0_p90": 6.51,
+  "tmax_p90": 32.6,
+  "et0_mean": 5.58
+ },
+ {
+  "district": "Kolar",
+  "doy": 53,
+  "et0_p90": 6.63,
+  "tmax_p90": 32.7,
+  "et0_mean": 5.64
+ },
+ {
+  "district": "Kolar",
+  "doy": 54,
+  "et0_p90": 6.68,
+  "tmax_p90": 32.9,
+  "et0_mean": 5.7
+ },
+ {
+  "district": "Kolar",
+  "doy": 55,
+  "et0_p90": 6.74,
+  "tmax_p90": 32.94,
+  "et0_mean": 5.75
+ },
+ {
+  "district": "Kolar",
+  "doy": 56,
+  "et0_p90": 6.81,
+  "tmax_p90": 33.1,
+  "et0_mean": 5.8
+ },
+ {
+  "district": "Kolar",
+  "doy": 57,
+  "et0_p90": 6.85,
+  "tmax_p90": 33.1,
+  "et0_mean": 5.85
+ },
+ {
+  "district": "Kolar",
+  "doy": 58,
+  "et0_p90": 6.9,
+  "tmax_p90": 33.34,
+  "et0_mean": 5.89
+ },
+ {
+  "district": "Kolar",
+  "doy": 59,
+  "et0_p90": 6.94,
+  "tmax_p90": 33.5,
+  "et0_mean": 5.92
+ },
+ {
+  "district": "Kolar",
+  "doy": 60,
+  "et0_p90": 6.97,
+  "tmax_p90": 33.5,
+  "et0_mean": 5.96
+ },
+ {
+  "district": "Kolar",
+  "doy": 61,
+  "et0_p90": 6.98,
+  "tmax_p90": 33.5,
+  "et0_mean": 5.99
+ },
+ {
+  "district": "Kolar",
+  "doy": 62,
+  "et0_p90": 7.0,
+  "tmax_p90": 33.5,
+  "et0_mean": 6.0
+ },
+ {
+  "district": "Kolar",
+  "doy": 63,
+  "et0_p90": 7.03,
+  "tmax_p90": 33.6,
+  "et0_mean": 6.02
+ },
+ {
+  "district": "Kolar",
+  "doy": 64,
+  "et0_p90": 7.04,
+  "tmax_p90": 33.6,
+  "et0_mean": 6.05
+ },
+ {
+  "district": "Kolar",
+  "doy": 65,
+  "et0_p90": 7.06,
+  "tmax_p90": 33.6,
+  "et0_mean": 6.06
+ },
+ {
+  "district": "Kolar",
+  "doy": 66,
+  "et0_p90": 7.07,
+  "tmax_p90": 33.7,
+  "et0_mean": 6.06
+ },
+ {
+  "district": "Kolar",
+  "doy": 67,
+  "et0_p90": 7.08,
+  "tmax_p90": 33.7,
+  "et0_mean": 6.08
+ },
+ {
+  "district": "Kolar",
+  "doy": 68,
+  "et0_p90": 7.08,
+  "tmax_p90": 33.7,
+  "et0_mean": 6.08
+ },
+ {
+  "district": "Kolar",
+  "doy": 69,
+  "et0_p90": 7.08,
+  "tmax_p90": 33.7,
+  "et0_mean": 6.08
+ },
+ {
+  "district": "Kolar",
+  "doy": 70,
+  "et0_p90": 7.11,
+  "tmax_p90": 33.81,
+  "et0_mean": 6.09
+ },
+ {
+  "district": "Kolar",
+  "doy": 71,
+  "et0_p90": 7.12,
+  "tmax_p90": 34.0,
+  "et0_mean": 6.11
+ },
+ {
+  "district": "Kolar",
+  "doy": 72,
+  "et0_p90": 7.14,
+  "tmax_p90": 34.1,
+  "et0_mean": 6.12
+ },
+ {
+  "district": "Kolar",
+  "doy": 73,
+  "et0_p90": 7.18,
+  "tmax_p90": 34.2,
+  "et0_mean": 6.15
+ },
+ {
+  "district": "Kolar",
+  "doy": 74,
+  "et0_p90": 7.2,
+  "tmax_p90": 34.31,
+  "et0_mean": 6.16
+ },
+ {
+  "district": "Kolar",
+  "doy": 75,
+  "et0_p90": 7.22,
+  "tmax_p90": 34.71,
+  "et0_mean": 6.17
+ },
+ {
+  "district": "Kolar",
+  "doy": 76,
+  "et0_p90": 7.28,
+  "tmax_p90": 34.9,
+  "et0_mean": 6.2
+ },
+ {
+  "district": "Kolar",
+  "doy": 77,
+  "et0_p90": 7.31,
+  "tmax_p90": 35.0,
+  "et0_mean": 6.24
+ },
+ {
+  "district": "Kolar",
+  "doy": 78,
+  "et0_p90": 7.35,
+  "tmax_p90": 35.1,
+  "et0_mean": 6.25
+ },
+ {
+  "district": "Kolar",
+  "doy": 79,
+  "et0_p90": 7.35,
+  "tmax_p90": 35.1,
+  "et0_mean": 6.27
+ },
+ {
+  "district": "Kolar",
+  "doy": 80,
+  "et0_p90": 7.36,
+  "tmax_p90": 35.1,
+  "et0_mean": 6.29
+ },
+ {
+  "district": "Kolar",
+  "doy": 81,
+  "et0_p90": 7.35,
+  "tmax_p90": 35.2,
+  "et0_mean": 6.31
+ },
+ {
+  "district": "Kolar",
+  "doy": 82,
+  "et0_p90": 7.35,
+  "tmax_p90": 35.3,
+  "et0_mean": 6.31
+ },
+ {
+  "district": "Kolar",
+  "doy": 83,
+  "et0_p90": 7.37,
+  "tmax_p90": 35.4,
+  "et0_mean": 6.31
+ },
+ {
+  "district": "Kolar",
+  "doy": 84,
+  "et0_p90": 7.41,
+  "tmax_p90": 35.4,
+  "et0_mean": 6.3
+ },
+ {
+  "district": "Kolar",
+  "doy": 85,
+  "et0_p90": 7.41,
+  "tmax_p90": 35.5,
+  "et0_mean": 6.28
+ },
+ {
+  "district": "Kolar",
+  "doy": 86,
+  "et0_p90": 7.42,
+  "tmax_p90": 35.5,
+  "et0_mean": 6.26
+ },
+ {
+  "district": "Kolar",
+  "doy": 87,
+  "et0_p90": 7.42,
+  "tmax_p90": 35.5,
+  "et0_mean": 6.25
+ },
+ {
+  "district": "Kolar",
+  "doy": 88,
+  "et0_p90": 7.41,
+  "tmax_p90": 35.6,
+  "et0_mean": 6.23
+ },
+ {
+  "district": "Kolar",
+  "doy": 89,
+  "et0_p90": 7.41,
+  "tmax_p90": 35.6,
+  "et0_mean": 6.23
+ },
+ {
+  "district": "Kolar",
+  "doy": 90,
+  "et0_p90": 7.38,
+  "tmax_p90": 35.6,
+  "et0_mean": 6.23
+ },
+ {
+  "district": "Kolar",
+  "doy": 91,
+  "et0_p90": 7.33,
+  "tmax_p90": 35.6,
+  "et0_mean": 6.22
+ },
+ {
+  "district": "Kolar",
+  "doy": 92,
+  "et0_p90": 7.29,
+  "tmax_p90": 35.6,
+  "et0_mean": 6.19
+ },
+ {
+  "district": "Kolar",
+  "doy": 93,
+  "et0_p90": 7.26,
+  "tmax_p90": 35.6,
+  "et0_mean": 6.18
+ },
+ {
+  "district": "Kolar",
+  "doy": 94,
+  "et0_p90": 7.24,
+  "tmax_p90": 35.6,
+  "et0_mean": 6.17
+ },
+ {
+  "district": "Kolar",
+  "doy": 95,
+  "et0_p90": 7.24,
+  "tmax_p90": 35.7,
+  "et0_mean": 6.14
+ },
+ {
+  "district": "Kolar",
+  "doy": 96,
+  "et0_p90": 7.27,
+  "tmax_p90": 35.8,
+  "et0_mean": 6.13
+ },
+ {
+  "district": "Kolar",
+  "doy": 97,
+  "et0_p90": 7.29,
+  "tmax_p90": 35.8,
+  "et0_mean": 6.14
+ },
+ {
+  "district": "Kolar",
+  "doy": 98,
+  "et0_p90": 7.27,
+  "tmax_p90": 35.8,
+  "et0_mean": 6.13
+ },
+ {
+  "district": "Kolar",
+  "doy": 99,
+  "et0_p90": 7.24,
+  "tmax_p90": 35.9,
+  "et0_mean": 6.14
+ },
+ {
+  "district": "Kolar",
+  "doy": 100,
+  "et0_p90": 7.2,
+  "tmax_p90": 36.0,
+  "et0_mean": 6.13
+ },
+ {
+  "district": "Kolar",
+  "doy": 101,
+  "et0_p90": 7.19,
+  "tmax_p90": 36.1,
+  "et0_mean": 6.12
+ },
+ {
+  "district": "Kolar",
+  "doy": 102,
+  "et0_p90": 7.14,
+  "tmax_p90": 36.1,
+  "et0_mean": 6.11
+ },
+ {
+  "district": "Kolar",
+  "doy": 103,
+  "et0_p90": 7.1,
+  "tmax_p90": 36.1,
+  "et0_mean": 6.1
+ },
+ {
+  "district": "Kolar",
+  "doy": 104,
+  "et0_p90": 7.09,
+  "tmax_p90": 36.1,
+  "et0_mean": 6.08
+ },
+ {
+  "district": "Kolar",
+  "doy": 105,
+  "et0_p90": 7.08,
+  "tmax_p90": 36.1,
+  "et0_mean": 6.05
+ },
+ {
+  "district": "Kolar",
+  "doy": 106,
+  "et0_p90": 7.08,
+  "tmax_p90": 36.1,
+  "et0_mean": 6.04
+ },
+ {
+  "district": "Kolar",
+  "doy": 107,
+  "et0_p90": 7.09,
+  "tmax_p90": 36.2,
+  "et0_mean": 6.02
+ },
+ {
+  "district": "Kolar",
+  "doy": 108,
+  "et0_p90": 7.08,
+  "tmax_p90": 36.11,
+  "et0_mean": 6.01
+ },
+ {
+  "district": "Kolar",
+  "doy": 109,
+  "et0_p90": 7.1,
+  "tmax_p90": 36.1,
+  "et0_mean": 6.0
+ },
+ {
+  "district": "Kolar",
+  "doy": 110,
+  "et0_p90": 7.1,
+  "tmax_p90": 36.1,
+  "et0_mean": 6.0
+ },
+ {
+  "district": "Kolar",
+  "doy": 111,
+  "et0_p90": 7.05,
+  "tmax_p90": 36.1,
+  "et0_mean": 6.0
+ },
+ {
+  "district": "Kolar",
+  "doy": 112,
+  "et0_p90": 7.04,
+  "tmax_p90": 36.1,
+  "et0_mean": 5.97
+ },
+ {
+  "district": "Kolar",
+  "doy": 113,
+  "et0_p90": 7.03,
+  "tmax_p90": 36.1,
+  "et0_mean": 5.98
+ },
+ {
+  "district": "Kolar",
+  "doy": 114,
+  "et0_p90": 7.0,
+  "tmax_p90": 36.1,
+  "et0_mean": 5.97
+ },
+ {
+  "district": "Kolar",
+  "doy": 115,
+  "et0_p90": 7.03,
+  "tmax_p90": 36.0,
+  "et0_mean": 5.96
+ },
+ {
+  "district": "Kolar",
+  "doy": 116,
+  "et0_p90": 7.03,
+  "tmax_p90": 36.0,
+  "et0_mean": 5.94
+ },
+ {
+  "district": "Kolar",
+  "doy": 117,
+  "et0_p90": 6.98,
+  "tmax_p90": 36.0,
+  "et0_mean": 5.92
+ },
+ {
+  "district": "Kolar",
+  "doy": 118,
+  "et0_p90": 7.0,
+  "tmax_p90": 36.0,
+  "et0_mean": 5.9
+ },
+ {
+  "district": "Kolar",
+  "doy": 119,
+  "et0_p90": 6.98,
+  "tmax_p90": 36.0,
+  "et0_mean": 5.86
+ },
+ {
+  "district": "Kolar",
+  "doy": 120,
+  "et0_p90": 6.94,
+  "tmax_p90": 36.0,
+  "et0_mean": 5.82
+ },
+ {
+  "district": "Kolar",
+  "doy": 121,
+  "et0_p90": 6.94,
+  "tmax_p90": 35.81,
+  "et0_mean": 5.79
+ },
+ {
+  "district": "Kolar",
+  "doy": 122,
+  "et0_p90": 6.94,
+  "tmax_p90": 35.8,
+  "et0_mean": 5.77
+ },
+ {
+  "district": "Kolar",
+  "doy": 123,
+  "et0_p90": 6.92,
+  "tmax_p90": 35.8,
+  "et0_mean": 5.76
+ },
+ {
+  "district": "Kolar",
+  "doy": 124,
+  "et0_p90": 6.88,
+  "tmax_p90": 35.7,
+  "et0_mean": 5.73
+ },
+ {
+  "district": "Kolar",
+  "doy": 125,
+  "et0_p90": 6.8,
+  "tmax_p90": 35.71,
+  "et0_mean": 5.7
+ },
+ {
+  "district": "Kolar",
+  "doy": 126,
+  "et0_p90": 6.85,
+  "tmax_p90": 35.7,
+  "et0_mean": 5.68
+ },
+ {
+  "district": "Kolar",
+  "doy": 127,
+  "et0_p90": 6.85,
+  "tmax_p90": 35.6,
+  "et0_mean": 5.68
+ },
+ {
+  "district": "Kolar",
+  "doy": 128,
+  "et0_p90": 6.86,
+  "tmax_p90": 35.5,
+  "et0_mean": 5.67
+ },
+ {
+  "district": "Kolar",
+  "doy": 129,
+  "et0_p90": 6.86,
+  "tmax_p90": 35.5,
+  "et0_mean": 5.64
+ },
+ {
+  "district": "Kolar",
+  "doy": 130,
+  "et0_p90": 6.85,
+  "tmax_p90": 35.5,
+  "et0_mean": 5.62
+ },
+ {
+  "district": "Kolar",
+  "doy": 131,
+  "et0_p90": 6.85,
+  "tmax_p90": 35.4,
+  "et0_mean": 5.62
+ },
+ {
+  "district": "Kolar",
+  "doy": 132,
+  "et0_p90": 6.89,
+  "tmax_p90": 35.41,
+  "et0_mean": 5.62
+ },
+ {
+  "district": "Kolar",
+  "doy": 133,
+  "et0_p90": 6.89,
+  "tmax_p90": 35.4,
+  "et0_mean": 5.63
+ },
+ {
+  "district": "Kolar",
+  "doy": 134,
+  "et0_p90": 6.88,
+  "tmax_p90": 35.4,
+  "et0_mean": 5.65
+ },
+ {
+  "district": "Kolar",
+  "doy": 135,
+  "et0_p90": 6.86,
+  "tmax_p90": 35.4,
+  "et0_mean": 5.67
+ },
+ {
+  "district": "Kolar",
+  "doy": 136,
+  "et0_p90": 6.86,
+  "tmax_p90": 35.3,
+  "et0_mean": 5.69
+ },
+ {
+  "district": "Kolar",
+  "doy": 137,
+  "et0_p90": 6.85,
+  "tmax_p90": 35.3,
+  "et0_mean": 5.68
+ },
+ {
+  "district": "Kolar",
+  "doy": 138,
+  "et0_p90": 6.84,
+  "tmax_p90": 35.3,
+  "et0_mean": 5.66
+ },
+ {
+  "district": "Kolar",
+  "doy": 139,
+  "et0_p90": 6.85,
+  "tmax_p90": 35.3,
+  "et0_mean": 5.66
+ },
+ {
+  "district": "Kolar",
+  "doy": 140,
+  "et0_p90": 6.86,
+  "tmax_p90": 35.21,
+  "et0_mean": 5.65
+ },
+ {
+  "district": "Kolar",
+  "doy": 141,
+  "et0_p90": 6.83,
+  "tmax_p90": 35.2,
+  "et0_mean": 5.64
+ },
+ {
+  "district": "Kolar",
+  "doy": 142,
+  "et0_p90": 6.79,
+  "tmax_p90": 35.2,
+  "et0_mean": 5.62
+ },
+ {
+  "district": "Kolar",
+  "doy": 143,
+  "et0_p90": 6.72,
+  "tmax_p90": 35.1,
+  "et0_mean": 5.59
+ },
+ {
+  "district": "Kolar",
+  "doy": 144,
+  "et0_p90": 6.69,
+  "tmax_p90": 35.1,
+  "et0_mean": 5.58
+ },
+ {
+  "district": "Kolar",
+  "doy": 145,
+  "et0_p90": 6.73,
+  "tmax_p90": 35.0,
+  "et0_mean": 5.56
+ },
+ {
+  "district": "Kolar",
+  "doy": 146,
+  "et0_p90": 6.67,
+  "tmax_p90": 34.9,
+  "et0_mean": 5.53
+ },
+ {
+  "district": "Kolar",
+  "doy": 147,
+  "et0_p90": 6.6,
+  "tmax_p90": 34.8,
+  "et0_mean": 5.49
+ },
+ {
+  "district": "Kolar",
+  "doy": 148,
+  "et0_p90": 6.57,
+  "tmax_p90": 34.8,
+  "et0_mean": 5.45
+ },
+ {
+  "district": "Kolar",
+  "doy": 149,
+  "et0_p90": 6.56,
+  "tmax_p90": 34.7,
+  "et0_mean": 5.39
+ },
+ {
+  "district": "Kolar",
+  "doy": 150,
+  "et0_p90": 6.55,
+  "tmax_p90": 34.6,
+  "et0_mean": 5.34
+ },
+ {
+  "district": "Kolar",
+  "doy": 151,
+  "et0_p90": 6.52,
+  "tmax_p90": 34.5,
+  "et0_mean": 5.28
+ },
+ {
+  "district": "Kolar",
+  "doy": 152,
+  "et0_p90": 6.47,
+  "tmax_p90": 34.31,
+  "et0_mean": 5.25
+ },
+ {
+  "district": "Kolar",
+  "doy": 153,
+  "et0_p90": 6.38,
+  "tmax_p90": 34.3,
+  "et0_mean": 5.22
+ },
+ {
+  "district": "Kolar",
+  "doy": 154,
+  "et0_p90": 6.35,
+  "tmax_p90": 34.01,
+  "et0_mean": 5.19
+ },
+ {
+  "district": "Kolar",
+  "doy": 155,
+  "et0_p90": 6.33,
+  "tmax_p90": 33.71,
+  "et0_mean": 5.14
+ },
+ {
+  "district": "Kolar",
+  "doy": 156,
+  "et0_p90": 6.22,
+  "tmax_p90": 33.6,
+  "et0_mean": 5.08
+ },
+ {
+  "district": "Kolar",
+  "doy": 157,
+  "et0_p90": 6.18,
+  "tmax_p90": 33.41,
+  "et0_mean": 5.0
+ },
+ {
+  "district": "Kolar",
+  "doy": 158,
+  "et0_p90": 6.12,
+  "tmax_p90": 33.01,
+  "et0_mean": 4.94
+ },
+ {
+  "district": "Kolar",
+  "doy": 159,
+  "et0_p90": 6.1,
+  "tmax_p90": 32.8,
+  "et0_mean": 4.89
+ },
+ {
+  "district": "Kolar",
+  "doy": 160,
+  "et0_p90": 6.04,
+  "tmax_p90": 32.51,
+  "et0_mean": 4.86
+ },
+ {
+  "district": "Kolar",
+  "doy": 161,
+  "et0_p90": 6.01,
+  "tmax_p90": 32.3,
+  "et0_mean": 4.84
+ },
+ {
+  "district": "Kolar",
+  "doy": 162,
+  "et0_p90": 6.0,
+  "tmax_p90": 32.1,
+  "et0_mean": 4.81
+ },
+ {
+  "district": "Kolar",
+  "doy": 163,
+  "et0_p90": 5.96,
+  "tmax_p90": 32.0,
+  "et0_mean": 4.77
+ },
+ {
+  "district": "Kolar",
+  "doy": 164,
+  "et0_p90": 5.96,
+  "tmax_p90": 31.81,
+  "et0_mean": 4.76
+ },
+ {
+  "district": "Kolar",
+  "doy": 165,
+  "et0_p90": 5.95,
+  "tmax_p90": 31.71,
+  "et0_mean": 4.73
+ },
+ {
+  "district": "Kolar",
+  "doy": 166,
+  "et0_p90": 5.96,
+  "tmax_p90": 31.5,
+  "et0_mean": 4.71
+ },
+ {
+  "district": "Kolar",
+  "doy": 167,
+  "et0_p90": 5.93,
+  "tmax_p90": 31.4,
+  "et0_mean": 4.69
+ },
+ {
+  "district": "Kolar",
+  "doy": 168,
+  "et0_p90": 5.9,
+  "tmax_p90": 31.3,
+  "et0_mean": 4.68
+ },
+ {
+  "district": "Kolar",
+  "doy": 169,
+  "et0_p90": 5.89,
+  "tmax_p90": 31.2,
+  "et0_mean": 4.68
+ },
+ {
+  "district": "Kolar",
+  "doy": 170,
+  "et0_p90": 5.86,
+  "tmax_p90": 31.1,
+  "et0_mean": 4.65
+ },
+ {
+  "district": "Kolar",
+  "doy": 171,
+  "et0_p90": 5.79,
+  "tmax_p90": 31.0,
+  "et0_mean": 4.65
+ },
+ {
+  "district": "Kolar",
+  "doy": 172,
+  "et0_p90": 5.76,
+  "tmax_p90": 30.9,
+  "et0_mean": 4.65
+ },
+ {
+  "district": "Kolar",
+  "doy": 173,
+  "et0_p90": 5.76,
+  "tmax_p90": 30.8,
+  "et0_mean": 4.65
+ },
+ {
+  "district": "Kolar",
+  "doy": 174,
+  "et0_p90": 5.74,
+  "tmax_p90": 30.71,
+  "et0_mean": 4.63
+ },
+ {
+  "district": "Kolar",
+  "doy": 175,
+  "et0_p90": 5.74,
+  "tmax_p90": 30.61,
+  "et0_mean": 4.61
+ },
+ {
+  "district": "Kolar",
+  "doy": 176,
+  "et0_p90": 5.71,
+  "tmax_p90": 30.6,
+  "et0_mean": 4.58
+ },
+ {
+  "district": "Kolar",
+  "doy": 177,
+  "et0_p90": 5.71,
+  "tmax_p90": 30.6,
+  "et0_mean": 4.57
+ },
+ {
+  "district": "Kolar",
+  "doy": 178,
+  "et0_p90": 5.69,
+  "tmax_p90": 30.51,
+  "et0_mean": 4.54
+ },
+ {
+  "district": "Kolar",
+  "doy": 179,
+  "et0_p90": 5.68,
+  "tmax_p90": 30.5,
+  "et0_mean": 4.52
+ },
+ {
+  "district": "Kolar",
+  "doy": 180,
+  "et0_p90": 5.68,
+  "tmax_p90": 30.5,
+  "et0_mean": 4.51
+ },
+ {
+  "district": "Kolar",
+  "doy": 181,
+  "et0_p90": 5.68,
+  "tmax_p90": 30.5,
+  "et0_mean": 4.48
+ },
+ {
+  "district": "Kolar",
+  "doy": 182,
+  "et0_p90": 5.64,
+  "tmax_p90": 30.5,
+  "et0_mean": 4.45
+ },
+ {
+  "district": "Kolar",
+  "doy": 183,
+  "et0_p90": 5.57,
+  "tmax_p90": 30.41,
+  "et0_mean": 4.41
+ },
+ {
+  "district": "Kolar",
+  "doy": 184,
+  "et0_p90": 5.55,
+  "tmax_p90": 30.4,
+  "et0_mean": 4.36
+ },
+ {
+  "district": "Kolar",
+  "doy": 185,
+  "et0_p90": 5.48,
+  "tmax_p90": 30.4,
+  "et0_mean": 4.34
+ },
+ {
+  "district": "Kolar",
+  "doy": 186,
+  "et0_p90": 5.45,
+  "tmax_p90": 30.4,
+  "et0_mean": 4.34
+ },
+ {
+  "district": "Kolar",
+  "doy": 187,
+  "et0_p90": 5.45,
+  "tmax_p90": 30.4,
+  "et0_mean": 4.33
+ },
+ {
+  "district": "Kolar",
+  "doy": 188,
+  "et0_p90": 5.43,
+  "tmax_p90": 30.3,
+  "et0_mean": 4.31
+ },
+ {
+  "district": "Kolar",
+  "doy": 189,
+  "et0_p90": 5.39,
+  "tmax_p90": 30.2,
+  "et0_mean": 4.28
+ },
+ {
+  "district": "Kolar",
+  "doy": 190,
+  "et0_p90": 5.35,
+  "tmax_p90": 30.2,
+  "et0_mean": 4.25
+ },
+ {
+  "district": "Kolar",
+  "doy": 191,
+  "et0_p90": 5.33,
+  "tmax_p90": 30.2,
+  "et0_mean": 4.22
+ },
+ {
+  "district": "Kolar",
+  "doy": 192,
+  "et0_p90": 5.33,
+  "tmax_p90": 30.1,
+  "et0_mean": 4.2
+ },
+ {
+  "district": "Kolar",
+  "doy": 193,
+  "et0_p90": 5.26,
+  "tmax_p90": 30.0,
+  "et0_mean": 4.19
+ },
+ {
+  "district": "Kolar",
+  "doy": 194,
+  "et0_p90": 5.24,
+  "tmax_p90": 29.9,
+  "et0_mean": 4.18
+ },
+ {
+  "district": "Kolar",
+  "doy": 195,
+  "et0_p90": 5.23,
+  "tmax_p90": 29.8,
+  "et0_mean": 4.17
+ },
+ {
+  "district": "Kolar",
+  "doy": 196,
+  "et0_p90": 5.2,
+  "tmax_p90": 29.7,
+  "et0_mean": 4.15
+ },
+ {
+  "district": "Kolar",
+  "doy": 197,
+  "et0_p90": 5.17,
+  "tmax_p90": 29.7,
+  "et0_mean": 4.14
+ },
+ {
+  "district": "Kolar",
+  "doy": 198,
+  "et0_p90": 5.17,
+  "tmax_p90": 29.7,
+  "et0_mean": 4.13
+ },
+ {
+  "district": "Kolar",
+  "doy": 199,
+  "et0_p90": 5.17,
+  "tmax_p90": 29.7,
+  "et0_mean": 4.12
+ },
+ {
+  "district": "Kolar",
+  "doy": 200,
+  "et0_p90": 5.18,
+  "tmax_p90": 29.7,
+  "et0_mean": 4.1
+ },
+ {
+  "district": "Kolar",
+  "doy": 201,
+  "et0_p90": 5.16,
+  "tmax_p90": 29.6,
+  "et0_mean": 4.09
+ },
+ {
+  "district": "Kolar",
+  "doy": 202,
+  "et0_p90": 5.11,
+  "tmax_p90": 29.6,
+  "et0_mean": 4.08
+ },
+ {
+  "district": "Kolar",
+  "doy": 203,
+  "et0_p90": 5.13,
+  "tmax_p90": 29.6,
+  "et0_mean": 4.08
+ },
+ {
+  "district": "Kolar",
+  "doy": 204,
+  "et0_p90": 5.15,
+  "tmax_p90": 29.6,
+  "et0_mean": 4.1
+ },
+ {
+  "district": "Kolar",
+  "doy": 205,
+  "et0_p90": 5.15,
+  "tmax_p90": 29.6,
+  "et0_mean": 4.11
+ },
+ {
+  "district": "Kolar",
+  "doy": 206,
+  "et0_p90": 5.15,
+  "tmax_p90": 29.6,
+  "et0_mean": 4.13
+ },
+ {
+  "district": "Kolar",
+  "doy": 207,
+  "et0_p90": 5.16,
+  "tmax_p90": 29.6,
+  "et0_mean": 4.14
+ },
+ {
+  "district": "Kolar",
+  "doy": 208,
+  "et0_p90": 5.17,
+  "tmax_p90": 29.6,
+  "et0_mean": 4.15
+ },
+ {
+  "district": "Kolar",
+  "doy": 209,
+  "et0_p90": 5.17,
+  "tmax_p90": 29.6,
+  "et0_mean": 4.14
+ },
+ {
+  "district": "Kolar",
+  "doy": 210,
+  "et0_p90": 5.18,
+  "tmax_p90": 29.51,
+  "et0_mean": 4.14
+ },
+ {
+  "district": "Kolar",
+  "doy": 211,
+  "et0_p90": 5.21,
+  "tmax_p90": 29.5,
+  "et0_mean": 4.16
+ },
+ {
+  "district": "Kolar",
+  "doy": 212,
+  "et0_p90": 5.22,
+  "tmax_p90": 29.5,
+  "et0_mean": 4.17
+ },
+ {
+  "district": "Kolar",
+  "doy": 213,
+  "et0_p90": 5.22,
+  "tmax_p90": 29.41,
+  "et0_mean": 4.18
+ },
+ {
+  "district": "Kolar",
+  "doy": 214,
+  "et0_p90": 5.2,
+  "tmax_p90": 29.5,
+  "et0_mean": 4.19
+ },
+ {
+  "district": "Kolar",
+  "doy": 215,
+  "et0_p90": 5.17,
+  "tmax_p90": 29.5,
+  "et0_mean": 4.2
+ },
+ {
+  "district": "Kolar",
+  "doy": 216,
+  "et0_p90": 5.15,
+  "tmax_p90": 29.5,
+  "et0_mean": 4.19
+ },
+ {
+  "district": "Kolar",
+  "doy": 217,
+  "et0_p90": 5.17,
+  "tmax_p90": 29.5,
+  "et0_mean": 4.18
+ },
+ {
+  "district": "Kolar",
+  "doy": 218,
+  "et0_p90": 5.16,
+  "tmax_p90": 29.5,
+  "et0_mean": 4.18
+ },
+ {
+  "district": "Kolar",
+  "doy": 219,
+  "et0_p90": 5.11,
+  "tmax_p90": 29.5,
+  "et0_mean": 4.18
+ },
+ {
+  "district": "Kolar",
+  "doy": 220,
+  "et0_p90": 5.14,
+  "tmax_p90": 29.5,
+  "et0_mean": 4.18
+ },
+ {
+  "district": "Kolar",
+  "doy": 221,
+  "et0_p90": 5.16,
+  "tmax_p90": 29.51,
+  "et0_mean": 4.17
+ },
+ {
+  "district": "Kolar",
+  "doy": 222,
+  "et0_p90": 5.11,
+  "tmax_p90": 29.5,
+  "et0_mean": 4.15
+ },
+ {
+  "district": "Kolar",
+  "doy": 223,
+  "et0_p90": 5.11,
+  "tmax_p90": 29.5,
+  "et0_mean": 4.15
+ },
+ {
+  "district": "Kolar",
+  "doy": 224,
+  "et0_p90": 5.1,
+  "tmax_p90": 29.5,
+  "et0_mean": 4.15
+ },
+ {
+  "district": "Kolar",
+  "doy": 225,
+  "et0_p90": 5.1,
+  "tmax_p90": 29.6,
+  "et0_mean": 4.15
+ },
+ {
+  "district": "Kolar",
+  "doy": 226,
+  "et0_p90": 5.1,
+  "tmax_p90": 29.6,
+  "et0_mean": 4.14
+ },
+ {
+  "district": "Kolar",
+  "doy": 227,
+  "et0_p90": 5.08,
+  "tmax_p90": 29.6,
+  "et0_mean": 4.12
+ },
+ {
+  "district": "Kolar",
+  "doy": 228,
+  "et0_p90": 5.08,
+  "tmax_p90": 29.61,
+  "et0_mean": 4.12
+ },
+ {
+  "district": "Kolar",
+  "doy": 229,
+  "et0_p90": 5.08,
+  "tmax_p90": 29.6,
+  "et0_mean": 4.11
+ },
+ {
+  "district": "Kolar",
+  "doy": 230,
+  "et0_p90": 5.1,
+  "tmax_p90": 29.6,
+  "et0_mean": 4.11
+ },
+ {
+  "district": "Kolar",
+  "doy": 231,
+  "et0_p90": 5.1,
+  "tmax_p90": 29.6,
+  "et0_mean": 4.1
+ },
+ {
+  "district": "Kolar",
+  "doy": 232,
+  "et0_p90": 5.09,
+  "tmax_p90": 29.61,
+  "et0_mean": 4.1
+ },
+ {
+  "district": "Kolar",
+  "doy": 233,
+  "et0_p90": 5.08,
+  "tmax_p90": 29.6,
+  "et0_mean": 4.1
+ },
+ {
+  "district": "Kolar",
+  "doy": 234,
+  "et0_p90": 5.08,
+  "tmax_p90": 29.5,
+  "et0_mean": 4.08
+ },
+ {
+  "district": "Kolar",
+  "doy": 235,
+  "et0_p90": 5.08,
+  "tmax_p90": 29.41,
+  "et0_mean": 4.08
+ },
+ {
+  "district": "Kolar",
+  "doy": 236,
+  "et0_p90": 5.08,
+  "tmax_p90": 29.41,
+  "et0_mean": 4.08
+ },
+ {
+  "district": "Kolar",
+  "doy": 237,
+  "et0_p90": 5.11,
+  "tmax_p90": 29.51,
+  "et0_mean": 4.09
+ },
+ {
+  "district": "Kolar",
+  "doy": 238,
+  "et0_p90": 5.15,
+  "tmax_p90": 29.61,
+  "et0_mean": 4.09
+ },
+ {
+  "district": "Kolar",
+  "doy": 239,
+  "et0_p90": 5.16,
+  "tmax_p90": 29.6,
+  "et0_mean": 4.09
+ },
+ {
+  "district": "Kolar",
+  "doy": 240,
+  "et0_p90": 5.18,
+  "tmax_p90": 29.61,
+  "et0_mean": 4.08
+ },
+ {
+  "district": "Kolar",
+  "doy": 241,
+  "et0_p90": 5.15,
+  "tmax_p90": 29.61,
+  "et0_mean": 4.07
+ },
+ {
+  "district": "Kolar",
+  "doy": 242,
+  "et0_p90": 5.15,
+  "tmax_p90": 29.6,
+  "et0_mean": 4.09
+ },
+ {
+  "district": "Kolar",
+  "doy": 243,
+  "et0_p90": 5.13,
+  "tmax_p90": 29.5,
+  "et0_mean": 4.08
+ },
+ {
+  "district": "Kolar",
+  "doy": 244,
+  "et0_p90": 5.15,
+  "tmax_p90": 29.5,
+  "et0_mean": 4.08
+ },
+ {
+  "district": "Kolar",
+  "doy": 245,
+  "et0_p90": 5.16,
+  "tmax_p90": 29.6,
+  "et0_mean": 4.09
+ },
+ {
+  "district": "Kolar",
+  "doy": 246,
+  "et0_p90": 5.19,
+  "tmax_p90": 29.6,
+  "et0_mean": 4.1
+ },
+ {
+  "district": "Kolar",
+  "doy": 247,
+  "et0_p90": 5.2,
+  "tmax_p90": 29.6,
+  "et0_mean": 4.11
+ },
+ {
+  "district": "Kolar",
+  "doy": 248,
+  "et0_p90": 5.23,
+  "tmax_p90": 29.7,
+  "et0_mean": 4.11
+ },
+ {
+  "district": "Kolar",
+  "doy": 249,
+  "et0_p90": 5.23,
+  "tmax_p90": 29.8,
+  "et0_mean": 4.13
+ },
+ {
+  "district": "Kolar",
+  "doy": 250,
+  "et0_p90": 5.22,
+  "tmax_p90": 29.8,
+  "et0_mean": 4.12
+ },
+ {
+  "district": "Kolar",
+  "doy": 251,
+  "et0_p90": 5.2,
+  "tmax_p90": 29.8,
+  "et0_mean": 4.13
+ },
+ {
+  "district": "Kolar",
+  "doy": 252,
+  "et0_p90": 5.19,
+  "tmax_p90": 29.8,
+  "et0_mean": 4.14
+ },
+ {
+  "district": "Kolar",
+  "doy": 253,
+  "et0_p90": 5.18,
+  "tmax_p90": 29.71,
+  "et0_mean": 4.14
+ },
+ {
+  "district": "Kolar",
+  "doy": 254,
+  "et0_p90": 5.17,
+  "tmax_p90": 29.8,
+  "et0_mean": 4.15
+ },
+ {
+  "district": "Kolar",
+  "doy": 255,
+  "et0_p90": 5.17,
+  "tmax_p90": 29.7,
+  "et0_mean": 4.17
+ },
+ {
+  "district": "Kolar",
+  "doy": 256,
+  "et0_p90": 5.17,
+  "tmax_p90": 29.8,
+  "et0_mean": 4.17
+ },
+ {
+  "district": "Kolar",
+  "doy": 257,
+  "et0_p90": 5.22,
+  "tmax_p90": 29.8,
+  "et0_mean": 4.18
+ },
+ {
+  "district": "Kolar",
+  "doy": 258,
+  "et0_p90": 5.24,
+  "tmax_p90": 29.9,
+  "et0_mean": 4.21
+ },
+ {
+  "district": "Kolar",
+  "doy": 259,
+  "et0_p90": 5.27,
+  "tmax_p90": 30.01,
+  "et0_mean": 4.24
+ },
+ {
+  "district": "Kolar",
+  "doy": 260,
+  "et0_p90": 5.26,
+  "tmax_p90": 30.0,
+  "et0_mean": 4.24
+ },
+ {
+  "district": "Kolar",
+  "doy": 261,
+  "et0_p90": 5.25,
+  "tmax_p90": 30.1,
+  "et0_mean": 4.23
+ },
+ {
+  "district": "Kolar",
+  "doy": 262,
+  "et0_p90": 5.23,
+  "tmax_p90": 30.1,
+  "et0_mean": 4.23
+ },
+ {
+  "district": "Kolar",
+  "doy": 263,
+  "et0_p90": 5.22,
+  "tmax_p90": 30.01,
+  "et0_mean": 4.23
+ },
+ {
+  "district": "Kolar",
+  "doy": 264,
+  "et0_p90": 5.17,
+  "tmax_p90": 30.0,
+  "et0_mean": 4.2
+ },
+ {
+  "district": "Kolar",
+  "doy": 265,
+  "et0_p90": 5.15,
+  "tmax_p90": 29.9,
+  "et0_mean": 4.17
+ },
+ {
+  "district": "Kolar",
+  "doy": 266,
+  "et0_p90": 5.12,
+  "tmax_p90": 29.9,
+  "et0_mean": 4.14
+ },
+ {
+  "district": "Kolar",
+  "doy": 267,
+  "et0_p90": 5.09,
+  "tmax_p90": 29.81,
+  "et0_mean": 4.11
+ },
+ {
+  "district": "Kolar",
+  "doy": 268,
+  "et0_p90": 5.09,
+  "tmax_p90": 29.9,
+  "et0_mean": 4.1
+ },
+ {
+  "district": "Kolar",
+  "doy": 269,
+  "et0_p90": 5.08,
+  "tmax_p90": 29.9,
+  "et0_mean": 4.08
+ },
+ {
+  "district": "Kolar",
+  "doy": 270,
+  "et0_p90": 5.08,
+  "tmax_p90": 29.9,
+  "et0_mean": 4.06
+ },
+ {
+  "district": "Kolar",
+  "doy": 271,
+  "et0_p90": 5.09,
+  "tmax_p90": 29.9,
+  "et0_mean": 4.04
+ },
+ {
+  "district": "Kolar",
+  "doy": 272,
+  "et0_p90": 5.04,
+  "tmax_p90": 29.8,
+  "et0_mean": 4.01
+ },
+ {
+  "district": "Kolar",
+  "doy": 273,
+  "et0_p90": 4.97,
+  "tmax_p90": 29.7,
+  "et0_mean": 3.97
+ },
+ {
+  "district": "Kolar",
+  "doy": 274,
+  "et0_p90": 4.92,
+  "tmax_p90": 29.7,
+  "et0_mean": 3.93
+ },
+ {
+  "district": "Kolar",
+  "doy": 275,
+  "et0_p90": 4.87,
+  "tmax_p90": 29.6,
+  "et0_mean": 3.9
+ },
+ {
+  "district": "Kolar",
+  "doy": 276,
+  "et0_p90": 4.85,
+  "tmax_p90": 29.6,
+  "et0_mean": 3.88
+ },
+ {
+  "district": "Kolar",
+  "doy": 277,
+  "et0_p90": 4.83,
+  "tmax_p90": 29.6,
+  "et0_mean": 3.86
+ },
+ {
+  "district": "Kolar",
+  "doy": 278,
+  "et0_p90": 4.81,
+  "tmax_p90": 29.51,
+  "et0_mean": 3.83
+ },
+ {
+  "district": "Kolar",
+  "doy": 279,
+  "et0_p90": 4.85,
+  "tmax_p90": 29.6,
+  "et0_mean": 3.83
+ },
+ {
+  "district": "Kolar",
+  "doy": 280,
+  "et0_p90": 4.87,
+  "tmax_p90": 29.6,
+  "et0_mean": 3.83
+ },
+ {
+  "district": "Kolar",
+  "doy": 281,
+  "et0_p90": 4.89,
+  "tmax_p90": 29.6,
+  "et0_mean": 3.83
+ },
+ {
+  "district": "Kolar",
+  "doy": 282,
+  "et0_p90": 4.89,
+  "tmax_p90": 29.6,
+  "et0_mean": 3.82
+ },
+ {
+  "district": "Kolar",
+  "doy": 283,
+  "et0_p90": 4.87,
+  "tmax_p90": 29.6,
+  "et0_mean": 3.8
+ },
+ {
+  "district": "Kolar",
+  "doy": 284,
+  "et0_p90": 4.87,
+  "tmax_p90": 29.51,
+  "et0_mean": 3.77
+ },
+ {
+  "district": "Kolar",
+  "doy": 285,
+  "et0_p90": 4.87,
+  "tmax_p90": 29.51,
+  "et0_mean": 3.74
+ },
+ {
+  "district": "Kolar",
+  "doy": 286,
+  "et0_p90": 4.87,
+  "tmax_p90": 29.5,
+  "et0_mean": 3.71
+ },
+ {
+  "district": "Kolar",
+  "doy": 287,
+  "et0_p90": 4.87,
+  "tmax_p90": 29.41,
+  "et0_mean": 3.69
+ },
+ {
+  "district": "Kolar",
+  "doy": 288,
+  "et0_p90": 4.88,
+  "tmax_p90": 29.5,
+  "et0_mean": 3.66
+ },
+ {
+  "district": "Kolar",
+  "doy": 289,
+  "et0_p90": 4.94,
+  "tmax_p90": 29.51,
+  "et0_mean": 3.64
+ },
+ {
+  "district": "Kolar",
+  "doy": 290,
+  "et0_p90": 4.98,
+  "tmax_p90": 29.41,
+  "et0_mean": 3.64
+ },
+ {
+  "district": "Kolar",
+  "doy": 291,
+  "et0_p90": 5.0,
+  "tmax_p90": 29.41,
+  "et0_mean": 3.63
+ },
+ {
+  "district": "Kolar",
+  "doy": 292,
+  "et0_p90": 5.0,
+  "tmax_p90": 29.4,
+  "et0_mean": 3.62
+ },
+ {
+  "district": "Kolar",
+  "doy": 293,
+  "et0_p90": 5.02,
+  "tmax_p90": 29.4,
+  "et0_mean": 3.62
+ },
+ {
+  "district": "Kolar",
+  "doy": 294,
+  "et0_p90": 4.99,
+  "tmax_p90": 29.4,
+  "et0_mean": 3.6
+ },
+ {
+  "district": "Kolar",
+  "doy": 295,
+  "et0_p90": 4.98,
+  "tmax_p90": 29.3,
+  "et0_mean": 3.57
+ },
+ {
+  "district": "Kolar",
+  "doy": 296,
+  "et0_p90": 4.99,
+  "tmax_p90": 29.2,
+  "et0_mean": 3.55
+ },
+ {
+  "district": "Kolar",
+  "doy": 297,
+  "et0_p90": 4.98,
+  "tmax_p90": 29.2,
+  "et0_mean": 3.53
+ },
+ {
+  "district": "Kolar",
+  "doy": 298,
+  "et0_p90": 4.98,
+  "tmax_p90": 29.1,
+  "et0_mean": 3.49
+ },
+ {
+  "district": "Kolar",
+  "doy": 299,
+  "et0_p90": 4.98,
+  "tmax_p90": 28.82,
+  "et0_mean": 3.45
+ },
+ {
+  "district": "Kolar",
+  "doy": 300,
+  "et0_p90": 4.95,
+  "tmax_p90": 28.52,
+  "et0_mean": 3.41
+ },
+ {
+  "district": "Kolar",
+  "doy": 301,
+  "et0_p90": 4.97,
+  "tmax_p90": 28.41,
+  "et0_mean": 3.39
+ },
+ {
+  "district": "Kolar",
+  "doy": 302,
+  "et0_p90": 4.95,
+  "tmax_p90": 28.31,
+  "et0_mean": 3.37
+ },
+ {
+  "district": "Kolar",
+  "doy": 303,
+  "et0_p90": 4.9,
+  "tmax_p90": 28.3,
+  "et0_mean": 3.36
+ },
+ {
+  "district": "Kolar",
+  "doy": 304,
+  "et0_p90": 4.86,
+  "tmax_p90": 28.1,
+  "et0_mean": 3.32
+ },
+ {
+  "district": "Kolar",
+  "doy": 305,
+  "et0_p90": 4.84,
+  "tmax_p90": 28.0,
+  "et0_mean": 3.3
+ },
+ {
+  "district": "Kolar",
+  "doy": 306,
+  "et0_p90": 4.77,
+  "tmax_p90": 27.9,
+  "et0_mean": 3.27
+ },
+ {
+  "district": "Kolar",
+  "doy": 307,
+  "et0_p90": 4.71,
+  "tmax_p90": 27.9,
+  "et0_mean": 3.27
+ },
+ {
+  "district": "Kolar",
+  "doy": 308,
+  "et0_p90": 4.7,
+  "tmax_p90": 27.9,
+  "et0_mean": 3.26
+ },
+ {
+  "district": "Kolar",
+  "doy": 309,
+  "et0_p90": 4.7,
+  "tmax_p90": 27.9,
+  "et0_mean": 3.27
+ },
+ {
+  "district": "Kolar",
+  "doy": 310,
+  "et0_p90": 4.7,
+  "tmax_p90": 27.9,
+  "et0_mean": 3.27
+ },
+ {
+  "district": "Kolar",
+  "doy": 311,
+  "et0_p90": 4.7,
+  "tmax_p90": 27.81,
+  "et0_mean": 3.28
+ },
+ {
+  "district": "Kolar",
+  "doy": 312,
+  "et0_p90": 4.71,
+  "tmax_p90": 27.8,
+  "et0_mean": 3.3
+ },
+ {
+  "district": "Kolar",
+  "doy": 313,
+  "et0_p90": 4.74,
+  "tmax_p90": 27.8,
+  "et0_mean": 3.32
+ },
+ {
+  "district": "Kolar",
+  "doy": 314,
+  "et0_p90": 4.74,
+  "tmax_p90": 27.8,
+  "et0_mean": 3.35
+ },
+ {
+  "district": "Kolar",
+  "doy": 315,
+  "et0_p90": 4.73,
+  "tmax_p90": 27.8,
+  "et0_mean": 3.37
+ },
+ {
+  "district": "Kolar",
+  "doy": 316,
+  "et0_p90": 4.71,
+  "tmax_p90": 27.8,
+  "et0_mean": 3.38
+ },
+ {
+  "district": "Kolar",
+  "doy": 317,
+  "et0_p90": 4.71,
+  "tmax_p90": 27.8,
+  "et0_mean": 3.4
+ },
+ {
+  "district": "Kolar",
+  "doy": 318,
+  "et0_p90": 4.7,
+  "tmax_p90": 27.81,
+  "et0_mean": 3.4
+ },
+ {
+  "district": "Kolar",
+  "doy": 319,
+  "et0_p90": 4.68,
+  "tmax_p90": 27.81,
+  "et0_mean": 3.38
+ },
+ {
+  "district": "Kolar",
+  "doy": 320,
+  "et0_p90": 4.65,
+  "tmax_p90": 27.8,
+  "et0_mean": 3.37
+ },
+ {
+  "district": "Kolar",
+  "doy": 321,
+  "et0_p90": 4.65,
+  "tmax_p90": 27.8,
+  "et0_mean": 3.37
+ },
+ {
+  "district": "Kolar",
+  "doy": 322,
+  "et0_p90": 4.62,
+  "tmax_p90": 27.7,
+  "et0_mean": 3.36
+ },
+ {
+  "district": "Kolar",
+  "doy": 323,
+  "et0_p90": 4.62,
+  "tmax_p90": 27.6,
+  "et0_mean": 3.35
+ },
+ {
+  "district": "Kolar",
+  "doy": 324,
+  "et0_p90": 4.6,
+  "tmax_p90": 27.6,
+  "et0_mean": 3.33
+ },
+ {
+  "district": "Kolar",
+  "doy": 325,
+  "et0_p90": 4.58,
+  "tmax_p90": 27.51,
+  "et0_mean": 3.31
+ },
+ {
+  "district": "Kolar",
+  "doy": 326,
+  "et0_p90": 4.55,
+  "tmax_p90": 27.51,
+  "et0_mean": 3.3
+ },
+ {
+  "district": "Kolar",
+  "doy": 327,
+  "et0_p90": 4.51,
+  "tmax_p90": 27.51,
+  "et0_mean": 3.28
+ },
+ {
+  "district": "Kolar",
+  "doy": 328,
+  "et0_p90": 4.52,
+  "tmax_p90": 27.5,
+  "et0_mean": 3.29
+ },
+ {
+  "district": "Kolar",
+  "doy": 329,
+  "et0_p90": 4.52,
+  "tmax_p90": 27.4,
+  "et0_mean": 3.28
+ },
+ {
+  "district": "Kolar",
+  "doy": 330,
+  "et0_p90": 4.51,
+  "tmax_p90": 27.4,
+  "et0_mean": 3.26
+ },
+ {
+  "district": "Kolar",
+  "doy": 331,
+  "et0_p90": 4.53,
+  "tmax_p90": 27.4,
+  "et0_mean": 3.25
+ },
+ {
+  "district": "Kolar",
+  "doy": 332,
+  "et0_p90": 4.49,
+  "tmax_p90": 27.3,
+  "et0_mean": 3.26
+ },
+ {
+  "district": "Kolar",
+  "doy": 333,
+  "et0_p90": 4.48,
+  "tmax_p90": 27.2,
+  "et0_mean": 3.27
+ },
+ {
+  "district": "Kolar",
+  "doy": 334,
+  "et0_p90": 4.46,
+  "tmax_p90": 27.2,
+  "et0_mean": 3.3
+ },
+ {
+  "district": "Kolar",
+  "doy": 335,
+  "et0_p90": 4.46,
+  "tmax_p90": 27.2,
+  "et0_mean": 3.32
+ },
+ {
+  "district": "Kolar",
+  "doy": 336,
+  "et0_p90": 4.46,
+  "tmax_p90": 27.2,
+  "et0_mean": 3.32
+ },
+ {
+  "district": "Kolar",
+  "doy": 337,
+  "et0_p90": 4.46,
+  "tmax_p90": 27.3,
+  "et0_mean": 3.32
+ },
+ {
+  "district": "Kolar",
+  "doy": 338,
+  "et0_p90": 4.48,
+  "tmax_p90": 27.31,
+  "et0_mean": 3.33
+ },
+ {
+  "district": "Kolar",
+  "doy": 339,
+  "et0_p90": 4.46,
+  "tmax_p90": 27.3,
+  "et0_mean": 3.33
+ },
+ {
+  "district": "Kolar",
+  "doy": 340,
+  "et0_p90": 4.46,
+  "tmax_p90": 27.3,
+  "et0_mean": 3.32
+ },
+ {
+  "district": "Kolar",
+  "doy": 341,
+  "et0_p90": 4.46,
+  "tmax_p90": 27.3,
+  "et0_mean": 3.32
+ },
+ {
+  "district": "Kolar",
+  "doy": 342,
+  "et0_p90": 4.43,
+  "tmax_p90": 27.3,
+  "et0_mean": 3.33
+ },
+ {
+  "district": "Kolar",
+  "doy": 343,
+  "et0_p90": 4.41,
+  "tmax_p90": 27.21,
+  "et0_mean": 3.34
+ },
+ {
+  "district": "Kolar",
+  "doy": 344,
+  "et0_p90": 4.41,
+  "tmax_p90": 27.21,
+  "et0_mean": 3.35
+ },
+ {
+  "district": "Kolar",
+  "doy": 345,
+  "et0_p90": 4.4,
+  "tmax_p90": 27.1,
+  "et0_mean": 3.37
+ },
+ {
+  "district": "Kolar",
+  "doy": 346,
+  "et0_p90": 4.4,
+  "tmax_p90": 27.1,
+  "et0_mean": 3.39
+ },
+ {
+  "district": "Kolar",
+  "doy": 347,
+  "et0_p90": 4.41,
+  "tmax_p90": 27.2,
+  "et0_mean": 3.39
+ },
+ {
+  "district": "Kolar",
+  "doy": 348,
+  "et0_p90": 4.41,
+  "tmax_p90": 27.2,
+  "et0_mean": 3.39
+ },
+ {
+  "district": "Kolar",
+  "doy": 349,
+  "et0_p90": 4.42,
+  "tmax_p90": 27.2,
+  "et0_mean": 3.41
+ },
+ {
+  "district": "Kolar",
+  "doy": 350,
+  "et0_p90": 4.44,
+  "tmax_p90": 27.2,
+  "et0_mean": 3.44
+ },
+ {
+  "district": "Kolar",
+  "doy": 351,
+  "et0_p90": 4.45,
+  "tmax_p90": 27.1,
+  "et0_mean": 3.47
+ },
+ {
+  "district": "Kolar",
+  "doy": 352,
+  "et0_p90": 4.46,
+  "tmax_p90": 27.1,
+  "et0_mean": 3.49
+ },
+ {
+  "district": "Kolar",
+  "doy": 353,
+  "et0_p90": 4.46,
+  "tmax_p90": 27.1,
+  "et0_mean": 3.52
+ },
+ {
+  "district": "Kolar",
+  "doy": 354,
+  "et0_p90": 4.5,
+  "tmax_p90": 27.11,
+  "et0_mean": 3.55
+ },
+ {
+  "district": "Kolar",
+  "doy": 355,
+  "et0_p90": 4.5,
+  "tmax_p90": 27.2,
+  "et0_mean": 3.59
+ },
+ {
+  "district": "Kolar",
+  "doy": 356,
+  "et0_p90": 4.46,
+  "tmax_p90": 27.1,
+  "et0_mean": 3.6
+ },
+ {
+  "district": "Kolar",
+  "doy": 357,
+  "et0_p90": 4.45,
+  "tmax_p90": 27.1,
+  "et0_mean": 3.6
+ },
+ {
+  "district": "Kolar",
+  "doy": 358,
+  "et0_p90": 4.41,
+  "tmax_p90": 27.1,
+  "et0_mean": 3.6
+ },
+ {
+  "district": "Kolar",
+  "doy": 359,
+  "et0_p90": 4.41,
+  "tmax_p90": 27.11,
+  "et0_mean": 3.61
+ },
+ {
+  "district": "Kolar",
+  "doy": 360,
+  "et0_p90": 4.41,
+  "tmax_p90": 27.2,
+  "et0_mean": 3.64
+ },
+ {
+  "district": "Kolar",
+  "doy": 361,
+  "et0_p90": 4.41,
+  "tmax_p90": 27.3,
+  "et0_mean": 3.66
+ },
+ {
+  "district": "Kolar",
+  "doy": 362,
+  "et0_p90": 4.45,
+  "tmax_p90": 27.3,
+  "et0_mean": 3.7
+ },
+ {
+  "district": "Kolar",
+  "doy": 363,
+  "et0_p90": 4.47,
+  "tmax_p90": 27.4,
+  "et0_mean": 3.72
+ },
+ {
+  "district": "Kolar",
+  "doy": 364,
+  "et0_p90": 4.47,
+  "tmax_p90": 27.4,
+  "et0_mean": 3.73
+ },
+ {
+  "district": "Kolar",
+  "doy": 365,
+  "et0_p90": 4.47,
+  "tmax_p90": 27.5,
+  "et0_mean": 3.73
+ },
+ {
+  "district": "Mandya",
+  "doy": 1,
+  "et0_p90": 5.06,
+  "tmax_p90": 29.7,
+  "et0_mean": 4.29
+ },
+ {
+  "district": "Mandya",
+  "doy": 2,
+  "et0_p90": 5.07,
+  "tmax_p90": 29.7,
+  "et0_mean": 4.31
+ },
+ {
+  "district": "Mandya",
+  "doy": 3,
+  "et0_p90": 5.11,
+  "tmax_p90": 29.71,
+  "et0_mean": 4.31
+ },
+ {
+  "district": "Mandya",
+  "doy": 4,
+  "et0_p90": 5.11,
+  "tmax_p90": 29.8,
+  "et0_mean": 4.33
+ },
+ {
+  "district": "Mandya",
+  "doy": 5,
+  "et0_p90": 5.14,
+  "tmax_p90": 29.81,
+  "et0_mean": 4.37
+ },
+ {
+  "district": "Mandya",
+  "doy": 6,
+  "et0_p90": 5.17,
+  "tmax_p90": 29.91,
+  "et0_mean": 4.41
+ },
+ {
+  "district": "Mandya",
+  "doy": 7,
+  "et0_p90": 5.22,
+  "tmax_p90": 30.01,
+  "et0_mean": 4.44
+ },
+ {
+  "district": "Mandya",
+  "doy": 8,
+  "et0_p90": 5.25,
+  "tmax_p90": 30.1,
+  "et0_mean": 4.48
+ },
+ {
+  "district": "Mandya",
+  "doy": 9,
+  "et0_p90": 5.27,
+  "tmax_p90": 30.11,
+  "et0_mean": 4.5
+ },
+ {
+  "district": "Mandya",
+  "doy": 10,
+  "et0_p90": 5.3,
+  "tmax_p90": 30.2,
+  "et0_mean": 4.52
+ },
+ {
+  "district": "Mandya",
+  "doy": 11,
+  "et0_p90": 5.32,
+  "tmax_p90": 30.3,
+  "et0_mean": 4.54
+ },
+ {
+  "district": "Mandya",
+  "doy": 12,
+  "et0_p90": 5.34,
+  "tmax_p90": 30.3,
+  "et0_mean": 4.56
+ },
+ {
+  "district": "Mandya",
+  "doy": 13,
+  "et0_p90": 5.37,
+  "tmax_p90": 30.31,
+  "et0_mean": 4.6
+ },
+ {
+  "district": "Mandya",
+  "doy": 14,
+  "et0_p90": 5.42,
+  "tmax_p90": 30.4,
+  "et0_mean": 4.63
+ },
+ {
+  "district": "Mandya",
+  "doy": 15,
+  "et0_p90": 5.45,
+  "tmax_p90": 30.5,
+  "et0_mean": 4.67
+ },
+ {
+  "district": "Mandya",
+  "doy": 16,
+  "et0_p90": 5.46,
+  "tmax_p90": 30.51,
+  "et0_mean": 4.71
+ },
+ {
+  "district": "Mandya",
+  "doy": 17,
+  "et0_p90": 5.49,
+  "tmax_p90": 30.61,
+  "et0_mean": 4.75
+ },
+ {
+  "district": "Mandya",
+  "doy": 18,
+  "et0_p90": 5.51,
+  "tmax_p90": 30.7,
+  "et0_mean": 4.79
+ },
+ {
+  "district": "Mandya",
+  "doy": 19,
+  "et0_p90": 5.54,
+  "tmax_p90": 30.71,
+  "et0_mean": 4.82
+ },
+ {
+  "district": "Mandya",
+  "doy": 20,
+  "et0_p90": 5.58,
+  "tmax_p90": 30.8,
+  "et0_mean": 4.85
+ },
+ {
+  "district": "Mandya",
+  "doy": 21,
+  "et0_p90": 5.58,
+  "tmax_p90": 30.8,
+  "et0_mean": 4.86
+ },
+ {
+  "district": "Mandya",
+  "doy": 22,
+  "et0_p90": 5.6,
+  "tmax_p90": 30.9,
+  "et0_mean": 4.87
+ },
+ {
+  "district": "Mandya",
+  "doy": 23,
+  "et0_p90": 5.62,
+  "tmax_p90": 30.91,
+  "et0_mean": 4.9
+ },
+ {
+  "district": "Mandya",
+  "doy": 24,
+  "et0_p90": 5.66,
+  "tmax_p90": 31.0,
+  "et0_mean": 4.94
+ },
+ {
+  "district": "Mandya",
+  "doy": 25,
+  "et0_p90": 5.7,
+  "tmax_p90": 31.01,
+  "et0_mean": 4.98
+ },
+ {
+  "district": "Mandya",
+  "doy": 26,
+  "et0_p90": 5.75,
+  "tmax_p90": 31.1,
+  "et0_mean": 5.02
+ },
+ {
+  "district": "Mandya",
+  "doy": 27,
+  "et0_p90": 5.78,
+  "tmax_p90": 31.1,
+  "et0_mean": 5.05
+ },
+ {
+  "district": "Mandya",
+  "doy": 28,
+  "et0_p90": 5.81,
+  "tmax_p90": 31.2,
+  "et0_mean": 5.08
+ },
+ {
+  "district": "Mandya",
+  "doy": 29,
+  "et0_p90": 5.82,
+  "tmax_p90": 31.2,
+  "et0_mean": 5.1
+ },
+ {
+  "district": "Mandya",
+  "doy": 30,
+  "et0_p90": 5.86,
+  "tmax_p90": 31.3,
+  "et0_mean": 5.12
+ },
+ {
+  "district": "Mandya",
+  "doy": 31,
+  "et0_p90": 5.91,
+  "tmax_p90": 31.31,
+  "et0_mean": 5.15
+ },
+ {
+  "district": "Mandya",
+  "doy": 32,
+  "et0_p90": 5.95,
+  "tmax_p90": 31.4,
+  "et0_mean": 5.16
+ },
+ {
+  "district": "Mandya",
+  "doy": 33,
+  "et0_p90": 6.01,
+  "tmax_p90": 31.41,
+  "et0_mean": 5.17
+ },
+ {
+  "district": "Mandya",
+  "doy": 34,
+  "et0_p90": 6.04,
+  "tmax_p90": 31.5,
+  "et0_mean": 5.19
+ },
+ {
+  "district": "Mandya",
+  "doy": 35,
+  "et0_p90": 6.09,
+  "tmax_p90": 31.6,
+  "et0_mean": 5.21
+ },
+ {
+  "district": "Mandya",
+  "doy": 36,
+  "et0_p90": 6.12,
+  "tmax_p90": 31.7,
+  "et0_mean": 5.25
+ },
+ {
+  "district": "Mandya",
+  "doy": 37,
+  "et0_p90": 6.17,
+  "tmax_p90": 31.7,
+  "et0_mean": 5.3
+ },
+ {
+  "district": "Mandya",
+  "doy": 38,
+  "et0_p90": 6.2,
+  "tmax_p90": 31.8,
+  "et0_mean": 5.33
+ },
+ {
+  "district": "Mandya",
+  "doy": 39,
+  "et0_p90": 6.22,
+  "tmax_p90": 31.9,
+  "et0_mean": 5.34
+ },
+ {
+  "district": "Mandya",
+  "doy": 40,
+  "et0_p90": 6.25,
+  "tmax_p90": 31.91,
+  "et0_mean": 5.37
+ },
+ {
+  "district": "Mandya",
+  "doy": 41,
+  "et0_p90": 6.27,
+  "tmax_p90": 32.1,
+  "et0_mean": 5.4
+ },
+ {
+  "district": "Mandya",
+  "doy": 42,
+  "et0_p90": 6.31,
+  "tmax_p90": 32.2,
+  "et0_mean": 5.43
+ },
+ {
+  "district": "Mandya",
+  "doy": 43,
+  "et0_p90": 6.35,
+  "tmax_p90": 32.4,
+  "et0_mean": 5.46
+ },
+ {
+  "district": "Mandya",
+  "doy": 44,
+  "et0_p90": 6.4,
+  "tmax_p90": 32.5,
+  "et0_mean": 5.51
+ },
+ {
+  "district": "Mandya",
+  "doy": 45,
+  "et0_p90": 6.45,
+  "tmax_p90": 32.9,
+  "et0_mean": 5.54
+ },
+ {
+  "district": "Mandya",
+  "doy": 46,
+  "et0_p90": 6.49,
+  "tmax_p90": 33.0,
+  "et0_mean": 5.58
+ },
+ {
+  "district": "Mandya",
+  "doy": 47,
+  "et0_p90": 6.61,
+  "tmax_p90": 33.2,
+  "et0_mean": 5.64
+ },
+ {
+  "district": "Mandya",
+  "doy": 48,
+  "et0_p90": 6.7,
+  "tmax_p90": 33.3,
+  "et0_mean": 5.69
+ },
+ {
+  "district": "Mandya",
+  "doy": 49,
+  "et0_p90": 6.76,
+  "tmax_p90": 33.5,
+  "et0_mean": 5.74
+ },
+ {
+  "district": "Mandya",
+  "doy": 50,
+  "et0_p90": 6.81,
+  "tmax_p90": 33.6,
+  "et0_mean": 5.79
+ },
+ {
+  "district": "Mandya",
+  "doy": 51,
+  "et0_p90": 6.9,
+  "tmax_p90": 33.7,
+  "et0_mean": 5.83
+ },
+ {
+  "district": "Mandya",
+  "doy": 52,
+  "et0_p90": 6.95,
+  "tmax_p90": 33.8,
+  "et0_mean": 5.87
+ },
+ {
+  "district": "Mandya",
+  "doy": 53,
+  "et0_p90": 7.0,
+  "tmax_p90": 33.8,
+  "et0_mean": 5.92
+ },
+ {
+  "district": "Mandya",
+  "doy": 54,
+  "et0_p90": 7.05,
+  "tmax_p90": 33.9,
+  "et0_mean": 5.98
+ },
+ {
+  "district": "Mandya",
+  "doy": 55,
+  "et0_p90": 7.1,
+  "tmax_p90": 33.9,
+  "et0_mean": 6.03
+ },
+ {
+  "district": "Mandya",
+  "doy": 56,
+  "et0_p90": 7.15,
+  "tmax_p90": 34.0,
+  "et0_mean": 6.07
+ },
+ {
+  "district": "Mandya",
+  "doy": 57,
+  "et0_p90": 7.16,
+  "tmax_p90": 34.0,
+  "et0_mean": 6.1
+ },
+ {
+  "district": "Mandya",
+  "doy": 58,
+  "et0_p90": 7.2,
+  "tmax_p90": 34.1,
+  "et0_mean": 6.12
+ },
+ {
+  "district": "Mandya",
+  "doy": 59,
+  "et0_p90": 7.23,
+  "tmax_p90": 34.1,
+  "et0_mean": 6.14
+ },
+ {
+  "district": "Mandya",
+  "doy": 60,
+  "et0_p90": 7.25,
+  "tmax_p90": 34.2,
+  "et0_mean": 6.16
+ },
+ {
+  "district": "Mandya",
+  "doy": 61,
+  "et0_p90": 7.26,
+  "tmax_p90": 34.24,
+  "et0_mean": 6.18
+ },
+ {
+  "district": "Mandya",
+  "doy": 62,
+  "et0_p90": 7.3,
+  "tmax_p90": 34.4,
+  "et0_mean": 6.19
+ },
+ {
+  "district": "Mandya",
+  "doy": 63,
+  "et0_p90": 7.3,
+  "tmax_p90": 34.4,
+  "et0_mean": 6.21
+ },
+ {
+  "district": "Mandya",
+  "doy": 64,
+  "et0_p90": 7.33,
+  "tmax_p90": 34.5,
+  "et0_mean": 6.23
+ },
+ {
+  "district": "Mandya",
+  "doy": 65,
+  "et0_p90": 7.34,
+  "tmax_p90": 34.6,
+  "et0_mean": 6.25
+ },
+ {
+  "district": "Mandya",
+  "doy": 66,
+  "et0_p90": 7.37,
+  "tmax_p90": 34.6,
+  "et0_mean": 6.25
+ },
+ {
+  "district": "Mandya",
+  "doy": 67,
+  "et0_p90": 7.4,
+  "tmax_p90": 34.7,
+  "et0_mean": 6.25
+ },
+ {
+  "district": "Mandya",
+  "doy": 68,
+  "et0_p90": 7.41,
+  "tmax_p90": 34.7,
+  "et0_mean": 6.24
+ },
+ {
+  "district": "Mandya",
+  "doy": 69,
+  "et0_p90": 7.43,
+  "tmax_p90": 34.8,
+  "et0_mean": 6.23
+ },
+ {
+  "district": "Mandya",
+  "doy": 70,
+  "et0_p90": 7.46,
+  "tmax_p90": 35.0,
+  "et0_mean": 6.23
+ },
+ {
+  "district": "Mandya",
+  "doy": 71,
+  "et0_p90": 7.48,
+  "tmax_p90": 35.1,
+  "et0_mean": 6.24
+ },
+ {
+  "district": "Mandya",
+  "doy": 72,
+  "et0_p90": 7.49,
+  "tmax_p90": 35.2,
+  "et0_mean": 6.23
+ },
+ {
+  "district": "Mandya",
+  "doy": 73,
+  "et0_p90": 7.51,
+  "tmax_p90": 35.3,
+  "et0_mean": 6.23
+ },
+ {
+  "district": "Mandya",
+  "doy": 74,
+  "et0_p90": 7.51,
+  "tmax_p90": 35.4,
+  "et0_mean": 6.22
+ },
+ {
+  "district": "Mandya",
+  "doy": 75,
+  "et0_p90": 7.49,
+  "tmax_p90": 35.4,
+  "et0_mean": 6.23
+ },
+ {
+  "district": "Mandya",
+  "doy": 76,
+  "et0_p90": 7.49,
+  "tmax_p90": 35.6,
+  "et0_mean": 6.23
+ },
+ {
+  "district": "Mandya",
+  "doy": 77,
+  "et0_p90": 7.51,
+  "tmax_p90": 35.6,
+  "et0_mean": 6.23
+ },
+ {
+  "district": "Mandya",
+  "doy": 78,
+  "et0_p90": 7.52,
+  "tmax_p90": 35.7,
+  "et0_mean": 6.24
+ },
+ {
+  "district": "Mandya",
+  "doy": 79,
+  "et0_p90": 7.52,
+  "tmax_p90": 35.7,
+  "et0_mean": 6.24
+ },
+ {
+  "district": "Mandya",
+  "doy": 80,
+  "et0_p90": 7.49,
+  "tmax_p90": 35.8,
+  "et0_mean": 6.23
+ },
+ {
+  "district": "Mandya",
+  "doy": 81,
+  "et0_p90": 7.48,
+  "tmax_p90": 35.8,
+  "et0_mean": 6.24
+ },
+ {
+  "district": "Mandya",
+  "doy": 82,
+  "et0_p90": 7.44,
+  "tmax_p90": 35.9,
+  "et0_mean": 6.23
+ },
+ {
+  "district": "Mandya",
+  "doy": 83,
+  "et0_p90": 7.43,
+  "tmax_p90": 35.91,
+  "et0_mean": 6.22
+ },
+ {
+  "district": "Mandya",
+  "doy": 84,
+  "et0_p90": 7.41,
+  "tmax_p90": 36.0,
+  "et0_mean": 6.19
+ },
+ {
+  "district": "Mandya",
+  "doy": 85,
+  "et0_p90": 7.34,
+  "tmax_p90": 36.01,
+  "et0_mean": 6.15
+ },
+ {
+  "district": "Mandya",
+  "doy": 86,
+  "et0_p90": 7.34,
+  "tmax_p90": 36.1,
+  "et0_mean": 6.13
+ },
+ {
+  "district": "Mandya",
+  "doy": 87,
+  "et0_p90": 7.36,
+  "tmax_p90": 36.1,
+  "et0_mean": 6.13
+ },
+ {
+  "district": "Mandya",
+  "doy": 88,
+  "et0_p90": 7.4,
+  "tmax_p90": 36.2,
+  "et0_mean": 6.13
+ },
+ {
+  "district": "Mandya",
+  "doy": 89,
+  "et0_p90": 7.4,
+  "tmax_p90": 36.2,
+  "et0_mean": 6.14
+ },
+ {
+  "district": "Mandya",
+  "doy": 90,
+  "et0_p90": 7.4,
+  "tmax_p90": 36.3,
+  "et0_mean": 6.14
+ },
+ {
+  "district": "Mandya",
+  "doy": 91,
+  "et0_p90": 7.36,
+  "tmax_p90": 36.21,
+  "et0_mean": 6.12
+ },
+ {
+  "district": "Mandya",
+  "doy": 92,
+  "et0_p90": 7.3,
+  "tmax_p90": 36.2,
+  "et0_mean": 6.09
+ },
+ {
+  "district": "Mandya",
+  "doy": 93,
+  "et0_p90": 7.23,
+  "tmax_p90": 36.21,
+  "et0_mean": 6.06
+ },
+ {
+  "district": "Mandya",
+  "doy": 94,
+  "et0_p90": 7.17,
+  "tmax_p90": 36.3,
+  "et0_mean": 6.02
+ },
+ {
+  "district": "Mandya",
+  "doy": 95,
+  "et0_p90": 7.14,
+  "tmax_p90": 36.3,
+  "et0_mean": 5.98
+ },
+ {
+  "district": "Mandya",
+  "doy": 96,
+  "et0_p90": 7.14,
+  "tmax_p90": 36.3,
+  "et0_mean": 5.96
+ },
+ {
+  "district": "Mandya",
+  "doy": 97,
+  "et0_p90": 7.14,
+  "tmax_p90": 36.3,
+  "et0_mean": 5.94
+ },
+ {
+  "district": "Mandya",
+  "doy": 98,
+  "et0_p90": 7.12,
+  "tmax_p90": 36.3,
+  "et0_mean": 5.93
+ },
+ {
+  "district": "Mandya",
+  "doy": 99,
+  "et0_p90": 7.1,
+  "tmax_p90": 36.3,
+  "et0_mean": 5.93
+ },
+ {
+  "district": "Mandya",
+  "doy": 100,
+  "et0_p90": 7.05,
+  "tmax_p90": 36.3,
+  "et0_mean": 5.92
+ },
+ {
+  "district": "Mandya",
+  "doy": 101,
+  "et0_p90": 6.99,
+  "tmax_p90": 36.3,
+  "et0_mean": 5.89
+ },
+ {
+  "district": "Mandya",
+  "doy": 102,
+  "et0_p90": 6.93,
+  "tmax_p90": 36.2,
+  "et0_mean": 5.86
+ },
+ {
+  "district": "Mandya",
+  "doy": 103,
+  "et0_p90": 6.89,
+  "tmax_p90": 36.2,
+  "et0_mean": 5.83
+ },
+ {
+  "district": "Mandya",
+  "doy": 104,
+  "et0_p90": 6.84,
+  "tmax_p90": 36.2,
+  "et0_mean": 5.79
+ },
+ {
+  "district": "Mandya",
+  "doy": 105,
+  "et0_p90": 6.75,
+  "tmax_p90": 36.2,
+  "et0_mean": 5.75
+ },
+ {
+  "district": "Mandya",
+  "doy": 106,
+  "et0_p90": 6.73,
+  "tmax_p90": 36.2,
+  "et0_mean": 5.72
+ },
+ {
+  "district": "Mandya",
+  "doy": 107,
+  "et0_p90": 6.73,
+  "tmax_p90": 36.2,
+  "et0_mean": 5.7
+ },
+ {
+  "district": "Mandya",
+  "doy": 108,
+  "et0_p90": 6.7,
+  "tmax_p90": 36.2,
+  "et0_mean": 5.69
+ },
+ {
+  "district": "Mandya",
+  "doy": 109,
+  "et0_p90": 6.69,
+  "tmax_p90": 36.21,
+  "et0_mean": 5.69
+ },
+ {
+  "district": "Mandya",
+  "doy": 110,
+  "et0_p90": 6.68,
+  "tmax_p90": 36.2,
+  "et0_mean": 5.7
+ },
+ {
+  "district": "Mandya",
+  "doy": 111,
+  "et0_p90": 6.65,
+  "tmax_p90": 36.2,
+  "et0_mean": 5.7
+ },
+ {
+  "district": "Mandya",
+  "doy": 112,
+  "et0_p90": 6.64,
+  "tmax_p90": 36.2,
+  "et0_mean": 5.69
+ },
+ {
+  "district": "Mandya",
+  "doy": 113,
+  "et0_p90": 6.61,
+  "tmax_p90": 36.2,
+  "et0_mean": 5.7
+ },
+ {
+  "district": "Mandya",
+  "doy": 114,
+  "et0_p90": 6.61,
+  "tmax_p90": 36.2,
+  "et0_mean": 5.71
+ },
+ {
+  "district": "Mandya",
+  "doy": 115,
+  "et0_p90": 6.61,
+  "tmax_p90": 36.2,
+  "et0_mean": 5.71
+ },
+ {
+  "district": "Mandya",
+  "doy": 116,
+  "et0_p90": 6.54,
+  "tmax_p90": 36.1,
+  "et0_mean": 5.69
+ },
+ {
+  "district": "Mandya",
+  "doy": 117,
+  "et0_p90": 6.53,
+  "tmax_p90": 36.1,
+  "et0_mean": 5.67
+ },
+ {
+  "district": "Mandya",
+  "doy": 118,
+  "et0_p90": 6.52,
+  "tmax_p90": 36.1,
+  "et0_mean": 5.65
+ },
+ {
+  "district": "Mandya",
+  "doy": 119,
+  "et0_p90": 6.48,
+  "tmax_p90": 36.01,
+  "et0_mean": 5.62
+ },
+ {
+  "district": "Mandya",
+  "doy": 120,
+  "et0_p90": 6.46,
+  "tmax_p90": 36.0,
+  "et0_mean": 5.59
+ },
+ {
+  "district": "Mandya",
+  "doy": 121,
+  "et0_p90": 6.48,
+  "tmax_p90": 36.0,
+  "et0_mean": 5.55
+ },
+ {
+  "district": "Mandya",
+  "doy": 122,
+  "et0_p90": 6.46,
+  "tmax_p90": 35.9,
+  "et0_mean": 5.53
+ },
+ {
+  "district": "Mandya",
+  "doy": 123,
+  "et0_p90": 6.45,
+  "tmax_p90": 35.9,
+  "et0_mean": 5.51
+ },
+ {
+  "district": "Mandya",
+  "doy": 124,
+  "et0_p90": 6.4,
+  "tmax_p90": 35.8,
+  "et0_mean": 5.47
+ },
+ {
+  "district": "Mandya",
+  "doy": 125,
+  "et0_p90": 6.37,
+  "tmax_p90": 35.71,
+  "et0_mean": 5.43
+ },
+ {
+  "district": "Mandya",
+  "doy": 126,
+  "et0_p90": 6.36,
+  "tmax_p90": 35.7,
+  "et0_mean": 5.39
+ },
+ {
+  "district": "Mandya",
+  "doy": 127,
+  "et0_p90": 6.39,
+  "tmax_p90": 35.7,
+  "et0_mean": 5.37
+ },
+ {
+  "district": "Mandya",
+  "doy": 128,
+  "et0_p90": 6.38,
+  "tmax_p90": 35.6,
+  "et0_mean": 5.34
+ },
+ {
+  "district": "Mandya",
+  "doy": 129,
+  "et0_p90": 6.37,
+  "tmax_p90": 35.5,
+  "et0_mean": 5.29
+ },
+ {
+  "district": "Mandya",
+  "doy": 130,
+  "et0_p90": 6.37,
+  "tmax_p90": 35.4,
+  "et0_mean": 5.26
+ },
+ {
+  "district": "Mandya",
+  "doy": 131,
+  "et0_p90": 6.37,
+  "tmax_p90": 35.31,
+  "et0_mean": 5.25
+ },
+ {
+  "district": "Mandya",
+  "doy": 132,
+  "et0_p90": 6.37,
+  "tmax_p90": 35.21,
+  "et0_mean": 5.24
+ },
+ {
+  "district": "Mandya",
+  "doy": 133,
+  "et0_p90": 6.37,
+  "tmax_p90": 35.2,
+  "et0_mean": 5.23
+ },
+ {
+  "district": "Mandya",
+  "doy": 134,
+  "et0_p90": 6.38,
+  "tmax_p90": 35.2,
+  "et0_mean": 5.24
+ },
+ {
+  "district": "Mandya",
+  "doy": 135,
+  "et0_p90": 6.38,
+  "tmax_p90": 35.2,
+  "et0_mean": 5.26
+ },
+ {
+  "district": "Mandya",
+  "doy": 136,
+  "et0_p90": 6.38,
+  "tmax_p90": 35.2,
+  "et0_mean": 5.28
+ },
+ {
+  "district": "Mandya",
+  "doy": 137,
+  "et0_p90": 6.38,
+  "tmax_p90": 35.2,
+  "et0_mean": 5.28
+ },
+ {
+  "district": "Mandya",
+  "doy": 138,
+  "et0_p90": 6.37,
+  "tmax_p90": 35.2,
+  "et0_mean": 5.25
+ },
+ {
+  "district": "Mandya",
+  "doy": 139,
+  "et0_p90": 6.37,
+  "tmax_p90": 35.2,
+  "et0_mean": 5.24
+ },
+ {
+  "district": "Mandya",
+  "doy": 140,
+  "et0_p90": 6.37,
+  "tmax_p90": 35.2,
+  "et0_mean": 5.22
+ },
+ {
+  "district": "Mandya",
+  "doy": 141,
+  "et0_p90": 6.35,
+  "tmax_p90": 35.1,
+  "et0_mean": 5.2
+ },
+ {
+  "district": "Mandya",
+  "doy": 142,
+  "et0_p90": 6.33,
+  "tmax_p90": 35.1,
+  "et0_mean": 5.17
+ },
+ {
+  "district": "Mandya",
+  "doy": 143,
+  "et0_p90": 6.3,
+  "tmax_p90": 35.0,
+  "et0_mean": 5.13
+ },
+ {
+  "district": "Mandya",
+  "doy": 144,
+  "et0_p90": 6.2,
+  "tmax_p90": 35.0,
+  "et0_mean": 5.11
+ },
+ {
+  "district": "Mandya",
+  "doy": 145,
+  "et0_p90": 6.16,
+  "tmax_p90": 34.9,
+  "et0_mean": 5.06
+ },
+ {
+  "district": "Mandya",
+  "doy": 146,
+  "et0_p90": 6.11,
+  "tmax_p90": 34.7,
+  "et0_mean": 5.0
+ },
+ {
+  "district": "Mandya",
+  "doy": 147,
+  "et0_p90": 6.08,
+  "tmax_p90": 34.61,
+  "et0_mean": 4.95
+ },
+ {
+  "district": "Mandya",
+  "doy": 148,
+  "et0_p90": 6.07,
+  "tmax_p90": 34.5,
+  "et0_mean": 4.9
+ },
+ {
+  "district": "Mandya",
+  "doy": 149,
+  "et0_p90": 5.95,
+  "tmax_p90": 34.4,
+  "et0_mean": 4.85
+ },
+ {
+  "district": "Mandya",
+  "doy": 150,
+  "et0_p90": 5.87,
+  "tmax_p90": 34.21,
+  "et0_mean": 4.78
+ },
+ {
+  "district": "Mandya",
+  "doy": 151,
+  "et0_p90": 5.85,
+  "tmax_p90": 34.0,
+  "et0_mean": 4.72
+ },
+ {
+  "district": "Mandya",
+  "doy": 152,
+  "et0_p90": 5.81,
+  "tmax_p90": 33.9,
+  "et0_mean": 4.65
+ },
+ {
+  "district": "Mandya",
+  "doy": 153,
+  "et0_p90": 5.8,
+  "tmax_p90": 33.7,
+  "et0_mean": 4.61
+ },
+ {
+  "district": "Mandya",
+  "doy": 154,
+  "et0_p90": 5.75,
+  "tmax_p90": 33.5,
+  "et0_mean": 4.56
+ },
+ {
+  "district": "Mandya",
+  "doy": 155,
+  "et0_p90": 5.73,
+  "tmax_p90": 33.3,
+  "et0_mean": 4.5
+ },
+ {
+  "district": "Mandya",
+  "doy": 156,
+  "et0_p90": 5.69,
+  "tmax_p90": 33.1,
+  "et0_mean": 4.43
+ },
+ {
+  "district": "Mandya",
+  "doy": 157,
+  "et0_p90": 5.64,
+  "tmax_p90": 32.91,
+  "et0_mean": 4.36
+ },
+ {
+  "district": "Mandya",
+  "doy": 158,
+  "et0_p90": 5.58,
+  "tmax_p90": 32.7,
+  "et0_mean": 4.3
+ },
+ {
+  "district": "Mandya",
+  "doy": 159,
+  "et0_p90": 5.5,
+  "tmax_p90": 32.51,
+  "et0_mean": 4.25
+ },
+ {
+  "district": "Mandya",
+  "doy": 160,
+  "et0_p90": 5.44,
+  "tmax_p90": 32.4,
+  "et0_mean": 4.22
+ },
+ {
+  "district": "Mandya",
+  "doy": 161,
+  "et0_p90": 5.38,
+  "tmax_p90": 32.11,
+  "et0_mean": 4.19
+ },
+ {
+  "district": "Mandya",
+  "doy": 162,
+  "et0_p90": 5.36,
+  "tmax_p90": 31.71,
+  "et0_mean": 4.17
+ },
+ {
+  "district": "Mandya",
+  "doy": 163,
+  "et0_p90": 5.24,
+  "tmax_p90": 31.31,
+  "et0_mean": 4.12
+ },
+ {
+  "district": "Mandya",
+  "doy": 164,
+  "et0_p90": 5.16,
+  "tmax_p90": 31.1,
+  "et0_mean": 4.09
+ },
+ {
+  "district": "Mandya",
+  "doy": 165,
+  "et0_p90": 5.15,
+  "tmax_p90": 30.81,
+  "et0_mean": 4.05
+ },
+ {
+  "district": "Mandya",
+  "doy": 166,
+  "et0_p90": 5.09,
+  "tmax_p90": 30.8,
+  "et0_mean": 4.03
+ },
+ {
+  "district": "Mandya",
+  "doy": 167,
+  "et0_p90": 5.08,
+  "tmax_p90": 30.6,
+  "et0_mean": 4.0
+ },
+ {
+  "district": "Mandya",
+  "doy": 168,
+  "et0_p90": 5.05,
+  "tmax_p90": 30.51,
+  "et0_mean": 3.99
+ },
+ {
+  "district": "Mandya",
+  "doy": 169,
+  "et0_p90": 4.98,
+  "tmax_p90": 30.41,
+  "et0_mean": 3.97
+ },
+ {
+  "district": "Mandya",
+  "doy": 170,
+  "et0_p90": 4.97,
+  "tmax_p90": 30.3,
+  "et0_mean": 3.96
+ },
+ {
+  "district": "Mandya",
+  "doy": 171,
+  "et0_p90": 4.95,
+  "tmax_p90": 30.21,
+  "et0_mean": 3.96
+ },
+ {
+  "district": "Mandya",
+  "doy": 172,
+  "et0_p90": 4.97,
+  "tmax_p90": 30.1,
+  "et0_mean": 3.95
+ },
+ {
+  "district": "Mandya",
+  "doy": 173,
+  "et0_p90": 4.98,
+  "tmax_p90": 30.1,
+  "et0_mean": 3.93
+ },
+ {
+  "district": "Mandya",
+  "doy": 174,
+  "et0_p90": 4.98,
+  "tmax_p90": 30.1,
+  "et0_mean": 3.93
+ },
+ {
+  "district": "Mandya",
+  "doy": 175,
+  "et0_p90": 4.98,
+  "tmax_p90": 30.0,
+  "et0_mean": 3.91
+ },
+ {
+  "district": "Mandya",
+  "doy": 176,
+  "et0_p90": 4.95,
+  "tmax_p90": 30.0,
+  "et0_mean": 3.9
+ },
+ {
+  "district": "Mandya",
+  "doy": 177,
+  "et0_p90": 4.95,
+  "tmax_p90": 30.0,
+  "et0_mean": 3.9
+ },
+ {
+  "district": "Mandya",
+  "doy": 178,
+  "et0_p90": 4.96,
+  "tmax_p90": 29.91,
+  "et0_mean": 3.86
+ },
+ {
+  "district": "Mandya",
+  "doy": 179,
+  "et0_p90": 4.95,
+  "tmax_p90": 30.0,
+  "et0_mean": 3.84
+ },
+ {
+  "district": "Mandya",
+  "doy": 180,
+  "et0_p90": 4.92,
+  "tmax_p90": 30.0,
+  "et0_mean": 3.83
+ },
+ {
+  "district": "Mandya",
+  "doy": 181,
+  "et0_p90": 4.91,
+  "tmax_p90": 29.91,
+  "et0_mean": 3.82
+ },
+ {
+  "district": "Mandya",
+  "doy": 182,
+  "et0_p90": 4.91,
+  "tmax_p90": 29.9,
+  "et0_mean": 3.81
+ },
+ {
+  "district": "Mandya",
+  "doy": 183,
+  "et0_p90": 4.91,
+  "tmax_p90": 29.9,
+  "et0_mean": 3.8
+ },
+ {
+  "district": "Mandya",
+  "doy": 184,
+  "et0_p90": 4.91,
+  "tmax_p90": 29.81,
+  "et0_mean": 3.78
+ },
+ {
+  "district": "Mandya",
+  "doy": 185,
+  "et0_p90": 4.9,
+  "tmax_p90": 29.8,
+  "et0_mean": 3.76
+ },
+ {
+  "district": "Mandya",
+  "doy": 186,
+  "et0_p90": 4.87,
+  "tmax_p90": 29.8,
+  "et0_mean": 3.75
+ },
+ {
+  "district": "Mandya",
+  "doy": 187,
+  "et0_p90": 4.86,
+  "tmax_p90": 29.7,
+  "et0_mean": 3.74
+ },
+ {
+  "district": "Mandya",
+  "doy": 188,
+  "et0_p90": 4.83,
+  "tmax_p90": 29.7,
+  "et0_mean": 3.74
+ },
+ {
+  "district": "Mandya",
+  "doy": 189,
+  "et0_p90": 4.8,
+  "tmax_p90": 29.6,
+  "et0_mean": 3.71
+ },
+ {
+  "district": "Mandya",
+  "doy": 190,
+  "et0_p90": 4.76,
+  "tmax_p90": 29.5,
+  "et0_mean": 3.67
+ },
+ {
+  "district": "Mandya",
+  "doy": 191,
+  "et0_p90": 4.69,
+  "tmax_p90": 29.5,
+  "et0_mean": 3.64
+ },
+ {
+  "district": "Mandya",
+  "doy": 192,
+  "et0_p90": 4.64,
+  "tmax_p90": 29.4,
+  "et0_mean": 3.62
+ },
+ {
+  "district": "Mandya",
+  "doy": 193,
+  "et0_p90": 4.63,
+  "tmax_p90": 29.3,
+  "et0_mean": 3.61
+ },
+ {
+  "district": "Mandya",
+  "doy": 194,
+  "et0_p90": 4.6,
+  "tmax_p90": 29.3,
+  "et0_mean": 3.62
+ },
+ {
+  "district": "Mandya",
+  "doy": 195,
+  "et0_p90": 4.62,
+  "tmax_p90": 29.2,
+  "et0_mean": 3.63
+ },
+ {
+  "district": "Mandya",
+  "doy": 196,
+  "et0_p90": 4.6,
+  "tmax_p90": 29.1,
+  "et0_mean": 3.62
+ },
+ {
+  "district": "Mandya",
+  "doy": 197,
+  "et0_p90": 4.58,
+  "tmax_p90": 29.1,
+  "et0_mean": 3.61
+ },
+ {
+  "district": "Mandya",
+  "doy": 198,
+  "et0_p90": 4.57,
+  "tmax_p90": 29.01,
+  "et0_mean": 3.59
+ },
+ {
+  "district": "Mandya",
+  "doy": 199,
+  "et0_p90": 4.53,
+  "tmax_p90": 29.01,
+  "et0_mean": 3.58
+ },
+ {
+  "district": "Mandya",
+  "doy": 200,
+  "et0_p90": 4.57,
+  "tmax_p90": 29.01,
+  "et0_mean": 3.58
+ },
+ {
+  "district": "Mandya",
+  "doy": 201,
+  "et0_p90": 4.53,
+  "tmax_p90": 29.0,
+  "et0_mean": 3.57
+ },
+ {
+  "district": "Mandya",
+  "doy": 202,
+  "et0_p90": 4.53,
+  "tmax_p90": 28.9,
+  "et0_mean": 3.58
+ },
+ {
+  "district": "Mandya",
+  "doy": 203,
+  "et0_p90": 4.55,
+  "tmax_p90": 28.9,
+  "et0_mean": 3.58
+ },
+ {
+  "district": "Mandya",
+  "doy": 204,
+  "et0_p90": 4.57,
+  "tmax_p90": 28.9,
+  "et0_mean": 3.6
+ },
+ {
+  "district": "Mandya",
+  "doy": 205,
+  "et0_p90": 4.58,
+  "tmax_p90": 29.0,
+  "et0_mean": 3.63
+ },
+ {
+  "district": "Mandya",
+  "doy": 206,
+  "et0_p90": 4.59,
+  "tmax_p90": 29.0,
+  "et0_mean": 3.65
+ },
+ {
+  "district": "Mandya",
+  "doy": 207,
+  "et0_p90": 4.59,
+  "tmax_p90": 28.91,
+  "et0_mean": 3.67
+ },
+ {
+  "district": "Mandya",
+  "doy": 208,
+  "et0_p90": 4.57,
+  "tmax_p90": 28.9,
+  "et0_mean": 3.69
+ },
+ {
+  "district": "Mandya",
+  "doy": 209,
+  "et0_p90": 4.57,
+  "tmax_p90": 28.9,
+  "et0_mean": 3.68
+ },
+ {
+  "district": "Mandya",
+  "doy": 210,
+  "et0_p90": 4.54,
+  "tmax_p90": 28.8,
+  "et0_mean": 3.67
+ },
+ {
+  "district": "Mandya",
+  "doy": 211,
+  "et0_p90": 4.54,
+  "tmax_p90": 28.8,
+  "et0_mean": 3.67
+ },
+ {
+  "district": "Mandya",
+  "doy": 212,
+  "et0_p90": 4.55,
+  "tmax_p90": 28.8,
+  "et0_mean": 3.68
+ },
+ {
+  "district": "Mandya",
+  "doy": 213,
+  "et0_p90": 4.55,
+  "tmax_p90": 28.8,
+  "et0_mean": 3.68
+ },
+ {
+  "district": "Mandya",
+  "doy": 214,
+  "et0_p90": 4.54,
+  "tmax_p90": 28.8,
+  "et0_mean": 3.69
+ },
+ {
+  "district": "Mandya",
+  "doy": 215,
+  "et0_p90": 4.52,
+  "tmax_p90": 28.8,
+  "et0_mean": 3.68
+ },
+ {
+  "district": "Mandya",
+  "doy": 216,
+  "et0_p90": 4.51,
+  "tmax_p90": 28.9,
+  "et0_mean": 3.68
+ },
+ {
+  "district": "Mandya",
+  "doy": 217,
+  "et0_p90": 4.5,
+  "tmax_p90": 28.9,
+  "et0_mean": 3.66
+ },
+ {
+  "district": "Mandya",
+  "doy": 218,
+  "et0_p90": 4.49,
+  "tmax_p90": 28.9,
+  "et0_mean": 3.67
+ },
+ {
+  "district": "Mandya",
+  "doy": 219,
+  "et0_p90": 4.49,
+  "tmax_p90": 28.9,
+  "et0_mean": 3.67
+ },
+ {
+  "district": "Mandya",
+  "doy": 220,
+  "et0_p90": 4.49,
+  "tmax_p90": 28.9,
+  "et0_mean": 3.67
+ },
+ {
+  "district": "Mandya",
+  "doy": 221,
+  "et0_p90": 4.49,
+  "tmax_p90": 28.9,
+  "et0_mean": 3.66
+ },
+ {
+  "district": "Mandya",
+  "doy": 222,
+  "et0_p90": 4.46,
+  "tmax_p90": 29.0,
+  "et0_mean": 3.64
+ },
+ {
+  "district": "Mandya",
+  "doy": 223,
+  "et0_p90": 4.45,
+  "tmax_p90": 29.0,
+  "et0_mean": 3.64
+ },
+ {
+  "district": "Mandya",
+  "doy": 224,
+  "et0_p90": 4.43,
+  "tmax_p90": 29.0,
+  "et0_mean": 3.65
+ },
+ {
+  "district": "Mandya",
+  "doy": 225,
+  "et0_p90": 4.45,
+  "tmax_p90": 29.01,
+  "et0_mean": 3.65
+ },
+ {
+  "district": "Mandya",
+  "doy": 226,
+  "et0_p90": 4.46,
+  "tmax_p90": 29.01,
+  "et0_mean": 3.65
+ },
+ {
+  "district": "Mandya",
+  "doy": 227,
+  "et0_p90": 4.46,
+  "tmax_p90": 29.1,
+  "et0_mean": 3.63
+ },
+ {
+  "district": "Mandya",
+  "doy": 228,
+  "et0_p90": 4.47,
+  "tmax_p90": 29.1,
+  "et0_mean": 3.65
+ },
+ {
+  "district": "Mandya",
+  "doy": 229,
+  "et0_p90": 4.51,
+  "tmax_p90": 29.1,
+  "et0_mean": 3.65
+ },
+ {
+  "district": "Mandya",
+  "doy": 230,
+  "et0_p90": 4.53,
+  "tmax_p90": 29.11,
+  "et0_mean": 3.66
+ },
+ {
+  "district": "Mandya",
+  "doy": 231,
+  "et0_p90": 4.55,
+  "tmax_p90": 29.2,
+  "et0_mean": 3.67
+ },
+ {
+  "district": "Mandya",
+  "doy": 232,
+  "et0_p90": 4.56,
+  "tmax_p90": 29.21,
+  "et0_mean": 3.67
+ },
+ {
+  "district": "Mandya",
+  "doy": 233,
+  "et0_p90": 4.58,
+  "tmax_p90": 29.3,
+  "et0_mean": 3.68
+ },
+ {
+  "district": "Mandya",
+  "doy": 234,
+  "et0_p90": 4.58,
+  "tmax_p90": 29.3,
+  "et0_mean": 3.67
+ },
+ {
+  "district": "Mandya",
+  "doy": 235,
+  "et0_p90": 4.6,
+  "tmax_p90": 29.3,
+  "et0_mean": 3.68
+ },
+ {
+  "district": "Mandya",
+  "doy": 236,
+  "et0_p90": 4.6,
+  "tmax_p90": 29.31,
+  "et0_mean": 3.68
+ },
+ {
+  "district": "Mandya",
+  "doy": 237,
+  "et0_p90": 4.62,
+  "tmax_p90": 29.4,
+  "et0_mean": 3.7
+ },
+ {
+  "district": "Mandya",
+  "doy": 238,
+  "et0_p90": 4.65,
+  "tmax_p90": 29.4,
+  "et0_mean": 3.71
+ },
+ {
+  "district": "Mandya",
+  "doy": 239,
+  "et0_p90": 4.71,
+  "tmax_p90": 29.5,
+  "et0_mean": 3.71
+ },
+ {
+  "district": "Mandya",
+  "doy": 240,
+  "et0_p90": 4.71,
+  "tmax_p90": 29.5,
+  "et0_mean": 3.72
+ },
+ {
+  "district": "Mandya",
+  "doy": 241,
+  "et0_p90": 4.74,
+  "tmax_p90": 29.6,
+  "et0_mean": 3.73
+ },
+ {
+  "district": "Mandya",
+  "doy": 242,
+  "et0_p90": 4.72,
+  "tmax_p90": 29.6,
+  "et0_mean": 3.75
+ },
+ {
+  "district": "Mandya",
+  "doy": 243,
+  "et0_p90": 4.74,
+  "tmax_p90": 29.5,
+  "et0_mean": 3.74
+ },
+ {
+  "district": "Mandya",
+  "doy": 244,
+  "et0_p90": 4.71,
+  "tmax_p90": 29.5,
+  "et0_mean": 3.74
+ },
+ {
+  "district": "Mandya",
+  "doy": 245,
+  "et0_p90": 4.72,
+  "tmax_p90": 29.5,
+  "et0_mean": 3.77
+ },
+ {
+  "district": "Mandya",
+  "doy": 246,
+  "et0_p90": 4.74,
+  "tmax_p90": 29.5,
+  "et0_mean": 3.79
+ },
+ {
+  "district": "Mandya",
+  "doy": 247,
+  "et0_p90": 4.76,
+  "tmax_p90": 29.5,
+  "et0_mean": 3.81
+ },
+ {
+  "district": "Mandya",
+  "doy": 248,
+  "et0_p90": 4.76,
+  "tmax_p90": 29.6,
+  "et0_mean": 3.82
+ },
+ {
+  "district": "Mandya",
+  "doy": 249,
+  "et0_p90": 4.77,
+  "tmax_p90": 29.6,
+  "et0_mean": 3.85
+ },
+ {
+  "district": "Mandya",
+  "doy": 250,
+  "et0_p90": 4.8,
+  "tmax_p90": 29.7,
+  "et0_mean": 3.85
+ },
+ {
+  "district": "Mandya",
+  "doy": 251,
+  "et0_p90": 4.82,
+  "tmax_p90": 29.7,
+  "et0_mean": 3.86
+ },
+ {
+  "district": "Mandya",
+  "doy": 252,
+  "et0_p90": 4.79,
+  "tmax_p90": 29.7,
+  "et0_mean": 3.86
+ },
+ {
+  "district": "Mandya",
+  "doy": 253,
+  "et0_p90": 4.77,
+  "tmax_p90": 29.6,
+  "et0_mean": 3.87
+ },
+ {
+  "district": "Mandya",
+  "doy": 254,
+  "et0_p90": 4.77,
+  "tmax_p90": 29.6,
+  "et0_mean": 3.88
+ },
+ {
+  "district": "Mandya",
+  "doy": 255,
+  "et0_p90": 4.8,
+  "tmax_p90": 29.6,
+  "et0_mean": 3.89
+ },
+ {
+  "district": "Mandya",
+  "doy": 256,
+  "et0_p90": 4.82,
+  "tmax_p90": 29.7,
+  "et0_mean": 3.91
+ },
+ {
+  "district": "Mandya",
+  "doy": 257,
+  "et0_p90": 4.85,
+  "tmax_p90": 29.7,
+  "et0_mean": 3.94
+ },
+ {
+  "district": "Mandya",
+  "doy": 258,
+  "et0_p90": 4.87,
+  "tmax_p90": 29.8,
+  "et0_mean": 3.98
+ },
+ {
+  "district": "Mandya",
+  "doy": 259,
+  "et0_p90": 4.89,
+  "tmax_p90": 29.91,
+  "et0_mean": 4.03
+ },
+ {
+  "district": "Mandya",
+  "doy": 260,
+  "et0_p90": 4.89,
+  "tmax_p90": 30.0,
+  "et0_mean": 4.03
+ },
+ {
+  "district": "Mandya",
+  "doy": 261,
+  "et0_p90": 4.93,
+  "tmax_p90": 30.01,
+  "et0_mean": 4.03
+ },
+ {
+  "district": "Mandya",
+  "doy": 262,
+  "et0_p90": 4.95,
+  "tmax_p90": 30.01,
+  "et0_mean": 4.02
+ },
+ {
+  "district": "Mandya",
+  "doy": 263,
+  "et0_p90": 4.95,
+  "tmax_p90": 30.01,
+  "et0_mean": 4.02
+ },
+ {
+  "district": "Mandya",
+  "doy": 264,
+  "et0_p90": 4.94,
+  "tmax_p90": 29.91,
+  "et0_mean": 4.01
+ },
+ {
+  "district": "Mandya",
+  "doy": 265,
+  "et0_p90": 4.93,
+  "tmax_p90": 29.9,
+  "et0_mean": 4.01
+ },
+ {
+  "district": "Mandya",
+  "doy": 266,
+  "et0_p90": 4.93,
+  "tmax_p90": 29.9,
+  "et0_mean": 4.0
+ },
+ {
+  "district": "Mandya",
+  "doy": 267,
+  "et0_p90": 4.94,
+  "tmax_p90": 29.9,
+  "et0_mean": 4.0
+ },
+ {
+  "district": "Mandya",
+  "doy": 268,
+  "et0_p90": 4.96,
+  "tmax_p90": 30.0,
+  "et0_mean": 4.0
+ },
+ {
+  "district": "Mandya",
+  "doy": 269,
+  "et0_p90": 4.95,
+  "tmax_p90": 30.0,
+  "et0_mean": 3.99
+ },
+ {
+  "district": "Mandya",
+  "doy": 270,
+  "et0_p90": 4.99,
+  "tmax_p90": 30.0,
+  "et0_mean": 3.99
+ },
+ {
+  "district": "Mandya",
+  "doy": 271,
+  "et0_p90": 4.96,
+  "tmax_p90": 30.0,
+  "et0_mean": 3.98
+ },
+ {
+  "district": "Mandya",
+  "doy": 272,
+  "et0_p90": 4.95,
+  "tmax_p90": 30.0,
+  "et0_mean": 3.94
+ },
+ {
+  "district": "Mandya",
+  "doy": 273,
+  "et0_p90": 4.94,
+  "tmax_p90": 29.9,
+  "et0_mean": 3.92
+ },
+ {
+  "district": "Mandya",
+  "doy": 274,
+  "et0_p90": 4.92,
+  "tmax_p90": 29.9,
+  "et0_mean": 3.89
+ },
+ {
+  "district": "Mandya",
+  "doy": 275,
+  "et0_p90": 4.9,
+  "tmax_p90": 29.81,
+  "et0_mean": 3.86
+ },
+ {
+  "district": "Mandya",
+  "doy": 276,
+  "et0_p90": 4.87,
+  "tmax_p90": 29.7,
+  "et0_mean": 3.85
+ },
+ {
+  "district": "Mandya",
+  "doy": 277,
+  "et0_p90": 4.85,
+  "tmax_p90": 29.7,
+  "et0_mean": 3.84
+ },
+ {
+  "district": "Mandya",
+  "doy": 278,
+  "et0_p90": 4.78,
+  "tmax_p90": 29.6,
+  "et0_mean": 3.81
+ },
+ {
+  "district": "Mandya",
+  "doy": 279,
+  "et0_p90": 4.83,
+  "tmax_p90": 29.6,
+  "et0_mean": 3.79
+ },
+ {
+  "district": "Mandya",
+  "doy": 280,
+  "et0_p90": 4.75,
+  "tmax_p90": 29.6,
+  "et0_mean": 3.78
+ },
+ {
+  "district": "Mandya",
+  "doy": 281,
+  "et0_p90": 4.76,
+  "tmax_p90": 29.6,
+  "et0_mean": 3.77
+ },
+ {
+  "district": "Mandya",
+  "doy": 282,
+  "et0_p90": 4.81,
+  "tmax_p90": 29.6,
+  "et0_mean": 3.77
+ },
+ {
+  "district": "Mandya",
+  "doy": 283,
+  "et0_p90": 4.76,
+  "tmax_p90": 29.6,
+  "et0_mean": 3.76
+ },
+ {
+  "district": "Mandya",
+  "doy": 284,
+  "et0_p90": 4.76,
+  "tmax_p90": 29.6,
+  "et0_mean": 3.75
+ },
+ {
+  "district": "Mandya",
+  "doy": 285,
+  "et0_p90": 4.74,
+  "tmax_p90": 29.6,
+  "et0_mean": 3.73
+ },
+ {
+  "district": "Mandya",
+  "doy": 286,
+  "et0_p90": 4.73,
+  "tmax_p90": 29.6,
+  "et0_mean": 3.7
+ },
+ {
+  "district": "Mandya",
+  "doy": 287,
+  "et0_p90": 4.73,
+  "tmax_p90": 29.6,
+  "et0_mean": 3.69
+ },
+ {
+  "district": "Mandya",
+  "doy": 288,
+  "et0_p90": 4.73,
+  "tmax_p90": 29.6,
+  "et0_mean": 3.66
+ },
+ {
+  "district": "Mandya",
+  "doy": 289,
+  "et0_p90": 4.8,
+  "tmax_p90": 29.6,
+  "et0_mean": 3.63
+ },
+ {
+  "district": "Mandya",
+  "doy": 290,
+  "et0_p90": 4.82,
+  "tmax_p90": 29.6,
+  "et0_mean": 3.64
+ },
+ {
+  "district": "Mandya",
+  "doy": 291,
+  "et0_p90": 4.89,
+  "tmax_p90": 29.7,
+  "et0_mean": 3.64
+ },
+ {
+  "district": "Mandya",
+  "doy": 292,
+  "et0_p90": 4.9,
+  "tmax_p90": 29.7,
+  "et0_mean": 3.65
+ },
+ {
+  "district": "Mandya",
+  "doy": 293,
+  "et0_p90": 4.93,
+  "tmax_p90": 29.8,
+  "et0_mean": 3.66
+ },
+ {
+  "district": "Mandya",
+  "doy": 294,
+  "et0_p90": 4.93,
+  "tmax_p90": 29.8,
+  "et0_mean": 3.66
+ },
+ {
+  "district": "Mandya",
+  "doy": 295,
+  "et0_p90": 4.94,
+  "tmax_p90": 29.8,
+  "et0_mean": 3.66
+ },
+ {
+  "district": "Mandya",
+  "doy": 296,
+  "et0_p90": 4.95,
+  "tmax_p90": 29.81,
+  "et0_mean": 3.66
+ },
+ {
+  "district": "Mandya",
+  "doy": 297,
+  "et0_p90": 4.92,
+  "tmax_p90": 29.81,
+  "et0_mean": 3.66
+ },
+ {
+  "district": "Mandya",
+  "doy": 298,
+  "et0_p90": 4.91,
+  "tmax_p90": 29.81,
+  "et0_mean": 3.64
+ },
+ {
+  "district": "Mandya",
+  "doy": 299,
+  "et0_p90": 4.9,
+  "tmax_p90": 29.8,
+  "et0_mean": 3.61
+ },
+ {
+  "district": "Mandya",
+  "doy": 300,
+  "et0_p90": 4.88,
+  "tmax_p90": 29.7,
+  "et0_mean": 3.59
+ },
+ {
+  "district": "Mandya",
+  "doy": 301,
+  "et0_p90": 4.86,
+  "tmax_p90": 29.61,
+  "et0_mean": 3.57
+ },
+ {
+  "district": "Mandya",
+  "doy": 302,
+  "et0_p90": 4.85,
+  "tmax_p90": 29.51,
+  "et0_mean": 3.56
+ },
+ {
+  "district": "Mandya",
+  "doy": 303,
+  "et0_p90": 4.84,
+  "tmax_p90": 29.5,
+  "et0_mean": 3.56
+ },
+ {
+  "district": "Mandya",
+  "doy": 304,
+  "et0_p90": 4.82,
+  "tmax_p90": 29.4,
+  "et0_mean": 3.55
+ },
+ {
+  "district": "Mandya",
+  "doy": 305,
+  "et0_p90": 4.82,
+  "tmax_p90": 29.3,
+  "et0_mean": 3.54
+ },
+ {
+  "district": "Mandya",
+  "doy": 306,
+  "et0_p90": 4.79,
+  "tmax_p90": 29.3,
+  "et0_mean": 3.53
+ },
+ {
+  "district": "Mandya",
+  "doy": 307,
+  "et0_p90": 4.79,
+  "tmax_p90": 29.1,
+  "et0_mean": 3.52
+ },
+ {
+  "district": "Mandya",
+  "doy": 308,
+  "et0_p90": 4.76,
+  "tmax_p90": 29.0,
+  "et0_mean": 3.51
+ },
+ {
+  "district": "Mandya",
+  "doy": 309,
+  "et0_p90": 4.74,
+  "tmax_p90": 28.81,
+  "et0_mean": 3.51
+ },
+ {
+  "district": "Mandya",
+  "doy": 310,
+  "et0_p90": 4.74,
+  "tmax_p90": 28.71,
+  "et0_mean": 3.53
+ },
+ {
+  "district": "Mandya",
+  "doy": 311,
+  "et0_p90": 4.74,
+  "tmax_p90": 28.7,
+  "et0_mean": 3.53
+ },
+ {
+  "district": "Mandya",
+  "doy": 312,
+  "et0_p90": 4.81,
+  "tmax_p90": 28.7,
+  "et0_mean": 3.54
+ },
+ {
+  "district": "Mandya",
+  "doy": 313,
+  "et0_p90": 4.81,
+  "tmax_p90": 28.6,
+  "et0_mean": 3.57
+ },
+ {
+  "district": "Mandya",
+  "doy": 314,
+  "et0_p90": 4.81,
+  "tmax_p90": 28.6,
+  "et0_mean": 3.61
+ },
+ {
+  "district": "Mandya",
+  "doy": 315,
+  "et0_p90": 4.81,
+  "tmax_p90": 28.7,
+  "et0_mean": 3.62
+ },
+ {
+  "district": "Mandya",
+  "doy": 316,
+  "et0_p90": 4.81,
+  "tmax_p90": 28.7,
+  "et0_mean": 3.64
+ },
+ {
+  "district": "Mandya",
+  "doy": 317,
+  "et0_p90": 4.81,
+  "tmax_p90": 28.8,
+  "et0_mean": 3.67
+ },
+ {
+  "district": "Mandya",
+  "doy": 318,
+  "et0_p90": 4.81,
+  "tmax_p90": 28.8,
+  "et0_mean": 3.68
+ },
+ {
+  "district": "Mandya",
+  "doy": 319,
+  "et0_p90": 4.81,
+  "tmax_p90": 28.9,
+  "et0_mean": 3.66
+ },
+ {
+  "district": "Mandya",
+  "doy": 320,
+  "et0_p90": 4.81,
+  "tmax_p90": 28.92,
+  "et0_mean": 3.65
+ },
+ {
+  "district": "Mandya",
+  "doy": 321,
+  "et0_p90": 4.8,
+  "tmax_p90": 28.9,
+  "et0_mean": 3.65
+ },
+ {
+  "district": "Mandya",
+  "doy": 322,
+  "et0_p90": 4.81,
+  "tmax_p90": 28.9,
+  "et0_mean": 3.66
+ },
+ {
+  "district": "Mandya",
+  "doy": 323,
+  "et0_p90": 4.8,
+  "tmax_p90": 28.92,
+  "et0_mean": 3.66
+ },
+ {
+  "district": "Mandya",
+  "doy": 324,
+  "et0_p90": 4.81,
+  "tmax_p90": 29.1,
+  "et0_mean": 3.66
+ },
+ {
+  "district": "Mandya",
+  "doy": 325,
+  "et0_p90": 4.81,
+  "tmax_p90": 29.1,
+  "et0_mean": 3.66
+ },
+ {
+  "district": "Mandya",
+  "doy": 326,
+  "et0_p90": 4.81,
+  "tmax_p90": 29.2,
+  "et0_mean": 3.65
+ },
+ {
+  "district": "Mandya",
+  "doy": 327,
+  "et0_p90": 4.78,
+  "tmax_p90": 29.2,
+  "et0_mean": 3.63
+ },
+ {
+  "district": "Mandya",
+  "doy": 328,
+  "et0_p90": 4.76,
+  "tmax_p90": 29.2,
+  "et0_mean": 3.62
+ },
+ {
+  "district": "Mandya",
+  "doy": 329,
+  "et0_p90": 4.8,
+  "tmax_p90": 29.2,
+  "et0_mean": 3.62
+ },
+ {
+  "district": "Mandya",
+  "doy": 330,
+  "et0_p90": 4.8,
+  "tmax_p90": 29.21,
+  "et0_mean": 3.61
+ },
+ {
+  "district": "Mandya",
+  "doy": 331,
+  "et0_p90": 4.81,
+  "tmax_p90": 29.3,
+  "et0_mean": 3.61
+ },
+ {
+  "district": "Mandya",
+  "doy": 332,
+  "et0_p90": 4.8,
+  "tmax_p90": 29.2,
+  "et0_mean": 3.62
+ },
+ {
+  "district": "Mandya",
+  "doy": 333,
+  "et0_p90": 4.81,
+  "tmax_p90": 29.2,
+  "et0_mean": 3.64
+ },
+ {
+  "district": "Mandya",
+  "doy": 334,
+  "et0_p90": 4.84,
+  "tmax_p90": 29.2,
+  "et0_mean": 3.68
+ },
+ {
+  "district": "Mandya",
+  "doy": 335,
+  "et0_p90": 4.84,
+  "tmax_p90": 29.2,
+  "et0_mean": 3.71
+ },
+ {
+  "district": "Mandya",
+  "doy": 336,
+  "et0_p90": 4.87,
+  "tmax_p90": 29.2,
+  "et0_mean": 3.72
+ },
+ {
+  "district": "Mandya",
+  "doy": 337,
+  "et0_p90": 4.87,
+  "tmax_p90": 29.3,
+  "et0_mean": 3.72
+ },
+ {
+  "district": "Mandya",
+  "doy": 338,
+  "et0_p90": 4.88,
+  "tmax_p90": 29.3,
+  "et0_mean": 3.72
+ },
+ {
+  "district": "Mandya",
+  "doy": 339,
+  "et0_p90": 4.9,
+  "tmax_p90": 29.31,
+  "et0_mean": 3.73
+ },
+ {
+  "district": "Mandya",
+  "doy": 340,
+  "et0_p90": 4.91,
+  "tmax_p90": 29.4,
+  "et0_mean": 3.72
+ },
+ {
+  "district": "Mandya",
+  "doy": 341,
+  "et0_p90": 4.94,
+  "tmax_p90": 29.4,
+  "et0_mean": 3.73
+ },
+ {
+  "district": "Mandya",
+  "doy": 342,
+  "et0_p90": 4.96,
+  "tmax_p90": 29.41,
+  "et0_mean": 3.75
+ },
+ {
+  "district": "Mandya",
+  "doy": 343,
+  "et0_p90": 4.99,
+  "tmax_p90": 29.5,
+  "et0_mean": 3.79
+ },
+ {
+  "district": "Mandya",
+  "doy": 344,
+  "et0_p90": 4.99,
+  "tmax_p90": 29.5,
+  "et0_mean": 3.81
+ },
+ {
+  "district": "Mandya",
+  "doy": 345,
+  "et0_p90": 4.99,
+  "tmax_p90": 29.4,
+  "et0_mean": 3.84
+ },
+ {
+  "district": "Mandya",
+  "doy": 346,
+  "et0_p90": 4.99,
+  "tmax_p90": 29.5,
+  "et0_mean": 3.86
+ },
+ {
+  "district": "Mandya",
+  "doy": 347,
+  "et0_p90": 5.0,
+  "tmax_p90": 29.5,
+  "et0_mean": 3.87
+ },
+ {
+  "district": "Mandya",
+  "doy": 348,
+  "et0_p90": 5.02,
+  "tmax_p90": 29.5,
+  "et0_mean": 3.88
+ },
+ {
+  "district": "Mandya",
+  "doy": 349,
+  "et0_p90": 5.02,
+  "tmax_p90": 29.5,
+  "et0_mean": 3.89
+ },
+ {
+  "district": "Mandya",
+  "doy": 350,
+  "et0_p90": 5.04,
+  "tmax_p90": 29.6,
+  "et0_mean": 3.93
+ },
+ {
+  "district": "Mandya",
+  "doy": 351,
+  "et0_p90": 5.05,
+  "tmax_p90": 29.6,
+  "et0_mean": 3.97
+ },
+ {
+  "district": "Mandya",
+  "doy": 352,
+  "et0_p90": 5.03,
+  "tmax_p90": 29.6,
+  "et0_mean": 3.99
+ },
+ {
+  "district": "Mandya",
+  "doy": 353,
+  "et0_p90": 5.02,
+  "tmax_p90": 29.51,
+  "et0_mean": 4.03
+ },
+ {
+  "district": "Mandya",
+  "doy": 354,
+  "et0_p90": 5.0,
+  "tmax_p90": 29.5,
+  "et0_mean": 4.06
+ },
+ {
+  "district": "Mandya",
+  "doy": 355,
+  "et0_p90": 4.98,
+  "tmax_p90": 29.5,
+  "et0_mean": 4.09
+ },
+ {
+  "district": "Mandya",
+  "doy": 356,
+  "et0_p90": 4.97,
+  "tmax_p90": 29.5,
+  "et0_mean": 4.12
+ },
+ {
+  "district": "Mandya",
+  "doy": 357,
+  "et0_p90": 4.97,
+  "tmax_p90": 29.41,
+  "et0_mean": 4.13
+ },
+ {
+  "district": "Mandya",
+  "doy": 358,
+  "et0_p90": 4.97,
+  "tmax_p90": 29.41,
+  "et0_mean": 4.13
+ },
+ {
+  "district": "Mandya",
+  "doy": 359,
+  "et0_p90": 4.97,
+  "tmax_p90": 29.5,
+  "et0_mean": 4.15
+ },
+ {
+  "district": "Mandya",
+  "doy": 360,
+  "et0_p90": 4.97,
+  "tmax_p90": 29.5,
+  "et0_mean": 4.18
+ },
+ {
+  "district": "Mandya",
+  "doy": 361,
+  "et0_p90": 4.98,
+  "tmax_p90": 29.5,
+  "et0_mean": 4.21
+ },
+ {
+  "district": "Mandya",
+  "doy": 362,
+  "et0_p90": 4.98,
+  "tmax_p90": 29.5,
+  "et0_mean": 4.24
+ },
+ {
+  "district": "Mandya",
+  "doy": 363,
+  "et0_p90": 5.02,
+  "tmax_p90": 29.51,
+  "et0_mean": 4.26
+ },
+ {
+  "district": "Mandya",
+  "doy": 364,
+  "et0_p90": 5.03,
+  "tmax_p90": 29.6,
+  "et0_mean": 4.27
+ },
+ {
+  "district": "Mandya",
+  "doy": 365,
+  "et0_p90": 5.05,
+  "tmax_p90": 29.61,
+  "et0_mean": 4.28
+ }
+]
