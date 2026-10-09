@@ -1,0 +1,3 @@
+# Agent package (installed into the AgentLayer by `sam build`). boto3 is provided by the Lambda runtime
+# but strands pulls a compatible version anyway.
+strands-agents==1.59.0

@@ -2,6 +2,42 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: ThirstCast SAM Stack
 
+Parameters:
+  ModelId:
+    Type: String
+    Default: ""
+    Description: Bedrock model ID or inference-profile ID (docs/decisions.md). Empty = template mode only.
+  AskMode:
+    Type: String
+    Default: llm
+    AllowedValues: [llm, template]
+    Description: Kill switch for Bedrock. "template" forces the non-LLM advisory.
+  AmplifyOrigin:
+    Type: String
+    Default: ""
+    Description: Amplify app origin for CORS, e.g. https://main.d123abc.amplifyapp.com (no trailing slash). Empty = localhost only.
+  AlertEmail1:
+    Type: String
+    Default: ""
+    Description: Email for SNS thirstwave alerts (optional). Each address must confirm the subscription.
+  AlertEmail2:
+    Type: String
+    Default: ""
+  AlertEmail3:
+    Type: String
+    Default: ""
+  AlertEmail4:
+    Type: String
+    Default: ""
+
+Conditions:
+  HasModel: !Not [!Equals [!Ref ModelId, ""]]
+  HasAmplifyOrigin: !Not [!Equals [!Ref AmplifyOrigin, ""]]
+  HasEmail1: !Not [!Equals [!Ref AlertEmail1, ""]]
+  HasEmail2: !Not [!Equals [!Ref AlertEmail2, ""]]
+  HasEmail3: !Not [!Equals [!Ref AlertEmail3, ""]]
+  HasEmail4: !Not [!Equals [!Ref AlertEmail4, ""]]
+
 Globals:
   Function:
     Timeout: 10
@@ -9,6 +45,12 @@ Globals:
     Runtime: python3.12
     Architectures:
       - x86_64
+    Environment:
+      Variables:
+        CLIMATOLOGY_TABLE: !Ref ClimatologyTable
+        STATUS_TABLE: !Ref StatusTable
+        CONFIG_TABLE: !Ref ConfigTable
+        BUCKET_NAME: !Ref DataBucket
 
 Resources:
   DataBucket:
@@ -63,10 +105,31 @@ Resources:
         - AttributeName: pk
           KeyType: HASH
 
+  # Pure-Python core. No BuildMethod on purpose: core/ is zipped as-is, so the layer contains
+  # python/thirstcast_core -> /opt/python/thirstcast_core. (With BuildMethod python3.12, SAM nests it
+  # as python/python/thirstcast_core and the import fails.)
   CoreLayer:
     Type: AWS::Serverless::LayerVersion
     Properties:
       ContentUri: core/
+      CompatibleRuntimes:
+        - python3.12
+
+  # DynamoRepo (functions/common/dynamo_repo.py) -> /opt/python/dynamo_repo.py
+  CommonLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      ContentUri: functions/common/
+      CompatibleRuntimes:
+        - python3.12
+    Metadata:
+      BuildMethod: python3.12
+
+  # Agent package + strands-agents (agent/requirements.txt) -> /opt/python/thirstcast_agent, /opt/python/prompts
+  AgentLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      ContentUri: ../agent/
       CompatibleRuntimes:
         - python3.12
     Metadata:
@@ -80,9 +143,21 @@ Resources:
           - "http://localhost:8080"
           - "http://127.0.0.1:8080"
           - "http://localhost:3000"
+          - !If [HasAmplifyOrigin, !Ref AmplifyOrigin, !Ref AWS::NoValue]
+        AllowMethods:
+          - GET
+          - POST
+          - OPTIONS
+        AllowHeaders:
+          - content-type
+        MaxAge: 600
       DefaultRouteSettings:
         ThrottlingBurstLimit: 10
         ThrottlingRateLimit: 5
+      RouteSettings:
+        "POST /ask":
+          ThrottlingBurstLimit: 2
+          ThrottlingRateLimit: 1
 
   ApiFunction:
     Type: AWS::Serverless::Function
@@ -91,12 +166,7 @@ Resources:
       Handler: app.lambda_handler
       Layers:
         - !Ref CoreLayer
-      Environment:
-        Variables:
-          CLIMATOLOGY_TABLE: !Ref ClimatologyTable
-          STATUS_TABLE: !Ref StatusTable
-          CONFIG_TABLE: !Ref ConfigTable
-          BUCKET_NAME: !Ref DataBucket
+        - !Ref CommonLayer
       Policies:
         - DynamoDBReadPolicy:
             TableName: !Ref ClimatologyTable
@@ -113,6 +183,18 @@ Resources:
             ApiId: !Ref HttpApi
             Path: /districts
             Method: GET
+        GetThirstwave:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HttpApi
+            Path: /thirstwave/{district}
+            Method: GET
+        GetReplay:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HttpApi
+            Path: /replay/{district}
+            Method: GET
 
   ApiFunctionLogGroup:
     Type: AWS::Logs::LogGroup
@@ -120,10 +202,131 @@ Resources:
       LogGroupName: !Sub "/aws/lambda/${ApiFunction}"
       RetentionInDays: 7
 
-  # TODO: DetectorFunction
-  # TODO: AgentFunction
-  # TODO: EventBridge schedule
-  # TODO: SNS topic
+  DetectorFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: functions/detector/
+      Handler: app.lambda_handler
+      Timeout: 60
+      MemorySize: 256
+      Layers:
+        - !Ref CoreLayer
+        - !Ref CommonLayer
+      Environment:
+        Variables:
+          ALERT_TOPIC_ARN: !Ref AlertTopic
+          SITE_URL: !If [HasAmplifyOrigin, !Ref AmplifyOrigin, ""]
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref StatusTable
+        - DynamoDBReadPolicy:
+            TableName: !Ref ClimatologyTable
+        - DynamoDBReadPolicy:
+            TableName: !Ref ConfigTable
+        - S3CrudPolicy:
+            BucketName: !Ref DataBucket
+        - SNSPublishMessagePolicy:
+            TopicName: !GetAtt AlertTopic.TopicName
+      Events:
+        Daily:
+          Type: Schedule
+          Properties:
+            Schedule: cron(30 0 * * ? *)   # 00:30 UTC = 06:00 IST daily
+            Description: ThirstCast daily detector run (06:00 IST)
+            Enabled: true
+
+  DetectorFunctionLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub "/aws/lambda/${DetectorFunction}"
+      RetentionInDays: 7
+
+  AgentFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: functions/agent/
+      Handler: app.lambda_handler
+      Timeout: 29
+      MemorySize: 1024
+      ReservedConcurrentExecutions: 2
+      Layers:
+        - !Ref CoreLayer
+        - !Ref CommonLayer
+        - !Ref AgentLayer
+      Environment:
+        Variables:
+          MODEL_PROVIDER: !If [HasModel, bedrock, none]
+          MODEL_ID: !Ref ModelId
+          ASK_MODE: !Ref AskMode
+          MAX_TOKENS: "400"
+          AGENT_TIME_BUDGET_S: "22"
+          BEDROCK_READ_TIMEOUT: "18"
+          OTEL_SDK_DISABLED: "true"
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref StatusTable
+        - DynamoDBReadPolicy:
+            TableName: !Ref ClimatologyTable
+        - DynamoDBReadPolicy:
+            TableName: !Ref ConfigTable
+        - Statement:
+            - Effect: Allow
+              Action:
+                - bedrock:InvokeModel
+                - bedrock:InvokeModelWithResponseStream
+              Resource:
+                - "arn:aws:bedrock:*::foundation-model/*"
+                - !Sub "arn:aws:bedrock:*:${AWS::AccountId}:inference-profile/*"
+      Events:
+        Ask:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HttpApi
+            Path: /ask
+            Method: POST
+
+  AgentFunctionLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub "/aws/lambda/${AgentFunction}"
+      RetentionInDays: 7
+
+  AlertTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      DisplayName: ThirstCast alerts
+
+  AlertSubscription1:
+    Type: AWS::SNS::Subscription
+    Condition: HasEmail1
+    Properties:
+      TopicArn: !Ref AlertTopic
+      Protocol: email
+      Endpoint: !Ref AlertEmail1
+
+  AlertSubscription2:
+    Type: AWS::SNS::Subscription
+    Condition: HasEmail2
+    Properties:
+      TopicArn: !Ref AlertTopic
+      Protocol: email
+      Endpoint: !Ref AlertEmail2
+
+  AlertSubscription3:
+    Type: AWS::SNS::Subscription
+    Condition: HasEmail3
+    Properties:
+      TopicArn: !Ref AlertTopic
+      Protocol: email
+      Endpoint: !Ref AlertEmail3
+
+  AlertSubscription4:
+    Type: AWS::SNS::Subscription
+    Condition: HasEmail4
+    Properties:
+      TopicArn: !Ref AlertTopic
+      Protocol: email
+      Endpoint: !Ref AlertEmail4
 
 Outputs:
   ApiUrl:
@@ -141,3 +344,9 @@ Outputs:
   ConfigTableName:
     Description: "Config Table Name"
     Value: !Ref ConfigTable
+  DetectorFunctionName:
+    Description: "Detector Lambda (aws lambda invoke --function-name ...)"
+    Value: !Ref DetectorFunction
+  AlertTopicArn:
+    Description: "SNS alert topic"
+    Value: !Ref AlertTopic

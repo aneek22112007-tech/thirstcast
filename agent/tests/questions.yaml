@@ -1,0 +1,26 @@
+# PD-04 eval set. Each item: q, lang, district (expected, or null), tools (at least one must be used),
+# must_include (all, case-insensitive), must_not (none may appear). Run: python agent/tests/run_eval.py
+# Global checks on every answer: no certainty words, and litres answers must contain a range (digits–digits).
+- {id: en01, q: "Will Mandya face a thirstwave this week?", lang: en, district: Mandya, tools: [get_status], must_include: ["Mandya"]}
+- {id: en02, q: "Is there a thirstwave in Bengaluru right now?", lang: en, district: Bengaluru_Urban, tools: [get_status], must_include: ["Bengaluru"]}
+- {id: en03, q: "How much extra water do 2 acres of paddy in Mandya need this week?", lang: en, district: Mandya, tools: [water_gap], must_include: ["paddy", "estimate"], range: true}
+- {id: en04, q: "Is Kolar just hot this week, or also thirsty?", lang: en, district: Kolar, tools: [compare_with_heat], must_include: ["Kolar"]}
+- {id: en05, q: "How much extra water will Bengaluru's lakes lose this week?", lang: en, district: Bengaluru_Urban, tools: [get_status], must_include: ["estimate"]}
+- {id: en06, q: "What is the 7-day evaporative demand outlook for Kolar?", lang: en, district: Kolar, tools: [get_status, get_forecast], must_include: ["Kolar"]}
+- {id: en07, q: "How much extra water does 1 acre of sugarcane in Mandya need?", lang: en, district: Mandya, tools: [water_gap], must_include: ["sugarcane", "estimate"], range: true}
+- {id: en08, q: "Will the KRS reservoir lose extra water to evaporation?", lang: en, district: Mandya, tools: [get_status], must_include: ["KRS", "estimate"]}
+- {id: en09, q: "Will Mysuru have a thirstwave this week?", lang: en, district: null, tools: [], must_include: ["Bengaluru Urban", "Kolar", "Mandya"]}
+- {id: en10, q: "What is a thirstwave?", lang: en, district: null, tools: [], must_include: ["90th percentile"]}
+- {id: en11, q: "Tomato farmers in Kolar with 3 acres: how many litres extra?", lang: en, district: Kolar, tools: [water_gap], must_include: ["tomato"]}
+- {id: en12, q: "Did thirstwaves cause the Bengaluru water crisis?", lang: en, district: Bengaluru_Urban, tools: [get_status], must_include: ["supply"], must_not: ["thirstwaves caused the"]}
+- {id: hi01, q: "क्या इस हफ्ते मंड्या में थर्स्टवेव आएगी?", lang: hi, district: Mandya, tools: [get_status], must_include: ["मंड्या"]}
+- {id: hi02, q: "क्या बेंगलुरु में अभी थर्स्टवेव चल रही है?", lang: hi, district: Bengaluru_Urban, tools: [get_status], must_include: ["बेंगलुरु"]}
+- {id: hi03, q: "मंड्या में 2 एकड़ धान को इस हफ्ते कितना अतिरिक्त पानी चाहिए?", lang: hi, district: Mandya, tools: [water_gap], must_include: ["धान"], range: true}
+- {id: hi04, q: "कोलार में 1 एकड़ टमाटर को इस हफ्ते कितना अतिरिक्त पानी चाहिए?", lang: hi, district: Kolar, tools: [water_gap], must_include: ["टमाटर"]}
+- {id: hi05, q: "कोलार में इस हफ्ते सिर्फ़ गर्मी है या प्यास भी?", lang: hi, district: Kolar, tools: [compare_with_heat], must_include: ["कोलार"]}
+- {id: hi06, q: "बेंगलुरु की झीलों से इस हफ्ते कितना अतिरिक्त पानी उड़ेगा?", lang: hi, district: Bengaluru_Urban, tools: [get_status], must_include: ["अनुमान"]}
+- {id: hi07, q: "मंड्या में 1 एकड़ गन्ने को कितना अतिरिक्त पानी चाहिए?", lang: hi, district: Mandya, tools: [water_gap], must_include: ["गन्ना"], range: true}
+- {id: hi08, q: "कोलार में अगले 7 दिन का पूर्वानुमान क्या है?", lang: hi, district: Kolar, tools: [get_status, get_forecast], must_include: ["कोलार"]}
+- {id: hi09, q: "क्या मैसूर में थर्स्टवेव आएगी?", lang: hi, district: null, tools: [], must_include: ["मंड्या"]}
+- {id: hi10, q: "थर्स्टवेव क्या होती है?", lang: hi, district: null, tools: [], must_include: ["90वें"]}
+- {id: hi11, q: "मंड्या में रागी के लिए कितना अतिरिक्त पानी लगेगा?", lang: hi, district: Mandya, tools: [water_gap], must_include: ["रागी"]}

@@ -34,10 +34,11 @@ class LocalRepo(Repo):
 
     base_dir defaults to <repo>/data/out (resolved from this file's location)."""
 
-    def __init__(self, base_dir=None):
+    def __init__(self, base_dir=None, status_dir=None):
         if base_dir is None:
             base_dir = Path(__file__).resolve().parents[4] / "data" / "out"
         self.base = Path(base_dir)
+        self.status_dir = Path(status_dir) if status_dir else self.base / "status"
         self._clim = None
         self._config = None
 
@@ -53,11 +54,11 @@ class LocalRepo(Repo):
         return self._config
 
     def get_status(self, district):
-        p = self.base / "status" / f"{district}.json"
+        p = self.status_dir / f"{district}.json"
         return json.loads(p.read_text()) if p.exists() else None
 
     def put_status(self, item):
-        p = self.base / "status" / f"{item['district']}.json"
+        p = self.status_dir / f"{item['district']}.json"
         p.parent.mkdir(parents=True, exist_ok=True)
         p.write_text(json.dumps(item, indent=2, ensure_ascii=False) + "\n")
 

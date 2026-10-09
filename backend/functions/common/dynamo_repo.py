@@ -32,14 +32,24 @@ class DynamoRepo:
         return obj
 
     def get_climatology(self, district: str) -> List[Dict]:
-        response = self.climatology_table.query(
-            KeyConditionExpression=Key('district').eq(district)
-        )
-        return self._replace_decimals(response.get('Items', []))
+        items, kwargs = [], {'KeyConditionExpression': Key('district').eq(district)}
+        while True:
+            response = self.climatology_table.query(**kwargs)
+            items += response.get('Items', [])
+            if 'LastEvaluatedKey' not in response:
+                break
+            kwargs['ExclusiveStartKey'] = response['LastEvaluatedKey']
+        return self._replace_decimals(items)
 
     def get_config(self) -> Dict:
-        response = self.config_table.scan()
-        items = self._replace_decimals(response.get('Items', []))
+        raw, kwargs = [], {}
+        while True:
+            response = self.config_table.scan(**kwargs)
+            raw += response.get('Items', [])
+            if 'LastEvaluatedKey' not in response:
+                break
+            kwargs['ExclusiveStartKey'] = response['LastEvaluatedKey']
+        items = self._replace_decimals(raw)
         config = {}
         for item in items:
             config[item['pk']] = item
