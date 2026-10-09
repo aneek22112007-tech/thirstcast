@@ -1,0 +1,15 @@
+# Amplify Hosting build spec (static site, no build step).
+# Monorepo: set AMPLIFY_MONOREPO_APP_ROOT=frontend in the Amplify console (app root = frontend).
+version: 1
+applications:
+  - appRoot: frontend
+    frontend:
+      phases:
+        build:
+          commands: []
+      artifacts:
+        baseDirectory: /
+        files:
+          - '**/*'
+      cache:
+        paths: []

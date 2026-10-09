@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ThirstCast: methods and sources</title>
+  <meta name="description" content="How ThirstCast detects thirstwaves, corrects forecast bias and converts excess ET0 into litres.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand"><span class="logo" aria-hidden="true">💧</span><div><h1>ThirstCast</h1><p class="tagline">Methods, numbers and sources</p></div></div>
+    <nav aria-label="Main"><a href="index.html">← Back to the map</a></nav>
+  </header>
+  <article id="doc" class="doc"><p>Loading methods…</p></article>
+  <footer class="site-footer"><a href="index.html">Map</a><span>Source: docs/methods.md in the GitHub repo</span></footer>
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+  <script>
+    fetch("content/methods.md").then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
+      .then(md => {
+        document.getElementById("doc").innerHTML = window.marked ? marked.parse(md) : "<pre>" + md.replace(/</g, "&lt;") + "</pre>";
+        document.querySelectorAll("#doc img").forEach(i => { if (!i.alt) i.alt = "chart"; });
+      })
+      .catch(e => { document.getElementById("doc").textContent = "Could not load methods (" + e.message + ")."; });
+  </script>
+</body>
+</html>

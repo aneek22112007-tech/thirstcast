@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ThirstCast: thirstwave detection for Karnataka districts</title>
+  <meta name="description" content="ThirstCast detects thirstwaves (3+ days of extreme evaporative demand, ET0 above its local p90) and estimates, in litres, the extra water crops and lakes lose.">
+  <meta property="og:title" content="ThirstCast">
+  <meta property="og:description" content="Everyone forecasts how hot the air will be. Nobody forecasts how thirsty it will be.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">💧</span>
+      <div>
+        <h1>ThirstCast</h1>
+        <p class="tagline">Everyone forecasts how hot the air will be. Nobody forecasts how thirsty it will be.
+          ThirstCast detects thirstwaves and tells you, in litres, what the sky is about to drink.</p>
+      </div>
+    </div>
+    <nav aria-label="Main">
+      <a href="#map-section">Map</a>
+      <a href="#replay-section">Replay April 2024</a>
+      <a href="#chat-section">Ask</a>
+      <a href="methods.html">Methods</a>
+    </nav>
+    <span id="mock-badge" class="mock-badge" hidden>MOCK DATA</span>
+  </header>
+
+  <div id="error-banner" class="banner error" role="alert" hidden></div>
+
+  <main>
+    <section id="map-section" class="map-layout" aria-label="District map">
+      <div class="map-wrap">
+        <div id="map" role="region" aria-label="Map of Bengaluru Urban, Kolar and Mandya districts"></div>
+        <div class="map-caveat" id="map-caveat">District-centroid estimate (~10 km grid)</div>
+        <div class="legend" aria-label="Legend">
+          <div><span class="sw active"></span> ACTIVE: thirstwave now (3+ days above p90)</div>
+          <div><span class="sw watch"></span> WATCH: day(s) above p90 in the 7-day forecast</div>
+          <div><span class="sw none"></span> NONE: no day above p90</div>
+        </div>
+        <div id="replay-banner" class="replay-banner" hidden>Replay of April 2024 (historical data), not a live alert</div>
+      </div>
+
+      <aside id="panel" class="panel" aria-live="polite">
+        <div id="district-list" class="district-list"></div>
+        <div id="detail" class="detail">
+          <p class="muted">Select a district on the map or in the list to see its 7-day outlook.</p>
+        </div>
+      </aside>
+    </section>
+
+    <section id="replay-section" class="card" aria-labelledby="replay-title">
+      <div class="card-head">
+        <h2 id="replay-title">Replay: April 2024</h2>
+        <div class="replay-controls">
+          <label for="replay-district">District</label>
+          <select id="replay-district">
+            <option value="Bengaluru_Urban">Bengaluru Urban</option>
+            <option value="Kolar">Kolar</option>
+            <option value="Mandya">Mandya</option>
+          </select>
+          <button id="replay-start" class="btn primary">▶ Replay April 2024</button>
+        </div>
+      </div>
+      <p class="muted">Historical data (ERA5 archive), replayed day by day. Bengaluru's 2024 water crisis was fundamentally a
+        supply failure (poor 2023 monsoon, failing borewells, Cauvery shortfalls). We do not claim thirstwaves caused it; we show
+        the demand side nobody was measuring.</p>
+      <div id="replay-ui" hidden>
+        <div class="slider-row">
+          <button id="replay-play" class="btn" aria-label="Pause">⏸</button>
+          <input id="replay-slider" type="range" min="1" max="30" value="1" aria-label="Day of April 2024">
+          <output id="replay-date" for="replay-slider">1 Apr 2024</output>
+          <button id="replay-stop" class="btn">Back to live map</button>
+        </div>
+        <div class="counters">
+          <div class="counter"><div class="num" id="c-days">0</div><div class="lbl">days with ET0 above its p90 (of <span id="c-total">0</span> so far)</div></div>
+          <div class="counter"><div class="num" id="c-mm">+0.0 mm</div><div class="lbl">cumulative excess ET0<br><small>Sum of daily ET0 above the local day-of-year p90 threshold</small></div></div>
+          <div class="counter"><div class="num" id="c-litres">0</div><div class="lbl">extra litres per acre, reference crop (estimate)</div></div>
+          <div class="counter" id="c-lakes-wrap"><div class="num small" id="c-lakes">-</div><div class="lbl">extra lake / reservoir evaporation (estimate, upper bound)</div></div>
+        </div>
+        <div id="replay-chart" class="chart" aria-label="April 2024 ET0 vs p90 chart"></div>
+        <p class="muted small" id="replay-foot"></p>
+      </div>
+    </section>
+
+    <section id="chat-section" class="card" aria-labelledby="chat-title">
+      <h2 id="chat-title">Ask ThirstCast <span class="muted small">(English or हिन्दी)</span></h2>
+      <div class="chips" id="chips" aria-label="Try it prompts"></div>
+      <div id="messages" class="messages" aria-live="polite"></div>
+      <form id="ask-form" class="ask-form">
+        <label class="sr-only" for="question">Your question</label>
+        <input id="question" maxlength="500" autocomplete="off" placeholder="e.g. Will Mandya face a thirstwave this week?">
+        <button class="btn primary" type="submit" id="ask-btn">Ask</button>
+      </form>
+      <p class="muted small">Answers come only from ThirstCast's data tools. All litres are estimates. Answers can take up to ~25 s.</p>
+    </section>
+
+    <section class="card about" aria-labelledby="about-title">
+      <h2 id="about-title">About and limits</h2>
+      <ul>
+        <li><b>Thirstwave</b>: 3 or more consecutive days when reference evapotranspiration (ET0) is above its local
+          90th percentile for that day of year (1994-2023, ±7-day window).</li>
+        <li>One point per district (district centroid, ~10 km grid). Not field-level.</li>
+        <li>All litres are estimates, shown as ranges (crop Kc ±10%). Lake figures use the full lake or reservoir area, so they are upper bounds.</li>
+        <li>Forecasts are corrected for the offset between the forecast model and the ERA5 archive (days 6-30 ago).</li>
+        <li>Advisory only. Data: Open-Meteo (ERA5, forecast), FAO-56, DataMeet. See <a href="methods.html">Methods</a>.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>ThirstCast · Team LLF · AWS × Bharat Environmental Hacks</span>
+    <a href="methods.html">Methods &amp; sources</a>
+    <span>Map data © OpenStreetMap contributors · District boundaries © DataMeet (CC BY 2.5 IN)</span>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="config.js"></script>
+  <script src="api.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
