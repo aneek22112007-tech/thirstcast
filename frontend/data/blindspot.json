@@ -1,0 +1,104 @@
+{
+  "generated_by": "frontend/scripts/build_static_data.py",
+  "events_source": "data/out/blindspot_events.json",
+  "daily_source": "data/raw/archive_Mandya_1994_2023.json (era5_seamless) joined to data/out/climatology.json",
+  "definition": "A blindspot event is a thirstwave (3+ days with ET0 above its day-of-year p90) during which Tmax stayed at or below its own day-of-year p90 on every day.",
+  "blindspot_events": 129,
+  "by_district": {
+    "Bengaluru_Urban": 47,
+    "Kolar": 49,
+    "Mandya": 33
+  },
+  "example": {
+    "district": "Mandya",
+    "name": "Mandya",
+    "start": "2023-04-08",
+    "end": "2023-04-14",
+    "days": 7,
+    "excess_mm": 2.62,
+    "max_tmax_c": 36.2,
+    "max_tmax_minus_p90_c": 0.0,
+    "tmax_days_above_p90": 0,
+    "in_sample": true,
+    "daily": [
+      {
+        "date": "2023-04-08",
+        "doy": 98,
+        "et0": 7.6,
+        "p90": 7.12,
+        "flag": true,
+        "excess_mm": 0.48,
+        "tmax": 34.0,
+        "tmax_p90": 36.3,
+        "tmax_flag": false
+      },
+      {
+        "date": "2023-04-09",
+        "doy": 99,
+        "et0": 7.12,
+        "p90": 7.1,
+        "flag": true,
+        "excess_mm": 0.02,
+        "tmax": 33.9,
+        "tmax_p90": 36.3,
+        "tmax_flag": false
+      },
+      {
+        "date": "2023-04-10",
+        "doy": 100,
+        "et0": 7.4,
+        "p90": 7.05,
+        "flag": true,
+        "excess_mm": 0.35,
+        "tmax": 34.5,
+        "tmax_p90": 36.3,
+        "tmax_flag": false
+      },
+      {
+        "date": "2023-04-11",
+        "doy": 101,
+        "et0": 7.25,
+        "p90": 6.99,
+        "flag": true,
+        "excess_mm": 0.26,
+        "tmax": 34.8,
+        "tmax_p90": 36.3,
+        "tmax_flag": false
+      },
+      {
+        "date": "2023-04-12",
+        "doy": 102,
+        "et0": 7.47,
+        "p90": 6.93,
+        "flag": true,
+        "excess_mm": 0.54,
+        "tmax": 35.6,
+        "tmax_p90": 36.2,
+        "tmax_flag": false
+      },
+      {
+        "date": "2023-04-13",
+        "doy": 103,
+        "et0": 7.65,
+        "p90": 6.89,
+        "flag": true,
+        "excess_mm": 0.76,
+        "tmax": 36.2,
+        "tmax_p90": 36.2,
+        "tmax_flag": false
+      },
+      {
+        "date": "2023-04-14",
+        "doy": 104,
+        "et0": 7.05,
+        "p90": 6.84,
+        "flag": true,
+        "excess_mm": 0.21,
+        "tmax": 35.6,
+        "tmax_p90": 36.2,
+        "tmax_flag": false
+      }
+    ]
+  },
+  "caveat": "1994-2023 events are in-sample for the thresholds. District-centroid estimate (~10 km grid). Tmax p90 is a statistical threshold, not an official IMD heatwave criterion."
+}
