@@ -1,0 +1,160 @@
+{
+  "generated_by": "frontend/scripts/build_static_data.py",
+  "sources": [
+    "data/config/districts.json",
+    "data/config/crops.json",
+    "data/config/lakes.json"
+  ],
+  "districts": [
+    {
+      "id": "Bengaluru_Urban",
+      "name": "Bengaluru Urban",
+      "lat": 12.9508,
+      "lon": 77.5959,
+      "crops": [],
+      "lakes": [
+        "Bellandur",
+        "Varthur"
+      ],
+      "centroid_source": "Polygon centroid of DataMeet Census-2011 district boundary"
+    },
+    {
+      "id": "Kolar",
+      "name": "Kolar",
+      "lat": 13.1393,
+      "lon": 78.2177,
+      "crops": [
+        "tomato",
+        "ragi"
+      ],
+      "lakes": [],
+      "centroid_source": "Polygon centroid of DataMeet Census-2011 district boundary"
+    },
+    {
+      "id": "Mandya",
+      "name": "Mandya",
+      "lat": 12.6104,
+      "lon": 76.798,
+      "crops": [
+        "paddy",
+        "sugarcane"
+      ],
+      "lakes": [
+        "KRS"
+      ],
+      "centroid_source": "Polygon centroid of DataMeet Census-2011 district boundary"
+    }
+  ],
+  "crops": [
+    {
+      "id": "paddy",
+      "name": "Paddy (rice)",
+      "name_hi": "धान",
+      "kc": 1.2,
+      "stage": "mid-season (Kc mid)",
+      "fao56_row": "Table 12, i. Cereals: Rice (Kc ini 1.05, Kc mid 1.20, Kc end 0.90-0.60)",
+      "source": "Allen et al. (1998) FAO Irrigation and Drainage Paper 56, Table 12",
+      "url": "https://www.fao.org/4/x0490e/x0490e0b.htm",
+      "verified": true,
+      "verified_on": "2026-10-09"
+    },
+    {
+      "id": "sugarcane",
+      "name": "Sugarcane",
+      "name_hi": "गन्ना",
+      "kc": 1.25,
+      "stage": "mid-season (Kc mid)",
+      "fao56_row": "Table 12, k. Sugar Cane (Kc ini 0.40, Kc mid 1.25, Kc end 0.75)",
+      "source": "Allen et al. (1998) FAO Irrigation and Drainage Paper 56, Table 12",
+      "url": "https://www.fao.org/4/x0490e/x0490e0b.htm",
+      "verified": true,
+      "verified_on": "2026-10-09"
+    },
+    {
+      "id": "tomato",
+      "name": "Tomato",
+      "name_hi": "टमाटर",
+      "kc": 1.15,
+      "stage": "mid-season (Kc mid)",
+      "fao56_row": "Table 12, b. Vegetables - Solanum Family: Tomato (Kc mid 1.15, Kc end 0.70-0.90)",
+      "source": "Allen et al. (1998) FAO Irrigation and Drainage Paper 56, Table 12",
+      "url": "https://www.fao.org/4/x0490e/x0490e0b.htm",
+      "verified": true,
+      "verified_on": "2026-10-09"
+    },
+    {
+      "id": "ragi",
+      "name": "Ragi (finger millet)",
+      "name_hi": "रागी",
+      "kc": 1.0,
+      "stage": "mid-season (Kc mid)",
+      "fao56_row": "Table 12, i. Cereals: Millet (Kc mid 1.00, Kc end 0.30). FAO-56 has no separate finger-millet row; the generic 'Millet' row is used.",
+      "source": "Allen et al. (1998) FAO Irrigation and Drainage Paper 56, Table 12",
+      "url": "https://www.fao.org/4/x0490e/x0490e0b.htm",
+      "verified": true,
+      "verified_on": "2026-10-09"
+    }
+  ],
+  "lakes": [
+    {
+      "id": "Bellandur",
+      "name": "Bellandur Lake",
+      "district": "Bengaluru_Urban",
+      "area_m2": 3668900,
+      "area_text": "366.89 ha (906 acres 25 guntas)",
+      "area_basis": "Legal lake extent from revenue records (RTC), as reported by IISc. Upper bound of the open-water surface; the current water spread is smaller (KTCDA 2026 compliance report: 794 acres 26 guntas of water-spread area).",
+      "kc": 1.05,
+      "kc_source": "FAO-56 Table 12: Open Water, < 2 m depth or in subhumid climates or tropics, Kc 1.05",
+      "source": "Ramachandra T.V. et al. (2017) Bellandur and Varthur Lakes Rejuvenation Blueprint, ENVIS Technical Report 116 / Sahyadri Conservation Series 34, EWRG, CES, IISc, sec. 2.1.1",
+      "url": "https://wgbis.ces.iisc.ac.in/energy/water/paper/ETR116/sec2.html",
+      "year": 2017,
+      "verified": true,
+      "verified_on": "2026-10-09",
+      "lat": 12.9371445,
+      "lon": 77.6720227,
+      "marker_source": "OpenStreetMap relation 19751547 centroid (ODbL)",
+      "marker_url": "https://www.openstreetmap.org/relation/19751547"
+    },
+    {
+      "id": "Varthur",
+      "name": "Varthur Lake",
+      "district": "Bengaluru_Urban",
+      "area_m2": 1808000,
+      "area_text": "180.8 ha (447 acres 14 guntas)",
+      "area_basis": "Lake extent from revenue records, as reported by IISc. Upper bound of the open-water surface (another IISc study gives a 220 ha water spread; an older morphometric survey gives 147.8 ha).",
+      "kc": 1.05,
+      "kc_source": "FAO-56 Table 12: Open Water, < 2 m depth or in subhumid climates or tropics, Kc 1.05",
+      "source": "Ramachandra T.V. et al. (2017) Bellandur and Varthur Lakes Rejuvenation Blueprint, ENVIS Technical Report 116 / Sahyadri Conservation Series 34, EWRG, CES, IISc, sec. 2.1.2",
+      "url": "https://wgbis.ces.iisc.ac.in/energy/water/paper/ETR116/sec2.html",
+      "year": 2017,
+      "verified": true,
+      "verified_on": "2026-10-09",
+      "lat": 12.9483533,
+      "lon": 77.739263,
+      "marker_source": "OpenStreetMap relation 19306126 centroid (ODbL)",
+      "marker_url": "https://www.openstreetmap.org/relation/19306126"
+    },
+    {
+      "id": "KRS",
+      "name": "KRS reservoir (Krishna Raja Sagara)",
+      "district": "Mandya",
+      "area_m2": 130000000,
+      "area_text": "130 km2 water-spread area at full reservoir level (124.8 ft)",
+      "area_basis": "Water spread at FULL reservoir level. In dry months the reservoir is lower, so this is an upper bound.",
+      "kc": 1.05,
+      "kc_source": "FAO-56 Table 12: Open Water, < 2 m depth or in subhumid climates or tropics, Kc 1.05",
+      "source": "Assessment of sedimentation in Krishnaraja Sagar reservoir of Karnataka, India using remote sensing, International Research Journal of Engineering and Technology (IRJET) Vol 6 Issue 9 (2019), study area section",
+      "url": "https://irjet.net/archives/V6/i9/IRJET-V6I9196.pdf",
+      "year": 2019,
+      "verified": true,
+      "verified_on": "2026-10-09",
+      "lat": 12.42472,
+      "lon": 76.57222,
+      "marker_source": "Wikipedia, Krishna Raja Sagara (dam infobox)",
+      "marker_url": "https://en.wikipedia.org/wiki/Krishna_Raja_Sagara"
+    }
+  ],
+  "litres_per_mm_per_acre": 4047,
+  "tanker_litres": 10000,
+  "caveat": "District-centroid estimate (~10 km grid)"
+}

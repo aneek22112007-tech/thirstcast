@@ -1,0 +1,86 @@
+/* ThirstCast design tokens. Water and earth. Used by every page. */
+/* Metric-matched fallbacks so the web-font swap does not shift the page. */
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Arial");
+  size-adjust: 107.64%;
+  ascent-override: 90.49%;
+  descent-override: 22.56%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Space Grotesk Fallback";
+  src: local("Arial");
+  size-adjust: 103%;
+  ascent-override: 93%;
+  descent-override: 24%;
+  line-gap-override: 0%;
+}
+:root {
+  --brand: #0c2340;
+  --brand-ink: #f7f1e8;
+  --ink: #142033;
+  --muted: #3e4e60;
+  --bg: #f6f3ee;
+  --card: #ffffff;
+  --sand: #f3eadf;
+  --sand-2: #e6d9c8;
+  --line: #e3d7c8;
+  --sky: #0f5f98;
+  --sky-bright: #2b88c4;
+  --sky-soft: #e6f3fb;
+  --leaf: #0f6844;
+  --leaf-soft: #e6f5ee;
+  --amber-ink: #6e4200;
+  --amber-fill: #f0c36a;
+  --red: #8f291f;
+  --red-soft: #fdeceb;
+  --focus: #0b5cab;
+  --btn-bg: #0c2340;
+  --btn-ink: #ffffff;
+  --shadow: 0 12px 32px rgba(12, 35, 64, 0.08);
+  --shadow-sm: 0 1px 2px rgba(12, 35, 64, 0.06);
+  --radius: 18px;
+  --radius-sm: 10px;
+  --space: 8px;
+  --max: 1120px;
+  --header-h: 4.5rem;
+  --font-sans: "Inter", "Inter Fallback", "Segoe UI", sans-serif;
+  --font-display: "Space Grotesk", "Space Grotesk Fallback", "Inter", sans-serif;
+  --font-hi: "Noto Sans Devanagari", "Inter", sans-serif;
+  --motion: 200ms;
+  --active: #8f291f;
+  --watch: #8a5a00;
+  --none: #0f6844;
+  --unknown: #5c6b7a;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --ink: #eef3f8;
+  --muted: #c5d0dc;
+  --bg: #0e1724;
+  --card: #172333;
+  --sand: #1b2838;
+  --sand-2: #243447;
+  --line: #31445c;
+  --sky: #9fd0ff;
+  --sky-bright: #7ebff0;
+  --sky-soft: #16344c;
+  --leaf: #9ee0bf;
+  --leaf-soft: #143528;
+  --amber-ink: #f6c56b;
+  --amber-fill: #8a5a10;
+  --red: #ffb4ab;
+  --red-soft: #3c221f;
+  --focus: #ffbf47;
+  --btn-bg: #9fd0ff;
+  --btn-ink: #071422;
+  --shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  color-scheme: dark;
+}
+
+html[lang="hi"] body {
+  font-family: var(--font-hi);
+}
