@@ -1,0 +1,8 @@
+{
+ "tools_used": [],
+ "district": null,
+ "caveat": "Estimates only. District-centroid estimate (~10 km grid)",
+ "answer": "MOCK answer (template mode). Connect the live API (USE_MOCK=false) to get a real template advisory.",
+ "lang": "en",
+ "mode": "template"
+}

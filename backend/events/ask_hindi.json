@@ -1,0 +1,2 @@
+{"version": "2.0", "routeKey": "POST /ask", "rawPath": "/ask", "isBase64Encoded": false,
+ "body": "{\"question\": \"क्या इस हफ्ते मंड्या में थर्स्टवेव आएगी?\"}"}

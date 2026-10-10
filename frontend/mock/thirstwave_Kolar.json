@@ -1,0 +1,90 @@
+{
+ "district": "Kolar",
+ "status": "NONE",
+ "day_in_wave": 0,
+ "run_date": "2023-10-05",
+ "forecast": [
+  {
+   "date": "2023-10-05",
+   "et0": 4.63,
+   "p90": 4.81,
+   "flag": false,
+   "tmax": 30.7,
+   "tmax_p90": 29.5,
+   "tmax_flag": true
+  },
+  {
+   "date": "2023-10-06",
+   "et0": 4.39,
+   "p90": 4.85,
+   "flag": false,
+   "tmax": 29.6,
+   "tmax_p90": 29.6,
+   "tmax_flag": false
+  },
+  {
+   "date": "2023-10-07",
+   "et0": 4.26,
+   "p90": 4.87,
+   "flag": false,
+   "tmax": 30.4,
+   "tmax_p90": 29.6,
+   "tmax_flag": true
+  },
+  {
+   "date": "2023-10-08",
+   "et0": 3.64,
+   "p90": 4.89,
+   "flag": false,
+   "tmax": 29.7,
+   "tmax_p90": 29.6,
+   "tmax_flag": true
+  },
+  {
+   "date": "2023-10-09",
+   "et0": 3.06,
+   "p90": 4.89,
+   "flag": false,
+   "tmax": 28.8,
+   "tmax_p90": 29.6,
+   "tmax_flag": false
+  },
+  {
+   "date": "2023-10-10",
+   "et0": 3.82,
+   "p90": 4.87,
+   "flag": false,
+   "tmax": 29.3,
+   "tmax_p90": 29.6,
+   "tmax_flag": false
+  },
+  {
+   "date": "2023-10-11",
+   "et0": 3.99,
+   "p90": 4.87,
+   "flag": false,
+   "tmax": 29.0,
+   "tmax_p90": 29.5,
+   "tmax_flag": false
+  }
+ ],
+ "excess_mm_7d": 0.0,
+ "forecast_wave": null,
+ "excess_definition": "Sum over the 7 forecast days of max(bias-adjusted ET0 - day-of-year p90, 0)",
+ "extra_litres_per_acre": {
+  "tomato": [
+   0,
+   0
+  ],
+  "ragi": [
+   0,
+   0
+  ]
+ },
+ "extra_litres_lakes": {},
+ "bias_offset_mm": 0.0,
+ "bias_note": "",
+ "updated_at": "2023-10-05T06:00:00+05:30",
+ "caveat": "District-centroid estimate (~10 km grid)",
+ "mock_note": "MOCK: historical ERA5 data for 2023-10-05 evaluated as if it were a forecast (no bias correction). Not live."
+}

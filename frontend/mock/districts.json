@@ -1,0 +1,33 @@
+{
+ "districts": [
+  {
+   "id": "Bengaluru_Urban",
+   "name": "Bengaluru Urban",
+   "lat": 12.9508,
+   "lon": 77.5959,
+   "status": "WATCH",
+   "day_in_wave": 0,
+   "updated_at": "2023-10-05T06:00:00+05:30"
+  },
+  {
+   "id": "Kolar",
+   "name": "Kolar",
+   "lat": 13.1393,
+   "lon": 78.2177,
+   "status": "NONE",
+   "day_in_wave": 0,
+   "updated_at": "2023-10-05T06:00:00+05:30"
+  },
+  {
+   "id": "Mandya",
+   "name": "Mandya",
+   "lat": 12.6104,
+   "lon": 76.798,
+   "status": "ACTIVE",
+   "day_in_wave": 4,
+   "updated_at": "2023-10-05T06:00:00+05:30"
+  }
+ ],
+ "caveat": "District-centroid estimate (~10 km grid)",
+ "mock_note": "MOCK: historical ERA5 data for 2023-10-05 evaluated as if it were a forecast (no bias correction). Not live."
+}

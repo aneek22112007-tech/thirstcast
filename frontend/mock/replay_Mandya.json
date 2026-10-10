@@ -1,0 +1,418 @@
+{
+ "district": "Mandya",
+ "name": "Mandya",
+ "period": {
+  "start": "2024-04-01",
+  "end": "2024-04-30"
+ },
+ "days": [
+  {
+   "date": "2024-04-01",
+   "et0": 6.4,
+   "p90": 7.36,
+   "flag": false,
+   "in_wave": false,
+   "excess_mm": 0.0,
+   "cum_excess_mm": 0.0,
+   "tmax": 36.2,
+   "tmax_p90": 36.2,
+   "tmax_flag": false
+  },
+  {
+   "date": "2024-04-02",
+   "et0": 6.59,
+   "p90": 7.3,
+   "flag": false,
+   "in_wave": false,
+   "excess_mm": 0.0,
+   "cum_excess_mm": 0.0,
+   "tmax": 36.8,
+   "tmax_p90": 36.2,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-03",
+   "et0": 7.26,
+   "p90": 7.23,
+   "flag": true,
+   "in_wave": false,
+   "excess_mm": 0.03,
+   "cum_excess_mm": 0.03,
+   "tmax": 37.2,
+   "tmax_p90": 36.2,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-04",
+   "et0": 7.13,
+   "p90": 7.17,
+   "flag": false,
+   "in_wave": false,
+   "excess_mm": 0.0,
+   "cum_excess_mm": 0.03,
+   "tmax": 37.2,
+   "tmax_p90": 36.3,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-05",
+   "et0": 7.23,
+   "p90": 7.14,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 0.09,
+   "cum_excess_mm": 0.12,
+   "tmax": 37.5,
+   "tmax_p90": 36.3,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-06",
+   "et0": 7.62,
+   "p90": 7.14,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 0.48,
+   "cum_excess_mm": 0.6,
+   "tmax": 38.1,
+   "tmax_p90": 36.3,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-07",
+   "et0": 7.16,
+   "p90": 7.14,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 0.02,
+   "cum_excess_mm": 0.62,
+   "tmax": 37.3,
+   "tmax_p90": 36.3,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-08",
+   "et0": 7.14,
+   "p90": 7.12,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 0.02,
+   "cum_excess_mm": 0.64,
+   "tmax": 37.3,
+   "tmax_p90": 36.3,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-09",
+   "et0": 7.66,
+   "p90": 7.1,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 0.56,
+   "cum_excess_mm": 1.2,
+   "tmax": 36.8,
+   "tmax_p90": 36.3,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-10",
+   "et0": 7.86,
+   "p90": 7.05,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 0.81,
+   "cum_excess_mm": 2.01,
+   "tmax": 36.7,
+   "tmax_p90": 36.3,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-11",
+   "et0": 7.23,
+   "p90": 6.99,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 0.24,
+   "cum_excess_mm": 2.25,
+   "tmax": 37.0,
+   "tmax_p90": 36.3,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-12",
+   "et0": 6.31,
+   "p90": 6.93,
+   "flag": false,
+   "in_wave": false,
+   "excess_mm": 0.0,
+   "cum_excess_mm": 2.25,
+   "tmax": 35.1,
+   "tmax_p90": 36.2,
+   "tmax_flag": false
+  },
+  {
+   "date": "2024-04-13",
+   "et0": 6.63,
+   "p90": 6.89,
+   "flag": false,
+   "in_wave": false,
+   "excess_mm": 0.0,
+   "cum_excess_mm": 2.25,
+   "tmax": 36.1,
+   "tmax_p90": 36.2,
+   "tmax_flag": false
+  },
+  {
+   "date": "2024-04-14",
+   "et0": 7.35,
+   "p90": 6.84,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 0.51,
+   "cum_excess_mm": 2.76,
+   "tmax": 36.2,
+   "tmax_p90": 36.2,
+   "tmax_flag": false
+  },
+  {
+   "date": "2024-04-15",
+   "et0": 8.14,
+   "p90": 6.75,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 1.39,
+   "cum_excess_mm": 4.15,
+   "tmax": 37.4,
+   "tmax_p90": 36.2,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-16",
+   "et0": 7.48,
+   "p90": 6.73,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 0.75,
+   "cum_excess_mm": 4.9,
+   "tmax": 37.5,
+   "tmax_p90": 36.2,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-17",
+   "et0": 6.7,
+   "p90": 6.73,
+   "flag": false,
+   "in_wave": false,
+   "excess_mm": 0.0,
+   "cum_excess_mm": 4.9,
+   "tmax": 37.5,
+   "tmax_p90": 36.2,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-18",
+   "et0": 5.98,
+   "p90": 6.7,
+   "flag": false,
+   "in_wave": false,
+   "excess_mm": 0.0,
+   "cum_excess_mm": 4.9,
+   "tmax": 36.7,
+   "tmax_p90": 36.2,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-19",
+   "et0": 5.75,
+   "p90": 6.69,
+   "flag": false,
+   "in_wave": false,
+   "excess_mm": 0.0,
+   "cum_excess_mm": 4.9,
+   "tmax": 36.1,
+   "tmax_p90": 36.2,
+   "tmax_flag": false
+  },
+  {
+   "date": "2024-04-20",
+   "et0": 5.39,
+   "p90": 6.68,
+   "flag": false,
+   "in_wave": false,
+   "excess_mm": 0.0,
+   "cum_excess_mm": 4.9,
+   "tmax": 34.1,
+   "tmax_p90": 36.2,
+   "tmax_flag": false
+  },
+  {
+   "date": "2024-04-21",
+   "et0": 6.91,
+   "p90": 6.65,
+   "flag": true,
+   "in_wave": false,
+   "excess_mm": 0.26,
+   "cum_excess_mm": 5.16,
+   "tmax": 37.0,
+   "tmax_p90": 36.2,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-22",
+   "et0": 6.37,
+   "p90": 6.64,
+   "flag": false,
+   "in_wave": false,
+   "excess_mm": 0.0,
+   "cum_excess_mm": 5.16,
+   "tmax": 37.3,
+   "tmax_p90": 36.2,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-23",
+   "et0": 7.23,
+   "p90": 6.61,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 0.62,
+   "cum_excess_mm": 5.78,
+   "tmax": 37.4,
+   "tmax_p90": 36.2,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-24",
+   "et0": 7.43,
+   "p90": 6.61,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 0.82,
+   "cum_excess_mm": 6.6,
+   "tmax": 37.4,
+   "tmax_p90": 36.2,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-25",
+   "et0": 7.4,
+   "p90": 6.61,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 0.79,
+   "cum_excess_mm": 7.39,
+   "tmax": 37.5,
+   "tmax_p90": 36.2,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-26",
+   "et0": 7.6,
+   "p90": 6.54,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 1.06,
+   "cum_excess_mm": 8.45,
+   "tmax": 37.9,
+   "tmax_p90": 36.1,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-27",
+   "et0": 7.55,
+   "p90": 6.53,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 1.02,
+   "cum_excess_mm": 9.47,
+   "tmax": 38.0,
+   "tmax_p90": 36.1,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-28",
+   "et0": 7.55,
+   "p90": 6.52,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 1.03,
+   "cum_excess_mm": 10.5,
+   "tmax": 38.4,
+   "tmax_p90": 36.1,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-29",
+   "et0": 7.01,
+   "p90": 6.48,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 0.53,
+   "cum_excess_mm": 11.03,
+   "tmax": 37.5,
+   "tmax_p90": 36.0,
+   "tmax_flag": true
+  },
+  {
+   "date": "2024-04-30",
+   "et0": 7.13,
+   "p90": 6.46,
+   "flag": true,
+   "in_wave": true,
+   "excess_mm": 0.67,
+   "cum_excess_mm": 11.7,
+   "tmax": 38.4,
+   "tmax_p90": 36.0,
+   "tmax_flag": true
+  }
+ ],
+ "summary": {
+  "days_above_p90": 20,
+  "days_total": 30,
+  "days_in_wave": 18,
+  "cum_excess_mm": 11.7,
+  "cum_excess_definition": "Sum of daily ET0 above the local day-of-year p90 threshold",
+  "litres_per_acre_reference": 47350,
+  "litres_per_acre_reference_note": "Reference crop (Kc = 1): cum_excess_mm x 4047 L/acre per mm. Estimate.",
+  "extra_litres_per_acre": {
+   "paddy": [
+    51138,
+    62502
+   ],
+   "sugarcane": [
+    53269,
+    65106
+   ]
+  },
+  "tmax_days_above_p90": 24,
+  "lakes": {
+   "KRS": {
+    "value": 1597050000,
+    "label": "estimate"
+   }
+  },
+  "april_rank_1994_2024": 1,
+  "april_years_compared": 31,
+  "runs": [
+   {
+    "start": "2024-04-05",
+    "end": "2024-04-11",
+    "days": 7
+   },
+   {
+    "start": "2024-04-14",
+    "end": "2024-04-16",
+    "days": 3
+   },
+   {
+    "start": "2024-04-23",
+    "end": "2024-04-30",
+    "days": 8
+   }
+  ],
+  "bias_correction": "none (archive data only)"
+ },
+ "caveat": "District-centroid estimate (~10 km grid)",
+ "source": "Open-Meteo historical weather API, models=era5_seamless (ERA5 + ERA5-Land), et0_fao_evapotranspiration, temperature_2m_max"
+}
