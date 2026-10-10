@@ -9,3 +9,6 @@ node_modules
 data/out/status/
 data/raw/forecast/
 .pytest_cache/
+frontend/test-results/
+frontend/playwright-report/
+frontend/blob-report/
