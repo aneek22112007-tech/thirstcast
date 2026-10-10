@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0c2340"/>
+  <circle cx="980" cy="150" r="70" fill="#f6d27a"/>
+  <path d="M860 430c-70 90-150 150-150 230h300c0-80-80-140-150-230z" fill="#7ec8e8"/>
+  <ellipse cx="860" cy="520" rx="180" ry="36" fill="#1f7a4d"/>
+  <text x="72" y="180" fill="#f7f1e8" font-family="Georgia, serif" font-size="54">ThirstCast</text>
+  <text x="72" y="280" fill="#f7f1e8" font-family="Georgia, serif" font-size="40">Everyone forecasts how hot the air will be.</text>
+  <text x="72" y="340" fill="#f6d27a" font-family="Georgia, serif" font-size="40">Nobody forecasts how thirsty it will be.</text>
+  <text x="72" y="460" fill="#d7eef8" font-family="Georgia, serif" font-size="28">Bengaluru Urban · Kolar · Mandya</text>
+  <text x="72" y="520" fill="#d7eef8" font-family="Georgia, serif" font-size="24">District-centroid estimate (~10 km grid). Litres are estimates.</text>
+</svg>
