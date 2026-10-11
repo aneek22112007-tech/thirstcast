@@ -88,7 +88,21 @@ day-of-year p90, so a temperature-threshold alert would have stayed silent. Hot-
 * City household demand is not modelled.
 * 1994-2023 events are in-sample for the thresholds.
 
-## 10. Sources
+## 10. Thirst percentile ("why today")
+
+The overview reports where today's ET₀ sits inside the same ±7 day climatology used for the p90.
+`frontend/scripts/build_percentiles.py` reads `data/raw/archive_*_1994_2023.json` and stores, for each
+non-leap day of year, the sorted ET₀ values in that window as integer hundredths of a millimetre
+(`frontend/data/percentiles.json`). It does not store the expanded window twice.
+
+The page rebuilds day *d*−7 … *d*+7, wrapping with `(k−1) mod 365 + 1`, quantises today's ET₀ with
+`round(ET₀ × 100)`, and sets the percentile to `round(100 × count(value ≤ today) / N)`. A value of 100
+means today is at or above every reference value in the window. The panel also shows today's ET₀ and
+Tmax beside their own p90, the count of days above the ET₀ p90 in the 7-day window, the signed bias
+offset in mm/day, and the cumulative excess. It does not attribute the day to a weather driver,
+because no separate driver series was fetched.
+
+## 11. Sources
 
 Open-Meteo (Zippenfeld 2023, doi:10.5281/ZENODO.7970649; ERA5/ERA5-Land © Copernicus C3S); Allen et al. 1998,
 FAO-56; Kukal & Hobbins 2025, Earth's Future; The Hindu, 24 June 2025; Ramachandra et al. 2017 (IISc ETR-116);
