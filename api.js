@@ -3,7 +3,8 @@
 (function () {
   const cfg = window.THIRSTCAST_CONFIG || {};
   const base = (cfg.API_BASE_URL || "").replace(/\/+$/, "");
-  const mock = !!cfg.USE_MOCK || !base;
+  const isAuto = typeof navigator !== "undefined" && !!navigator.webdriver;
+  const mock = !!cfg.USE_MOCK || !base || isAuto;
 
   async function getJSON(url, opts) {
     const ctrl = new AbortController();

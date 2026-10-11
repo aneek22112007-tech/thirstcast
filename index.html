@@ -39,6 +39,7 @@
   </script>
 </head>
 <body>
+  <div id="scroll-progress" aria-hidden="true"></div>
   <a class="skip" href="#content" data-i18n="nav.skip">Skip to content</a>
 
   <!-- Navigation -->
@@ -61,10 +62,11 @@
 
     <nav class="topnav" aria-label="Main navigation" data-i18n-aria="nav.main">
       <a href="index.html" data-i18n="nav.overview">Overview</a>
-      <a href="app.html" data-i18n="nav.map">Live Dashboard</a>
+      <a href="#story-3d">3D Story</a>
+      <a href="#pilots">Districts</a>
       <a href="app.html#d=Bengaluru_Urban&replay=1" data-i18n="nav.replay">April 2024</a>
       <a href="methods.html" data-i18n="nav.methods">Methodology</a>
-      <a href="https://github.com/aneek22112007-tech/thirstcast" data-i18n="nav.github">GitHub</a>
+      <a href="app.html" data-i18n="nav.map">Live Dashboard</a>
     </nav>
 
     <div class="top-actions">
@@ -85,16 +87,13 @@
   <main id="content">
 
     <!-- ════════════════════════════════════════════════════ HERO ══ -->
-    <section class="hero-section" aria-labelledby="hero-headline">
-      <!-- Background: video with CSS animated fallback -->
+    <section class="hero hero-section" id="hero-section" aria-labelledby="hero">
+      <!-- Background: cinematic video with poster and fallback -->
       <div class="hero-video-wrap" aria-hidden="true">
-        <!-- Video intentionally omitted: polished CSS animated fallback below is used instead.
-             When licensed footage is available, add:
-             <video autoplay muted loop playsinline poster="img/hero-poster.jpg">
-               <source src="assets/hero.webm" type="video/webm">
-               <source src="assets/hero.mp4" type="video/mp4">
-             </video>
-        -->
+        <video autoplay muted loop playsinline poster="img/hero-poster.jpg" id="hero-video" class="hero-video-media" preload="metadata">
+          <source src="img/hero-bg.webm" type="video/webm">
+          <source src="img/hero-bg.mp4" type="video/mp4">
+        </video>
       </div>
       <div class="hero-particles" aria-hidden="true"></div>
       <div class="hero-overlay" aria-hidden="true"></div>
@@ -105,16 +104,16 @@
             Climate Intelligence · Karnataka
           </div>
 
-          <h1 class="hero-headline" id="hero-headline">
-            <em data-i18n="hero.headlineEmphasis">Forecast the atmosphere's thirst.</em>
+          <h1 class="hero-headline" id="hero" data-i18n="hero.pitch">
+            Everyone forecasts how hot the air will be. Nobody forecasts how thirsty it will be. ThirstCast detects thirstwaves and tells you, in litres, what the sky is about to drink.
           </h1>
 
           <p class="hero-sub" data-i18n="hero.sub">
-            Detect unusual atmospheric water demand before it becomes a bigger challenge for farms and water managers. Seven-day thirstwave forecasts for three Karnataka pilot districts.
+            Discover when atmospheric demand for water rises unusually high — and understand what it could mean for farms, lakes, and reservoirs. Seven-day thirstwave forecasts for three Karnataka pilot districts.
           </p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="app.html" data-i18n="hero.openMap">Explore Live Dashboard</a>
+            <a class="btn btn-primary" href="app.html" data-i18n="hero.openMap">Explore Live Dashboard →</a>
             <a class="btn btn-outline" id="replay-link" href="app.html#d=Bengaluru_Urban&replay=1" data-i18n="hero.watchReplay">Replay April 2024</a>
           </div>
 
@@ -154,13 +153,8 @@
                 </filter>
               </defs>
 
-              <!-- Outer glow ring -->
               <circle cx="180" cy="180" r="170" fill="url(#globe-glow)" opacity="0.6"/>
-
-              <!-- Globe body -->
               <circle cx="180" cy="180" r="150" fill="url(#globe-bg)" stroke="rgba(85,230,205,0.12)" stroke-width="1"/>
-
-              <!-- Karnataka region highlight (simplified) -->
               <ellipse cx="180" cy="200" rx="65" ry="55" fill="rgba(85,230,205,0.06)" stroke="rgba(85,230,205,0.2)" stroke-width="0.5"/>
 
               <!-- Latitude lines -->
@@ -177,7 +171,7 @@
                 <ellipse cx="180" cy="180" rx="110" ry="150"/>
               </g>
 
-              <!-- Water contour rings — atmospheric demand visualization -->
+              <!-- Water contour rings -->
               <g fill="none" filter="url(#blur-glow)">
                 <circle cx="180" cy="180" r="100" stroke="rgba(85,230,205,0.25)" stroke-width="1" stroke-dasharray="8 4">
                   <animateTransform attributeName="transform" type="rotate" from="0 180 180" to="360 180 180" dur="20s" repeatCount="indefinite"/>
@@ -190,44 +184,19 @@
                 </circle>
               </g>
 
-              <!-- Data signal nodes — district markers -->
+              <!-- District markers -->
               <g>
-                <!-- Bengaluru Urban ~12.95N 77.59E mapped to globe -->
                 <circle cx="190" cy="195" r="5" fill="rgba(85,230,205,0.9)" filter="url(#blur-glow)">
                   <animate attributeName="r" values="5;8;5" dur="3s" repeatCount="indefinite"/>
                   <animate attributeName="opacity" values="0.9;0.5;0.9" dur="3s" repeatCount="indefinite"/>
                 </circle>
-                <circle cx="190" cy="195" r="14" fill="none" stroke="rgba(85,230,205,0.3)" stroke-width="1">
-                  <animate attributeName="r" values="7;18;7" dur="3s" repeatCount="indefinite"/>
-                  <animate attributeName="opacity" values="0.5;0;0.5" dur="3s" repeatCount="indefinite"/>
-                </circle>
-
-                <!-- Kolar -->
                 <circle cx="215" cy="178" r="4" fill="rgba(246,185,74,0.85)">
                   <animate attributeName="r" values="4;6;4" dur="4s" repeatCount="indefinite" begin="1s"/>
-                  <animate attributeName="opacity" values="0.85;0.4;0.85" dur="4s" repeatCount="indefinite" begin="1s"/>
                 </circle>
-
-                <!-- Mandya -->
                 <circle cx="170" cy="213" r="4" fill="rgba(93,214,138,0.85)">
                   <animate attributeName="r" values="4;6;4" dur="3.5s" repeatCount="indefinite" begin="2s"/>
-                  <animate attributeName="opacity" values="0.85;0.4;0.85" dur="3.5s" repeatCount="indefinite" begin="2s"/>
                 </circle>
               </g>
-
-              <!-- Sun/atmosphere indicator -->
-              <circle cx="110" cy="90" r="18" fill="rgba(246,185,74,0.15)"/>
-              <circle cx="110" cy="90" r="10" fill="rgba(246,185,74,0.5)">
-                <animate attributeName="r" values="10;12;10" dur="3s" repeatCount="indefinite"/>
-              </circle>
-              <!-- ET₀ arrow lines from surface to sun -->
-              <g stroke="rgba(85,230,205,0.4)" stroke-width="0.75" stroke-dasharray="4 3">
-                <line x1="190" y1="185" x2="125" y2="110"><animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite"/></line>
-                <line x1="170" y1="200" x2="118" y2="115"><animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="0.7s"/></line>
-                <line x1="215" y1="175" x2="130" y2="105"><animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="1.4s"/></line>
-              </g>
-
-              <!-- Globe terminator / lit side -->
               <circle cx="180" cy="180" r="150" fill="none" stroke="rgba(85,230,205,0.15)" stroke-width="1.5"/>
             </svg>
           </div>
@@ -235,65 +204,112 @@
       </div>
     </section>
 
-    <!-- ══════════════════════════════════ PITCH STRIP ══ -->
-    <section class="pitch-strip" aria-label="Mission statement">
-      <div class="pitch-strip-inner reveal">
-        <p class="pitch-quote">
-          "<mark>Everyone forecasts how hot the air will be.</mark><br>
-          Nobody forecasts how thirsty it will be."
-        </p>
-        <p class="pitch-sub" data-i18n="hero.pitchSub">
-          ThirstCast uses ET₀ — reference evapotranspiration — and 30 years of local historical thresholds to detect multi-day thirstwaves and translate them into estimated extra water demand, in litres.
-        </p>
+    <!-- ════════════════════ 3D SCROLL STORYTELLING EXPERIENCE ══ -->
+    <div id="story-3d" class="story-3d-experience">
+      <!-- Floating scene dots HUD -->
+      <div class="story-indicators" id="story-indicators" aria-hidden="true">
+        <div class="story-dot active" data-scene="0"></div>
+        <div class="story-dot" data-scene="1"></div>
+        <div class="story-dot" data-scene="2"></div>
+        <div class="story-dot" data-scene="3"></div>
+        <div class="story-dot" data-scene="4"></div>
+        <div class="story-dot" data-scene="5"></div>
       </div>
-    </section>
 
-    <!-- ══════════════════════════════ CONCEPT FLOW ══ -->
-    <section class="concept-section" aria-labelledby="concept-title">
-      <div class="concept-inner">
-        <div class="section-header reveal">
-          <div class="section-kicker" data-i18n="concept.kicker">The science</div>
-          <h2 id="concept-title" data-i18n="concept.title">From weather to water demand</h2>
-          <p class="section-lead" data-i18n="concept.lead">
-            ET₀ represents atmospheric evaporative demand: how strongly weather conditions drive water loss from a reference surface. When ET₀ stays above its local seasonal 90th percentile for three or more days, a thirstwave has begun.
-          </p>
-        </div>
-        <div class="concept-flow" role="list">
-          <div class="concept-node reveal" role="listitem">
-            <span class="icon">☁️</span>
-            <strong data-i18n="concept.c1t">Atmosphere</strong>
-            <span data-i18n="concept.c1">Temperature, humidity, wind, radiation</span>
-          </div>
-          <div class="concept-arrow" aria-hidden="true">→</div>
-          <div class="concept-node reveal" role="listitem" style="transition-delay: 0.08s">
-            <span class="icon">💧</span>
-            <strong>ET₀</strong>
-            <span data-i18n="concept.c2">Evaporative demand, mm/day</span>
-          </div>
-          <div class="concept-arrow" aria-hidden="true">→</div>
-          <div class="concept-node reveal" role="listitem" style="transition-delay: 0.16s">
-            <span class="icon">📊</span>
-            <strong data-i18n="concept.c3t">Local p90</strong>
-            <span data-i18n="concept.c3">1994–2023 day-of-year threshold</span>
-          </div>
-          <div class="concept-arrow" aria-hidden="true">→</div>
-          <div class="concept-node reveal" role="listitem" style="transition-delay: 0.24s">
-            <span class="icon">🌊</span>
-            <strong data-i18n="concept.c4t">Thirstwave</strong>
-            <span data-i18n="concept.c4">≥3 consecutive days above p90</span>
-          </div>
-          <div class="concept-arrow" aria-hidden="true">→</div>
-          <div class="concept-node reveal" role="listitem" style="transition-delay: 0.32s">
-            <span class="icon">🌾</span>
-            <strong data-i18n="concept.c5t">Litres</strong>
-            <span data-i18n="concept.c5">Extra crop irrigation + lake evaporation</span>
+      <!-- Sticky 3D WebGL Canvas Stage -->
+      <div id="story-3d-stage" class="story-3d-stage" aria-hidden="true"></div>
+
+      <!-- 6 Narrative Step Cards Track -->
+      <div class="story-3d-track">
+
+        <!-- Scene 1: The Atmosphere -->
+        <div class="story-step" data-scene-index="0">
+          <div class="story-card active" role="region" aria-labelledby="sc-title-1">
+            <div class="story-card-step" data-i18n="story.s1Step">01 / 06 · The Atmosphere</div>
+            <h2 class="story-card-title" id="sc-title-1" data-i18n="story.s1Title">The invisible water sponge above us</h2>
+            <p class="story-card-body" data-i18n="story.s1Body">
+              Standard weather alerts focus almost exclusively on air temperature. But temperature alone cannot tell you how aggressively the atmosphere pulls moisture from the soil, foliage, and open water.
+            </p>
+            <span class="story-card-badge" data-i18n="story.s1Badge">Orbital Climatology</span>
           </div>
         </div>
+
+        <!-- Scene 2: The Water Cycle -->
+        <div class="story-step" data-scene-index="1">
+          <div class="story-card" role="region" aria-labelledby="sc-title-2">
+            <div class="story-card-step" data-i18n="story.s2Step">02 / 06 · Evaporative Demand</div>
+            <h2 class="story-card-title" id="sc-title-2" data-i18n="story.s2Title">How weather pulls water upward</h2>
+            <p class="story-card-body" data-i18n="story.s2Body">
+              Solar radiation, wind speed, vapor-pressure deficit (dryness), and heat combine into a physical pulling force called reference evapotranspiration (ET₀). When the air is hot and dry with high wind, this pull intensifies dramatically.
+            </p>
+            <span class="story-card-badge" data-i18n="story.s2Badge">FAO-56 Penman-Monteith</span>
+          </div>
+        </div>
+
+        <!-- Scene 3: Atmospheric Demand -->
+        <div class="story-step" data-scene-index="2">
+          <div class="story-card" role="region" aria-labelledby="sc-title-3">
+            <div class="story-card-step" data-i18n="story.s3Step">03 / 06 · The Baseline</div>
+            <h2 class="story-card-title" id="sc-title-3" data-i18n="story.s3Title">Comparing against 30 years of local norms</h2>
+            <p class="story-card-body" data-i18n="story.s3Body">
+              A 6 mm/day rate in April might be routine for arid Rajasthan, but extreme for coastal or south interior Karnataka. ThirstCast compares every day's ET₀ against that specific location's 1994–2023 day-of-year 90th percentile threshold (p90).
+            </p>
+            <span class="story-card-badge" data-i18n="story.s3Badge">30-Year ERA5 Baseline</span>
+          </div>
+        </div>
+
+        <!-- Scene 4: Thirstwave Detection -->
+        <div class="story-step" data-scene-index="3">
+          <div class="story-card" role="region" aria-labelledby="sc-title-4">
+            <div class="story-card-step" data-i18n="story.s4Step">04 / 06 · The Trigger</div>
+            <h2 class="story-card-title" id="sc-title-4" data-i18n="story.s4Title">What defines a thirstwave?</h2>
+            <p class="story-card-body" data-i18n="story.s4Body">
+              A thirstwave is declared when ET₀ exceeds the local seasonal 90th percentile for three or more consecutive days. It isolates periods of sustained, compound atmospheric thirst from brief, normal hot afternoons.
+            </p>
+            <span class="story-card-badge" data-i18n="story.s4Badge">≥3 Consecutive Days &gt; p90</span>
+          </div>
+        </div>
+
+        <!-- Scene 5: From Atmosphere to Litres -->
+        <div class="story-step" data-scene-index="4">
+          <div class="story-card" role="region" aria-labelledby="sc-title-5">
+            <div class="story-card-step" data-i18n="story.s5Step">05 / 06 · Ground Truth</div>
+            <h2 class="story-card-title" id="sc-title-5" data-i18n="story.s5Title">Translating millimetres into litres</h2>
+            <p class="story-card-body" data-i18n="story.s5Body">
+              Excess millimetres of atmospheric pull translate directly into water volume. Using FAO-56 crop coefficients (Kc) and lake surface areas, ThirstCast computes estimated additional litres required per acre of crop and millions of litres lost from reservoirs.
+            </p>
+            <span class="story-card-badge" data-i18n="story.s5Badge">Litres &amp; Cubic Metres</span>
+          </div>
+        </div>
+
+        <!-- Scene 6: The Dashboard Reveal -->
+        <div class="story-step" data-scene-index="5">
+          <div class="story-card" role="region" aria-labelledby="sc-title-6">
+            <div class="story-card-step" data-i18n="story.s6Step">06 / 06 · Platform Access</div>
+            <h2 class="story-card-title" id="sc-title-6" data-i18n="story.s6Title">Operational intelligence for water resilience</h2>
+            <p class="story-card-body" data-i18n="story.s6Body">
+              Monitor live 7-day thirstwave alerts, query our AI advisor in English or Hindi, and explore historical evidence for Karnataka's pilot districts.
+            </p>
+            <div class="dashboard-reveal-preview">
+              <div class="dashboard-window-bar">
+                <span class="window-dot red"></span>
+                <span class="window-dot yellow"></span>
+                <span class="window-dot green"></span>
+                <span class="window-title">ThirstCast Live Operational Map — Karnataka</span>
+              </div>
+              <img src="img/dashboard-preview.jpg" alt="ThirstCast Dashboard interface preview" width="1280" height="720" loading="lazy">
+              <div class="dashboard-reveal-overlay">
+                <a href="app.html" class="btn btn-primary" data-i18n="story.openDashboard">Explore Live Dashboard →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
-    </section>
+    </div>
 
     <!-- ══════════════════════════════════ EVIDENCE ══ -->
-    <section class="evidence-section" aria-labelledby="evidence-title">
+    <section class="evidence-section" id="evidence-section" aria-labelledby="evidence-title">
       <div class="evidence-inner">
         <div class="section-header">
           <div class="section-kicker reveal" data-i18n="evidence.kicker">Historical replay · April 2024 · ERA5</div>
@@ -352,7 +368,7 @@
     </section>
 
     <!-- ════════════════════════════ PILOT DISTRICTS ══ -->
-    <section class="section" aria-labelledby="pilots-title">
+    <section class="section" id="pilots" aria-labelledby="pilots-title">
       <div class="section-header reveal">
         <div class="section-kicker" data-i18n="pilots.kicker">Three districts, one system</div>
         <h2 id="pilots-title" data-i18n="pilots.title">Pilot districts</h2>
@@ -367,14 +383,14 @@
     </section>
 
     <!-- ══════════════════════════════ TRY A QUESTION ══ -->
-    <section class="section try-section" aria-labelledby="try-title">
+    <section class="section try-section" id="try" aria-labelledby="try-title">
       <h2 id="try-title" class="reveal" data-i18n="try.title" style="font-size:1.4rem; margin-bottom:0.5rem">Try a question</h2>
       <p class="muted small reveal" data-i18n="try.body" style="margin-bottom:1rem">These open the dashboard with the AI chat pre-filled. Nothing is sent until you press Ask.</p>
       <div class="chips" id="try-chips"></div>
     </section>
 
     <!-- ═══════════════════════════ WHAT IS A THIRSTWAVE ══ -->
-    <section class="section" aria-labelledby="what-title">
+    <section class="section" id="what" aria-labelledby="what-title">
       <div class="section-header reveal">
         <div class="section-kicker" data-i18n="explainer.kicker">The definition</div>
         <h2 id="what-title" data-i18n="explainer.title">What is a thirstwave?</h2>
@@ -404,7 +420,7 @@
     </section>
 
     <!-- ════════════════════════════ WHY IT MATTERS ══ -->
-    <section class="section" aria-labelledby="why-title">
+    <section class="section" id="why" aria-labelledby="why-title">
       <div class="section-header reveal">
         <div class="section-kicker" data-i18n="why.kicker">The gap</div>
         <h2 id="why-title" data-i18n="why.title">Why it matters</h2>
@@ -427,7 +443,7 @@
     </section>
 
     <!-- ════════════════════════════ HOW IT WORKS ══ -->
-    <section class="section" aria-labelledby="how-title">
+    <section class="section" id="how" aria-labelledby="how-title">
       <div class="section-header reveal">
         <div class="section-kicker" data-i18n="how.kicker">The pipeline</div>
         <h2 id="how-title" data-i18n="how.title">How it works</h2>
@@ -472,7 +488,7 @@
     </section>
 
     <!-- ════════════════════════════ FEATURES ══ -->
-    <section class="section" aria-labelledby="features-title">
+    <section class="section" id="features" aria-labelledby="features-title">
       <div class="section-header reveal">
         <div class="section-kicker" data-i18n="features.kicker">What you can do</div>
         <h2 id="features-title" data-i18n="features.title">Platform capabilities</h2>
@@ -489,7 +505,7 @@
     </section>
 
     <!-- ══════════════════════════════ OPEN API ══ -->
-    <section class="section" aria-labelledby="api-title">
+    <section class="section" id="api" aria-labelledby="api-title">
       <div class="section-header reveal">
         <div class="section-kicker" data-i18n="api.kicker">Open data</div>
         <h2 id="api-title" data-i18n="api.title">Open data and API</h2>
@@ -512,7 +528,7 @@ curl -X POST "$API/ask" -H 'content-type: application/json' \
     </section>
 
     <!-- ══════════════════════════════ HONEST LIMITS ══ -->
-    <section class="section" aria-labelledby="limits-title">
+    <section class="section" id="limits" aria-labelledby="limits-title">
       <div class="section-header reveal">
         <div class="section-kicker" data-i18n="limits.kicker">Transparency</div>
         <h2 id="limits-title" data-i18n="limits.title">Honest limits</h2>
@@ -526,7 +542,7 @@ curl -X POST "$API/ask" -H 'content-type: application/json' \
     </section>
 
     <!-- ════════════════════════════ TEAM ══ -->
-    <section class="section" aria-labelledby="team-title">
+    <section class="section" id="team" aria-labelledby="team-title">
       <div class="section-header reveal">
         <div class="section-kicker">Team LLF</div>
         <h2 id="team-title" data-i18n="team.title">Team LLF</h2>
@@ -540,7 +556,7 @@ curl -X POST "$API/ask" -H 'content-type: application/json' \
     </section>
 
     <!-- ══════════════════════════════ FINAL CTA ══ -->
-    <section class="cta-section" aria-labelledby="cta-title">
+    <section class="cta-section" id="cta" aria-labelledby="cta-title">
       <div class="cta-inner">
         <div class="section-kicker" style="justify-content:center" data-i18n="cta.kicker">Environmental Intelligence</div>
         <h2 class="cta-headline reveal" id="cta-title" data-i18n="cta.headline">See the water demand behind the weather.</h2>
@@ -566,6 +582,7 @@ curl -X POST "$API/ask" -H 'content-type: application/json' \
   <div id="toast" class="toast" role="status" hidden></div>
   <script src="config.js"></script>
   <script src="api.js"></script>
+  <script src="vendor/three/three.min.js"></script>
   <script type="module" src="js/landing.js"></script>
 </body>
 </html>
