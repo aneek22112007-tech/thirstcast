@@ -10,7 +10,7 @@ export default defineConfig({
     viewport: { width: 1280, height: 900 },
   },
   webServer: {
-    command: "python3 -m http.server 8000 --bind 127.0.0.1",
+    command: "python3 -c \"from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler; ThreadingHTTPServer(('127.0.0.1', 8000), SimpleHTTPRequestHandler).serve_forever()\"",
     port: 8000,
     reuseExistingServer: true,
     timeout: 15000,
