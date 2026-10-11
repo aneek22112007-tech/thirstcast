@@ -304,7 +304,8 @@ function renderOverview(detail) {
     ${detail.bias_note ? `<p class="note">${esc(detail.bias_note)}</p>` : ""}
     ${days.length ? `<details><summary>${esc(t("app.dataTable"))}</summary>${forecastTable(days)}</details>` : ""}
     <p class="small">${esc(t("app.caveat"))}</p>
-    <p><button class="btn" type="button" id="save-card">${esc(t("card.save"))}</button></p>`;
+    <p><button class="btn" type="button" id="save-card">${esc(t("card.save"))}</button>
+      <button class="btn" type="button" id="print-bulletin">${esc(t("print.button"))}</button></p>`;
 }
 
 function cropMeta(id) {
@@ -532,6 +533,34 @@ function renderActiveTab() {
   if ($("farm-result")) paintFarmResult();
   const save = $("save-card");
   if (save) save.addEventListener("click", saveDistrictCard);
+  const printBtn = $("print-bulletin");
+  if (printBtn) printBtn.addEventListener("click", () => { fillBulletin(); window.print(); });
+}
+
+function fillBulletin() {
+  const detail = state.detail[state.selected];
+  const el = $("bulletin");
+  if (!detail || !el) return;
+  const name = (state.districts[detail.district] && state.districts[detail.district].name) || detail.district;
+  const status = detail.status || "UNKNOWN";
+  const days = detail.forecast || [];
+  const iso = String(detail.run_date || detail.updated_at || "").slice(0, 10);
+  const today = days.find((d) => d.date === iso) || days[0];
+  const districtCrops = ((state.catalog.districts || []).find((d) => d.id === detail.district) || {}).crops || [];
+  const cropId = state.crop || districtCrops[0];
+  const range = cropId && detail.extra_litres_per_acre ? detail.extra_litres_per_acre[cropId] : null;
+  const litres = Array.isArray(range) ? `${formatNumber(range[0])}–${formatNumber(range[1])} L` : "–";
+  const rows = days.map((d) => `<tr><td>${esc(d.date)}</td><td>${esc(formatNumber(d.et0, 2))}</td><td>${esc(formatNumber(d.p90, 2))}</td><td>${esc(formatNumber(d.tmax, 1))}</td><td>${d.flag ? esc(t("app.yes")) : esc(t("app.no"))}</td></tr>`).join("");
+  el.innerHTML = `
+    <h1>${esc(t("print.title"))}</h1>
+    <p><strong>${esc(name)}</strong> · ${esc(t("status." + status))}</p>
+    <p>${esc(t("whyToday.et0"))}: ${today ? esc(formatNumber(today.et0, 2)) : "–"} mm · ${esc(t("whyToday.excess"))}: ${detail.excess_mm_7d == null ? "–" : esc(formatMm(detail.excess_mm_7d))} mm</p>
+    <div class="chart-wrap">${days.length ? et0Chart(days, { label: t("evidence.chart"), height: 140 }) : ""}</div>
+    <table><thead><tr><th>${esc(t("app.colDate"))}</th><th>${esc(t("app.colEt0"))}</th><th>${esc(t("app.colP90"))}</th><th>${esc(t("app.colTmax"))}</th><th>${esc(t("app.colFlag"))}</th></tr></thead><tbody>${rows}</tbody></table>
+    <p>${esc(t("print.litres"))}: ${esc(litres)}</p>
+    <p>${esc(t("app.caveat"))}</p>
+    <p>${esc(t("print.sources"))}</p>
+    <p>${esc(t("app.updated"))}: ${esc(iso || "–")}</p>`;
 }
 
 function drawShareCard(spec) {

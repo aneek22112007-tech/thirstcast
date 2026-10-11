@@ -23,6 +23,25 @@ test("F-11 a stale forecast shows the cached badge", async ({ page }) => {
   await expect(page.locator("#forecast-note")).toContainText("Cached at 2023-10-04");
 });
 
+test("U-10 the bulletin is a single A4 page of the district on screen", async ({ page }) => {
+  await page.goto("/app.html#d=Mandya&tab=overview");
+  await expect(page.locator("#print-bulletin")).toBeVisible({ timeout: 20000 });
+  await page.evaluate(() => { window.print = () => { window.__printed = true; }; });
+  await page.locator("#print-bulletin").click();
+  await expect(page.locator("#bulletin")).toContainText("Mandya");
+  await expect(page.locator("#bulletin")).toContainText("ACTIVE");
+  await expect(page.locator("#bulletin")).toContainText("District-centroid estimate (~10 km grid)");
+  await expect(page.locator("#bulletin")).toContainText("2023-10-05");
+  await expect(page.locator("#bulletin")).toContainText("2,972–3,633");
+  await expect(page.locator("#bulletin svg")).toHaveCount(1);
+  expect(await page.evaluate(() => window.__printed)).toBe(true);
+  const css = await (await page.request.get("/styles/app.css")).text();
+  expect(css).toContain("size: A4");
+  await page.emulateMedia({ media: "print" });
+  const height = await page.locator("#bulletin").evaluate((el) => el.scrollHeight);
+  expect(height).toBeLessThan(1000);
+});
+
 test("U-9 the crop stage defaults to mid-season and can switch", async ({ page }) => {
   await page.goto("/app.html#d=Mandya&tab=farmers");
   await expect(page.locator("#farm-result")).toContainText("2,972–3,633", { timeout: 20000 });
