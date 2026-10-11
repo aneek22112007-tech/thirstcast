@@ -540,7 +540,19 @@ function setReplayDay(day) {
   writeHash();
   if (day === (state.replay[state.selected] && state.replay[state.selected].days.length) && !state.timer) {
     const card = $("replay-summary");
-    if (card) card.scrollIntoView({ block: "nearest", behavior: "auto" });
+    const panel = $("panel");
+    if (card && panel) {
+      const delta = card.getBoundingClientRect().top - panel.getBoundingClientRect().top;
+      panel.scrollTop += delta;
+      if (window.matchMedia("(max-width: 800px)").matches) {
+        panel.classList.add("expanded");
+        const toggle = $("sheet-toggle");
+        if (toggle) {
+          toggle.setAttribute("aria-expanded", "true");
+          toggle.textContent = t("app.collapse");
+        }
+      }
+    }
   }
 }
 
