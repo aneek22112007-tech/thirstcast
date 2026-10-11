@@ -211,6 +211,9 @@
     "historical": "Historical, not a live alert",
     "live": "Live forecast"
   },
+  "map": {
+    "moved": "{name}, {status}"
+  },
   "print": {
     "button": "Print bulletin",
     "title": "ThirstCast bulletin",

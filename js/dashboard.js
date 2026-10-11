@@ -849,6 +849,17 @@ function renderCompare() {
   });
 }
 
+function announceMap(id) {
+  const live = $("map-live");
+  const district = state.districts[id];
+  const detail = state.detail[id] || district;
+  if (!live || !district) return;
+  live.textContent = t("map.moved", {
+    name: district.name,
+    status: t("status." + ((detail && detail.status) || "UNKNOWN")),
+  });
+}
+
 function announceCompare(id) {
   const live = $("compare-live");
   const district = state.districts[id];
@@ -1109,6 +1120,17 @@ function bindChrome() {
     const result = $("alert-result");
     result.hidden = false;
     result.textContent = t("alerts.body");
+  });
+  $("map").addEventListener("keydown", (event) => {
+    if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+    const order = districtIds();
+    if (!order.length) return;
+    event.preventDefault();
+    const index = Math.max(0, order.indexOf(state.selected));
+    const delta = event.key === "ArrowRight" ? 1 : -1;
+    const next = order[(index + delta + order.length) % order.length];
+    userNav();
+    selectDistrict(next).then(() => announceMap(next));
   });
   $("sheet-toggle").addEventListener("click", () => {
     const panel = $("panel");
