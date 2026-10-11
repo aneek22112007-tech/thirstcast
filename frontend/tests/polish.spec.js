@@ -180,7 +180,7 @@ test("U-3 the landing timeline reads the hero event from the file", async ({ pag
   });
   await page.goto("/index.html");
   const order = await page.locator("main section").evaluateAll((nodes) => nodes.map((node) => node.getAttribute("aria-labelledby") || node.className));
-  expect(order.slice(0, 5)).toEqual(["hero", "evidence-title", "blind-title", "pilots-title", "try-title"]);
+  expect(order.slice(0, 5)).toEqual(["hero-headline", "pitch-strip", "concept-title", "evidence-title", "blind-title"]);
   await expect(page.locator("#story-blind")).toContainText("ET0 above its p90 while Tmax stayed below its own p90");
   await expect(page.locator("#timeline-hero")).toContainText("9.99", { timeout: 20000 });
   await expect(page.locator("#timeline-hero")).toContainText("36.2");
@@ -455,7 +455,7 @@ test("F-01 chat and alerts sit above the map at 360px", async ({ page }) => {
   await expect(page.locator("#legend span").first()).toBeVisible();
   await page.locator("#open-chat").click();
   await expect(page.locator("#chat")).toBeVisible();
-  expect(await topElementId(page, "#ask-btn")).toBe("ask-btn");
+  await expect.poll(() => topElementId(page, "#ask-btn")).toBe("ask-btn");
   await page.locator("#suggest .chip").first().click();
   await expect(page.locator(".msg.bot").last()).toContainText(/answer|estimate|Estimates|MOCK|Mandya|मंड्या/i, { timeout: 15000 });
   await page.keyboard.press("Tab");
