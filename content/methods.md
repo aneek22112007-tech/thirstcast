@@ -102,7 +102,15 @@ Tmax beside their own p90, the count of days above the ET₀ p90 in the 7-day wi
 offset in mm/day, and the cumulative excess. It does not attribute the day to a weather driver,
 because no separate driver series was fetched.
 
-## 11. Sources
+## 11. Thirty Aprils
+
+`data/scripts/april_history.py` reads the ERA5 archive and writes `data/out/april_history.json`
+(copied to `frontend/data/april_history.json`). For each district and each April from 1994 through 2024
+it records days with ET₀ above the day-of-year p90, the cumulative excess in millimetres, and the rank
+among those 31 Aprils. Rank 1 is the largest cumulative excess. The chart is April only; other months
+are not computed. 2024 is the marked bar.
+
+## 12. Sources
 
 Open-Meteo (Zippenfeld 2023, doi:10.5281/ZENODO.7970649; ERA5/ERA5-Land © Copernicus C3S); Allen et al. 1998,
 FAO-56; Kukal & Hobbins 2025, Earth's Future; The Hindu, 24 June 2025; Ramachandra et al. 2017 (IISc ETR-116);

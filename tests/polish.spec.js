@@ -23,6 +23,24 @@ test("F-11 a stale forecast shows the cached badge", async ({ page }) => {
   await expect(page.locator("#forecast-note")).toContainText("Cached at 2023-10-04");
 });
 
+test("U-2 thirty Aprils highlight 2024 on the map and the landing page", async ({ page }) => {
+  await page.goto("/app.html#d=Bengaluru_Urban&tab=history");
+  const bar = page.locator("#april-chart [data-year='2024']");
+  await expect(bar).toBeVisible({ timeout: 20000 });
+  await expect(bar).toHaveAttribute("aria-label", /rank 1 of 31/);
+  await expect(bar).toHaveAttribute("aria-label", /22 days above p90/);
+  await expect(bar).toHaveAttribute("aria-label", /13.27 mm/);
+  await bar.focus();
+  await expect(bar).toBeFocused();
+  await expect(page.locator("#tab-panel")).toContainText("April only");
+  await page.goto("/index.html");
+  const landing = page.locator("#april-chart [data-year='2024']");
+  await expect(landing).toBeVisible({ timeout: 20000 });
+  await expect(landing).toHaveAttribute("aria-label", /rank 1 of 31/);
+  await page.getByRole("button", { name: "Kolar" }).click();
+  await expect(page.locator("#april-chart [data-year='2024']")).toHaveAttribute("aria-label", /12.25 mm/);
+});
+
 test("U-1 why today compares ET0, Tmax, bias and the thirst percentile", async ({ page }) => {
   await page.goto("/app.html#d=Mandya&tab=overview");
   const box = page.locator("#why-today");

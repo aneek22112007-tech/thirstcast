@@ -1,5 +1,5 @@
 import { bindLangToggle, getLang, initI18n, initTheme, onLang, plural, t } from "./i18n.js";
-import { climateChart, dataTable, et0Chart, tmaxChart } from "./charts.js";
+import { aprilChart, climateChart, dataTable, et0Chart, tmaxChart } from "./charts.js";
 import { dayOfYear, esc, formatDate, formatMm, formatNumber, formatScale, prefersReducedMotion } from "./format.js";
 import { percentVs, thirstPercentile } from "./stats.js";
 
@@ -470,12 +470,19 @@ function renderHistory(detail) {
   if (!series) return `<p class="note">${esc(t("app.unavailable"))}</p>`;
   const iso = (detail.run_date || "").slice(0, 10);
   const doy = iso ? dayOfYear(iso) : null;
+  const april = state.april && state.april.districts[detail.district];
+  const aprilBlock = april ? `
+    <h3>${esc(t("april.title"))}</h3>
+    <p>${esc(t("april.body"))}</p>
+    <div class="chart-wrap" id="april-chart">${aprilChart(april.series, t("april.title"), april.highlight)}</div>
+    <p class="small">${esc(t("april.note"))}</p>` : "";
   return `
     <h3>${esc(t("app.historyTitle"))}</h3>
     <p>${esc(t("app.historyBody"))}</p>
     <p><strong>${iso ? esc(t("app.historyMark", { date: formatDate(iso, getLang()), doy })) : "–"}</strong></p>
     <div class="chart-wrap">${climateChart(series, doy || 0, t("app.historyTitle"))}</div>
-    <p class="small">${esc(t("app.historyLegend"))} ${esc(state.curves.period)}. ${esc(t("app.caveat"))}.</p>`;
+    <p class="small">${esc(t("app.historyLegend"))} ${esc(state.curves.period)}. ${esc(t("app.caveat"))}.</p>
+    ${aprilBlock}`;
 }
 
 function renderActiveTab() {
@@ -966,18 +973,20 @@ async function boot() {
   map.setView([12.9, 77.4], 8);
   let geo;
   try {
-    const [geoRes, catalog, curves, blind, percentiles] = await Promise.all([
+    const [geoRes, catalog, curves, blind, percentiles, april] = await Promise.all([
       fetch("data/pilot_districts.geojson").then((r) => { if (!r.ok) throw new Error(`geojson ${r.status}`); return r.json(); }),
       fetch("data/catalog.json").then((r) => r.json()),
       fetch("data/climatology_curves.json").then((r) => r.json()),
       fetch("data/blindspot.json").then((r) => r.json()),
       fetch("data/percentiles.json").then((r) => r.json()),
+      fetch("data/april_history.json").then((r) => r.json()),
     ]);
     geo = geoRes;
     state.catalog = catalog;
     state.curves = curves;
     state.blind = blind;
     state.percentiles = percentiles;
+    state.april = april;
   } catch (err) {
     showError(t("app.unavailableDetail", { message: err.message }));
     return;

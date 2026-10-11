@@ -1,0 +1,711 @@
+{
+ "generated_by": "data/scripts/april_history.py",
+ "source": "data/raw/archive_*_{1994_2023,2024}.json joined to data/out/climatology.json",
+ "month": 4,
+ "years": [
+  1994,
+  1995,
+  1996,
+  1997,
+  1998,
+  1999,
+  2000,
+  2001,
+  2002,
+  2003,
+  2004,
+  2005,
+  2006,
+  2007,
+  2008,
+  2009,
+  2010,
+  2011,
+  2012,
+  2013,
+  2014,
+  2015,
+  2016,
+  2017,
+  2018,
+  2019,
+  2020,
+  2021,
+  2022,
+  2023,
+  2024
+ ],
+ "definition": "Cumulative excess = sum of daily ET0 above the local day-of-year p90 threshold. No bias correction (archive).",
+ "rank_rule": "Rank 1 is the largest April cumulative excess. Ties keep sort order, matching replay_april_2024.py.",
+ "districts": {
+  "Bengaluru_Urban": {
+   "name": "Bengaluru Urban",
+   "highlight": 2024,
+   "series": [
+    {
+     "year": 1994,
+     "days_above_p90": 0,
+     "cum_excess_mm": 0,
+     "tmax_days_above_p90": 0,
+     "rank": 24
+    },
+    {
+     "year": 1995,
+     "days_above_p90": 11,
+     "cum_excess_mm": 3.85,
+     "tmax_days_above_p90": 6,
+     "rank": 4
+    },
+    {
+     "year": 1996,
+     "days_above_p90": 1,
+     "cum_excess_mm": 0.14,
+     "tmax_days_above_p90": 0,
+     "rank": 22
+    },
+    {
+     "year": 1997,
+     "days_above_p90": 0,
+     "cum_excess_mm": 0,
+     "tmax_days_above_p90": 0,
+     "rank": 25
+    },
+    {
+     "year": 1998,
+     "days_above_p90": 4,
+     "cum_excess_mm": 1.25,
+     "tmax_days_above_p90": 6,
+     "rank": 12
+    },
+    {
+     "year": 1999,
+     "days_above_p90": 4,
+     "cum_excess_mm": 0.89,
+     "tmax_days_above_p90": 0,
+     "rank": 16
+    },
+    {
+     "year": 2000,
+     "days_above_p90": 0,
+     "cum_excess_mm": 0,
+     "tmax_days_above_p90": 0,
+     "rank": 26
+    },
+    {
+     "year": 2001,
+     "days_above_p90": 0,
+     "cum_excess_mm": 0,
+     "tmax_days_above_p90": 0,
+     "rank": 27
+    },
+    {
+     "year": 2002,
+     "days_above_p90": 5,
+     "cum_excess_mm": 1.69,
+     "tmax_days_above_p90": 3,
+     "rank": 9
+    },
+    {
+     "year": 2003,
+     "days_above_p90": 6,
+     "cum_excess_mm": 1.96,
+     "tmax_days_above_p90": 4,
+     "rank": 7
+    },
+    {
+     "year": 2004,
+     "days_above_p90": 0,
+     "cum_excess_mm": 0,
+     "tmax_days_above_p90": 0,
+     "rank": 28
+    },
+    {
+     "year": 2005,
+     "days_above_p90": 2,
+     "cum_excess_mm": 0.14,
+     "tmax_days_above_p90": 0,
+     "rank": 23
+    },
+    {
+     "year": 2006,
+     "days_above_p90": 1,
+     "cum_excess_mm": 0.24,
+     "tmax_days_above_p90": 0,
+     "rank": 19
+    },
+    {
+     "year": 2007,
+     "days_above_p90": 5,
+     "cum_excess_mm": 1.87,
+     "tmax_days_above_p90": 3,
+     "rank": 8
+    },
+    {
+     "year": 2008,
+     "days_above_p90": 2,
+     "cum_excess_mm": 0.97,
+     "tmax_days_above_p90": 1,
+     "rank": 15
+    },
+    {
+     "year": 2009,
+     "days_above_p90": 5,
+     "cum_excess_mm": 2.29,
+     "tmax_days_above_p90": 4,
+     "rank": 6
+    },
+    {
+     "year": 2010,
+     "days_above_p90": 3,
+     "cum_excess_mm": 0.63,
+     "tmax_days_above_p90": 9,
+     "rank": 17
+    },
+    {
+     "year": 2011,
+     "days_above_p90": 0,
+     "cum_excess_mm": 0,
+     "tmax_days_above_p90": 0,
+     "rank": 29
+    },
+    {
+     "year": 2012,
+     "days_above_p90": 2,
+     "cum_excess_mm": 1.17,
+     "tmax_days_above_p90": 7,
+     "rank": 14
+    },
+    {
+     "year": 2013,
+     "days_above_p90": 3,
+     "cum_excess_mm": 1.2,
+     "tmax_days_above_p90": 2,
+     "rank": 13
+    },
+    {
+     "year": 2014,
+     "days_above_p90": 10,
+     "cum_excess_mm": 4.37,
+     "tmax_days_above_p90": 11,
+     "rank": 3
+    },
+    {
+     "year": 2015,
+     "days_above_p90": 0,
+     "cum_excess_mm": 0,
+     "tmax_days_above_p90": 0,
+     "rank": 30
+    },
+    {
+     "year": 2016,
+     "days_above_p90": 6,
+     "cum_excess_mm": 2.37,
+     "tmax_days_above_p90": 16,
+     "rank": 5
+    },
+    {
+     "year": 2017,
+     "days_above_p90": 1,
+     "cum_excess_mm": 0.21,
+     "tmax_days_above_p90": 8,
+     "rank": 20
+    },
+    {
+     "year": 2018,
+     "days_above_p90": 0,
+     "cum_excess_mm": 0,
+     "tmax_days_above_p90": 0,
+     "rank": 31
+    },
+    {
+     "year": 2019,
+     "days_above_p90": 6,
+     "cum_excess_mm": 1.56,
+     "tmax_days_above_p90": 9,
+     "rank": 10
+    },
+    {
+     "year": 2020,
+     "days_above_p90": 4,
+     "cum_excess_mm": 1.28,
+     "tmax_days_above_p90": 0,
+     "rank": 11
+    },
+    {
+     "year": 2021,
+     "days_above_p90": 1,
+     "cum_excess_mm": 0.2,
+     "tmax_days_above_p90": 0,
+     "rank": 21
+    },
+    {
+     "year": 2022,
+     "days_above_p90": 2,
+     "cum_excess_mm": 0.42,
+     "tmax_days_above_p90": 1,
+     "rank": 18
+    },
+    {
+     "year": 2023,
+     "days_above_p90": 8,
+     "cum_excess_mm": 4.71,
+     "tmax_days_above_p90": 0,
+     "rank": 2
+    },
+    {
+     "year": 2024,
+     "days_above_p90": 22,
+     "cum_excess_mm": 13.27,
+     "tmax_days_above_p90": 24,
+     "rank": 1
+    }
+   ]
+  },
+  "Kolar": {
+   "name": "Kolar",
+   "highlight": 2024,
+   "series": [
+    {
+     "year": 1994,
+     "days_above_p90": 1,
+     "cum_excess_mm": 0.2,
+     "tmax_days_above_p90": 1,
+     "rank": 20
+    },
+    {
+     "year": 1995,
+     "days_above_p90": 7,
+     "cum_excess_mm": 1.11,
+     "tmax_days_above_p90": 1,
+     "rank": 10
+    },
+    {
+     "year": 1996,
+     "days_above_p90": 0,
+     "cum_excess_mm": 0,
+     "tmax_days_above_p90": 0,
+     "rank": 23
+    },
+    {
+     "year": 1997,
+     "days_above_p90": 0,
+     "cum_excess_mm": 0,
+     "tmax_days_above_p90": 0,
+     "rank": 24
+    },
+    {
+     "year": 1998,
+     "days_above_p90": 1,
+     "cum_excess_mm": 0.06,
+     "tmax_days_above_p90": 3,
+     "rank": 22
+    },
+    {
+     "year": 1999,
+     "days_above_p90": 4,
+     "cum_excess_mm": 1.42,
+     "tmax_days_above_p90": 0,
+     "rank": 7
+    },
+    {
+     "year": 2000,
+     "days_above_p90": 0,
+     "cum_excess_mm": 0,
+     "tmax_days_above_p90": 1,
+     "rank": 25
+    },
+    {
+     "year": 2001,
+     "days_above_p90": 0,
+     "cum_excess_mm": 0,
+     "tmax_days_above_p90": 0,
+     "rank": 26
+    },
+    {
+     "year": 2002,
+     "days_above_p90": 5,
+     "cum_excess_mm": 0.84,
+     "tmax_days_above_p90": 3,
+     "rank": 13
+    },
+    {
+     "year": 2003,
+     "days_above_p90": 4,
+     "cum_excess_mm": 1.26,
+     "tmax_days_above_p90": 2,
+     "rank": 8
+    },
+    {
+     "year": 2004,
+     "days_above_p90": 0,
+     "cum_excess_mm": 0,
+     "tmax_days_above_p90": 3,
+     "rank": 27
+    },
+    {
+     "year": 2005,
+     "days_above_p90": 0,
+     "cum_excess_mm": 0,
+     "tmax_days_above_p90": 0,
+     "rank": 28
+    },
+    {
+     "year": 2006,
+     "days_above_p90": 1,
+     "cum_excess_mm": 0.6,
+     "tmax_days_above_p90": 1,
+     "rank": 16
+    },
+    {
+     "year": 2007,
+     "days_above_p90": 2,
+     "cum_excess_mm": 0.37,
+     "tmax_days_above_p90": 1,
+     "rank": 19
+    },
+    {
+     "year": 2008,
+     "days_above_p90": 2,
+     "cum_excess_mm": 0.79,
+     "tmax_days_above_p90": 0,
+     "rank": 14
+    },
+    {
+     "year": 2009,
+     "days_above_p90": 3,
+     "cum_excess_mm": 1.05,
+     "tmax_days_above_p90": 0,
+     "rank": 11
+    },
+    {
+     "year": 2010,
+     "days_above_p90": 1,
+     "cum_excess_mm": 0.18,
+     "tmax_days_above_p90": 5,
+     "rank": 21
+    },
+    {
+     "year": 2011,
+     "days_above_p90": 0,
+     "cum_excess_mm": 0,
+     "tmax_days_above_p90": 0,
+     "rank": 29
+    },
+    {
+     "year": 2012,
+     "days_above_p90": 6,
+     "cum_excess_mm": 0.96,
+     "tmax_days_above_p90": 6,
+     "rank": 12
+    },
+    {
+     "year": 2013,
+     "days_above_p90": 3,
+     "cum_excess_mm": 0.62,
+     "tmax_days_above_p90": 6,
+     "rank": 15
+    },
+    {
+     "year": 2014,
+     "days_above_p90": 13,
+     "cum_excess_mm": 4.53,
+     "tmax_days_above_p90": 10,
+     "rank": 2
+    },
+    {
+     "year": 2015,
+     "days_above_p90": 0,
+     "cum_excess_mm": 0,
+     "tmax_days_above_p90": 0,
+     "rank": 30
+    },
+    {
+     "year": 2016,
+     "days_above_p90": 7,
+     "cum_excess_mm": 2.03,
+     "tmax_days_above_p90": 14,
+     "rank": 6
+    },
+    {
+     "year": 2017,
+     "days_above_p90": 5,
+     "cum_excess_mm": 2.24,
+     "tmax_days_above_p90": 17,
+     "rank": 5
+    },
+    {
+     "year": 2018,
+     "days_above_p90": 0,
+     "cum_excess_mm": 0,
+     "tmax_days_above_p90": 1,
+     "rank": 31
+    },
+    {
+     "year": 2019,
+     "days_above_p90": 8,
+     "cum_excess_mm": 2.77,
+     "tmax_days_above_p90": 8,
+     "rank": 4
+    },
+    {
+     "year": 2020,
+     "days_above_p90": 5,
+     "cum_excess_mm": 1.17,
+     "tmax_days_above_p90": 0,
+     "rank": 9
+    },
+    {
+     "year": 2021,
+     "days_above_p90": 2,
+     "cum_excess_mm": 0.41,
+     "tmax_days_above_p90": 2,
+     "rank": 18
+    },
+    {
+     "year": 2022,
+     "days_above_p90": 2,
+     "cum_excess_mm": 0.56,
+     "tmax_days_above_p90": 1,
+     "rank": 17
+    },
+    {
+     "year": 2023,
+     "days_above_p90": 7,
+     "cum_excess_mm": 3.62,
+     "tmax_days_above_p90": 0,
+     "rank": 3
+    },
+    {
+     "year": 2024,
+     "days_above_p90": 23,
+     "cum_excess_mm": 12.25,
+     "tmax_days_above_p90": 22,
+     "rank": 1
+    }
+   ]
+  },
+  "Mandya": {
+   "name": "Mandya",
+   "highlight": 2024,
+   "series": [
+    {
+     "year": 1994,
+     "days_above_p90": 0,
+     "cum_excess_mm": 0,
+     "tmax_days_above_p90": 2,
+     "rank": 24
+    },
+    {
+     "year": 1995,
+     "days_above_p90": 9,
+     "cum_excess_mm": 3.6,
+     "tmax_days_above_p90": 5,
+     "rank": 3
+    },
+    {
+     "year": 1996,
+     "days_above_p90": 2,
+     "cum_excess_mm": 0.54,
+     "tmax_days_above_p90": 0,
+     "rank": 16
+    },
+    {
+     "year": 1997,
+     "days_above_p90": 0,
+     "cum_excess_mm": 0,
+     "tmax_days_above_p90": 0,
+     "rank": 25
+    },
+    {
+     "year": 1998,
+     "days_above_p90": 4,
+     "cum_excess_mm": 2.86,
+     "tmax_days_above_p90": 11,
+     "rank": 5
+    },
+    {
+     "year": 1999,
+     "days_above_p90": 1,
+     "cum_excess_mm": 0.39,
+     "tmax_days_above_p90": 0,
+     "rank": 19
+    },
+    {
+     "year": 2000,
+     "days_above_p90": 1,
+     "cum_excess_mm": 0.14,
+     "tmax_days_above_p90": 1,
+     "rank": 21
+    },
+    {
+     "year": 2001,
+     "days_above_p90": 0,
+     "cum_excess_mm": 0,
+     "tmax_days_above_p90": 0,
+     "rank": 26
+    },
+    {
+     "year": 2002,
+     "days_above_p90": 4,
+     "cum_excess_mm": 1.25,
+     "tmax_days_above_p90": 2,
+     "rank": 12
+    },
+    {
+     "year": 2003,
+     "days_above_p90": 3,
+     "cum_excess_mm": 1.62,
+     "tmax_days_above_p90": 5,
+     "rank": 10
+    },
+    {
+     "year": 2004,
+     "days_above_p90": 0,
+     "cum_excess_mm": 0,
+     "tmax_days_above_p90": 0,
+     "rank": 27
+    },
+    {
+     "year": 2005,
+     "days_above_p90": 4,
+     "cum_excess_mm": 2.08,
+     "tmax_days_above_p90": 1,
+     "rank": 9
+    },
+    {
+     "year": 2006,
+     "days_above_p90": 0,
+     "cum_excess_mm": 0,
+     "tmax_days_above_p90": 0,
+     "rank": 28
+    },
+    {
+     "year": 2007,
+     "days_above_p90": 4,
+     "cum_excess_mm": 3.1,
+     "tmax_days_above_p90": 4,
+     "rank": 4
+    },
+    {
+     "year": 2008,
+     "days_above_p90": 2,
+     "cum_excess_mm": 0.79,
+     "tmax_days_above_p90": 1,
+     "rank": 13
+    },
+    {
+     "year": 2009,
+     "days_above_p90": 5,
+     "cum_excess_mm": 2.3,
+     "tmax_days_above_p90": 4,
+     "rank": 7
+    },
+    {
+     "year": 2010,
+     "days_above_p90": 1,
+     "cum_excess_mm": 0.32,
+     "tmax_days_above_p90": 5,
+     "rank": 20
+    },
+    {
+     "year": 2011,
+     "days_above_p90": 0,
+     "cum_excess_mm": 0,
+     "tmax_days_above_p90": 0,
+     "rank": 29
+    },
+    {
+     "year": 2012,
+     "days_above_p90": 2,
+     "cum_excess_mm": 0.5,
+     "tmax_days_above_p90": 0,
+     "rank": 17
+    },
+    {
+     "year": 2013,
+     "days_above_p90": 3,
+     "cum_excess_mm": 0.48,
+     "tmax_days_above_p90": 3,
+     "rank": 18
+    },
+    {
+     "year": 2014,
+     "days_above_p90": 4,
+     "cum_excess_mm": 1.26,
+     "tmax_days_above_p90": 7,
+     "rank": 11
+    },
+    {
+     "year": 2015,
+     "days_above_p90": 0,
+     "cum_excess_mm": 0,
+     "tmax_days_above_p90": 1,
+     "rank": 30
+    },
+    {
+     "year": 2016,
+     "days_above_p90": 7,
+     "cum_excess_mm": 2.11,
+     "tmax_days_above_p90": 15,
+     "rank": 8
+    },
+    {
+     "year": 2017,
+     "days_above_p90": 0,
+     "cum_excess_mm": 0,
+     "tmax_days_above_p90": 4,
+     "rank": 31
+    },
+    {
+     "year": 2018,
+     "days_above_p90": 1,
+     "cum_excess_mm": 0.12,
+     "tmax_days_above_p90": 1,
+     "rank": 22
+    },
+    {
+     "year": 2019,
+     "days_above_p90": 2,
+     "cum_excess_mm": 0.7,
+     "tmax_days_above_p90": 8,
+     "rank": 14
+    },
+    {
+     "year": 2020,
+     "days_above_p90": 8,
+     "cum_excess_mm": 2.32,
+     "tmax_days_above_p90": 4,
+     "rank": 6
+    },
+    {
+     "year": 2021,
+     "days_above_p90": 2,
+     "cum_excess_mm": 0.57,
+     "tmax_days_above_p90": 2,
+     "rank": 15
+    },
+    {
+     "year": 2022,
+     "days_above_p90": 1,
+     "cum_excess_mm": 0.05,
+     "tmax_days_above_p90": 1,
+     "rank": 23
+    },
+    {
+     "year": 2023,
+     "days_above_p90": 11,
+     "cum_excess_mm": 4.04,
+     "tmax_days_above_p90": 0,
+     "rank": 2
+    },
+    {
+     "year": 2024,
+     "days_above_p90": 20,
+     "cum_excess_mm": 11.7,
+     "tmax_days_above_p90": 24,
+     "rank": 1
+    }
+   ]
+  }
+ }
+}
