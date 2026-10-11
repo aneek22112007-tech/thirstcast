@@ -8,7 +8,41 @@ const QUESTIONS = [
   { district: "Mandya", q: "Will Mandya face a thirstwave this week?" },
   { district: "Mandya", q: "क्या इस हफ्ते मंड्या में थर्स्टवेव आएगी?" },
   { district: "Mandya", q: "How much extra water do 2 acres of paddy in Mandya need this week?" },
+  { district: "Bengaluru_Urban", q: "Compare Bengaluru Urban and Kolar." },
+  { district: "Bengaluru_Urban", q: "Explain ET₀ in simple Hindi." },
 ];
+
+// ─── Premium UI: scroll-linked nav + reveal ──────────────────────────────────
+function initScrollNav() {
+  const topbar = document.getElementById("topbar");
+  if (!topbar) return;
+  const THRESH = 60;
+  const update = () => {
+    if (window.scrollY > THRESH) {
+      topbar.classList.remove("topbar--transparent");
+      topbar.classList.add("scrolled");
+    } else {
+      topbar.classList.add("topbar--transparent");
+      topbar.classList.remove("scrolled");
+    }
+  };
+  window.addEventListener("scroll", update, { passive: true });
+  update();
+}
+
+function initScrollReveal() {
+  if (prefersReducedMotion()) {
+    document.querySelectorAll(".reveal").forEach((el) => {
+      el.classList.add("visible");
+    });
+    return;
+  }
+  const obs = new IntersectionObserver(
+    (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("visible"); obs.unobserve(e.target); } }),
+    { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+  );
+  document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
+}
 
 let replays = null;
 let districtsPayload = null;
@@ -73,6 +107,24 @@ function renderEvidence() {
   $("evidence-compare").innerHTML = `<div class="table-scroll"><table class="compare"><thead><tr><th scope="col">${esc(t("app.district"))}</th><th scope="col">ET₀ &gt; p90</th><th scope="col">${esc(t("evidence.mm"))}</th><th scope="col">L/acre</th><th scope="col">Tmax &gt; p90</th><th scope="col">${esc(t("evidence.rank"))}</th></tr></thead><tbody>${rows}</tbody></table></div>`;
 }
 
+const PILOT_META = {
+  Bengaluru_Urban: {
+    imgClass: "pilot-card-img-bengaluru",
+    imgLabel: "URBAN LAKES",
+    context: "Lakes, urban surface-water, and the KRS impact zone.",
+  },
+  Kolar: {
+    imgClass: "pilot-card-img-kolar",
+    imgLabel: "DRYLAND AGRICULTURE",
+    context: "Rain-fed and irrigated agriculture, groundwater stress.",
+  },
+  Mandya: {
+    imgClass: "pilot-card-img-mandya",
+    imgLabel: "KRS RESERVOIR",
+    context: "Paddy crops, KRS reservoir surface-water evaporation.",
+  },
+};
+
 function renderPilots(catalog) {
   if (!districtsPayload) return;
   const byId = Object.fromEntries(catalog.districts.map((d) => [d.id, d]));
@@ -83,17 +135,20 @@ function renderPilots(catalog) {
   };
   $("pilot-grid").innerHTML = districtsPayload.districts.map((d) => {
     const meta = byId[d.id] || { crops: [], lakes: [] };
+    const pmeta = PILOT_META[d.id] || { imgClass: "pilot-card-img-bengaluru", imgLabel: d.id, context: "" };
     const crops = meta.crops.length ? meta.crops.map((id) => label("crops", id)).join(", ") : t("pilots.none");
     const lakes = meta.lakes.length ? meta.lakes.map((id) => label("lakes", id)).join(", ") : t("pilots.none");
     const status = d.status || "UNKNOWN";
-    return `<article class="card pilot-card">
-      <h3>${esc(d.name)}</h3>
-      <p><span class="badge badge-${esc(status).toLowerCase()}">${esc(t("status." + status))}</span></p>
-      <p class="small">${esc(t("status." + status + "_long"))}</p>
-      <p class="small"><strong>${esc(t("pilots.crops"))}:</strong> ${esc(crops)}</p>
-      <p class="small"><strong>${esc(t("pilots.lakes"))}:</strong> ${esc(lakes)}</p>
-      <p class="small">${esc(t("pilots.updated"))}: ${esc(d.updated_at || "–")}</p>
-      <a class="btn" href="app.html#d=${encodeURIComponent(d.id)}">${esc(t("pilots.open"))}</a>
+    return `<article class="pilot-card">
+      <div class="${esc(pmeta.imgClass)}">${esc(pmeta.imgLabel)}</div>
+      <div class="pilot-card-body">
+        <h3>${esc(d.name)}</h3>
+        <p><span class="badge badge-${esc(status).toLowerCase()}">${esc(t("status." + status))}</span></p>
+        <p>${esc(pmeta.context)}</p>
+        <p class="small muted"><strong>${esc(t("pilots.crops"))}:</strong> ${esc(crops)}</p>
+        <p class="small muted"><strong>${esc(t("pilots.lakes"))}:</strong> ${esc(lakes)}</p>
+        <div class="pilot-action"><a class="btn btn-outline" href="app.html#d=${encodeURIComponent(d.id)}">${esc(t("pilots.open"))} →</a></div>
+      </div>
     </article>`;
   }).join("");
 }
@@ -217,7 +272,9 @@ async function copyText(text) {
 async function boot() {
   initPwa();
   bindLangToggle();
+  initScrollNav();
   await initI18n("meta.landingTitle");
+  initScrollReveal();
   initTheme();
   const desc = document.querySelector('meta[name="description"]');
   if (desc) desc.setAttribute("content", t("meta.landingDescription"));

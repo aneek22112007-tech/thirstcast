@@ -10,11 +10,12 @@
   },
   "nav": {
     "home": "Home",
-    "map": "Live map",
+    "overview": "Overview",
+    "map": "Live Dashboard",
     "replay": "April 2024",
     "methods": "Methods",
     "github": "GitHub",
-    "ask": "Ask",
+    "ask": "Ask ThirstCast",
     "alerts": "Alerts",
     "langEn": "EN",
     "langHi": "हिंदी",
@@ -26,31 +27,64 @@
     "skip": "Skip to content"
   },
   "hero": {
-    "eyebrow": "Team LLF · AWS × Bharat · Track 02: Heat and Water",
+    "eyebrow": "Climate Intelligence · Karnataka",
     "pitch": "Everyone forecasts how hot the air will be. Nobody forecasts how thirsty it will be. ThirstCast detects thirstwaves and tells you, in litres, what the sky is about to drink.",
-    "sub": "A 7-day forecast of atmospheric thirst for three Karnataka districts. Every litre is an estimate.",
-    "openMap": "Open live map",
-    "watchReplay": "Watch April 2024 replay",
-    "art": "A sun drawing droplets up from a field and a lake"
+    "headlineEmphasis": "Forecast the atmosphere's thirst.",
+    "sub": "Detect unusual atmospheric water demand before it becomes a bigger challenge for farms and water managers. Seven-day thirstwave forecasts for three Karnataka pilot districts.",
+    "pitchSub": "ThirstCast uses ET₀ — reference evapotranspiration — and 30 years of local historical thresholds to detect multi-day thirstwaves and translate them into estimated extra water demand, in litres.",
+    "openMap": "Explore Live Dashboard",
+    "watchReplay": "Replay April 2024",
+    "art": "Atmospheric globe showing Karnataka district markers",
+    "stat1": "Pilot districts",
+    "stat2": "Day forecast horizon",
+    "stat3": "Years of climatology"
+  },
+  "concept": {
+    "kicker": "The science",
+    "title": "From weather to water demand",
+    "lead": "ET₀ represents atmospheric evaporative demand: how strongly weather conditions drive water loss from a reference surface. When ET₀ stays above its local seasonal 90th percentile for three or more days, a thirstwave has begun.",
+    "c1t": "Atmosphere",
+    "c1": "Temperature, humidity, wind, radiation",
+    "c2": "Evaporative demand, mm/day",
+    "c3t": "Local p90",
+    "c3": "1994–2023 day-of-year threshold",
+    "c4t": "Thirstwave",
+    "c4": "≥3 consecutive days above p90",
+    "c5t": "Litres",
+    "c5": "Extra crop irrigation + lake evaporation"
+  },
+  "cta": {
+    "kicker": "Environmental Intelligence",
+    "headline": "See the water demand behind the weather.",
+    "sub": "Seven-day thirstwave forecasts. Litres per acre. Real historical data. Open API.",
+    "openDash": "Explore the ThirstCast Dashboard",
+    "readMethods": "Read the Methodology"
   },
   "explainer": {
+    "kicker": "The definition",
     "title": "What is a thirstwave?",
     "s1t": "Heat, dry air, wind and sun",
     "s1": "Together they set how fast water can leave a crop or a lake.",
     "s2t": "The sky pulls water",
     "s2": "That pull is reference evapotranspiration, ET₀, in millimetres per day.",
     "s3t": "Three days above the local p90",
-    "s3": "A thirstwave is 3 or more days in a row above the local day-of-year 90th percentile."
+    "s3": "A thirstwave is 3 or more days in a row above the local day-of-year 90th percentile.",
+    "s4t": "Litres estimated",
+    "s4": "Excess ET₀ is converted to extra irrigation need and surface-water evaporation loss."
   },
   "evidence": {
     "kicker": "Historical replay · April 2024 · ERA5",
     "title": "Bengaluru Urban, April 2024",
+    "leadText": "April 2024 was one of the highest-demand Aprils in 30 years for Bengaluru Urban. The charts below use ERA5 reanalysis — not real-time data.",
     "days": "days with ET₀ above the day-of-year p90",
     "mm": "cumulative excess ET₀",
     "litres": "extra litres per acre, reference crop (estimate)",
     "rank": "April rank, 1994–2024",
     "chart": "April 2024 ET₀ versus the day-of-year p90, Bengaluru Urban",
     "legend": "Hatched bar: ET₀ above p90. Dashed line: day-of-year p90.",
+    "legend1": "ET₀ above p90",
+    "legend2": "ET₀ below p90",
+    "legend3": "Dashed: day-of-year p90",
     "framing": "Bengaluru's 2024 crisis was a supply failure. We don't claim thirstwaves caused it. We show the demand side nobody was measuring.",
     "tmax": "Maximum temperature was also above its own p90 on {n} of {total} days, so this is not a case of temperature staying quiet.",
     "compare": "The same April in the other pilot districts",
@@ -58,6 +92,7 @@
     "of": "of"
   },
   "why": {
+    "kicker": "The gap",
     "title": "Why it matters",
     "body": "Heat alerts say the air is hot. ThirstCast says how much faster water is leaving the surface, in litres, for a farmer, a lake manager and a city.",
     "quote": "This said, according to experts, there is essentially no data about extreme thirstwaves over India.",
@@ -65,6 +100,7 @@
     "paper": "Weighted for cropland area harvested, thirstwave intensity, duration, and frequency have increased by 0.06 mm d⁻¹ decade⁻¹, 0.10 days decade⁻¹, and 0.39 events decade⁻¹, respectively during 1981–2021. Statistically significant trends appear across 17%, 7%, and 23% of cropland area for intensity, frequency, and duration."
   },
   "how": {
+    "kicker": "The pipeline",
     "title": "How it works",
     "s1": "Open-Meteo",
     "s1b": "Forecast and ERA5 archive",
@@ -78,7 +114,8 @@
     "s5b": "The same four endpoints"
   },
   "features": {
-    "title": "What you can do",
+    "kicker": "What you can do",
+    "title": "Platform capabilities",
     "f1t": "Live map",
     "f1": "Three districts, coloured by ACTIVE, WATCH or NONE, with a pattern as well as a colour.",
     "f2t": "7-day forecast",
@@ -95,7 +132,9 @@
     "f7": "The product can mail a new ACTIVE status. Signup in this preview does not collect an address."
   },
   "pilots": {
+    "kicker": "Three districts, one system",
     "title": "Pilot districts",
+    "lead": "Each district represents a different water-stress context: urban lakes, dryland agriculture, and reservoir-irrigated crops.",
     "lakes": "Lakes",
     "crops": "Crops",
     "none": "None in this pilot",
@@ -104,16 +143,19 @@
   },
   "try": {
     "title": "Try a question",
-    "body": "These open the map with the chat pre-filled. Nothing is sent until you press Ask."
+    "body": "These open the dashboard with the AI chat pre-filled. Nothing is sent until you press Ask."
   },
+
   "api": {
+    "kicker": "Open data",
     "title": "Open data and API",
     "body": "The same JSON the map reads. Replace $API with the deployed ApiUrl, without a trailing slash.",
     "copy": "Copy",
     "copied": "Copied",
-    "snippet": "GET /districts"
+    "snippet": "GET /districts — sample response"
   },
   "limits": {
+    "kicker": "Transparency",
     "title": "Honest limits",
     "l1": "District-centroid estimate (~10 km grid). Not a field, and not the lake surface itself.",
     "l2": "Every litre is an estimate with a range. Lake figures are upper bounds.",
@@ -303,6 +345,7 @@
     "close": "Close"
   },
   "timeline": {
+    "kicker": "Historical record",
     "title": "Thirsty, not hot",
     "framing": "ET0 above its p90 while Tmax stayed below its own p90",
     "hero": "{district}, {start} to {end}: {days} days, {excess} mm cumulative excess, Tmax peak {tmax} °C.",
@@ -352,7 +395,9 @@
     "loading": "Loading methods…",
     "fail": "Could not load methods ({message}).",
     "sourcesTitle": "Source links",
-    "kicker": "Definitions and formulas below are the project methods note, unchanged."
+    "kicker": "Definitions and formulas",
+    "h1": "ThirstCast Methods",
+    "heroLead": "How thirstwaves are detected, forecast bias corrected, and excess ET₀ converted to litres. The project methods note, unchanged."
   },
   "common": {
     "close": "Close",

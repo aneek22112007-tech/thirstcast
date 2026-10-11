@@ -19,15 +19,19 @@ function slug(text) {
 async function render() {
   const doc = document.getElementById("doc");
   const nav = document.getElementById("method-nav");
+  const loadingEl = document.getElementById("methods-loading");
+  // Show skeleton
+  if (loadingEl) { loadingEl.hidden = false; loadingEl.removeAttribute("hidden"); }
   try {
     const res = await fetch("content/methods.md");
-    if (!res.ok) throw new Error(String(res.status));
+    if (!res.ok) throw new Error(`HTTP ${res.status} — methods.md could not be loaded`);
     const markdown = await res.text();
-    if (!window.marked) throw new Error("marked");
+    if (!window.marked) throw new Error("marked library not available");
+    // Clear skeleton
     doc.replaceChildren();
     if (getLang() !== "en") {
       const note = document.createElement("p");
-      note.className = "note";
+      note.className = "note note-info";
       note.id = "english-notice";
       note.textContent = t("app.englishNotice");
       doc.appendChild(note);
@@ -54,12 +58,22 @@ async function render() {
       heading.id = id;
       links.push(`<a href="#${id}">${heading.textContent}</a>`);
     });
-    const outline = links.length
-      ? `<div class="english-source" lang="en">${links.join("")}</div>`
-      : "";
-    nav.innerHTML = `<strong>${t("methods.onThisPage")}</strong>${outline}`;
+    // Update sidebar TOC — preserve title
+    const navTitle = nav.querySelector(".methods-nav-title");
+    nav.replaceChildren();
+    if (navTitle) nav.appendChild(navTitle);
+    const tocDiv = document.createElement("div");
+    tocDiv.lang = "en";
+    tocDiv.innerHTML = links.join("");
+    nav.appendChild(tocDiv);
+    doc.setAttribute("aria-busy", "false");
   } catch (err) {
-    doc.textContent = t("methods.fail", { message: err.message });
+    doc.replaceChildren();
+    const errEl = document.createElement("div");
+    errEl.className = "methods-error";
+    errEl.innerHTML = `<strong>${t("methods.fail", { message: "" })}</strong><br>${err.message}<br><br>
+      <a href="https://github.com/aneek22112007-tech/thirstcast/blob/main/docs/methods.md">Read the methods on GitHub →</a>`;
+    doc.appendChild(errEl);
   }
 }
 
@@ -72,7 +86,9 @@ async function boot() {
   if (desc) desc.content = t("meta.methodsDescription");
   const list = document.getElementById("source-list");
   list.lang = "en";
-  list.innerHTML = SOURCES.map(([label, href]) => `<a href="${href}">${label}</a>`).join("");
+  list.innerHTML = SOURCES.map(([label, href]) =>
+    `<div class="source-item"><a href="${href}">${label}</a></div>`
+  ).join("");
   onLang(() => {
     document.title = t("meta.methodsTitle");
     render();
