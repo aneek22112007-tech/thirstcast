@@ -264,6 +264,18 @@ function cropMeta(id) {
   return (state.catalog.crops || []).find((crop) => crop.id === id);
 }
 
+/** Accept 0.1–10000 in steps of 0.1. One comma is a decimal when the fraction is 1–2 digits ("2,5"). */
+function parseAcres(raw) {
+  const text = String(raw ?? "").trim().replace(/\s+/g, "");
+  if (!text) return null;
+  const normalised = /^\d{1,5},\d{1,2}$/.test(text) ? text.replace(",", ".") : text;
+  if (!/^\d+(\.\d+)?$/.test(normalised)) return null;
+  const n = Number(normalised);
+  if (!Number.isFinite(n) || n < 0.1 || n > 10000) return null;
+  if (Math.abs(n * 10 - Math.round(n * 10)) > 1e-6) return null;
+  return Math.round(n * 10) / 10;
+}
+
 function renderFarmers(detail) {
   const district = (state.catalog.districts || []).find((d) => d.id === detail.district);
   const crops = (district && district.crops) || [];
@@ -274,36 +286,56 @@ function renderFarmers(detail) {
     const name = meta ? (getLang() === "hi" ? meta.name_hi : meta.name) : id;
     return `<option value="${esc(id)}"${id === state.crop ? " selected" : ""}>${esc(name)}</option>`;
   }).join("");
-  const range = (detail.extra_litres_per_acre || {})[state.crop];
-  const meta = cropMeta(state.crop);
-  const acres = Number(state.acres) > 0 ? Number(state.acres) : 1;
-  let result = `<p class="note">${esc(t("app.unavailable"))}</p>`;
-  if (Array.isArray(range)) {
-    const low = Math.round(range[0] * acres);
-    const high = Math.round(range[1] * acres);
-    const tankLow = low / 10000;
-    const tankHigh = high / 10000;
-    const scaleLow = formatScale(low, getLang());
-    const scaleHigh = formatScale(high, getLang());
-    result = `
-      <p class="small">${esc(t("app.perAcre"))}: ${esc(formatNumber(range[0]))}–${esc(formatNumber(range[1]))} L</p>
-      <p class="big-range">${esc(formatNumber(low))}–${esc(formatNumber(high))} L</p>
-      <p>${esc(t("app.estimate"))}${scaleLow ? ` · ≈ ${esc(scaleLow)}–${esc(scaleHigh)}` : ""}</p>
-      <p>${esc(t("app.tankers", { n: `${formatNumber(tankLow, 2)}–${formatNumber(tankHigh, 2)}` }))}</p>
-      <details class="formula"><summary>${esc(t("app.howCalc"))}</summary>
-        <p>${esc(t("app.formula", { crop: meta ? meta.name : state.crop, kc: meta ? meta.kc : "–" }))}</p>
-        <p class="small">${esc(detail.excess_definition || t("app.excessDef"))}: ${detail.excess_mm_7d == null ? "–" : esc(formatNumber(detail.excess_mm_7d, 2))} mm.</p>
-        ${meta ? `<p class="small"><a href="${esc(meta.url)}">${esc(meta.source)}</a></p>` : ""}
-      </details>`;
-  }
   return `
     <div class="calc-row">
       <label class="field">${esc(t("app.crop"))}<select id="crop-select">${options}</select></label>
-      <label class="field">${esc(t("app.acres"))}<input id="acres" type="number" min="0.1" max="10000" step="0.1" value="${esc(acres)}"></label>
+      <label class="field">${esc(t("app.acres"))}<input id="acres" inputmode="decimal" autocomplete="off" aria-describedby="acres-error" value="${esc(state.acres)}"></label>
     </div>
+    <p id="acres-error" class="note" role="alert" hidden></p>
     <p class="small">${esc(t("app.range"))}</p>
-    ${result}
+    <div id="farm-result"></div>
     <p class="small">${esc(detail.caveat || t("app.caveat"))}. ${esc(t("app.kcNote"))}.</p>`;
+}
+
+function paintFarmResult() {
+  const box = $("farm-result");
+  const error = $("acres-error");
+  const detail = state.detail[state.selected];
+  if (!box || !error || !detail) return;
+  const acres = parseAcres(state.acres);
+  if (acres == null) {
+    error.hidden = false;
+    error.textContent = t("app.acresError");
+    box.classList.add("is-invalid");
+    box.innerHTML = `<p class="big-range">–</p>`;
+    return;
+  }
+  error.hidden = true;
+  error.textContent = "";
+  box.classList.remove("is-invalid");
+  const range = (detail.extra_litres_per_acre || {})[state.crop];
+  const meta = cropMeta(state.crop);
+  if (!Array.isArray(range)) {
+    box.innerHTML = `<p class="note">${esc(t("app.unavailable"))}</p>`;
+    return;
+  }
+  const low = Math.round(range[0] * acres);
+  const high = Math.round(range[1] * acres);
+  const tankLow = low / 10000;
+  const tankHigh = high / 10000;
+  const scaleLow = formatScale(low, getLang());
+  const scaleHigh = formatScale(high, getLang());
+  box.innerHTML = `
+    <p class="small">${esc(t("app.perAcre"))}: ${esc(formatNumber(range[0]))}–${esc(formatNumber(range[1]))} L</p>
+    <p class="big-range">${esc(formatNumber(low))}–${esc(formatNumber(high))} L</p>
+    <p>${esc(t("app.acresUsed", { n: acres }))}</p>
+    <p>${esc(t("app.estimate"))}${scaleLow ? ` · ≈ ${esc(scaleLow)}–${esc(scaleHigh)}` : ""}</p>
+    <p>${esc(t("app.tankers", { n: `${formatNumber(tankLow, 2)}–${formatNumber(tankHigh, 2)}` }))}</p>
+    <details class="formula"><summary>${esc(t("app.howCalc"))}</summary>
+      <p>${esc(t("app.formula", { crop: meta ? meta.name : state.crop, kc: meta ? meta.kc : "–" }))}</p>
+      <p class="small">${esc(detail.excess_definition || t("app.excessDef"))}: ${detail.excess_mm_7d == null ? "–" : esc(formatNumber(detail.excess_mm_7d, 2))} mm.</p>
+      ${meta ? `<p class="small"><a href="${esc(meta.url)}">${esc(meta.source)}</a></p>` : ""}
+    </details>`;
 }
 
 function renderLakes(detail) {
@@ -389,8 +421,9 @@ function renderActiveTab() {
   panel.innerHTML = views[state.tab](detail);
   const crop = $("crop-select");
   const acres = $("acres");
-  if (crop) crop.addEventListener("change", () => { state.crop = crop.value; renderActiveTab(); });
-  if (acres) acres.addEventListener("change", () => { state.acres = acres.value; renderActiveTab(); });
+  if (crop) crop.addEventListener("change", () => { state.crop = crop.value; paintFarmResult(); });
+  if (acres) acres.addEventListener("input", () => { state.acres = acres.value; paintFarmResult(); });
+  if ($("farm-result")) paintFarmResult();
 }
 
 async function selectDistrict(id, opts = {}) {
