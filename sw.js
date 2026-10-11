@@ -41,10 +41,7 @@ const SHELL_URLS = [
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(SHELL).then((cache) => cache.addAll(SHELL_URLS)).then(() => self.skipWaiting()));
 });
-
-self.addEventListener("activate", (event) => {
-  event.waitUntil(self.clients.claim());
-});
+/* The worker does not claim the open page. Claiming aborts fetches that page already started. */
 
 function isTile(url) {
   return url.hostname.endsWith("tile.openstreetmap.org");
