@@ -2,6 +2,7 @@ import { bindLangToggle, getLang, initI18n, initTheme, onLang, t } from "./i18n.
 import { initPwa, warmPwa } from "./pwa.js";
 import { aprilChart, et0Chart, tmaxChart } from "./charts.js";
 import { esc, formatMm, formatNumber, formatScale, prefersReducedMotion } from "./format.js";
+import { init3DScene } from "./scene3d.js";
 
 const $ = (id) => document.getElementById(id);
 const QUESTIONS = [
@@ -12,7 +13,28 @@ const QUESTIONS = [
   { district: "Bengaluru_Urban", q: "Explain ET₀ in simple Hindi." },
 ];
 
-// ─── Premium UI: scroll-linked nav + reveal ──────────────────────────────────
+// ─── Premium UI: scroll-progress & scroll-linked nav ────────────────────────
+function initScrollProgress() {
+  const bar = $("scroll-progress");
+  const indicators = $("story-indicators");
+  const story = $("story-3d");
+  if (!bar) return;
+  const update = () => {
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    if (total <= 0) return;
+    const p = Math.min(100, Math.max(0, (window.scrollY / total) * 100));
+    bar.style.width = p + "%";
+
+    if (indicators && story) {
+      const rect = story.getBoundingClientRect();
+      const inView = rect.top <= window.innerHeight * 0.5 && rect.bottom >= window.innerHeight * 0.2;
+      indicators.classList.toggle("visible", inView);
+    }
+  };
+  window.addEventListener("scroll", update, { passive: true });
+  update();
+}
+
 function initScrollNav() {
   const topbar = document.getElementById("topbar");
   if (!topbar) return;
@@ -110,18 +132,18 @@ function renderEvidence() {
 const PILOT_META = {
   Bengaluru_Urban: {
     imgClass: "pilot-card-img-bengaluru",
-    imgLabel: "URBAN LAKES",
-    context: "Lakes, urban surface-water, and the KRS impact zone.",
+    imgLabel: "URBAN LAKES · BELLANDUR & VARTHUR",
+    context: "Urban surface-water evaporation, lakes, and the KRS impact zone.",
   },
   Kolar: {
     imgClass: "pilot-card-img-kolar",
-    imgLabel: "DRYLAND AGRICULTURE",
-    context: "Rain-fed and irrigated agriculture, groundwater stress.",
+    imgLabel: "DRYLAND AGRICULTURE · TOMATO & RAGI",
+    context: "Rain-fed and irrigated horticulture, high groundwater stress.",
   },
   Mandya: {
     imgClass: "pilot-card-img-mandya",
-    imgLabel: "KRS RESERVOIR",
-    context: "Paddy crops, KRS reservoir surface-water evaporation.",
+    imgLabel: "KRS RESERVOIR · PADDY & SUGARCANE",
+    context: "Canal-fed paddy, sugarcane, and KRS reservoir evaporation.",
   },
 };
 
@@ -273,9 +295,11 @@ async function boot() {
   initPwa();
   bindLangToggle();
   initScrollNav();
+  initScrollProgress();
   await initI18n("meta.landingTitle");
   initScrollReveal();
   initTheme();
+  init3DScene();
   const desc = document.querySelector('meta[name="description"]');
   if (desc) desc.setAttribute("content", t("meta.landingDescription"));
   if (window.ThirstAPI && window.ThirstAPI.isMock) $("mock-badge").hidden = false;

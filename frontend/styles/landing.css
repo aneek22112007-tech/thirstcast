@@ -424,46 +424,47 @@
   object-fit: cover;
   display: block;
 }
-/* CSS gradient placeholder for districts (no stock photos needed) */
 .pilot-card-img-bengaluru {
-  height: 160px;
+  height: 180px;
   background:
-    radial-gradient(ellipse 80% 60% at 50% 100%, rgba(100,181,246,0.4) 0%, transparent 60%),
-    linear-gradient(160deg, #0a2235 0%, #0c2e40 50%, #071a24 100%);
+    linear-gradient(to top, rgba(7,17,19,0.92) 0%, rgba(7,17,19,0.2) 60%),
+    url('../img/pilot-bengaluru.jpg') center/cover no-repeat;
   display: flex;
   align-items: flex-end;
-  padding: 0.75rem;
-  font-size: 0.7rem;
-  color: rgba(100,181,246,0.7);
-  font-weight: 600;
-  letter-spacing: 0.06em;
+  padding: 0.9rem;
+  font-size: 0.72rem;
+  color: var(--aqua);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  transition: transform 0.6s var(--ease);
 }
 .pilot-card-img-kolar {
-  height: 160px;
+  height: 180px;
   background:
-    radial-gradient(ellipse 70% 50% at 40% 80%, rgba(246,185,74,0.25) 0%, transparent 60%),
-    linear-gradient(160deg, #1a1800 0%, #2a2a00 50%, #0f1000 100%);
+    linear-gradient(to top, rgba(7,17,19,0.92) 0%, rgba(7,17,19,0.2) 60%),
+    url('../img/pilot-kolar.jpg') center/cover no-repeat;
   display: flex;
   align-items: flex-end;
-  padding: 0.75rem;
-  font-size: 0.7rem;
-  color: rgba(246,185,74,0.7);
-  font-weight: 600;
-  letter-spacing: 0.06em;
+  padding: 0.9rem;
+  font-size: 0.72rem;
+  color: var(--amber);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  transition: transform 0.6s var(--ease);
 }
 .pilot-card-img-mandya {
-  height: 160px;
+  height: 180px;
   background:
-    radial-gradient(ellipse 80% 70% at 30% 70%, rgba(93,214,138,0.2) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 70% 30%, rgba(100,181,246,0.15) 0%, transparent 50%),
-    linear-gradient(160deg, #0a1e12 0%, #102a1c 50%, #071113 100%);
+    linear-gradient(to top, rgba(7,17,19,0.92) 0%, rgba(7,17,19,0.2) 60%),
+    url('../img/pilot-mandya.jpg') center/cover no-repeat;
   display: flex;
   align-items: flex-end;
-  padding: 0.75rem;
-  font-size: 0.7rem;
-  color: rgba(93,214,138,0.7);
-  font-weight: 600;
-  letter-spacing: 0.06em;
+  padding: 0.9rem;
+  font-size: 0.72rem;
+  color: var(--green);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  transition: transform 0.6s var(--ease);
 }
 .pilot-card-body { padding: 1.1rem; }
 .pilot-card h3 {
@@ -665,11 +666,220 @@ blockquote p { font-size: 0.95rem; color: var(--ink-2); line-height: 1.65; font-
 .topbar--transparent .topnav a { color: rgba(243,248,247,0.75); }
 .topbar--transparent .brand { color: #F3F8F7; }
 
+/* ─── Scroll Progress Indicator ────────────────────────────────── */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--aqua), var(--cyan, #38bdf8), var(--amber));
+  z-index: 1000;
+  box-shadow: 0 0 10px rgba(85, 230, 205, 0.7);
+  transition: width 0.08s linear;
+}
+
+/* ─── Video Hero ─────────────────────────────────────────────── */
+.hero-video-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.65;
+  filter: saturate(1.1) brightness(0.9);
+}
+
+.hero-pitch-quote {
+  font-family: var(--font-display, inherit);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--aqua-bright, #7df4dd);
+  border-left: 2px solid var(--aqua);
+  padding-left: 1rem;
+  margin: 1.2rem 0 1.6rem;
+  line-height: 1.5;
+}
+
+/* ─── 3D Storytelling Experience ─────────────────────────────── */
+.story-3d-experience {
+  position: relative;
+  background: #040a0c;
+  border-top: 1px solid rgba(85, 230, 205, 0.12);
+  border-bottom: 1px solid rgba(85, 230, 205, 0.12);
+  min-height: 520vh;
+}
+
+.story-3d-stage {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.story-3d-stage canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+.story-3d-track {
+  position: relative;
+  z-index: 2;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  pointer-events: none;
+}
+
+.story-step {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding: 3rem 0;
+  pointer-events: none;
+}
+
+.story-card {
+  pointer-events: auto;
+  max-width: 32rem;
+  background: rgba(7, 17, 19, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(85, 230, 205, 0.22);
+  border-radius: var(--radius-lg, 16px);
+  padding: 2.2rem 2.4rem;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.65), 0 0 35px rgba(85, 230, 205, 0.08);
+  opacity: 0.28;
+  transform: translateY(22px) scale(0.96);
+  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s ease;
+}
+
+.story-card.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  border-color: rgba(85, 230, 205, 0.65);
+  box-shadow: 0 24px 55px rgba(0, 0, 0, 0.7), 0 0 45px rgba(85, 230, 205, 0.16);
+}
+
+.story-card-step {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--aqua);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.story-card-title {
+  font-family: var(--font-display, inherit);
+  font-size: 1.85rem;
+  line-height: 1.22;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.story-card-body {
+  color: var(--text-subtle, #b4c7c5);
+  font-size: 0.96rem;
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+}
+
+.story-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(85, 230, 205, 0.09);
+  border: 1px solid rgba(85, 230, 205, 0.28);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--aqua);
+}
+
+/* Floating step indicators */
+.story-indicators {
+  position: fixed;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.story-indicators.visible { opacity: 1; }
+.story-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+.story-dot.active {
+  background: var(--aqua);
+  box-shadow: 0 0 12px var(--aqua);
+  transform: scale(1.4);
+}
+
+/* Dashboard preview window reveal (Scene 6) */
+.dashboard-reveal-preview {
+  margin-top: 1.4rem;
+  background: rgba(4, 10, 12, 0.95);
+  border: 1px solid rgba(85, 230, 205, 0.3);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+  position: relative;
+}
+.dashboard-window-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: rgba(7, 20, 24, 0.9);
+  border-bottom: 1px solid rgba(85, 230, 205, 0.15);
+}
+.window-dot { width: 10px; height: 10px; border-radius: 50%; }
+.window-dot.red { background: #ff5f56; }
+.window-dot.yellow { background: #ffbd2e; }
+.window-dot.green { background: #27c93f; }
+.window-title {
+  margin-left: 8px;
+  font-size: 0.74rem;
+  color: var(--muted);
+  font-family: monospace;
+}
+.dashboard-reveal-preview img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.dashboard-reveal-overlay {
+  padding: 1rem;
+  background: linear-gradient(to top, rgba(4, 10, 12, 0.95) 0%, rgba(4, 10, 12, 0.3) 100%);
+  text-align: center;
+}
+
 /* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 1024px) {
   .hero-content { grid-template-columns: 1fr; }
   .hero-visual { display: none; }
   .steps-grid { grid-template-columns: repeat(2, 1fr); }
+  .story-indicators { display: none; }
 }
 @media (max-width: 900px) {
   .stat-grid { grid-template-columns: repeat(2, 1fr); }
@@ -678,6 +888,7 @@ blockquote p { font-size: 0.95rem; color: var(--ink-2); line-height: 1.65; font-
   .why-grid { grid-template-columns: 1fr; }
   .team-grid { grid-template-columns: repeat(2, 1fr); }
   .concept-flow { justify-content: center; }
+  .story-card { max-width: 100%; }
 }
 @media (max-width: 640px) {
   .hero-section { min-height: 92vh; align-items: flex-end; }
@@ -692,4 +903,7 @@ blockquote p { font-size: 0.95rem; color: var(--ink-2); line-height: 1.65; font-
   .arch-arrow { transform: rotate(90deg); text-align: center; }
   .concept-flow { flex-direction: column; }
   .concept-arrow { transform: rotate(90deg); }
+  .story-card { padding: 1.6rem 1.4rem; }
+  .story-card-title { font-size: 1.45rem; }
 }
+

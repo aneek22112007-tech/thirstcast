@@ -345,7 +345,7 @@ p:last-child { margin-bottom: 0; }
   display: flex;
   flex-direction: column;
   border-left: 1px solid var(--line);
-  animation: slide-in-right 0.28s var(--ease-out);
+  animation: fade-in 0.2s var(--ease);
 }
 .modal {
   left: 50%; top: 50%;
