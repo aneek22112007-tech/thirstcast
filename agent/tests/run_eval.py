@@ -28,8 +28,11 @@ def load_questions():
         raise SystemExit("pip install pyyaml")
 
 
-def ask_url(url, q):
-    req = urllib.request.Request(url, data=json.dumps({"question": q}).encode(), method="POST",
+def ask_url(url, q, district=None):
+    payload = {"question": q}
+    if district:
+        payload["district"] = district
+    req = urllib.request.Request(url, data=json.dumps(payload).encode(), method="POST",
                                  headers={"content-type": "application/json"})
     with urllib.request.urlopen(req, timeout=35) as r:
         return json.loads(r.read().decode())
@@ -74,7 +77,8 @@ def main():
     for it in items:
         t0 = time.time()
         try:
-            resp = ask_url(args.url, it["q"]) if args.url else handle_ask(it["q"], repo=repo, mode=args.mode)
+            hint = it.get("hint")
+            resp = ask_url(args.url, it["q"], hint) if args.url else handle_ask(it["q"], district=hint, repo=repo, mode=args.mode)
             errs = check(it, resp)
         except Exception as e:  # noqa: BLE001
             resp, errs = {}, [f"request failed: {e!r}"]

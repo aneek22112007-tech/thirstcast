@@ -74,6 +74,20 @@ def test_llm_timeout_falls_back(repo, monkeypatch):
     assert a["mode"] == "template" and time.time() - t0 < 1.5
 
 
+def test_named_district_beats_hint(repo, monkeypatch):
+    monkeypatch.setenv("MODEL_PROVIDER", "none")
+    en = handler_core.handle_ask(
+        "Is Kolar just hot this week, or also thirsty?", district="Mandya", repo=repo)
+    assert en["district"] == "Kolar" and "Kolar" in en["answer"] and en["mode"] == "template"
+    hi = handler_core.handle_ask(
+        "कोलार में इस हफ्ते सिर्फ़ गर्मी है या प्यास भी?", district="Mandya", repo=repo)
+    assert hi["district"] == "Kolar" and hi["lang"] == "hi" and "कोलार" in hi["answer"]
+    hinted = handler_core.handle_ask("What is the outlook this week?", district="Mandya", repo=repo)
+    assert hinted["district"] == "Mandya"
+    none = answer("Is Kolar just hot this week, or also thirsty?", district="Mandya", repo=repo)
+    assert none["district"] == "Kolar"
+
+
 def test_build_agent_with_bedrock_config(monkeypatch, repo):
     pytest.importorskip("strands")
     monkeypatch.setenv("MODEL_PROVIDER", "bedrock")

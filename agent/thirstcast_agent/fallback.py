@@ -166,7 +166,8 @@ def answer(question, district=None, repo=None, lang=None):
     used = []
     token = tools.TOOLS_USED.set(used)
     try:
-        did = district if district in DISTRICT_NAMES else find_district(question)
+        named = find_district(question)
+        did = named or (district if district in DISTRICT_NAMES else None)
         if did is None:
             text = unknown_district(lang) if (district or mentions_other_place(question)) else general_help(lang)
             return _resp(text, lang, used, None)
