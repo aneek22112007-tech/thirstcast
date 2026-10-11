@@ -158,6 +158,7 @@ p { margin: 0 0 0.75rem; }
 }
 .tabs [role="tab"][aria-selected="true"] { color: var(--ink); border-bottom-color: var(--sky-bright); }
 .tab-panel { padding-top: 0.9rem; }
+.chart-wrap { background: var(--chart-wrap); color: var(--chart-ink); border-radius: 12px; }
 
 .drawer-backdrop, .modal-backdrop {
   position: fixed;

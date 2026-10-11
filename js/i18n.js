@@ -87,10 +87,26 @@ export function bindLangToggle() {
 
 const THEME_KEY = "thirstcast.theme";
 
+function systemTheme() {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
+function savedTheme() {
+  try {
+    const saved = localStorage.getItem(THEME_KEY);
+    return saved === "dark" || saved === "light" ? saved : null;
+  } catch (e) {
+    return null;
+  }
+}
+
 export function initTheme() {
-  const saved = localStorage.getItem(THEME_KEY);
-  const theme = saved === "dark" || saved === "light" ? saved : "light";
-  applyTheme(theme);
+  applyTheme(savedTheme() || systemTheme());
+  const media = window.matchMedia("(prefers-color-scheme: dark)");
+  const follow = () => {
+    if (!savedTheme()) applyTheme(systemTheme());
+  };
+  if (media.addEventListener) media.addEventListener("change", follow);
   document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
     btn.addEventListener("click", () => {
       const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
