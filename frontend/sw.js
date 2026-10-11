@@ -1,7 +1,7 @@
 /* ThirstCast shell. Network-first, then the saved copy. Tiles are stored only after a real request. */
-const SHELL = "thirstcast-shell-v1";
-const RUNTIME = "thirstcast-runtime-v1";
-const TILES = "thirstcast-tiles-v1";
+const SHELL = "thirstcast-shell-v2";
+const RUNTIME = "thirstcast-runtime-v2";
+const TILES = "thirstcast-tiles-v2";
 const DAY_MS = 86400000;
 let lastOffline = null;
 
