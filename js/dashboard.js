@@ -32,6 +32,16 @@ const state = {
   chatOpened: false,
 };
 
+/** "push" for a user navigation, "replace" for ticks, "skip" while restoring history. */
+let hashMode = "replace";
+let toastTimer = 0;
+let applyQueued = false;
+let appReady = false;
+
+function userNav() {
+  hashMode = "push";
+}
+
 function showError(message) {
   const banner = $("error-banner");
   banner.hidden = !message;
@@ -42,7 +52,8 @@ function toast(message) {
   const el = $("toast");
   el.hidden = false;
   el.textContent = message;
-  setTimeout(() => { el.hidden = true; }, 1600);
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { el.hidden = true; }, 4500);
 }
 
 function hashParams() {
@@ -50,18 +61,26 @@ function hashParams() {
 }
 
 function writeHash() {
+  const mode = hashMode;
+  hashMode = "replace";
+  if (mode === "skip") return;
   const params = hashParams();
   const next = new URLSearchParams();
   if (state.selected) next.set("d", state.selected);
   next.set("tab", state.tab);
   if (state.replayOn) next.set("replay", String(state.replayDay));
   next.set("lang", getLang());
+  if (!$("chat").hidden) next.set("chat", "1");
+  const view = params.get("view");
+  if (view) next.set("view", view);
   const q = params.get("q");
   const input = $("question");
   if (q && input && input.value === q) next.set("q", q);
   if (params.get("ask") === "1" && !state.chatOpened) next.set("ask", "1");
   const href = `#${next.toString()}`;
-  if (location.hash !== href) history.replaceState(null, "", href);
+  if (location.hash === href) return;
+  if (mode === "push") history.pushState(null, "", href);
+  else history.replaceState(null, "", href);
 }
 
 function loadAsset(kind, href) {
@@ -144,7 +163,7 @@ function renderList() {
     btn.className = "district-btn";
     btn.setAttribute("aria-pressed", String(state.selected === d.id));
     btn.innerHTML = `<span>${esc(d.name)}</span><span class="badge badge-${esc(status).toLowerCase()}">${esc(t("status." + status))}</span>`;
-    btn.addEventListener("click", () => selectDistrict(d.id));
+    btn.addEventListener("click", () => { userNav(); selectDistrict(d.id); });
     box.appendChild(btn);
     const opt = document.createElement("option");
     opt.value = d.id;
@@ -166,12 +185,13 @@ function renderTabs() {
     btn.setAttribute("aria-controls", "tab-panel");
     btn.tabIndex = state.tab === id ? 0 : -1;
     btn.textContent = t("tabs." + id);
-    btn.addEventListener("click", () => setTab(id));
+    btn.addEventListener("click", () => { userNav(); setTab(id); });
     btn.addEventListener("keydown", (event) => {
       const index = TABS.indexOf(id);
       if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
         event.preventDefault();
         const next = TABS[(index + (event.key === "ArrowRight" ? 1 : TABS.length - 1)) % TABS.length];
+        userNav();
         setTab(next);
         document.getElementById(`tab-${next}`).focus();
       }
@@ -458,7 +478,7 @@ function renderReplay() {
     state.speed = Number(event.target.value);
     if (state.timer) play(true);
   });
-  $("replay-stop").addEventListener("click", stopReplay);
+  $("replay-stop").addEventListener("click", () => { userNav(); stopReplay(); });
   $("replay-share").addEventListener("click", async () => {
     writeHash();
     try { await navigator.clipboard.writeText(location.href); } catch (e) { /* ignore */ }
@@ -504,7 +524,7 @@ function play(on) {
   renderReplay();
 }
 
-async function startReplay(day) {
+async function startReplay(day, opts = {}) {
   $("replay-start").disabled = true;
   try {
     await Promise.all(Object.keys(state.layers).map(async (id) => {
@@ -516,9 +536,12 @@ async function startReplay(day) {
     $("replay-panel").hidden = false;
     $("replay-banner").hidden = false;
     $("replay-banner").textContent = t("replay.banner");
-    const startDay = day || 1;
-    setReplayDay(startDay);
     const length = state.replay[state.selected].days.length;
+    let startDay = Number(day) || 1;
+    if (startDay < 1) startDay = 1;
+    if (startDay > length) startDay = length;
+    if (opts.write === false) hashMode = "skip";
+    setReplayDay(startDay);
     if (startDay < length) play(true);
     requestAnimationFrame(() => {
       if (!state.map || !Object.keys(state.layers).length) return;
@@ -532,7 +555,7 @@ async function startReplay(day) {
   }
 }
 
-function stopReplay() {
+function stopReplay(opts = {}) {
   clearInterval(state.timer);
   state.timer = null;
   state.replayOn = false;
@@ -544,7 +567,7 @@ function stopReplay() {
   Object.values(state.districts).forEach((d) => paint(d.id, d.status || "UNKNOWN"));
   renderList();
   renderActiveTab();
-  writeHash();
+  if (!opts.keepHash) writeHash();
 }
 
 function focusables(root) {
@@ -559,21 +582,25 @@ function syncInert() {
   if (skip) skip.inert = open;
 }
 
-function openChat(prefill) {
+function openChat(prefill, opts = {}) {
+  const wasHidden = $("chat").hidden;
   state.chatOpened = true;
   $("chat").hidden = false;
   $("chat-backdrop").hidden = false;
   syncInert();
   if (prefill) $("question").value = prefill;
-  $("question").focus();
-  writeHash();
+  if (wasHidden) $("question").focus();
+  if (!opts.keepHash) writeHash();
 }
 
-function closeChat() {
+function closeChat(opts = {}) {
   $("chat").hidden = true;
   $("chat-backdrop").hidden = true;
   syncInert();
-  $("open-chat").focus();
+  if (!opts.keepHash) {
+    $("open-chat").focus();
+    writeHash();
+  }
 }
 
 function addMessage(kind, html) {
@@ -630,7 +657,10 @@ function renderSuggestions() {
     btn.className = "chip";
     btn.textContent = item.q;
     btn.addEventListener("click", () => {
-      if (state.districts[item.district]) selectDistrict(item.district);
+      if (state.districts[item.district]) {
+        userNav();
+        selectDistrict(item.district);
+      }
       $("question").value = item.q;
       ask(item.q);
     });
@@ -640,11 +670,11 @@ function renderSuggestions() {
 
 function bindChrome() {
   bindLangToggle();
-  $("district-select").addEventListener("change", (event) => selectDistrict(event.target.value));
-  $("replay-start").addEventListener("click", () => startReplay(1));
-  $("open-chat").addEventListener("click", () => openChat());
-  $("close-chat").addEventListener("click", closeChat);
-  $("chat-backdrop").addEventListener("click", closeChat);
+  $("district-select").addEventListener("change", (event) => { userNav(); selectDistrict(event.target.value); });
+  $("replay-start").addEventListener("click", () => { userNav(); startReplay(1); });
+  $("open-chat").addEventListener("click", () => { userNav(); openChat(); });
+  $("close-chat").addEventListener("click", () => { userNav(); closeChat(); });
+  $("chat-backdrop").addEventListener("click", () => { userNav(); closeChat(); });
   $("ask-form").addEventListener("submit", (event) => {
     event.preventDefault();
     const value = $("question").value;
@@ -686,8 +716,10 @@ function bindChrome() {
     const dialog = !$("chat").hidden ? $("chat") : (!$("alert-dialog").hidden ? $("alert-dialog") : null);
     if (!dialog) return;
     if (event.key === "Escape") {
-      if (dialog === $("chat")) closeChat();
-      else closeAlerts();
+      if (dialog === $("chat")) {
+        userNav();
+        closeChat();
+      } else closeAlerts();
       return;
     }
     if (event.key !== "Tab") return;
@@ -703,25 +735,62 @@ function bindChrome() {
       first.focus();
     }
   });
-  window.addEventListener("hashchange", () => applyHash(false));
+  window.addEventListener("hashchange", queueApply);
+  window.addEventListener("popstate", queueApply);
+}
+
+function queueApply() {
+  if (!appReady || applyQueued) return;
+  applyQueued = true;
+  setTimeout(() => {
+    applyQueued = false;
+    applyHash(false);
+  }, 0);
+}
+
+function clampReplayDay(raw) {
+  const parsed = Number.parseInt(raw, 10);
+  let day = Number.isFinite(parsed) ? parsed : 1;
+  if (day < 1) day = 1;
+  if (day > 30) day = 30;
+  return day;
 }
 
 async function applyHash(initial) {
   const params = hashParams();
+  let rewrite = false;
+  const notes = [];
   const tab = params.get("tab");
-  if (tab && TABS.includes(tab)) state.tab = tab;
+  if (tab && !TABS.includes(tab)) {
+    notes.push(t("app.badTab"));
+    state.tab = "overview";
+    rewrite = true;
+  } else if (tab && TABS.includes(tab)) {
+    state.tab = tab;
+  }
   const district = params.get("d");
-  if (district && state.districts[district] && (initial || district !== state.selected)) {
+  if (district && !state.districts[district]) {
+    notes.push(t("app.badDistrict"));
+    rewrite = true;
+  } else if (district && state.districts[district] && (initial || district !== state.selected)) {
     await selectDistrict(district, { keepHash: true });
   }
   const replay = params.get("replay");
-  if (replay) {
-    const day = Math.max(1, Number(replay) || 1);
-    if (!state.replayOn || state.replayDay !== day) await startReplay(day);
+  if (replay != null && replay !== "") {
+    const day = clampReplayDay(replay);
+    if (String(day) !== replay) rewrite = true;
+    if (!state.replayOn || state.replayDay !== day) await startReplay(day, { write: false });
   } else if (state.replayOn) {
-    stopReplay();
+    stopReplay({ keepHash: true });
   }
-  if (params.get("ask") === "1" && initial) openChat(params.get("q") || "");
+  const wantChat = params.get("chat") === "1" || (initial && params.get("ask") === "1");
+  if (wantChat && $("chat").hidden) openChat(params.get("q") || "", { keepHash: true });
+  else if (!wantChat && !$("chat").hidden) closeChat({ keepHash: true });
+  if (notes.length) toast(notes.join(" "));
+  if (rewrite) {
+    hashMode = "replace";
+    writeHash();
+  }
   renderTabs();
   if (!state.replayOn) renderActiveTab();
 }
@@ -781,7 +850,7 @@ async function boot() {
       const id = feature.properties.id;
       state.layers[id] = path;
       path.bindTooltip(feature.properties.name, { sticky: true });
-      path.on("click", () => selectDistrict(id));
+      path.on("click", () => { userNav(); selectDistrict(id); });
     },
   }).addTo(map);
   installPatterns();
@@ -813,6 +882,9 @@ async function boot() {
       || Object.keys(state.districts)[0];
     if (first) await selectDistrict(first, { keepHash: true });
     await applyHash(true);
+    hashMode = "replace";
+    writeHash();
+    appReady = true;
     window.addEventListener("resize", () => map.invalidateSize());
     setTimeout(() => map.invalidateSize(), 200);
   } catch (err) {
