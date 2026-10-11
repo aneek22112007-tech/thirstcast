@@ -3,25 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ThirstCast map</title>
-  <meta name="description" content="Live thirstwave map, 7-day ET0 forecast, litres calculator and April 2024 replay for three Karnataka districts.">
-  <meta property="og:title" content="ThirstCast map">
+  <title>ThirstCast Dashboard — Thirstwave Map</title>
+  <meta name="description" content="Live thirstwave map, 7-day ET₀ forecast, litres calculator and April 2024 replay for three Karnataka districts.">
+  <meta property="og:title" content="ThirstCast Dashboard">
   <meta property="og:description" content="Everyone forecasts how hot the air will be. Nobody forecasts how thirsty it will be.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="og.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="ThirstCast map">
+  <meta name="twitter:title" content="ThirstCast Dashboard">
   <meta name="twitter:description" content="Thirstwave map for Bengaluru Urban, Kolar and Mandya.">
   <meta name="twitter:image" content="og.png">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="manifest.webmanifest">
-  <meta name="theme-color" content="#0c2340">
+  <meta name="theme-color" content="#071113">
   <link rel="preload" href="vendor/leaflet/leaflet.css" as="style">
   <link rel="preload" href="vendor/leaflet/leaflet.js" as="script">
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap"></noscript>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"></noscript>
   <link rel="stylesheet" href="styles/tokens.css">
   <link rel="stylesheet" href="styles/components.css">
   <link rel="stylesheet" href="styles/app.css">
@@ -42,103 +43,162 @@
 </head>
 <body>
   <a class="skip" href="#content" data-i18n="nav.skip">Skip to content</a>
+
   <div class="app-shell" id="shell">
-    <header class="topbar">
-      <a class="brand" href="index.html">
-        <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="#0c2340"/><path d="M16 5c-4 6.5-8 11-8 16a8 8 0 0 0 16 0c0-5-4-9.5-8-16z" fill="#7ec8e8"/><circle cx="22" cy="9" r="3" fill="#f6d27a"/></svg>
-        ThirstCast
+
+    <!-- ═══════════════════════════════════════ TOPBAR ══ -->
+    <header class="topbar" id="topbar">
+      <a class="brand" href="index.html" aria-label="ThirstCast home">
+        <svg viewBox="0 0 32 32" aria-hidden="true" width="26" height="26">
+          <defs>
+            <radialGradient id="bg-g" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#0d3a45"/>
+              <stop offset="100%" stop-color="#071113"/>
+            </radialGradient>
+          </defs>
+          <circle cx="16" cy="16" r="16" fill="url(#bg-g)"/>
+          <path d="M16 5c-3.5 5.5-7 9.5-7 14a7 7 0 0 0 14 0c0-4.5-3.5-8.5-7-14z" fill="#55E6CD" opacity="0.9"/>
+          <circle cx="22" cy="9" r="2.5" fill="#F6B94A" opacity="0.85"/>
+        </svg>
+        <span class="brand-wordmark">ThirstCast</span>
       </a>
-      <nav class="topnav" aria-label="Main">
+
+      <nav class="topnav" aria-label="Main navigation">
         <a href="index.html" data-i18n="nav.home">Home</a>
         <a href="methods.html" data-i18n="nav.methods">Methods</a>
         <a href="https://github.com/aneek22112007-tech/thirstcast" data-i18n="nav.github">GitHub</a>
       </nav>
+
+      <!-- District selector -->
       <label class="field district-select">
         <span class="sr-only" data-i18n="app.district">District</span>
         <select id="district-select"></select>
       </label>
+
       <div class="top-actions">
+        <!-- Language -->
         <button class="btn btn-ghost" type="button" data-set-lang="en" data-lang-pressed="en" aria-pressed="true">EN</button>
         <button class="btn btn-ghost" type="button" data-set-lang="hi" data-lang-pressed="hi" aria-pressed="false">हिंदी</button>
         <button class="btn btn-ghost" type="button" data-set-lang="kn" data-lang-pressed="kn" aria-pressed="false">ಕನ್ನಡ</button>
-        <button class="btn icon-btn" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark theme"><span data-theme-label>Dark</span></button>
+        <!-- Theme -->
+        <button class="btn icon-btn" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to light theme">
+          <span data-theme-label aria-hidden="true">☾</span>
+        </button>
+        <!-- Dashboard actions -->
         <button class="btn" type="button" id="open-compare" data-i18n="compare.open">Compare</button>
-        <button class="btn" type="button" id="open-chat" data-i18n="nav.ask">Ask</button>
+        <button class="btn btn-primary" type="button" id="open-chat" data-i18n="nav.ask">Ask ThirstCast</button>
         <button class="btn btn-ghost" type="button" id="open-alerts" data-i18n="nav.alerts">Alerts</button>
         <button class="btn" type="button" id="replay-start" data-i18n="replay.start">Replay April 2024</button>
         <span id="mock-badge" class="badge badge-mock" hidden>MOCK DATA</span>
       </div>
     </header>
+
+    <!-- Banners -->
     <div id="error-banner" class="banner banner-error" role="alert" hidden></div>
-  <div id="offline-banner" class="banner banner-info" role="status" hidden></div>
+    <div id="offline-banner" class="banner banner-info" role="status" hidden></div>
     <div id="info-banner" class="banner banner-info" role="status" hidden></div>
+
+    <!-- ═══════════════════════════════════ WORKSPACE ══ -->
     <div class="workspace" id="content">
+
+      <!-- ─ Primary map ─ -->
       <div class="map-wrap">
-        <div id="map" role="region" tabindex="0" data-i18n-aria="app.mapLabel" aria-label="Map of Bengaluru Urban, Kolar and Mandya"></div>
+        <div id="map" role="region" tabindex="0"
+             data-i18n-aria="app.mapLabel"
+             aria-label="Map of Bengaluru Urban, Kolar and Mandya">
+        </div>
         <p id="map-live" class="sr-only" aria-live="polite"></p>
-        <div class="map-caveat" id="map-caveat">District-centroid estimate (~10 km grid)</div>
+        <div class="map-caveat" id="map-caveat" aria-label="Data resolution note">
+          District-centroid estimate (~10 km grid)
+        </div>
         <div class="legend" id="legend"></div>
         <div class="replay-banner" id="replay-banner" hidden></div>
       </div>
+
+      <!-- ─ Side panel ─ -->
       <aside class="panel" id="panel" aria-label="District detail">
-        <button class="btn sheet-toggle" type="button" id="sheet-toggle" aria-expanded="false" data-i18n="app.expand">Expand panel</button>
-        <div id="district-list" class="district-list" role="group" data-i18n-aria="app.list" aria-label="Districts"></div>
+        <button class="btn sheet-toggle" type="button" id="sheet-toggle"
+                aria-expanded="false" data-i18n="app.expand">Expand panel</button>
+
+        <!-- District quick-select buttons -->
+        <div id="district-list" class="district-list" role="group"
+             data-i18n-aria="app.list" aria-label="Districts"></div>
+
+        <!-- Live data tabs + content -->
         <div id="live-panel">
           <div class="tabs" role="tablist" aria-label="District sections" id="tabs"></div>
           <div id="tab-panel" class="tab-panel" role="tabpanel" tabindex="0" aria-live="polite"></div>
         </div>
+
+        <!-- Replay panel (hidden unless replay is active) -->
         <div id="replay-panel" class="replay-stage" hidden></div>
       </aside>
     </div>
+
+    <!-- ══════════════════════════════════ COMPARE ══ -->
     <section id="compare" class="compare" hidden aria-labelledby="compare-title">
       <div class="compare-bar">
         <h2 id="compare-title" data-i18n="compare.title">Compare the three districts</h2>
-        <button class="btn" type="button" id="close-compare" data-i18n="compare.close">Back to map</button>
+        <button class="btn" type="button" id="close-compare" data-i18n="compare.close">← Back to map</button>
       </div>
       <div id="compare-grid" class="compare-grid" role="listbox"></div>
       <p id="compare-live" class="sr-only" aria-live="polite"></p>
     </section>
-  </div>
 
+  </div><!-- /.app-shell -->
+
+  <!-- ══════════════════════════════════ CHAT DRAWER ══ -->
   <div id="chat-backdrop" class="drawer-backdrop" hidden></div>
-  <aside id="chat" class="drawer" role="dialog" aria-modal="true" aria-labelledby="chat-title" hidden>
+  <aside id="chat" class="drawer" role="dialog" aria-modal="true"
+         aria-labelledby="chat-title" hidden>
     <div class="drawer-head">
-      <h2 id="chat-title" data-i18n="chat.title">Ask ThirstCast</h2>
-      <button class="btn" type="button" id="close-chat" data-i18n="chat.close">Close chat</button>
+      <div>
+        <h2 id="chat-title" data-i18n="chat.title">Ask ThirstCast</h2>
+        <p class="small muted" style="margin:0.15rem 0 0" data-i18n="chat.hint">Answers come only from ThirstCast data. All litres are estimates.</p>
+      </div>
+      <button class="btn" type="button" id="close-chat" data-i18n="chat.close">Close</button>
     </div>
-    <div class="chat-suggest">
-      <p class="small" data-i18n="chat.suggestions">Suggested questions</p>
+    <div class="chat-suggest" style="padding-top:0.75rem">
+      <p class="small muted" style="margin-bottom:0.4rem" data-i18n="chat.suggestions">Suggested questions</p>
       <div class="chips" id="suggest"></div>
     </div>
     <div id="messages" class="messages" aria-live="polite"></div>
     <form id="ask-form" class="ask-form">
       <label class="sr-only" for="question" data-i18n="chat.title">Ask ThirstCast</label>
-      <input id="question" name="question" maxlength="500" autocomplete="off" data-i18n-placeholder="chat.placeholder" placeholder="Ask in English or Hindi">
+      <input id="question" name="question" maxlength="500" autocomplete="off"
+             data-i18n-placeholder="chat.placeholder"
+             placeholder="Ask in English, Hindi, or Kannada">
       <button class="btn btn-primary" type="submit" id="ask-btn" data-i18n="chat.send">Ask</button>
     </form>
-    <p class="small" id="chat-lang-note" hidden></p>
-    <p class="small" style="padding:0 0.8rem 0.8rem" data-i18n="chat.hint">Answers come only from ThirstCast data. All litres are estimates.</p>
+    <p class="small muted" id="chat-lang-note" style="padding:0 0.9rem 0.7rem" hidden></p>
   </aside>
 
+  <!-- ══════════════════════════════════ ALERT MODAL ══ -->
   <div id="alert-backdrop" class="modal-backdrop" hidden></div>
-  <div id="alert-dialog" class="modal" role="dialog" aria-modal="true" aria-labelledby="alert-title" hidden>
+  <div id="alert-dialog" class="modal" role="dialog" aria-modal="true"
+       aria-labelledby="alert-title" hidden>
     <h2 id="alert-title" data-i18n="alerts.title">Get email alerts</h2>
-    <p data-i18n="alerts.body"></p>
+    <p class="small muted" data-i18n="alerts.body" style="margin:0.4rem 0 0.75rem"></p>
     <form id="alert-form">
-      <label class="field" id="alert-email-field" for="alert-email" data-i18n="alerts.email">Email address</label>
-      <input id="alert-email" type="email" autocomplete="off" inputmode="email">
-      <p class="small" data-i18n="alerts.privacy"></p>
+      <label class="field" id="alert-email-field" for="alert-email">
+        <span data-i18n="alerts.email">Email address</span>
+        <input id="alert-email" type="email" autocomplete="off" inputmode="email">
+      </label>
+      <p class="small muted" style="margin-top:0.5rem" data-i18n="alerts.privacy"></p>
       <pre id="alert-sample" class="note" hidden></pre>
       <div id="alert-result" class="note" hidden></div>
-      <div style="display:flex; gap:0.4rem; margin-top:0.6rem">
+      <div style="display:flex; gap:0.4rem; margin-top:0.85rem">
         <button class="btn btn-primary" type="submit" id="alert-submit" data-i18n="alerts.submit">Notify me</button>
         <button class="btn" type="button" id="close-alerts" data-i18n="alerts.close">Close</button>
       </div>
     </form>
   </div>
+
   <div id="toast" class="toast" role="status" hidden></div>
   <div id="share-holder" class="sr-only"></div>
   <article id="bulletin"></article>
+
+  <script src="vendor/leaflet/leaflet.js"></script>
   <script src="config.js"></script>
   <script src="api.js"></script>
   <script type="module" src="js/dashboard.js"></script>

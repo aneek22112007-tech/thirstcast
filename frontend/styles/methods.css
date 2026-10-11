@@ -1,42 +1,209 @@
+/* ThirstCast — Methods Page v2
+   Well-designed scientific methods document. */
+
 .methods-layout {
-  max-width: calc(var(--max) + 2rem);
+  max-width: calc(var(--max) + 3rem);
   margin: 0 auto;
-  padding: 1rem;
+  padding: 1.5rem 1.5rem 3rem;
   display: grid;
   grid-template-columns: 220px minmax(0, 1fr);
-  gap: 1rem;
+  gap: 1.5rem;
   align-items: start;
   min-width: 0;
 }
 .methods-layout > * { min-width: 0; }
+
+/* Sticky TOC sidebar */
 .methods-nav {
   position: sticky;
   top: 5rem;
   display: grid;
-  gap: 0.35rem;
-  background: var(--card);
+  gap: 0.2rem;
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 0.8rem;
+  padding: 0.9rem;
 }
-.methods-nav a { color: inherit; text-decoration: none; font-size: 0.88rem; font-weight: 600; }
-.methods-nav a:hover { color: var(--sky); }
+.methods-nav-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+  margin-bottom: 0.4rem;
+}
+.methods-nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.83rem;
+  font-weight: 500;
+  padding: 0.25rem 0.4rem;
+  border-radius: var(--radius-xs);
+  transition: color var(--motion) var(--ease), background var(--motion) var(--ease);
+}
+.methods-nav a:hover {
+  color: var(--aqua);
+  background: var(--aqua-soft);
+}
+
+/* Main document area */
 .doc {
-  background: var(--card);
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 1.1rem 1.2rem 2rem;
+  padding: 1.75rem 2rem 2.5rem;
   min-width: 0;
   overflow-wrap: anywhere;
   overflow-x: auto;
 }
-.doc h1, .doc h2 { scroll-margin-top: 5rem; }
-.doc img { border: 1px solid var(--line); border-radius: 8px; height: auto; max-width: 100%; }
+.doc h1, .doc h2 { scroll-margin-top: 5.5rem; }
+.doc h1 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 0.6rem; color: var(--ink); }
+.doc h2 {
+  font-size: 1.25rem;
+  margin: 2rem 0 0.65rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  color: var(--ink);
+}
+.doc h3 { font-size: 1rem; margin: 1.25rem 0 0.45rem; color: var(--ink-2); }
+.doc p { color: var(--ink-2); line-height: 1.7; font-size: 0.95rem; margin-bottom: 0.75rem; }
+.doc ul, .doc ol { color: var(--ink-2); font-size: 0.95rem; padding-left: 1.5rem; margin-bottom: 0.75rem; }
+.doc li { margin-bottom: 0.35rem; }
+.doc img {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  height: auto;
+  max-width: 100%;
+  margin: 0.75rem 0;
+  display: block;
+}
+.doc code {
+  background: var(--surface-2);
+  color: var(--aqua);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  border: 1px solid var(--line);
+}
+.doc pre {
+  background: #050e10;
+  color: #b8d8da;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.1rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.83rem;
+  line-height: 1.55;
+  margin: 0.75rem 0;
+}
+.doc pre code { background: none; color: inherit; padding: 0; border: none; }
+.doc blockquote {
+  border-left: 3px solid var(--aqua-dim);
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+  background: var(--surface-2);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+.doc blockquote p { font-style: italic; }
+.doc .table-scroll { margin: 0.75rem 0; }
 .doc .table-scroll table { min-width: 40rem; border-collapse: collapse; width: 100%; }
-.doc th, .doc td { border: 1px solid var(--line); padding: 0.35rem 0.45rem; text-align: left; font-size: 0.9rem; }
-.doc code { background: var(--sand); padding: 0 0.25rem; border-radius: 4px; }
-.source-list { display: grid; gap: 0.35rem; }
+.doc th { background: var(--surface-2); color: var(--muted); font-weight: 600; font-size: 0.8rem; letter-spacing: 0.04em; }
+.doc th, .doc td { border: 1px solid var(--line); padding: 0.38rem 0.55rem; font-size: 0.87rem; }
+.doc strong { color: var(--ink); }
+
+/* Math formulas */
+.doc .formula {
+  display: block;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--aqua-dim);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 0.85rem 1rem;
+  margin: 0.75rem 0;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--ink-2);
+  overflow-x: auto;
+}
+
+/* Sources section */
+.source-list {
+  display: grid;
+  gap: 0.45rem;
+  margin-top: 0.5rem;
+}
+.source-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem;
+  align-items: flex-start;
+  font-size: 0.87rem;
+  color: var(--ink-2);
+}
+.source-item::before {
+  content: "→";
+  color: var(--aqua-dim);
+  font-weight: 700;
+  margin-top: 0.05rem;
+}
+.source-item a { color: var(--aqua); }
+
+/* Methods page hero strip */
+.methods-hero {
+  background: linear-gradient(135deg, #0a1e22 0%, #071113 100%);
+  border-bottom: 1px solid var(--line);
+  padding: 2.5rem 1.5rem 2rem;
+}
+.methods-hero-inner {
+  max-width: calc(var(--max) + 3rem);
+  margin: 0 auto;
+}
+.methods-hero .section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--aqua);
+  margin-bottom: 0.75rem;
+}
+.methods-hero .section-kicker::before {
+  content: "";
+  display: block;
+  width: 20px; height: 1px;
+  background: var(--aqua);
+}
+.methods-hero h1 {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  margin-bottom: 0.5rem;
+}
+.methods-hero p { color: var(--muted); font-size: 1rem; max-width: 42rem; }
+
+/* Loading and error states */
+.methods-loading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 1rem;
+}
+.methods-error {
+  padding: 1.5rem;
+  background: var(--red-soft);
+  border: 1px solid var(--red-dim);
+  border-radius: var(--radius);
+  color: var(--red);
+  font-size: 0.92rem;
+}
+
 @media (max-width: 800px) {
-  .methods-layout { grid-template-columns: minmax(0, 1fr); }
+  .methods-layout {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 1rem;
+  }
   .methods-nav { position: static; }
+  .doc { padding: 1.25rem 1rem 2rem; }
 }
