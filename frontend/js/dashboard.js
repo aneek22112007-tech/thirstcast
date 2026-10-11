@@ -547,10 +547,23 @@ function stopReplay() {
   writeHash();
 }
 
+function focusables(root) {
+  return [...root.querySelectorAll("a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex='-1'])")]
+    .filter((el) => !el.closest("[hidden]"));
+}
+
+function syncInert() {
+  const open = !$("chat").hidden || !$("alert-dialog").hidden;
+  $("shell").inert = open;
+  const skip = document.querySelector(".skip");
+  if (skip) skip.inert = open;
+}
+
 function openChat(prefill) {
   state.chatOpened = true;
   $("chat").hidden = false;
   $("chat-backdrop").hidden = false;
+  syncInert();
   if (prefill) $("question").value = prefill;
   $("question").focus();
   writeHash();
@@ -559,6 +572,7 @@ function openChat(prefill) {
 function closeChat() {
   $("chat").hidden = true;
   $("chat-backdrop").hidden = true;
+  syncInert();
   $("open-chat").focus();
 }
 
@@ -642,12 +656,14 @@ function bindChrome() {
     $("alert-backdrop").hidden = false;
     $("alert-email").value = "";
     $("alert-result").hidden = true;
+    syncInert();
     $("alert-email").focus();
   });
   const closeAlerts = () => {
     $("alert-dialog").hidden = true;
     $("alert-backdrop").hidden = true;
     $("alert-email").value = "";
+    syncInert();
     $("open-alerts").focus();
   };
   $("close-alerts").addEventListener("click", closeAlerts);
@@ -667,9 +683,25 @@ function bindChrome() {
     setTimeout(() => state.map && state.map.invalidateSize(), 220);
   });
   document.addEventListener("keydown", (event) => {
-    if (event.key !== "Escape") return;
-    if (!$("chat").hidden) closeChat();
-    if (!$("alert-dialog").hidden) closeAlerts();
+    const dialog = !$("chat").hidden ? $("chat") : (!$("alert-dialog").hidden ? $("alert-dialog") : null);
+    if (!dialog) return;
+    if (event.key === "Escape") {
+      if (dialog === $("chat")) closeChat();
+      else closeAlerts();
+      return;
+    }
+    if (event.key !== "Tab") return;
+    const items = focusables(dialog);
+    if (!items.length) return;
+    const first = items[0];
+    const last = items[items.length - 1];
+    if (event.shiftKey && (document.activeElement === first || !dialog.contains(document.activeElement))) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && (document.activeElement === last || !dialog.contains(document.activeElement))) {
+      event.preventDefault();
+      first.focus();
+    }
   });
   window.addEventListener("hashchange", () => applyHash(false));
 }

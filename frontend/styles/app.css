@@ -7,7 +7,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.9fr);
 }
-.map-wrap { position: relative; min-height: 480px; background: var(--sand); }
+.map-wrap { position: relative; z-index: 0; isolation: isolate; min-height: 480px; background: var(--sand); }
 #map { position: absolute; inset: 0; }
 .map-caveat, .legend, .replay-banner {
   position: absolute;
