@@ -1,4 +1,5 @@
 import { bindLangToggle, getLang, initI18n, initTheme, onLang, t } from "./i18n.js";
+import { initPwa, warmPwa } from "./pwa.js";
 import { aprilChart, et0Chart, tmaxChart } from "./charts.js";
 import { esc, formatMm, formatNumber, formatScale, prefersReducedMotion } from "./format.js";
 
@@ -214,6 +215,7 @@ async function copyText(text) {
 }
 
 async function boot() {
+  initPwa();
   bindLangToggle();
   await initI18n("meta.landingTitle");
   initTheme();
@@ -257,8 +259,10 @@ async function boot() {
     };
     $("json-block").textContent = JSON.stringify(snippet, null, 2);
     paintMockBanner();
+    warmPwa();
   } catch (err) {
     showError(`${t("app.unavailable")}: ${err.message}`);
+    warmPwa();
     $("evidence-stats").innerHTML = "";
     $("pilot-grid").innerHTML = "";
     $("json-block").textContent = "";

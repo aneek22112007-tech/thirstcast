@@ -137,3 +137,14 @@ The share card is drawn in the browser on a 1200 by 630 canvas, in the same navy
 water colours as `frontend/og.svg`. It copies the numbers already on the district overview
 or the April 2024 replay summary, and it bakes in the caveat, the date, a mock or historical
 label, and the page URL. No image library is loaded.
+
+## 16. Offline copy
+
+`frontend/sw.js` is a network-first service worker. On install it stores the pages, styles,
+scripts, vendored Leaflet (including marker images) and vendored marked. Responses under
+`data/` and `mock/`, and the last successful live `GET /districts`, `GET /thirstwave/{d}` and
+`GET /replay/{d}`, are stored when they arrive. A saved live response is used only if it is
+under 24 hours old. OpenStreetMap tiles are stored only after the map requests that tile.
+Nothing prefetches tiles. When a saved response is shown because the network failed, the page
+says which time that copy was saved. The methods page reads `frontend/vendor/marked/` instead
+of a CDN.

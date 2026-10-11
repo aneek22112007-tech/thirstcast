@@ -2,6 +2,7 @@ import { bindLangToggle, getLang, initI18n, initTheme, onLang, plural, t } from 
 import { aprilChart, climateChart, dataTable, et0Chart, tmaxChart } from "./charts.js";
 import { dayOfYear, esc, formatDate, formatMm, formatNumber, formatScale, prefersReducedMotion } from "./format.js";
 import { percentVs, thirstPercentile } from "./stats.js";
+import { initPwa, warmPwa } from "./pwa.js";
 
 const TABS = ["overview", "farmers", "lakes", "heat", "history"];
 const DISTRICT_ORDER = ["Bengaluru_Urban", "Kolar", "Mandya"];
@@ -1157,6 +1158,7 @@ async function applyHash(initial) {
 }
 
 async function boot() {
+  initPwa();
   bindChrome();
   await initI18n("meta.appTitle");
   initTheme();
@@ -1184,6 +1186,7 @@ async function boot() {
     await loadAsset("script", LEAFLET_JS);
   } catch (err) {
     showError(t("app.unavailableDetail", { message: err.message }));
+    warmPwa();
     return;
   }
   const map = state.map = window.L.map("map", { scrollWheelZoom: true });
@@ -1210,6 +1213,7 @@ async function boot() {
     state.april = april;
   } catch (err) {
     showError(t("app.unavailableDetail", { message: err.message }));
+    warmPwa();
     return;
   }
   const layer = window.L.geoJSON(geo, {
@@ -1256,8 +1260,10 @@ async function boot() {
     appReady = true;
     window.addEventListener("resize", () => map.invalidateSize());
     setTimeout(() => map.invalidateSize(), 200);
+    warmPwa();
   } catch (err) {
     showError(t("app.unavailableDetail", { message: err.message }));
+    warmPwa();
   }
 }
 

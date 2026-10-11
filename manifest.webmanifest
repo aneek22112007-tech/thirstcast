@@ -1,0 +1,18 @@
+{
+  "name": "ThirstCast",
+  "short_name": "ThirstCast",
+  "description": "How thirsty the sky will be for Bengaluru Urban, Kolar and Mandya.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0c2340",
+  "theme_color": "#0c2340",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

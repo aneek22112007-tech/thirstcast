@@ -23,6 +23,28 @@ test("F-11 a stale forecast shows the cached badge", async ({ page }) => {
   await expect(page.locator("#forecast-note")).toContainText("Cached at 2023-10-04");
 });
 
+test("U-8 the app works from the saved copy when the network is down", async ({ page }) => {
+  const manifest = await (await page.request.get("/manifest.webmanifest")).json();
+  expect(manifest.icons[0].src).toBe("favicon.svg");
+  const worker = await (await page.request.get("/sw.js")).text();
+  expect(worker).toContain("tile.openstreetmap.org");
+  expect(worker).toContain("86400000");
+  expect(worker).not.toContain("prefetch");
+  const methods = await (await page.request.get("/methods.html")).text();
+  expect(methods).toContain("vendor/marked/marked.min.js");
+  expect(methods).not.toContain("cdn.jsdelivr.net");
+  await page.goto("/app.html");
+  await expect(page.locator("#district-select")).toBeVisible({ timeout: 20000 });
+  await page.waitForFunction(() => window.__thirstWarm === "done", null, { timeout: 20000 });
+  await page.reload();
+  await page.waitForFunction(() => navigator.serviceWorker.controller && window.__thirstWarm === "done", null, { timeout: 20000 });
+  await page.context().setOffline(true);
+  await page.reload();
+  await expect(page.locator("#offline-banner")).toContainText(/Offline: showing saved data from/, { timeout: 20000 });
+  await expect(page.locator("#tab-panel")).toContainText(/ACTIVE|WATCH|NONE/);
+  await page.context().setOffline(false);
+});
+
 test("U-6 a share card is a 1200 by 630 canvas with the caveat", async ({ page }) => {
   await page.goto("/app.html#d=Mandya&tab=overview");
   await expect(page.locator("#save-card")).toBeVisible({ timeout: 20000 });
