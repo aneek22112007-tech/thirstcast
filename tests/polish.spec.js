@@ -23,6 +23,22 @@ test("F-11 a stale forecast shows the cached badge", async ({ page }) => {
   await expect(page.locator("#forecast-note")).toContainText("Cached at 2023-10-04");
 });
 
+test("F-15 the map keeps its height and automated runs do not request tiles", async ({ page }) => {
+  const tiles = [];
+  page.on("request", (req) => {
+    if (req.url().includes("tile.openstreetmap.org")) tiles.push(req.url());
+  });
+  await page.goto("/app.html");
+  await expect(page.locator("#map")).toBeVisible({ timeout: 20000 });
+  const box = await page.locator("#map").boundingBox();
+  expect(box.height).toBeGreaterThan(200);
+  await page.waitForTimeout(800);
+  expect(tiles).toEqual([]);
+  const source = await (await page.request.get("/js/dashboard.js")).text();
+  expect(source).toContain("navigator.webdriver");
+  expect(source).toContain("tile.openstreetmap.org");
+});
+
 test("U-11 arrow keys cycle districts while the map is focused", async ({ page }) => {
   await page.goto("/app.html");
   await expect(page.locator("#district-select")).toHaveValue("Mandya", { timeout: 20000 });

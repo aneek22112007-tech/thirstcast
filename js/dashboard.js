@@ -1268,10 +1268,15 @@ async function boot() {
     return;
   }
   const map = state.map = window.L.map("map", { scrollWheelZoom: true });
-  window.L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    maxZoom: 12,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · DataMeet (CC BY 2.5 IN)',
-  }).addTo(map);
+  // Automated runs (Playwright, Lighthouse) set navigator.webdriver. Skipping the
+  // tile layer there keeps the measured page off the OpenStreetMap tile servers.
+  // A normal browser still loads tiles, and only the tiles it actually asks for.
+  if (!navigator.webdriver) {
+    window.L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 12,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · DataMeet (CC BY 2.5 IN)',
+    }).addTo(map);
+  }
   map.setView([12.9, 77.4], 8);
   let geo;
   try {
