@@ -258,12 +258,13 @@
     "suggestions": "Suggested questions"
   },
   "alerts": {
-    "title": "Get email alerts",
-    "body": "When a district becomes ACTIVE, ThirstCast can send mail through Amazon SNS.",
+    "title": "Email alerts",
+    "body": "Alerts are sent by the deployed backend: an SNS email, daily at 06:00 IST, only when a district turns ACTIVE.",
     "email": "Email address",
     "submit": "Notify me",
-    "soon": "Coming soon: email alerts via AWS SNS.",
+    "soon": "Alerts are sent by the deployed backend: an SNS email, daily at 06:00 IST, only when a district turns ACTIVE.",
     "privacy": "This preview does not collect or store an address.",
+    "sample": "Sample from the mock detector for Mandya. This preview does not send it.",
     "close": "Close"
   },
   "crops": {
