@@ -9,6 +9,14 @@
   line-gap-override: 0%;
 }
 @font-face {
+  font-family: "Noto Sans Kannada";
+  src: url("../vendor/fonts/NotoSansKannada.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0951-0952, U+0964-0965, U+0C80-0CF3, U+200C-200D, U+20B9, U+25CC;
+}
+@font-face {
   font-family: "Space Grotesk Fallback";
   src: local("Arial");
   size-adjust: 103%;
@@ -48,6 +56,7 @@
   --font-sans: "Inter", "Inter Fallback", "Segoe UI", sans-serif;
   --font-display: "Space Grotesk", "Space Grotesk Fallback", "Inter", sans-serif;
   --font-hi: "Noto Sans Devanagari", "Inter", sans-serif;
+  --font-kn: "Noto Sans Kannada", "Inter", sans-serif;
   --motion: 200ms;
   --active: #8f291f;
   --watch: #8a5a00;
@@ -107,4 +116,7 @@
 
 html[lang="hi"] body {
   font-family: var(--font-hi);
+}
+html[lang="kn"] body {
+  font-family: var(--font-kn);
 }

@@ -166,12 +166,12 @@ function renderList() {
     btn.type = "button";
     btn.className = "district-btn";
     btn.setAttribute("aria-pressed", String(state.selected === d.id));
-    btn.innerHTML = `<span>${esc(d.name)}</span><span class="badge badge-${esc(status).toLowerCase()}">${esc(t("status." + status))}</span>`;
+    btn.innerHTML = `<span>${esc(districtName(d.id, d.name))}</span><span class="badge badge-${esc(status).toLowerCase()}">${esc(t("status." + status))}</span>`;
     btn.addEventListener("click", () => { userNav(); selectDistrict(d.id); });
     box.appendChild(btn);
     const opt = document.createElement("option");
     opt.value = d.id;
-    opt.textContent = `${d.name} · ${t("status." + status)}`;
+    opt.textContent = `${districtName(d.id, d.name)} · ${t("status." + status)}`;
     opt.selected = state.selected === d.id;
     select.appendChild(opt);
   });
@@ -283,7 +283,7 @@ function renderOverview(detail) {
   }
   const excess = detail.excess_mm_7d;
   return `
-    <h2>${esc(state.districts[detail.district]?.name || detail.district)} <span class="badge badge-${esc(status).toLowerCase()}">${esc(t("status." + status))}</span></h2>
+    <h2>${esc(districtName(detail.district, state.districts[detail.district]?.name || detail.district))} <span class="badge badge-${esc(status).toLowerCase()}">${esc(t("status." + status))}</span></h2>
     <p class="big-range">${esc(summarySentence(detail))}</p>
     ${whyToday(detail)}
     <p>${status === "ACTIVE" ? esc(t("app.dayInWave", { n: detail.day_in_wave })) : esc(t("app.noWaveDay"))}</p>
@@ -310,6 +310,20 @@ function renderOverview(detail) {
 
 function cropMeta(id) {
   return (state.catalog.crops || []).find((crop) => crop.id === id);
+}
+
+function districtName(id, fallback) {
+  if (getLang() !== "kn") return fallback || id;
+  const text = t(`districts.${id}`);
+  return text === `districts.${id}` ? (fallback || id) : text;
+}
+
+function paintChatNote() {
+  const note = $("chat-lang-note");
+  if (!note) return;
+  const kn = getLang() === "kn";
+  note.hidden = !kn;
+  note.textContent = kn ? t("chat.langNote") : "";
 }
 
 function named(group, id, fallback) {
@@ -820,7 +834,7 @@ function renderCompare() {
     const excess = detail.excess_mm_7d == null ? "–" : formatMm(detail.excess_mm_7d);
     const selected = id === state.selected;
     return `<button type="button" class="compare-col" role="option" data-compare-col="${esc(id)}" aria-selected="${selected ? "true" : "false"}" tabindex="${selected || (index === 0 && !state.selected) ? "0" : "-1"}">
-      <p class="compare-name">${esc(district.name || id)}</p>
+      <p class="compare-name">${esc(districtName(id, district.name || id))}</p>
       <p><span class="badge badge-${esc(status).toLowerCase()}">${esc(t("status." + status))}</span></p>
       <p>${esc(t("compare.excess"))}: <strong>${esc(excess)} mm</strong></p>
       <p class="small">${esc(t("compare.updated"))}: ${esc(detail.updated_at || "–")}</p>
@@ -1258,7 +1272,9 @@ async function boot() {
       renderReplay();
     } else renderActiveTab();
     if (state.view === "compare") renderCompare();
+    paintChatNote();
   });
+  paintChatNote();
   try {
     await loadAsset("css", LEAFLET_CSS);
     await loadAsset("script", LEAFLET_JS);
