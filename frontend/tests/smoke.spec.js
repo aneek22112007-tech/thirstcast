@@ -6,6 +6,14 @@ import { fileURLToPath } from "url";
 const here = path.dirname(fileURLToPath(import.meta.url));
 const shots = path.resolve(here, "../../docs/screenshots");
 const widths = [360, 768, 1280, 1920];
+const updateShots = process.env.UPDATE_SHOTS === "1";
+const updateOg = process.env.UPDATE_OG === "1";
+
+async function shot(page, name, opts) {
+  if (!updateShots) return;
+  fs.mkdirSync(shots, { recursive: true });
+  await page.screenshot({ path: path.join(shots, name), ...opts });
+}
 
 function watchConsole(page, bucket) {
   page.on("pageerror", (err) => bucket.push(`pageerror: ${err.message}`));
@@ -21,10 +29,6 @@ async function noOverflow(page) {
   const extra = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
   expect(extra).toBeLessThanOrEqual(1);
 }
-
-test.beforeAll(() => {
-  fs.mkdirSync(shots, { recursive: true });
-});
 
 test("landing numbers, language, and screenshots", async ({ page }) => {
   const errors = [];
@@ -50,12 +54,7 @@ test("landing numbers, language, and screenshots", async ({ page }) => {
   for (const width of widths) {
     await page.setViewportSize({ width, height: width < 800 ? 780 : 1000 });
     await noOverflow(page);
-    await page.screenshot({
-      path: path.join(shots, `landing-${width}.jpg`),
-      fullPage: true,
-      type: "jpeg",
-      quality: 62,
-    });
+    await shot(page, `landing-${width}.jpg`, { fullPage: true, type: "jpeg", quality: 62 });
   }
   expect(errors).toEqual([]);
 });
@@ -104,22 +103,12 @@ test("dashboard districts, replay, chat, and screenshots", async ({ page }) => {
     await page.goto("/app.html#d=Mandya&tab=farmers");
     await expect(page.locator("#tab-panel")).toBeVisible({ timeout: 20000 });
     await noOverflow(page);
-    await page.screenshot({
-      path: path.join(shots, `dashboard-${width}.jpg`),
-      fullPage: false,
-      type: "jpeg",
-      quality: 62,
-    });
+    await shot(page, `dashboard-${width}.jpg`, { fullPage: false, type: "jpeg", quality: 62 });
   }
   await page.setViewportSize({ width: 1280, height: 900 });
   await page.goto("/app.html#d=Bengaluru_Urban&replay=30");
   await expect(page.locator("#replay-summary")).toBeVisible({ timeout: 20000 });
-  await page.screenshot({
-    path: path.join(shots, "dashboard-replay-1280.jpg"),
-    fullPage: false,
-    type: "jpeg",
-    quality: 62,
-  });
+  await shot(page, "dashboard-replay-1280.jpg", { fullPage: false, type: "jpeg", quality: 62 });
   expect(errors).toEqual([]);
 });
 
@@ -135,12 +124,7 @@ test("methods page renders the note and charts", async ({ page }) => {
   for (const width of widths) {
     await page.setViewportSize({ width, height: width < 800 ? 780 : 1000 });
     await noOverflow(page);
-    await page.screenshot({
-      path: path.join(shots, `methods-${width}.jpg`),
-      fullPage: true,
-      type: "jpeg",
-      quality: 60,
-    });
+    await shot(page, `methods-${width}.jpg`, { fullPage: true, type: "jpeg", quality: 60 });
   }
   expect(errors).toEqual([]);
 });
@@ -150,5 +134,5 @@ test("write the open graph png from the svg", async ({ page }) => {
   await page.goto("/og.svg");
   const svg = page.locator("svg");
   await expect(svg).toBeVisible();
-  await svg.screenshot({ path: path.resolve(here, "../og.png") });
+  if (updateOg) await svg.screenshot({ path: path.resolve(here, "../og.png") });
 });
