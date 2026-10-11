@@ -319,6 +319,10 @@ function paintFarmResult() {
     box.innerHTML = `<p class="note">${esc(t("app.unavailable"))}</p>`;
     return;
   }
+  if (Number(detail.excess_mm_7d) === 0 || (Number(range[0]) === 0 && Number(range[1]) === 0)) {
+    box.innerHTML = `<p>${esc(t("app.noExtra"))}</p>`;
+    return;
+  }
   const low = Math.round(range[0] * acres);
   const high = Math.round(range[1] * acres);
   const tankLow = low / 10000;
@@ -346,6 +350,9 @@ function renderLakes(detail) {
     if (meta && meta.verified === false) return "";
     if (!value || value.value == null) {
       return `<article class="card lake-card"><h3>${esc((meta && meta.name) || id)}</h3><p>${esc((value && value.note) || t("app.noLake"))}</p></article>`;
+    }
+    if (Number(value.value) === 0) {
+      return `<article class="card lake-card"><h3>${esc((meta && meta.name) || id)}</h3><p>${esc(t("app.noExtra"))}</p></article>`;
     }
     const scale = formatScale(value.value, getLang());
     return `<article class="card lake-card">
