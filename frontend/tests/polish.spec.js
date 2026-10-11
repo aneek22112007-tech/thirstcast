@@ -23,6 +23,12 @@ test("F-11 a stale forecast shows the cached badge", async ({ page }) => {
   await expect(page.locator("#forecast-note")).toContainText("Cached at 2023-10-04");
 });
 
+test("F-16 litre units are not called tankers", async ({ page }) => {
+  await page.goto("/app.html#d=Mandya&tab=farmers");
+  await expect(page.locator("#farm-result")).toContainText("10,000-litre units", { timeout: 20000 });
+  await expect(page.locator("#tab-panel")).not.toContainText(/tanker/i);
+});
+
 test("F-09 Hindi names crops and lakes, and marks English sources", async ({ page }) => {
   await page.goto("/app.html#d=Mandya&tab=farmers&lang=hi");
   await expect(page.locator("#crop-select")).toContainText("धान", { timeout: 20000 });
