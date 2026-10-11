@@ -1,0 +1,14 @@
+# SAM deploy settings for the live stack (no secrets). Usage: cd backend && sam build && sam deploy
+version = 0.1
+
+[default.global.parameters]
+stack_name = "thirstcast"
+
+[default.deploy.parameters]
+region = "ap-south-1"
+resolve_s3 = true
+s3_prefix = "thirstcast"
+capabilities = "CAPABILITY_IAM CAPABILITY_AUTO_EXPAND"
+confirm_changeset = false
+fail_on_empty_changeset = false
+parameter_overrides = "AskMode=\"template\" AmplifyOrigin=\"https://main.d2hlw69ycq26ka.amplifyapp.com\""
