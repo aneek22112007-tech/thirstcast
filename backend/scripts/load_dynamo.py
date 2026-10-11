@@ -16,10 +16,10 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--table', required=True)
     parser.add_argument('--file', required=True)
-    parser.add_argument('--profile', required=True)
+    parser.add_argument('--profile', default=None, help='AWS profile (optional; default credential chain / AWS_PROFILE)')
     args = parser.parse_args()
 
-    session = boto3.Session(profile_name=args.profile)
+    session = boto3.Session(profile_name=args.profile) if args.profile else boto3.Session()
     dynamodb = session.resource('dynamodb')
     table = dynamodb.Table(args.table)
 
