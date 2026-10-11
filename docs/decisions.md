@@ -1,8 +1,17 @@
 # Decisions
 
 ## Region
+* **ap-south-1 (Mumbai)**. Stack `thirstcast`, first deployed 2026-10-11.
 
 ## Bedrock model ID
+* **None yet: `ModelId` empty, `AskMode=template`** (MODEL_PROVIDER=none). On 2026-10-11 every Bedrock
+  `converse` call from this new account returned `ValidationException: Operation not allowed`
+  (tried apac.amazon.nova-lite-v1:0, apac.amazon.nova-micro-v1:0, apac.anthropic.claude-3-haiku-20240307-v1:0,
+  in.anthropic.claude-haiku-4-5-20251001-v1:0, global.amazon.nova-2-lite-v1:0), most likely because account
+  verification was still in progress. /ask serves the template advisory (EN + HI), which uses the same tool data.
+* When Bedrock works: preferred `apac.amazon.nova-lite-v1:0`; redeploy with `ModelId=apac.amazon.nova-lite-v1:0 AskMode=llm`.
+* `ReservedConcurrentExecutions` was removed from AgentFunction: the new account's concurrency quota is 10, so
+  any reservation fails. The /ask route throttle (1 rps, burst 2) caps cost.
 
 ## District IDs
 * Bengaluru_Urban

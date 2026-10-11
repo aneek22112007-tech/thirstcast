@@ -90,3 +90,11 @@ aws s3 rm s3://$BUCKET --recursive --profile thirstcast
 cd backend && sam delete --stack-name thirstcast --profile thirstcast
 ```
 Then delete the Amplify app and check Billing.
+
+## Live deployment record (2026-10-11)
+* Stack `thirstcast` in ap-south-1. API: `https://zjqxh2um0d.execute-api.ap-south-1.amazonaws.com`.
+* Frontend: Amplify app `d2hlw69ycq26ka` (manual deployment, no Git connection): https://main.d2hlw69ycq26ka.amplifyapp.com.
+  Redeploy: zip `frontend/` (without node_modules/tests/scripts) and run `aws amplify create-deployment` → PUT the zip →
+  `aws amplify start-deployment`.
+* `/ask` runs in template mode (Bedrock blocked for the new account; see docs/decisions.md).
+* `load_dynamo.py --profile` and `upload_s3.sh` now use the default credential chain unless a profile / `AWS_PROFILE` is set.

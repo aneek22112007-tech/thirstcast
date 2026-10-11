@@ -7,8 +7,8 @@
 
 | | |
 |---|---|
-| Live dashboard | `<Amplify URL>` (TODO after AN-10) |
-| Public API | `<ApiUrl>` (TODO after deploy) |
+| Live dashboard | https://main.d2hlw69ycq26ka.amplifyapp.com (map: [app.html](https://main.d2hlw69ycq26ka.amplifyapp.com/app.html)) |
+| Public API | `https://zjqxh2um0d.execute-api.ap-south-1.amazonaws.com` (e.g. [/districts](https://zjqxh2um0d.execute-api.ap-south-1.amazonaws.com/districts)) |
 | Demo video (3 min) | `<link>` (TODO) |
 | Methods | [frontend/methods.html](frontend/methods.html) · [docs/methods.md](docs/methods.md) · [docs/numbers.md](docs/numbers.md) |
 

@@ -248,7 +248,8 @@ Resources:
       Handler: app.lambda_handler
       Timeout: 29
       MemorySize: 1024
-      ReservedConcurrentExecutions: 2
+      # ReservedConcurrentExecutions removed: new accounts have a concurrency quota of 10, and reserving any of it
+      # fails (UnreservedConcurrentExecution minimum 10). Cost is capped by the POST /ask throttle (1 rps, burst 2).
       Layers:
         - !Ref CoreLayer
         - !Ref CommonLayer
