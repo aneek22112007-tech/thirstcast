@@ -166,6 +166,7 @@
     "badDistrict": "That district is not in this pilot. Showing the current district.",
     "badTab": "That section is not available. Showing Overview.",
     "englishNotice": "Detailed methods/sources are in English",
+    "mockNote": "MOCK: historical ERA5 data for {date} evaluated as if it were a forecast (no bias correction). Not live.",
     "formula": "Shown range = the forecast endpoint's per-acre range × acres. That range is excess millimetres × Kc × 4,047 L, with Kc ±10%. Kc for {crop} is {kc} (FAO-56, mid-season).",
     "excessDef": "Sum of daily ET₀ above the local day-of-year p90 threshold",
     "bias": "Bias offset",
@@ -264,6 +265,17 @@
     "soon": "Coming soon: email alerts via AWS SNS.",
     "privacy": "This preview does not collect or store an address.",
     "close": "Close"
+  },
+  "crops": {
+    "paddy": "Paddy (rice)",
+    "sugarcane": "Sugarcane",
+    "tomato": "Tomato",
+    "ragi": "Ragi (finger millet)"
+  },
+  "lakes": {
+    "Bellandur": "Bellandur Lake",
+    "Varthur": "Varthur Lake",
+    "KRS": "KRS reservoir (Krishna Raja Sagara)"
   },
   "methods": {
     "back": "Back to the map",

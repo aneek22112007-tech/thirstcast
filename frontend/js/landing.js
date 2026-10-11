@@ -70,11 +70,15 @@ function renderEvidence() {
 function renderPilots(catalog) {
   if (!districtsPayload) return;
   const byId = Object.fromEntries(catalog.districts.map((d) => [d.id, d]));
-  const cropNames = Object.fromEntries(catalog.crops.map((c) => [c.id, getLang() === "hi" ? c.name_hi : c.name]));
+  const label = (group, id) => {
+    const key = `${group}.${id}`;
+    const text = t(key);
+    return text === key ? id : text;
+  };
   $("pilot-grid").innerHTML = districtsPayload.districts.map((d) => {
     const meta = byId[d.id] || { crops: [], lakes: [] };
-    const crops = meta.crops.length ? meta.crops.map((id) => cropNames[id] || id).join(", ") : t("pilots.none");
-    const lakes = meta.lakes.length ? meta.lakes.join(", ") : t("pilots.none");
+    const crops = meta.crops.length ? meta.crops.map((id) => label("crops", id)).join(", ") : t("pilots.none");
+    const lakes = meta.lakes.length ? meta.lakes.map((id) => label("lakes", id)).join(", ") : t("pilots.none");
     const status = d.status || "UNKNOWN";
     return `<article class="card pilot-card">
       <h3>${esc(d.name)}</h3>
@@ -86,6 +90,15 @@ function renderPilots(catalog) {
       <a class="btn" href="app.html#d=${encodeURIComponent(d.id)}">${esc(t("pilots.open"))}</a>
     </article>`;
   }).join("");
+}
+
+function paintMockBanner() {
+  if (!districtsPayload || !districtsPayload.mock_note) return;
+  const date = String((districtsPayload.districts && districtsPayload.districts[0] && districtsPayload.districts[0].updated_at) || "").slice(0, 10);
+  const banner = $("error-banner");
+  banner.className = "banner banner-info";
+  banner.hidden = false;
+  banner.textContent = t("app.mockNote", { date });
 }
 
 function renderTry() {
@@ -130,6 +143,7 @@ async function boot() {
     if (replays) renderEvidence();
     renderTry();
     if (window.__catalog && districtsPayload) renderPilots(window.__catalog);
+    paintMockBanner();
   });
   try {
     const [districts, bengaluru, kolar, mandya, catalog] = await Promise.all([
@@ -142,7 +156,6 @@ async function boot() {
     districtsPayload = districts;
     replays = { Bengaluru_Urban: bengaluru, Kolar: kolar, Mandya: mandya };
     window.__catalog = catalog;
-    if (districts.caveat) document.querySelectorAll("[data-i18n='limits.l1']").forEach((el) => { el.textContent = districts.caveat; });
     renderEvidence();
     renderPilots(catalog);
     const snippet = {
@@ -150,12 +163,7 @@ async function boot() {
       caveat: districts.caveat,
     };
     $("json-block").textContent = JSON.stringify(snippet, null, 2);
-    if (districts.mock_note) {
-      const banner = $("error-banner");
-      banner.className = "banner banner-info";
-      banner.hidden = false;
-      banner.textContent = districts.mock_note;
-    }
+    paintMockBanner();
   } catch (err) {
     showError(`${t("app.unavailable")}: ${err.message}`);
     $("evidence-stats").innerHTML = "";

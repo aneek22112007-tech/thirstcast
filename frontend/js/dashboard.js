@@ -243,13 +243,13 @@ function renderOverview(detail) {
     <p class="big-range">${esc(summarySentence(detail))}</p>
     <p>${status === "ACTIVE" ? esc(t("app.dayInWave", { n: detail.day_in_wave })) : esc(t("app.noWaveDay"))}</p>
     ${detail.note ? `<p class="note note-info">${esc(detail.note)}</p>` : ""}
-    ${detail.mock_note ? `<p class="note">${esc(detail.mock_note)}</p>` : ""}
+    ${detail.mock_note ? `<p class="note" id="mock-note">${esc(mockNoteText(detail))}</p>` : ""}
     ${waveText}
     <div class="chart-wrap">${days.length ? et0Chart(days, { label: t("evidence.chart") }) : ""}</div>
     <p class="small">${esc(t("evidence.legend"))}</p>
     <dl class="kv">
       <dt>${esc(t("evidence.mm"))}</dt>
-      <dd><strong>${excess == null ? "–" : esc(formatMm(excess))} mm</strong><br><span class="small">${esc(detail.excess_definition || t("app.excessDef"))}</span></dd>
+      <dd><strong>${excess == null ? "–" : esc(formatMm(excess))} mm</strong><br><span class="small">${esc(t("app.excessDef"))}</span></dd>
       <dt>${esc(t("app.bias"))}</dt>
       <dd>${detail.bias_offset_mm == null ? "–" : esc(formatNumber(detail.bias_offset_mm, 2))} <span class="small">${esc(t("app.biasUnit"))}</span></dd>
       <dt>${esc(t("app.updated"))}</dt>
@@ -257,11 +257,29 @@ function renderOverview(detail) {
     </dl>
     ${detail.bias_note ? `<p class="note">${esc(detail.bias_note)}</p>` : ""}
     ${days.length ? `<details><summary>${esc(t("app.dataTable"))}</summary>${forecastTable(days)}</details>` : ""}
-    <p class="small">${esc(detail.caveat || t("app.caveat"))}</p>`;
+    <p class="small">${esc(t("app.caveat"))}</p>`;
 }
 
 function cropMeta(id) {
   return (state.catalog.crops || []).find((crop) => crop.id === id);
+}
+
+function named(group, id, fallback) {
+  const key = `${group}.${id}`;
+  const text = t(key);
+  return text === key ? (fallback || id) : text;
+}
+
+function mockNoteText(source) {
+  if (!source || !source.mock_note) return "";
+  let date = String(source.run_date || source.updated_at || "");
+  if (!date && source.districts && source.districts[0]) date = source.districts[0].updated_at || "";
+  return t("app.mockNote", { date: date.slice(0, 10) });
+}
+
+function englishBlock(html) {
+  if (getLang() === "en") return html;
+  return `<p class="note">${esc(t("app.englishNotice"))}</p><div class="english-source" lang="en">${html}</div>`;
 }
 
 /** Accept 0.1–10000 in steps of 0.1. One comma is a decimal when the fraction is 1–2 digits ("2,5"). */
@@ -283,7 +301,7 @@ function renderFarmers(detail) {
   if (!state.crop || !crops.includes(state.crop)) state.crop = crops[0];
   const options = crops.map((id) => {
     const meta = cropMeta(id);
-    const name = meta ? (getLang() === "hi" ? meta.name_hi : meta.name) : id;
+    const name = named("crops", id, meta && meta.name);
     return `<option value="${esc(id)}"${id === state.crop ? " selected" : ""}>${esc(name)}</option>`;
   }).join("");
   return `
@@ -294,7 +312,7 @@ function renderFarmers(detail) {
     <p id="acres-error" class="note" role="alert" hidden></p>
     <p class="small">${esc(t("app.range"))}</p>
     <div id="farm-result"></div>
-    <p class="small">${esc(detail.caveat || t("app.caveat"))}. ${esc(t("app.kcNote"))}.</p>`;
+    <p class="small">${esc(t("app.caveat"))}. ${esc(t("app.kcNote"))}.</p>`;
 }
 
 function paintFarmResult() {
@@ -336,9 +354,9 @@ function paintFarmResult() {
     <p>${esc(t("app.estimate"))}${scaleLow ? ` · ≈ ${esc(scaleLow)}–${esc(scaleHigh)}` : ""}</p>
     <p>${esc(t("app.tankers", { n: `${formatNumber(tankLow, 2)}–${formatNumber(tankHigh, 2)}` }))}</p>
     <details class="formula"><summary>${esc(t("app.howCalc"))}</summary>
-      <p>${esc(t("app.formula", { crop: meta ? meta.name : state.crop, kc: meta ? meta.kc : "–" }))}</p>
-      <p class="small">${esc(detail.excess_definition || t("app.excessDef"))}: ${detail.excess_mm_7d == null ? "–" : esc(formatNumber(detail.excess_mm_7d, 2))} mm.</p>
-      ${meta ? `<p class="small"><a href="${esc(meta.url)}">${esc(meta.source)}</a></p>` : ""}
+      <p>${esc(t("app.formula", { crop: named("crops", state.crop, meta && meta.name), kc: meta ? meta.kc : "–" }))}</p>
+      <p class="small">${esc(t("app.excessDef"))}: ${detail.excess_mm_7d == null ? "–" : esc(formatNumber(detail.excess_mm_7d, 2))} mm.</p>
+      ${meta ? englishBlock(`<p class="small"><a href="${esc(meta.url)}">${esc(meta.source)}</a></p>`) : ""}
     </details>`;
 }
 
@@ -348,23 +366,24 @@ function renderLakes(detail) {
   const cards = entries.map(([id, value]) => {
     const meta = (state.catalog.lakes || []).find((lake) => lake.id === id);
     if (meta && meta.verified === false) return "";
+    const title = named("lakes", id, meta && meta.name);
     if (!value || value.value == null) {
-      return `<article class="card lake-card"><h3>${esc((meta && meta.name) || id)}</h3><p>${esc((value && value.note) || t("app.noLake"))}</p></article>`;
+      return `<article class="card lake-card"><h3>${esc(title)}</h3><p>${esc((value && value.note) || t("app.noLake"))}</p></article>`;
     }
     if (Number(value.value) === 0) {
-      return `<article class="card lake-card"><h3>${esc((meta && meta.name) || id)}</h3><p>${esc(t("app.noExtra"))}</p></article>`;
+      return `<article class="card lake-card"><h3>${esc(title)}</h3><p>${esc(t("app.noExtra"))}</p></article>`;
     }
     const scale = formatScale(value.value, getLang());
+    const sources = meta ? englishBlock(`<p class="small">${esc(meta.area_text)}. ${esc(meta.area_basis)}</p><p class="small">${esc(t("app.sources"))}: <a href="${esc(meta.url)}">${esc(meta.source)}</a></p>`) : "";
     return `<article class="card lake-card">
-      <h3>${esc((meta && meta.name) || id)}</h3>
+      <h3>${esc(title)}</h3>
       <p class="big-range">${esc(formatNumber(value.value))} L</p>
       <p>${esc(t("app.upper"))}${scale ? ` · ≈ ${esc(scale)}` : ""}</p>
-      ${meta ? `<p class="small">${esc(meta.area_text)}. ${esc(meta.area_basis)}</p>` : ""}
-      ${meta ? `<p class="small">${esc(t("app.sources"))}: <a href="${esc(meta.url)}">${esc(meta.source)}</a></p>` : ""}
+      ${sources}
     </article>`;
   }).join("");
   if (!cards.trim()) return `<p class="note">${esc(t("app.noLake"))}</p>`;
-  return `${cards}<p class="small">${esc(detail.caveat || t("app.caveat"))}</p>`;
+  return `${cards}<p class="small">${esc(t("app.caveat"))}</p>`;
 }
 
 function renderHeat(detail) {
@@ -498,19 +517,19 @@ function renderReplay() {
     ${note ? `<p><strong>${esc(note)}</strong></p>` : ""}
     <div class="counters">
       <article class="stat"><div class="num">${flagged}/${soFar.length}</div><div class="lbl">${esc(t("replay.days"))}</div></article>
-      <article class="stat"><div class="num">${esc(formatMm(cur.cum_excess_mm))} mm</div><div class="lbl">${esc(t("replay.mm"))}<br><span class="small">${esc(summary.cum_excess_definition || t("app.excessDef"))}</span></div></article>
+      <article class="stat"><div class="num">${esc(formatMm(cur.cum_excess_mm))} mm</div><div class="lbl">${esc(t("replay.mm"))}<br><span class="small">${esc(t("app.excessDef"))}</span></div></article>
       <article class="stat"><div class="num">≈ ${esc(formatNumber(Math.round(litres)))} L</div><div class="lbl">${esc(t("replay.litres"))}</div></article>
-      ${lakes.length ? `<article class="stat"><div class="num small">${lakes.map(([name, v]) => `${esc(name)}: ≈ ${esc(formatNumber(Math.round(v.value * frac)))} L`).join("<br>")}</div><div class="lbl">${esc(t("replay.lakes"))}</div></article>` : ""}
+      ${lakes.length ? `<article class="stat"><div class="num small">${lakes.map(([id, v]) => `${esc(named("lakes", id, id))}: ≈ ${esc(formatNumber(Math.round(v.value * frac)))} L`).join("<br>")}</div><div class="lbl">${esc(t("replay.lakes"))}</div></article>` : ""}
     </div>
     <div class="chart-wrap">${et0Chart(replay.days, { dense: true, highlight: day - 1, label: t("evidence.chart") })}</div>
     ${done ? `<article class="card summary-card" id="replay-summary">
       <h3>${esc(t("replay.summaryTitle"))}</h3>
       <p><strong>${esc(replay.name)}</strong> · ${summary.days_above_p90} / ${summary.days_total}</p>
-      <p>${esc(formatMm(summary.cum_excess_mm))} mm · ${esc(summary.cum_excess_definition || t("app.excessDef"))}</p>
+      <p>${esc(formatMm(summary.cum_excess_mm))} mm · ${esc(t("app.excessDef"))}</p>
       <p>${esc(formatNumber(summary.litres_per_acre_reference))} L/acre · ${esc(t("app.estimate"))}${formatScale(summary.litres_per_acre_reference, getLang()) ? ` · ≈ ${esc(formatScale(summary.litres_per_acre_reference, getLang()))}` : ""}</p>
       <p>${esc(t("evidence.tmax", { n: summary.tmax_days_above_p90, total: summary.days_total }))}</p>
       <p>${esc(t("replay.rank", { rank: summary.april_rank_1994_2024, years: summary.april_years_compared }))}</p>
-      <p class="small">${esc(t("replay.endNote"))} ${esc(replay.caveat || t("app.caveat"))}</p>
+      <p class="small">${esc(t("replay.endNote"))} ${esc(t("app.caveat"))}</p>
     </article>` : ""}`;
   $("replay-play").addEventListener("click", () => play(!state.timer));
   $("replay-slider").addEventListener("input", (event) => { play(false); setReplayDay(Number(event.target.value)); });
@@ -861,6 +880,8 @@ async function boot() {
     renderLegend();
     renderList();
     renderSuggestions();
+    if (state.listMock) $("info-banner").textContent = mockNoteText(state.listMock);
+    if (state.districts && Object.keys(state.districts).length) $("map-caveat").textContent = t("app.caveat");
     renderTabs();
     if (state.replayOn) {
       $("replay-banner").textContent = t("replay.banner");
@@ -922,10 +943,11 @@ async function boot() {
       state.districts[d.id] = d;
       paint(d.id, d.status);
     });
-    if (data.caveat) $("map-caveat").textContent = data.caveat;
+    if (data.caveat) $("map-caveat").textContent = t("app.caveat");
     if (data.mock_note) {
+      state.listMock = data;
       $("info-banner").hidden = false;
-      $("info-banner").textContent = data.mock_note;
+      $("info-banner").textContent = mockNoteText(data);
     }
     renderList();
     const params = hashParams();

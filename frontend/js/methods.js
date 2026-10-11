@@ -1,4 +1,4 @@
-import { bindLangToggle, initI18n, initTheme, onLang, t } from "./i18n.js";
+import { bindLangToggle, getLang, initI18n, initTheme, onLang, t } from "./i18n.js";
 
 const SOURCES = [
   ["Kukal & Hobbins 2025, Earth's Future", "https://doi.org/10.1029/2024EF004870"],
@@ -23,7 +23,21 @@ async function render() {
     if (!res.ok) throw new Error(String(res.status));
     const markdown = await res.text();
     if (!window.marked) throw new Error("marked");
-    doc.innerHTML = window.marked.parse(markdown);
+    doc.replaceChildren();
+    if (getLang() !== "en") {
+      const note = document.createElement("p");
+      note.className = "note";
+      note.id = "english-notice";
+      note.textContent = t("app.englishNotice");
+      doc.appendChild(note);
+    }
+    const body = document.createElement("div");
+    if (getLang() !== "en") {
+      body.className = "english-source";
+      body.lang = "en";
+    }
+    body.innerHTML = window.marked.parse(markdown);
+    doc.appendChild(body);
     doc.querySelectorAll("img").forEach((img) => {
       if (!img.getAttribute("alt")) img.alt = "Chart from the methods note";
     });
