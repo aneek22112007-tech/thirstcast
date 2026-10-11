@@ -23,6 +23,23 @@ test("F-11 a stale forecast shows the cached badge", async ({ page }) => {
   await expect(page.locator("#forecast-note")).toContainText("Cached at 2023-10-04");
 });
 
+test("U-5 compare shows the three districts from loaded data", async ({ page }) => {
+  await page.goto("/app.html#view=compare");
+  await expect(page.locator("#compare-grid [data-compare-col]")).toHaveCount(3, { timeout: 20000 });
+  await expect(page.locator("[data-compare-col='Mandya']")).toContainText("+0.68");
+  await expect(page.locator("[data-compare-col='Kolar']")).toContainText("0.0");
+  await expect(page.locator("[data-compare-col='Bengaluru_Urban']")).toContainText("Bengaluru Urban");
+  await expect(page.locator("#compare")).toContainText("District-centroid estimate");
+  await page.locator("[data-compare-col='Bengaluru_Urban']").focus();
+  await page.keyboard.press("ArrowRight");
+  await expect(page.locator("[data-compare-col='Kolar']")).toBeFocused();
+  await expect(page.locator("#compare-live")).toContainText("Kolar");
+  await page.locator("#close-compare").click();
+  await expect(page.locator("#compare")).toBeHidden();
+  await expect(page.locator("#map")).toBeVisible();
+  expect(page.url()).not.toContain("view=compare");
+});
+
 test("U-4 an answer is a text advisory preview with copy and share", async ({ page }) => {
   await page.goto("/app.html");
   await expect(page.locator("#open-chat")).toBeVisible({ timeout: 20000 });

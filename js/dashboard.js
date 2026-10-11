@@ -4,6 +4,7 @@ import { dayOfYear, esc, formatDate, formatMm, formatNumber, formatScale, prefer
 import { percentVs, thirstPercentile } from "./stats.js";
 
 const TABS = ["overview", "farmers", "lakes", "heat", "history"];
+const DISTRICT_ORDER = ["Bengaluru_Urban", "Kolar", "Mandya"];
 const SUGGESTIONS = [
   { district: "Mandya", q: "Will Mandya face a thirstwave this week?" },
   { district: "Mandya", q: "क्या इस हफ्ते मंड्या में थर्स्टवेव आएगी?" },
@@ -31,6 +32,7 @@ const state = {
   acres: 1,
   crop: null,
   chatOpened: false,
+  view: "",
 };
 
 /** "push" for a user navigation, "replace" for ticks, "skip" while restoring history. */
@@ -72,8 +74,7 @@ function writeHash() {
   if (state.replayOn) next.set("replay", String(state.replayDay));
   next.set("lang", getLang());
   if (!$("chat").hidden) next.set("chat", "1");
-  const view = params.get("view");
-  if (view) next.set("view", view);
+  if (state.view) next.set("view", state.view);
   const q = params.get("q");
   const input = $("question");
   if (q && input && input.value === q) next.set("q", q);
@@ -526,6 +527,7 @@ async function selectDistrict(id, opts = {}) {
   }
   renderTabs();
   renderActiveTab();
+  if (state.view === "compare") renderCompare();
 }
 
 function renderReplay() {
@@ -645,7 +647,85 @@ function play(on) {
   renderReplay();
 }
 
+function districtIds() {
+  const known = DISTRICT_ORDER.filter((id) => state.districts[id]);
+  const rest = Object.keys(state.districts).filter((id) => !known.includes(id));
+  return known.concat(rest);
+}
+
+async function ensureDetails() {
+  await Promise.all(districtIds().map(async (id) => {
+    if (!state.detail[id]) state.detail[id] = await window.ThirstAPI.getThirstwave(id);
+  }));
+}
+
+function renderCompare() {
+  const grid = $("compare-grid");
+  if (!grid) return;
+  grid.setAttribute("aria-label", t("compare.label"));
+  const ids = districtIds();
+  grid.innerHTML = ids.map((id, index) => {
+    const district = state.districts[id] || {};
+    const detail = state.detail[id] || {};
+    const status = detail.status || district.status || "UNKNOWN";
+    const excess = detail.excess_mm_7d == null ? "–" : formatMm(detail.excess_mm_7d);
+    const selected = id === state.selected;
+    return `<button type="button" class="compare-col" role="option" data-compare-col="${esc(id)}" aria-selected="${selected ? "true" : "false"}" tabindex="${selected || (index === 0 && !state.selected) ? "0" : "-1"}">
+      <p class="compare-name">${esc(district.name || id)}</p>
+      <p><span class="badge badge-${esc(status).toLowerCase()}">${esc(t("status." + status))}</span></p>
+      <p>${esc(t("compare.excess"))}: <strong>${esc(excess)} mm</strong></p>
+      <p class="small">${esc(t("compare.updated"))}: ${esc(detail.updated_at || "–")}</p>
+      <p class="small">${esc(t("app.caveat"))}</p>
+    </button>`;
+  }).join("");
+  grid.querySelectorAll("[data-compare-col]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      userNav();
+      selectDistrict(btn.dataset.compareCol);
+    });
+    btn.addEventListener("keydown", (event) => {
+      if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+      event.preventDefault();
+      const order = districtIds();
+      const current = order.indexOf(btn.dataset.compareCol);
+      const delta = event.key === "ArrowRight" ? 1 : -1;
+      const next = order[(current + delta + order.length) % order.length];
+      userNav();
+      selectDistrict(next).then(() => {
+        const col = grid.querySelector(`[data-compare-col="${next}"]`);
+        if (col) col.focus();
+        announceCompare(next);
+      });
+    });
+  });
+}
+
+function announceCompare(id) {
+  const live = $("compare-live");
+  const district = state.districts[id];
+  const detail = state.detail[id];
+  if (!live || !district || !detail) return;
+  live.textContent = t("compare.live", {
+    name: district.name,
+    status: t("status." + (detail.status || "UNKNOWN")),
+    excess: detail.excess_mm_7d == null ? "–" : formatMm(detail.excess_mm_7d),
+  });
+}
+
+function syncView() {
+  const el = $("compare");
+  const workspace = $("content");
+  if (!el || !workspace) return;
+  const on = state.view === "compare" && !state.replayOn;
+  el.hidden = !on;
+  workspace.hidden = on;
+  if (on) renderCompare();
+  else if (state.map) setTimeout(() => state.map.invalidateSize(), 50);
+}
+
 async function startReplay(day, opts = {}) {
+  state.view = "";
+  syncView();
   $("replay-start").disabled = true;
   try {
     await Promise.all(Object.keys(state.layers).map(async (id) => {
@@ -805,6 +885,29 @@ function bindChrome() {
   bindLangToggle();
   $("district-select").addEventListener("change", (event) => { userNav(); selectDistrict(event.target.value); });
   $("replay-start").addEventListener("click", () => { userNav(); startReplay(1); });
+  $("open-compare").addEventListener("click", async () => {
+    userNav();
+    state.view = "compare";
+    try {
+      await ensureDetails();
+    } catch (err) {
+      state.view = "";
+      showError(t("app.unavailableDetail", { message: err.message }));
+      return;
+    }
+    syncView();
+    writeHash();
+    announceCompare(state.selected);
+    const current = document.querySelector(`[data-compare-col="${state.selected}"]`);
+    if (current) current.focus();
+  });
+  $("close-compare").addEventListener("click", () => {
+    userNav();
+    state.view = "";
+    syncView();
+    writeHash();
+    $("open-compare").focus();
+  });
   $("open-chat").addEventListener("click", () => { userNav(); openChat(); });
   $("close-chat").addEventListener("click", () => { userNav(); closeChat(); });
   $("chat-backdrop").addEventListener("click", () => { userNav(); closeChat(); });
@@ -913,6 +1016,10 @@ async function applyHash(initial) {
   const params = hashParams();
   let rewrite = false;
   const notes = [];
+  const askedView = params.get("view");
+  state.view = askedView === "compare" && !params.get("replay") ? "compare" : "";
+  if (askedView && askedView !== "compare") rewrite = true;
+  if (askedView === "compare" && params.get("replay")) rewrite = true;
   const tab = params.get("tab");
   if (tab && !TABS.includes(tab)) {
     notes.push(t("app.badTab"));
@@ -944,6 +1051,15 @@ async function applyHash(initial) {
     hashMode = "replace";
     writeHash();
   }
+  if (state.view === "compare") {
+    try {
+      await ensureDetails();
+    } catch (err) {
+      state.view = "";
+      showError(t("app.unavailableDetail", { message: err.message }));
+    }
+  }
+  syncView();
   renderTabs();
   if (!state.replayOn) renderActiveTab();
 }
@@ -969,6 +1085,7 @@ async function boot() {
       $("replay-banner").textContent = t("replay.banner");
       renderReplay();
     } else renderActiveTab();
+    if (state.view === "compare") renderCompare();
   });
   try {
     await loadAsset("css", LEAFLET_CSS);
