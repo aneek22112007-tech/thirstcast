@@ -68,6 +68,7 @@
 .calc-row { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: end; margin-bottom: 0.7rem; }
 .calc-row .field { min-width: 8rem; }
 .big-range { font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; letter-spacing: -0.03em; }
+#alert-sample { white-space: pre-wrap; max-height: 14rem; overflow: auto; }
 #farm-result.is-invalid { color: var(--muted); }
 #acres-error { color: var(--chart-et0); font-weight: 700; }
 details.formula { margin-top: 0.6rem; }

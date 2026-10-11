@@ -753,13 +753,33 @@ function bindChrome() {
     $("question").value = "";
     ask(value);
   });
-  $("open-alerts").addEventListener("click", () => {
+  $("open-alerts").addEventListener("click", async () => {
     $("alert-dialog").hidden = false;
     $("alert-backdrop").hidden = false;
     $("alert-email").value = "";
-    $("alert-result").hidden = true;
+    const mock = !!(window.ThirstAPI && window.ThirstAPI.isMock);
+    $("alert-email-field").hidden = mock;
+    $("alert-email").hidden = mock;
+    const result = $("alert-result");
+    result.hidden = false;
+    result.textContent = t("alerts.body");
+    const sample = $("alert-sample");
+    sample.hidden = true;
+    sample.textContent = "";
+    if (mock) {
+      try {
+        const res = await fetch("mock/alert_sample.json");
+        if (!res.ok) throw new Error(String(res.status));
+        const data = await res.json();
+        sample.hidden = false;
+        sample.textContent = `${t("alerts.sample")}\n${data.subject}\n${data.body}`;
+      } catch (err) {
+        sample.hidden = false;
+        sample.textContent = t("app.unavailableDetail", { message: err.message });
+      }
+    }
     syncInert();
-    $("alert-email").focus();
+    (mock ? $("alert-submit") : $("alert-email")).focus();
   });
   const closeAlerts = () => {
     $("alert-dialog").hidden = true;
@@ -775,7 +795,7 @@ function bindChrome() {
     $("alert-email").value = "";
     const result = $("alert-result");
     result.hidden = false;
-    result.textContent = t("alerts.soon");
+    result.textContent = t("alerts.body");
   });
   $("sheet-toggle").addEventListener("click", () => {
     const panel = $("panel");

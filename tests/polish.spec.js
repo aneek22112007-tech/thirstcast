@@ -23,6 +23,25 @@ test("F-11 a stale forecast shows the cached badge", async ({ page }) => {
   await expect(page.locator("#forecast-note")).toContainText("Cached at 2023-10-04");
 });
 
+test("F-20 mock alerts show a sample and collect no address", async ({ page }) => {
+  await page.goto("/app.html");
+  await expect(page.locator("#open-alerts")).toBeVisible({ timeout: 20000 });
+  await page.locator("#open-alerts").click();
+  await expect(page.locator("#alert-dialog")).toBeVisible();
+  await expect(page.locator("#alert-email")).toBeHidden();
+  await expect(page.locator("#alert-dialog")).not.toContainText("Coming soon");
+  await expect(page.locator("#alert-dialog")).toContainText("06:00 IST");
+  await expect(page.locator("#alert-dialog")).toContainText("SNS");
+  await expect(page.locator("#alert-dialog")).toContainText("ACTIVE");
+  await expect(page.locator("#alert-sample")).toContainText("ThirstCast alert: thirstwave in Mandya");
+  await expect(page.locator("#alert-sample")).toContainText("status ACTIVE, day 4");
+  await expect(page.locator("#alert-sample")).toContainText("2,972-3,633");
+  await page.locator("#alert-submit").click();
+  await expect(page.locator("#alert-email")).toHaveValue("");
+  const stored = await page.evaluate(() => JSON.stringify(localStorage));
+  expect(stored).not.toContain("@");
+});
+
 test("F-17 the landing quotes the thirstwave abstract", async ({ page }) => {
   const sentence = "Statistically significant trends appear across 17%, 7%, and 23% of cropland area for intensity, frequency, and duration.";
   await page.goto("/index.html");

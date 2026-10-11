@@ -110,9 +110,10 @@
     <h2 id="alert-title" data-i18n="alerts.title">Get email alerts</h2>
     <p data-i18n="alerts.body"></p>
     <form id="alert-form">
-      <label class="field" for="alert-email" data-i18n="alerts.email">Email address</label>
+      <label class="field" id="alert-email-field" for="alert-email" data-i18n="alerts.email">Email address</label>
       <input id="alert-email" type="email" autocomplete="off" inputmode="email">
       <p class="small" data-i18n="alerts.privacy"></p>
+      <pre id="alert-sample" class="note" hidden></pre>
       <div id="alert-result" class="note" hidden></div>
       <div style="display:flex; gap:0.4rem; margin-top:0.6rem">
         <button class="btn btn-primary" type="submit" id="alert-submit" data-i18n="alerts.submit">Notify me</button>

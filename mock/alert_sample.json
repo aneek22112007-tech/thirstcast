@@ -1,0 +1,8 @@
+{
+ "generated_by": "data/scripts/make_mocks.py",
+ "builder": "backend/functions/detector/app.py:fmt_alert",
+ "district": "Mandya",
+ "run_date": "2023-10-05",
+ "subject": "ThirstCast alert: thirstwave in Mandya",
+ "body": "ThirstCast: Mandya is in a thirstwave (status ACTIVE, day 4) on 2023-10-05.\nExcess ET0 over the 7-day window: 0.7 mm (sum of daily ET0 above the local day-of-year p90 threshold).\nExtra crop water (estimate, Kc +-10%): paddy: 2,972-3,633 L/acre; sugarcane: 3,096-3,784 L/acre\nExtra lake/reservoir evaporation (estimate, upper bound): KRS: 92,820,000 L\nCaveat: District-centroid estimate (~10 km grid). All litre figures are estimates."
+}
