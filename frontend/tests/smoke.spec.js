@@ -47,7 +47,7 @@ test("landing numbers, language, and screenshots", async ({ page }) => {
   await page.getByRole("button", { name: "हिंदी" }).click();
   await expect(page.locator("html")).toHaveAttribute("lang", "hi");
   await expect(page.locator("h1")).toContainText("थर्स्टवेव");
-  await page.getByRole("button", { name: "EN" }).click();
+  await page.getByRole("button", { name: "EN", exact: true }).click();
   await expect(page.locator("html")).toHaveAttribute("lang", "en");
   await expect(page.locator("#stat-days")).toContainText("22 of 30");
   await expect(page.locator("#stat-mm")).toContainText("+13.3");
