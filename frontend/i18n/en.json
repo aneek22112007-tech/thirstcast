@@ -211,6 +211,13 @@
     "historical": "Historical, not a live alert",
     "live": "Live forecast"
   },
+  "stage": {
+    "label": "Crop stage",
+    "ini": "Initial",
+    "mid": "Mid-season",
+    "end": "Late season",
+    "note": "FAO-56 Table 12 Kc {kc}. One Kc is shown ±10%. A Kc range is the whole band, with no extra ±10%."
+  },
   "compare": {
     "open": "Compare",
     "title": "Compare the three districts",

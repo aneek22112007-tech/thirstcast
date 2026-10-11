@@ -32,6 +32,7 @@ const state = {
   blind: null,
   acres: 1,
   crop: null,
+  stage: "mid",
   chatOpened: false,
   view: "",
 };
@@ -353,12 +354,28 @@ function renderFarmers(detail) {
   return `
     <div class="calc-row">
       <label class="field">${esc(t("app.crop"))}<select id="crop-select">${options}</select></label>
+      <label class="field">${esc(t("stage.label"))}<select id="stage-select">
+        <option value="ini"${state.stage === "ini" ? " selected" : ""}>${esc(t("stage.ini"))}</option>
+        <option value="mid"${state.stage === "mid" ? " selected" : ""}>${esc(t("stage.mid"))}</option>
+        <option value="end"${state.stage === "end" ? " selected" : ""}>${esc(t("stage.end"))}</option>
+      </select></label>
       <label class="field">${esc(t("app.acres"))}<input id="acres" inputmode="decimal" autocomplete="off" aria-describedby="acres-error" value="${esc(state.acres)}"></label>
     </div>
     <p id="acres-error" class="note" role="alert" hidden></p>
     <p class="small">${esc(t("app.range"))}</p>
     <div id="farm-result"></div>
     <p class="small">${esc(t("app.caveat"))}. ${esc(t("app.kcNote"))}.</p>`;
+}
+
+/** Point Kc keeps the ±10% band. A Table 12 range is the band itself. */
+function stageLitres(excess, kc) {
+  const litre = 4047;
+  if (Array.isArray(kc)) {
+    const values = kc.map((value) => excess * Number(value) * litre);
+    return [Math.round(Math.min(...values)), Math.round(Math.max(...values))];
+  }
+  const base = excess * Number(kc) * litre;
+  return [Math.round(base * 0.9), Math.round(base * 1.1)];
 }
 
 function paintFarmResult() {
@@ -377,8 +394,15 @@ function paintFarmResult() {
   error.hidden = true;
   error.textContent = "";
   box.classList.remove("is-invalid");
-  const range = (detail.extra_litres_per_acre || {})[state.crop];
   const meta = cropMeta(state.crop);
+  const stage = state.stage || "mid";
+  const stageSpec = meta && meta.stages && meta.stages[stage];
+  let range = (detail.extra_litres_per_acre || {})[state.crop];
+  let kcLabel = meta ? meta.kc : "–";
+  if (stage !== "mid" && stageSpec && Number.isFinite(Number(detail.excess_mm_7d))) {
+    range = stageLitres(Number(detail.excess_mm_7d), stageSpec.kc);
+    kcLabel = Array.isArray(stageSpec.kc) ? stageSpec.kc.join("–") : stageSpec.kc;
+  }
   if (!Array.isArray(range)) {
     box.innerHTML = `<p class="note">${esc(t("app.unavailable"))}</p>`;
     return;
@@ -400,7 +424,8 @@ function paintFarmResult() {
     <p>${esc(t("app.estimate"))}${scaleLow ? ` · ≈ ${esc(scaleLow)}–${esc(scaleHigh)}` : ""}</p>
     <p>${esc(t("app.tankers", { n: `${formatNumber(tankLow, 2)}–${formatNumber(tankHigh, 2)}` }))}</p>
     <details class="formula"><summary>${esc(t("app.howCalc"))}</summary>
-      <p>${esc(t("app.formula", { crop: named("crops", state.crop, meta && meta.name), kc: meta ? meta.kc : "–" }))}</p>
+      <p>${esc(t("app.formula", { crop: named("crops", state.crop, meta && meta.name), kc: kcLabel }))}</p>
+      ${stage !== "mid" ? `<p class="small">${esc(t("stage.note", { kc: kcLabel }))}</p>` : ""}
       <p class="small">${esc(t("app.excessDef"))}: ${detail.excess_mm_7d == null ? "–" : esc(formatNumber(detail.excess_mm_7d, 2))} mm.</p>
       ${meta ? englishBlock(`<p class="small"><a href="${esc(meta.url)}">${esc(meta.source)}</a></p>`) : ""}
     </details>`;
@@ -501,6 +526,8 @@ function renderActiveTab() {
   const crop = $("crop-select");
   const acres = $("acres");
   if (crop) crop.addEventListener("change", () => { state.crop = crop.value; paintFarmResult(); });
+  const stage = $("stage-select");
+  if (stage) stage.addEventListener("change", () => { state.stage = stage.value; paintFarmResult(); });
   if (acres) acres.addEventListener("input", () => { state.acres = acres.value; paintFarmResult(); });
   if ($("farm-result")) paintFarmResult();
   const save = $("save-card");

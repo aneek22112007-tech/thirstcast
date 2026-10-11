@@ -23,6 +23,20 @@ test("F-11 a stale forecast shows the cached badge", async ({ page }) => {
   await expect(page.locator("#forecast-note")).toContainText("Cached at 2023-10-04");
 });
 
+test("U-9 the crop stage defaults to mid-season and can switch", async ({ page }) => {
+  await page.goto("/app.html#d=Mandya&tab=farmers");
+  await expect(page.locator("#farm-result")).toContainText("2,972–3,633", { timeout: 20000 });
+  await expect(page.locator("#stage-select")).toHaveValue("mid");
+  await page.locator("#stage-select").selectOption("end");
+  await expect(page.locator("#farm-result")).toContainText("1,651–2,477");
+  await expect(page.locator("#farm-result")).toContainText("0.6–0.9");
+  const catalog = await (await page.request.get("/data/catalog.json")).json();
+  const paddy = catalog.crops.find((crop) => crop.id === "paddy");
+  expect(paddy.kc).toBe(1.2);
+  expect(paddy.stages.mid.kc).toBe(1.2);
+  expect(paddy.stages.end.kc).toEqual([0.6, 0.9]);
+});
+
 test("U-8 the app works from the saved copy when the network is down", async ({ page }) => {
   const manifest = await (await page.request.get("/manifest.webmanifest")).json();
   expect(manifest.icons[0].src).toBe("favicon.svg");

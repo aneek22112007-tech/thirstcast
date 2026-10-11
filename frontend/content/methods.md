@@ -118,6 +118,17 @@ day-of-year p90: ET0 above its p90 while Tmax stayed below its own p90. The land
 hero event (district and start date) from that file and displays the days, excess and peak Tmax
 stored on the event. It does not keep a second copy of those figures in the page.
 
+## 17. Crop stage
+
+The farmer calculator can switch the FAO-56 Table 12 stage. The stored `kc` field stays the
+mid-season value the pipeline uses, so the default view is unchanged. Initial and late stages
+are read from `stages` on the same crop row in `data/config/crops.json`, copied into
+`frontend/data/catalog.json` by `frontend/scripts/build_static_data.py`. Rice is 1.05, 1.20,
+and 0.60–0.90. Sugar cane is 0.40, 1.25, and 0.75. Tomato is 0.60, 1.15, and 0.70–0.90.
+The Table 12 footnote gives stalk tomatoes a mid-season Kc of 1.20; this project keeps 1.15.
+Millet is 0.30, 1.00, and 0.30. A single Kc is still shown with ±10%. When the table gives a
+range, that range is the band and the ±10% is not applied again.
+
 ## 13. Sources
 
 Open-Meteo (Zippenfeld 2023, doi:10.5281/ZENODO.7970649; ERA5/ERA5-Land © Copernicus C3S); Allen et al. 1998,
