@@ -1,0 +1,6698 @@
+{
+  "generated_by": "frontend/scripts/build_static_data.py",
+  "events_source": "data/out/blindspot_events.json",
+  "daily_source": "data/raw/archive_*_1994_2023.json joined to data/out/climatology.json",
+  "definition": "ET0 above its p90 while Tmax stayed below its own p90.",
+  "framing": "ET0 above its p90 while Tmax stayed below its own p90",
+  "count": 129,
+  "hero": {
+    "district": "Mandya",
+    "start": "2023-04-08"
+  },
+  "seasons": [
+    "winter",
+    "pre_monsoon",
+    "monsoon",
+    "post_monsoon"
+  ],
+  "events": [
+    {
+      "district": "Bengaluru_Urban",
+      "start": "1994-03-08",
+      "end": "1994-03-10",
+      "season": "pre_monsoon",
+      "days": 3,
+      "excess_mm": 1.43,
+      "max_tmax_c": 33.1,
+      "max_tmax_minus_p90_c": -0.2,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "1994-03-08",
+          "doy": 67,
+          "et0": 7.77,
+          "p90": 7.26,
+          "flag": true,
+          "tmax": 33.1,
+          "tmax_p90": 33.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "1994-03-09",
+          "doy": 68,
+          "et0": 7.98,
+          "p90": 7.29,
+          "flag": true,
+          "tmax": 32.6,
+          "tmax_p90": 33.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "1994-03-10",
+          "doy": 69,
+          "et0": 7.54,
+          "p90": 7.31,
+          "flag": true,
+          "tmax": 32.5,
+          "tmax_p90": 33.3,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "1994-12-11",
+      "end": "1994-12-13",
+      "season": "winter",
+      "days": 3,
+      "excess_mm": 0.79,
+      "max_tmax_c": 26.8,
+      "max_tmax_minus_p90_c": -0.4,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "1994-12-11",
+          "doy": 345,
+          "et0": 4.8,
+          "p90": 4.62,
+          "flag": true,
+          "tmax": 26.8,
+          "tmax_p90": 27.21,
+          "tmax_flag": false
+        },
+        {
+          "date": "1994-12-12",
+          "doy": 346,
+          "et0": 4.91,
+          "p90": 4.61,
+          "flag": true,
+          "tmax": 26.6,
+          "tmax_p90": 27.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "1994-12-13",
+          "doy": 347,
+          "et0": 4.92,
+          "p90": 4.61,
+          "flag": true,
+          "tmax": 26.0,
+          "tmax_p90": 27.3,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "1995-03-18",
+      "end": "1995-03-23",
+      "season": "pre_monsoon",
+      "days": 6,
+      "excess_mm": 2.35,
+      "max_tmax_c": 34.2,
+      "max_tmax_minus_p90_c": -0.5,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "1995-03-18",
+          "doy": 77,
+          "et0": 7.5,
+          "p90": 7.38,
+          "flag": true,
+          "tmax": 33.2,
+          "tmax_p90": 34.4,
+          "tmax_flag": false
+        },
+        {
+          "date": "1995-03-19",
+          "doy": 78,
+          "et0": 7.98,
+          "p90": 7.44,
+          "flag": true,
+          "tmax": 33.2,
+          "tmax_p90": 34.41,
+          "tmax_flag": false
+        },
+        {
+          "date": "1995-03-20",
+          "doy": 79,
+          "et0": 7.7,
+          "p90": 7.43,
+          "flag": true,
+          "tmax": 33.1,
+          "tmax_p90": 34.5,
+          "tmax_flag": false
+        },
+        {
+          "date": "1995-03-21",
+          "doy": 80,
+          "et0": 7.82,
+          "p90": 7.38,
+          "flag": true,
+          "tmax": 33.4,
+          "tmax_p90": 34.5,
+          "tmax_flag": false
+        },
+        {
+          "date": "1995-03-22",
+          "doy": 81,
+          "et0": 7.84,
+          "p90": 7.36,
+          "flag": true,
+          "tmax": 33.9,
+          "tmax_p90": 34.61,
+          "tmax_flag": false
+        },
+        {
+          "date": "1995-03-23",
+          "doy": 82,
+          "et0": 7.85,
+          "p90": 7.35,
+          "flag": true,
+          "tmax": 34.2,
+          "tmax_p90": 34.7,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "1995-12-13",
+      "end": "1995-12-20",
+      "season": "winter",
+      "days": 8,
+      "excess_mm": 1.77,
+      "max_tmax_c": 27.3,
+      "max_tmax_minus_p90_c": -0.1,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "1995-12-13",
+          "doy": 347,
+          "et0": 4.62,
+          "p90": 4.61,
+          "flag": true,
+          "tmax": 26.1,
+          "tmax_p90": 27.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "1995-12-14",
+          "doy": 348,
+          "et0": 4.82,
+          "p90": 4.6,
+          "flag": true,
+          "tmax": 27.2,
+          "tmax_p90": 27.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "1995-12-15",
+          "doy": 349,
+          "et0": 4.92,
+          "p90": 4.61,
+          "flag": true,
+          "tmax": 27.1,
+          "tmax_p90": 27.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "1995-12-16",
+          "doy": 350,
+          "et0": 4.68,
+          "p90": 4.61,
+          "flag": true,
+          "tmax": 26.1,
+          "tmax_p90": 27.31,
+          "tmax_flag": false
+        },
+        {
+          "date": "1995-12-17",
+          "doy": 351,
+          "et0": 4.89,
+          "p90": 4.61,
+          "flag": true,
+          "tmax": 26.4,
+          "tmax_p90": 27.31,
+          "tmax_flag": false
+        },
+        {
+          "date": "1995-12-18",
+          "doy": 352,
+          "et0": 4.91,
+          "p90": 4.62,
+          "flag": true,
+          "tmax": 26.5,
+          "tmax_p90": 27.4,
+          "tmax_flag": false
+        },
+        {
+          "date": "1995-12-19",
+          "doy": 353,
+          "et0": 5.0,
+          "p90": 4.66,
+          "flag": true,
+          "tmax": 27.3,
+          "tmax_p90": 27.4,
+          "tmax_flag": false
+        },
+        {
+          "date": "1995-12-20",
+          "doy": 354,
+          "et0": 4.93,
+          "p90": 4.68,
+          "flag": true,
+          "tmax": 26.9,
+          "tmax_p90": 27.41,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "1996-06-26",
+      "end": "1996-06-29",
+      "season": "monsoon",
+      "days": 4,
+      "excess_mm": 1.14,
+      "max_tmax_c": 28.5,
+      "max_tmax_minus_p90_c": -0.2,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "1996-06-26",
+          "doy": 177,
+          "et0": 5.15,
+          "p90": 4.85,
+          "flag": true,
+          "tmax": 28.4,
+          "tmax_p90": 28.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "1996-06-27",
+          "doy": 178,
+          "et0": 4.91,
+          "p90": 4.86,
+          "flag": true,
+          "tmax": 28.1,
+          "tmax_p90": 28.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "1996-06-28",
+          "doy": 179,
+          "et0": 5.21,
+          "p90": 4.85,
+          "flag": true,
+          "tmax": 28.5,
+          "tmax_p90": 28.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "1996-06-29",
+          "doy": 180,
+          "et0": 5.28,
+          "p90": 4.85,
+          "flag": true,
+          "tmax": 28.5,
+          "tmax_p90": 28.8,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "1996-11-03",
+      "end": "1996-11-05",
+      "season": "post_monsoon",
+      "days": 3,
+      "excess_mm": 0.58,
+      "max_tmax_c": 26.3,
+      "max_tmax_minus_p90_c": -1.1,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "1996-11-03",
+          "doy": 307,
+          "et0": 4.89,
+          "p90": 4.62,
+          "flag": true,
+          "tmax": 26.3,
+          "tmax_p90": 27.4,
+          "tmax_flag": false
+        },
+        {
+          "date": "1996-11-04",
+          "doy": 308,
+          "et0": 4.83,
+          "p90": 4.61,
+          "flag": true,
+          "tmax": 25.4,
+          "tmax_p90": 27.4,
+          "tmax_flag": false
+        },
+        {
+          "date": "1996-11-05",
+          "doy": 309,
+          "et0": 4.69,
+          "p90": 4.6,
+          "flag": true,
+          "tmax": 25.2,
+          "tmax_p90": 27.4,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "1996-12-01",
+      "end": "1996-12-04",
+      "season": "winter",
+      "days": 4,
+      "excess_mm": 0.65,
+      "max_tmax_c": 27.1,
+      "max_tmax_minus_p90_c": -0.1,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "1996-12-01",
+          "doy": 335,
+          "et0": 4.71,
+          "p90": 4.58,
+          "flag": true,
+          "tmax": 25.8,
+          "tmax_p90": 27.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "1996-12-02",
+          "doy": 336,
+          "et0": 4.86,
+          "p90": 4.58,
+          "flag": true,
+          "tmax": 25.4,
+          "tmax_p90": 27.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "1996-12-03",
+          "doy": 337,
+          "et0": 4.69,
+          "p90": 4.58,
+          "flag": true,
+          "tmax": 26.0,
+          "tmax_p90": 27.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "1996-12-04",
+          "doy": 338,
+          "et0": 4.73,
+          "p90": 4.6,
+          "flag": true,
+          "tmax": 27.1,
+          "tmax_p90": 27.2,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "1999-04-01",
+      "end": "1999-04-03",
+      "season": "pre_monsoon",
+      "days": 3,
+      "excess_mm": 0.83,
+      "max_tmax_c": 34.5,
+      "max_tmax_minus_p90_c": -0.4,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "1999-04-01",
+          "doy": 91,
+          "et0": 7.59,
+          "p90": 7.25,
+          "flag": true,
+          "tmax": 34.5,
+          "tmax_p90": 34.9,
+          "tmax_flag": false
+        },
+        {
+          "date": "1999-04-02",
+          "doy": 92,
+          "et0": 7.51,
+          "p90": 7.2,
+          "flag": true,
+          "tmax": 33.6,
+          "tmax_p90": 34.9,
+          "tmax_flag": false
+        },
+        {
+          "date": "1999-04-03",
+          "doy": 93,
+          "et0": 7.31,
+          "p90": 7.13,
+          "flag": true,
+          "tmax": 33.0,
+          "tmax_p90": 34.9,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "1999-11-07",
+      "end": "1999-11-09",
+      "season": "post_monsoon",
+      "days": 3,
+      "excess_mm": 0.61,
+      "max_tmax_c": 26.9,
+      "max_tmax_minus_p90_c": -0.4,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "1999-11-07",
+          "doy": 311,
+          "et0": 4.8,
+          "p90": 4.61,
+          "flag": true,
+          "tmax": 26.6,
+          "tmax_p90": 27.4,
+          "tmax_flag": false
+        },
+        {
+          "date": "1999-11-08",
+          "doy": 312,
+          "et0": 4.96,
+          "p90": 4.63,
+          "flag": true,
+          "tmax": 26.8,
+          "tmax_p90": 27.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "1999-11-09",
+          "doy": 313,
+          "et0": 4.72,
+          "p90": 4.63,
+          "flag": true,
+          "tmax": 26.9,
+          "tmax_p90": 27.3,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "1999-11-13",
+      "end": "1999-11-18",
+      "season": "post_monsoon",
+      "days": 6,
+      "excess_mm": 0.71,
+      "max_tmax_c": 26.6,
+      "max_tmax_minus_p90_c": -0.7,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "1999-11-13",
+          "doy": 317,
+          "et0": 4.72,
+          "p90": 4.66,
+          "flag": true,
+          "tmax": 26.0,
+          "tmax_p90": 27.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "1999-11-14",
+          "doy": 318,
+          "et0": 4.77,
+          "p90": 4.66,
+          "flag": true,
+          "tmax": 25.8,
+          "tmax_p90": 27.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "1999-11-15",
+          "doy": 319,
+          "et0": 4.76,
+          "p90": 4.64,
+          "flag": true,
+          "tmax": 25.4,
+          "tmax_p90": 27.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "1999-11-16",
+          "doy": 320,
+          "et0": 4.8,
+          "p90": 4.64,
+          "flag": true,
+          "tmax": 25.6,
+          "tmax_p90": 27.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "1999-11-17",
+          "doy": 321,
+          "et0": 4.85,
+          "p90": 4.63,
+          "flag": true,
+          "tmax": 26.6,
+          "tmax_p90": 27.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "1999-11-18",
+          "doy": 322,
+          "et0": 4.67,
+          "p90": 4.63,
+          "flag": true,
+          "tmax": 26.3,
+          "tmax_p90": 27.3,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2001-05-13",
+      "end": "2001-05-15",
+      "season": "pre_monsoon",
+      "days": 3,
+      "excess_mm": 0.8,
+      "max_tmax_c": 33.4,
+      "max_tmax_minus_p90_c": -0.3,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2001-05-13",
+          "doy": 133,
+          "et0": 6.68,
+          "p90": 6.27,
+          "flag": true,
+          "tmax": 33.4,
+          "tmax_p90": 33.71,
+          "tmax_flag": false
+        },
+        {
+          "date": "2001-05-14",
+          "doy": 134,
+          "et0": 6.57,
+          "p90": 6.28,
+          "flag": true,
+          "tmax": 33.3,
+          "tmax_p90": 33.71,
+          "tmax_flag": false
+        },
+        {
+          "date": "2001-05-15",
+          "doy": 135,
+          "et0": 6.38,
+          "p90": 6.28,
+          "flag": true,
+          "tmax": 33.1,
+          "tmax_p90": 33.8,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2001-05-31",
+      "end": "2001-06-02",
+      "season": "pre_monsoon",
+      "days": 3,
+      "excess_mm": 1.27,
+      "max_tmax_c": 32.4,
+      "max_tmax_minus_p90_c": -0.1,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2001-05-31",
+          "doy": 151,
+          "et0": 6.21,
+          "p90": 5.78,
+          "flag": true,
+          "tmax": 31.5,
+          "tmax_p90": 32.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "2001-06-01",
+          "doy": 152,
+          "et0": 6.41,
+          "p90": 5.73,
+          "flag": true,
+          "tmax": 32.4,
+          "tmax_p90": 32.51,
+          "tmax_flag": false
+        },
+        {
+          "date": "2001-06-02",
+          "doy": 153,
+          "et0": 5.88,
+          "p90": 5.72,
+          "flag": true,
+          "tmax": 31.1,
+          "tmax_p90": 32.4,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2002-03-18",
+      "end": "2002-03-20",
+      "season": "pre_monsoon",
+      "days": 3,
+      "excess_mm": 0.49,
+      "max_tmax_c": 32.7,
+      "max_tmax_minus_p90_c": -1.8,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2002-03-18",
+          "doy": 77,
+          "et0": 7.7,
+          "p90": 7.38,
+          "flag": true,
+          "tmax": 32.2,
+          "tmax_p90": 34.4,
+          "tmax_flag": false
+        },
+        {
+          "date": "2002-03-19",
+          "doy": 78,
+          "et0": 7.57,
+          "p90": 7.44,
+          "flag": true,
+          "tmax": 32.4,
+          "tmax_p90": 34.41,
+          "tmax_flag": false
+        },
+        {
+          "date": "2002-03-20",
+          "doy": 79,
+          "et0": 7.47,
+          "p90": 7.43,
+          "flag": true,
+          "tmax": 32.7,
+          "tmax_p90": 34.5,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2003-12-06",
+      "end": "2003-12-08",
+      "season": "winter",
+      "days": 3,
+      "excess_mm": 0.61,
+      "max_tmax_c": 27.1,
+      "max_tmax_minus_p90_c": -0.1,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2003-12-06",
+          "doy": 340,
+          "et0": 4.71,
+          "p90": 4.6,
+          "flag": true,
+          "tmax": 26.5,
+          "tmax_p90": 27.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "2003-12-07",
+          "doy": 341,
+          "et0": 5.05,
+          "p90": 4.6,
+          "flag": true,
+          "tmax": 27.1,
+          "tmax_p90": 27.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "2003-12-08",
+          "doy": 342,
+          "et0": 4.67,
+          "p90": 4.62,
+          "flag": true,
+          "tmax": 26.9,
+          "tmax_p90": 27.2,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2004-08-28",
+      "end": "2004-09-02",
+      "season": "monsoon",
+      "days": 6,
+      "excess_mm": 1.45,
+      "max_tmax_c": 27.5,
+      "max_tmax_minus_p90_c": -0.4,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2004-08-28",
+          "doy": 240,
+          "et0": 4.63,
+          "p90": 4.52,
+          "flag": true,
+          "tmax": 26.9,
+          "tmax_p90": 27.9,
+          "tmax_flag": false
+        },
+        {
+          "date": "2004-08-29",
+          "doy": 241,
+          "et0": 4.8,
+          "p90": 4.52,
+          "flag": true,
+          "tmax": 27.5,
+          "tmax_p90": 28.0,
+          "tmax_flag": false
+        },
+        {
+          "date": "2004-08-30",
+          "doy": 242,
+          "et0": 4.75,
+          "p90": 4.52,
+          "flag": true,
+          "tmax": 27.3,
+          "tmax_p90": 28.0,
+          "tmax_flag": false
+        },
+        {
+          "date": "2004-08-31",
+          "doy": 243,
+          "et0": 4.79,
+          "p90": 4.45,
+          "flag": true,
+          "tmax": 27.1,
+          "tmax_p90": 27.9,
+          "tmax_flag": false
+        },
+        {
+          "date": "2004-09-01",
+          "doy": 244,
+          "et0": 4.77,
+          "p90": 4.44,
+          "flag": true,
+          "tmax": 27.0,
+          "tmax_p90": 27.9,
+          "tmax_flag": false
+        },
+        {
+          "date": "2004-09-02",
+          "doy": 245,
+          "et0": 4.6,
+          "p90": 4.44,
+          "flag": true,
+          "tmax": 27.5,
+          "tmax_p90": 27.91,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2004-10-06",
+      "end": "2004-10-10",
+      "season": "post_monsoon",
+      "days": 5,
+      "excess_mm": 0.8,
+      "max_tmax_c": 27.7,
+      "max_tmax_minus_p90_c": -0.5,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2004-10-06",
+          "doy": 279,
+          "et0": 4.55,
+          "p90": 4.53,
+          "flag": true,
+          "tmax": 26.4,
+          "tmax_p90": 28.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "2004-10-07",
+          "doy": 280,
+          "et0": 4.71,
+          "p90": 4.58,
+          "flag": true,
+          "tmax": 26.4,
+          "tmax_p90": 28.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "2004-10-08",
+          "doy": 281,
+          "et0": 4.94,
+          "p90": 4.6,
+          "flag": true,
+          "tmax": 27.0,
+          "tmax_p90": 28.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "2004-10-09",
+          "doy": 282,
+          "et0": 4.85,
+          "p90": 4.62,
+          "flag": true,
+          "tmax": 27.7,
+          "tmax_p90": 28.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "2004-10-10",
+          "doy": 283,
+          "et0": 4.68,
+          "p90": 4.6,
+          "flag": true,
+          "tmax": 27.6,
+          "tmax_p90": 28.2,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2005-02-27",
+      "end": "2005-03-01",
+      "season": "winter",
+      "days": 3,
+      "excess_mm": 0.54,
+      "max_tmax_c": 31.9,
+      "max_tmax_minus_p90_c": -0.9,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2005-02-27",
+          "doy": 58,
+          "et0": 7.25,
+          "p90": 7.08,
+          "flag": true,
+          "tmax": 31.9,
+          "tmax_p90": 32.84,
+          "tmax_flag": false
+        },
+        {
+          "date": "2005-02-28",
+          "doy": 59,
+          "et0": 7.43,
+          "p90": 7.13,
+          "flag": true,
+          "tmax": 31.9,
+          "tmax_p90": 32.94,
+          "tmax_flag": false
+        },
+        {
+          "date": "2005-03-01",
+          "doy": 60,
+          "et0": 7.24,
+          "p90": 7.17,
+          "flag": true,
+          "tmax": 31.9,
+          "tmax_p90": 33.0,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2006-07-16",
+      "end": "2006-07-18",
+      "season": "monsoon",
+      "days": 3,
+      "excess_mm": 0.35,
+      "max_tmax_c": 27.4,
+      "max_tmax_minus_p90_c": -0.6,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2006-07-16",
+          "doy": 197,
+          "et0": 4.35,
+          "p90": 4.32,
+          "flag": true,
+          "tmax": 27.2,
+          "tmax_p90": 28.01,
+          "tmax_flag": false
+        },
+        {
+          "date": "2006-07-17",
+          "doy": 198,
+          "et0": 4.4,
+          "p90": 4.32,
+          "flag": true,
+          "tmax": 27.4,
+          "tmax_p90": 28.0,
+          "tmax_flag": false
+        },
+        {
+          "date": "2006-07-18",
+          "doy": 199,
+          "et0": 4.54,
+          "p90": 4.3,
+          "flag": true,
+          "tmax": 27.2,
+          "tmax_p90": 27.9,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2007-08-14",
+      "end": "2007-08-16",
+      "season": "monsoon",
+      "days": 3,
+      "excess_mm": 0.63,
+      "max_tmax_c": 27.5,
+      "max_tmax_minus_p90_c": -0.2,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2007-08-14",
+          "doy": 226,
+          "et0": 4.65,
+          "p90": 4.22,
+          "flag": true,
+          "tmax": 27.3,
+          "tmax_p90": 27.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "2007-08-15",
+          "doy": 227,
+          "et0": 4.35,
+          "p90": 4.27,
+          "flag": true,
+          "tmax": 27.5,
+          "tmax_p90": 27.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "2007-08-16",
+          "doy": 228,
+          "et0": 4.42,
+          "p90": 4.3,
+          "flag": true,
+          "tmax": 27.3,
+          "tmax_p90": 27.7,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2007-11-14",
+      "end": "2007-11-17",
+      "season": "post_monsoon",
+      "days": 4,
+      "excess_mm": 0.39,
+      "max_tmax_c": 25.8,
+      "max_tmax_minus_p90_c": -1.5,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2007-11-14",
+          "doy": 318,
+          "et0": 4.7,
+          "p90": 4.66,
+          "flag": true,
+          "tmax": 25.2,
+          "tmax_p90": 27.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "2007-11-15",
+          "doy": 319,
+          "et0": 4.78,
+          "p90": 4.64,
+          "flag": true,
+          "tmax": 25.8,
+          "tmax_p90": 27.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "2007-11-16",
+          "doy": 320,
+          "et0": 4.77,
+          "p90": 4.64,
+          "flag": true,
+          "tmax": 25.4,
+          "tmax_p90": 27.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "2007-11-17",
+          "doy": 321,
+          "et0": 4.71,
+          "p90": 4.63,
+          "flag": true,
+          "tmax": 24.7,
+          "tmax_p90": 27.3,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2008-03-04",
+      "end": "2008-03-09",
+      "season": "pre_monsoon",
+      "days": 6,
+      "excess_mm": 1.47,
+      "max_tmax_c": 31.7,
+      "max_tmax_minus_p90_c": -1.4,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2008-03-04",
+          "doy": 63,
+          "et0": 7.45,
+          "p90": 7.23,
+          "flag": true,
+          "tmax": 31.1,
+          "tmax_p90": 33.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-03-05",
+          "doy": 64,
+          "et0": 7.46,
+          "p90": 7.25,
+          "flag": true,
+          "tmax": 31.7,
+          "tmax_p90": 33.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-03-06",
+          "doy": 65,
+          "et0": 7.39,
+          "p90": 7.25,
+          "flag": true,
+          "tmax": 31.5,
+          "tmax_p90": 33.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-03-07",
+          "doy": 66,
+          "et0": 7.57,
+          "p90": 7.25,
+          "flag": true,
+          "tmax": 30.9,
+          "tmax_p90": 33.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-03-08",
+          "doy": 67,
+          "et0": 7.72,
+          "p90": 7.26,
+          "flag": true,
+          "tmax": 31.0,
+          "tmax_p90": 33.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-03-09",
+          "doy": 68,
+          "et0": 7.41,
+          "p90": 7.29,
+          "flag": true,
+          "tmax": 31.2,
+          "tmax_p90": 33.3,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2008-05-13",
+      "end": "2008-05-17",
+      "season": "pre_monsoon",
+      "days": 5,
+      "excess_mm": 1.04,
+      "max_tmax_c": 33.3,
+      "max_tmax_minus_p90_c": -0.4,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2008-05-13",
+          "doy": 133,
+          "et0": 6.44,
+          "p90": 6.27,
+          "flag": true,
+          "tmax": 33.1,
+          "tmax_p90": 33.71,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-05-14",
+          "doy": 134,
+          "et0": 6.44,
+          "p90": 6.28,
+          "flag": true,
+          "tmax": 32.7,
+          "tmax_p90": 33.71,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-05-15",
+          "doy": 135,
+          "et0": 6.37,
+          "p90": 6.28,
+          "flag": true,
+          "tmax": 33.2,
+          "tmax_p90": 33.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-05-16",
+          "doy": 136,
+          "et0": 6.78,
+          "p90": 6.28,
+          "flag": true,
+          "tmax": 33.3,
+          "tmax_p90": 33.71,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-05-17",
+          "doy": 137,
+          "et0": 6.4,
+          "p90": 6.28,
+          "flag": true,
+          "tmax": 32.9,
+          "tmax_p90": 33.7,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2008-09-27",
+      "end": "2008-09-29",
+      "season": "monsoon",
+      "days": 3,
+      "excess_mm": 0.46,
+      "max_tmax_c": 27.8,
+      "max_tmax_minus_p90_c": -0.4,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2008-09-27",
+          "doy": 270,
+          "et0": 4.92,
+          "p90": 4.71,
+          "flag": true,
+          "tmax": 27.5,
+          "tmax_p90": 28.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-09-28",
+          "doy": 271,
+          "et0": 4.93,
+          "p90": 4.71,
+          "flag": true,
+          "tmax": 27.1,
+          "tmax_p90": 28.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-09-29",
+          "doy": 272,
+          "et0": 4.71,
+          "p90": 4.68,
+          "flag": true,
+          "tmax": 27.8,
+          "tmax_p90": 28.2,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2008-10-31",
+      "end": "2008-11-04",
+      "season": "post_monsoon",
+      "days": 5,
+      "excess_mm": 0.83,
+      "max_tmax_c": 26.6,
+      "max_tmax_minus_p90_c": -0.8,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2008-10-31",
+          "doy": 304,
+          "et0": 4.78,
+          "p90": 4.73,
+          "flag": true,
+          "tmax": 26.3,
+          "tmax_p90": 27.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-11-01",
+          "doy": 305,
+          "et0": 4.83,
+          "p90": 4.69,
+          "flag": true,
+          "tmax": 26.0,
+          "tmax_p90": 27.5,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-11-02",
+          "doy": 306,
+          "et0": 4.82,
+          "p90": 4.66,
+          "flag": true,
+          "tmax": 26.3,
+          "tmax_p90": 27.5,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-11-03",
+          "doy": 307,
+          "et0": 4.9,
+          "p90": 4.62,
+          "flag": true,
+          "tmax": 26.5,
+          "tmax_p90": 27.4,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-11-04",
+          "doy": 308,
+          "et0": 4.81,
+          "p90": 4.61,
+          "flag": true,
+          "tmax": 26.6,
+          "tmax_p90": 27.4,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2011-01-11",
+      "end": "2011-01-14",
+      "season": "winter",
+      "days": 4,
+      "excess_mm": 0.36,
+      "max_tmax_c": 28.1,
+      "max_tmax_minus_p90_c": -0.7,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2011-01-11",
+          "doy": 11,
+          "et0": 5.05,
+          "p90": 5.02,
+          "flag": true,
+          "tmax": 27.7,
+          "tmax_p90": 28.6,
+          "tmax_flag": false
+        },
+        {
+          "date": "2011-01-12",
+          "doy": 12,
+          "et0": 5.09,
+          "p90": 5.03,
+          "flag": true,
+          "tmax": 27.9,
+          "tmax_p90": 28.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "2011-01-13",
+          "doy": 13,
+          "et0": 5.14,
+          "p90": 5.04,
+          "flag": true,
+          "tmax": 28.1,
+          "tmax_p90": 28.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "2011-01-14",
+          "doy": 14,
+          "et0": 5.27,
+          "p90": 5.1,
+          "flag": true,
+          "tmax": 27.6,
+          "tmax_p90": 28.9,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2011-01-29",
+      "end": "2011-02-02",
+      "season": "winter",
+      "days": 5,
+      "excess_mm": 0.7,
+      "max_tmax_c": 28.7,
+      "max_tmax_minus_p90_c": -1.0,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2011-01-29",
+          "doy": 29,
+          "et0": 5.81,
+          "p90": 5.56,
+          "flag": true,
+          "tmax": 28.4,
+          "tmax_p90": 29.6,
+          "tmax_flag": false
+        },
+        {
+          "date": "2011-01-30",
+          "doy": 30,
+          "et0": 5.79,
+          "p90": 5.62,
+          "flag": true,
+          "tmax": 28.2,
+          "tmax_p90": 29.61,
+          "tmax_flag": false
+        },
+        {
+          "date": "2011-01-31",
+          "doy": 31,
+          "et0": 5.71,
+          "p90": 5.67,
+          "flag": true,
+          "tmax": 28.7,
+          "tmax_p90": 29.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "2011-02-01",
+          "doy": 32,
+          "et0": 5.79,
+          "p90": 5.73,
+          "flag": true,
+          "tmax": 28.5,
+          "tmax_p90": 29.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "2011-02-02",
+          "doy": 33,
+          "et0": 5.94,
+          "p90": 5.76,
+          "flag": true,
+          "tmax": 27.7,
+          "tmax_p90": 29.9,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2011-02-09",
+      "end": "2011-02-13",
+      "season": "winter",
+      "days": 5,
+      "excess_mm": 1.61,
+      "max_tmax_c": 29.7,
+      "max_tmax_minus_p90_c": -0.7,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2011-02-09",
+          "doy": 40,
+          "et0": 6.24,
+          "p90": 6.01,
+          "flag": true,
+          "tmax": 29.7,
+          "tmax_p90": 30.4,
+          "tmax_flag": false
+        },
+        {
+          "date": "2011-02-10",
+          "doy": 41,
+          "et0": 6.48,
+          "p90": 6.08,
+          "flag": true,
+          "tmax": 29.5,
+          "tmax_p90": 30.5,
+          "tmax_flag": false
+        },
+        {
+          "date": "2011-02-11",
+          "doy": 42,
+          "et0": 6.76,
+          "p90": 6.12,
+          "flag": true,
+          "tmax": 28.7,
+          "tmax_p90": 30.61,
+          "tmax_flag": false
+        },
+        {
+          "date": "2011-02-12",
+          "doy": 43,
+          "et0": 6.25,
+          "p90": 6.17,
+          "flag": true,
+          "tmax": 28.5,
+          "tmax_p90": 30.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "2011-02-13",
+          "doy": 44,
+          "et0": 6.47,
+          "p90": 6.21,
+          "flag": true,
+          "tmax": 28.9,
+          "tmax_p90": 31.1,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2011-11-14",
+      "end": "2011-11-16",
+      "season": "post_monsoon",
+      "days": 3,
+      "excess_mm": 0.4,
+      "max_tmax_c": 26.8,
+      "max_tmax_minus_p90_c": -0.5,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2011-11-14",
+          "doy": 318,
+          "et0": 4.75,
+          "p90": 4.66,
+          "flag": true,
+          "tmax": 26.8,
+          "tmax_p90": 27.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "2011-11-15",
+          "doy": 319,
+          "et0": 4.79,
+          "p90": 4.64,
+          "flag": true,
+          "tmax": 26.6,
+          "tmax_p90": 27.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "2011-11-16",
+          "doy": 320,
+          "et0": 4.8,
+          "p90": 4.64,
+          "flag": true,
+          "tmax": 26.6,
+          "tmax_p90": 27.3,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2012-02-22",
+      "end": "2012-02-27",
+      "season": "winter",
+      "days": 6,
+      "excess_mm": 1.96,
+      "max_tmax_c": 32.4,
+      "max_tmax_minus_p90_c": -0.4,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2012-02-22",
+          "doy": 53,
+          "et0": 6.97,
+          "p90": 6.82,
+          "flag": true,
+          "tmax": 31.1,
+          "tmax_p90": 32.4,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-02-23",
+          "doy": 54,
+          "et0": 7.06,
+          "p90": 6.88,
+          "flag": true,
+          "tmax": 31.5,
+          "tmax_p90": 32.5,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-02-24",
+          "doy": 55,
+          "et0": 7.48,
+          "p90": 6.97,
+          "flag": true,
+          "tmax": 32.0,
+          "tmax_p90": 32.6,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-02-25",
+          "doy": 56,
+          "et0": 7.34,
+          "p90": 7.01,
+          "flag": true,
+          "tmax": 31.5,
+          "tmax_p90": 32.6,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-02-26",
+          "doy": 57,
+          "et0": 7.51,
+          "p90": 7.05,
+          "flag": true,
+          "tmax": 31.6,
+          "tmax_p90": 32.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-02-27",
+          "doy": 58,
+          "et0": 7.41,
+          "p90": 7.08,
+          "flag": true,
+          "tmax": 32.4,
+          "tmax_p90": 32.84,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2012-03-24",
+      "end": "2012-03-26",
+      "season": "pre_monsoon",
+      "days": 3,
+      "excess_mm": 2.45,
+      "max_tmax_c": 34.3,
+      "max_tmax_minus_p90_c": -0.4,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2012-03-24",
+          "doy": 83,
+          "et0": 8.04,
+          "p90": 7.34,
+          "flag": true,
+          "tmax": 34.3,
+          "tmax_p90": 34.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-03-25",
+          "doy": 84,
+          "et0": 8.09,
+          "p90": 7.34,
+          "flag": true,
+          "tmax": 34.3,
+          "tmax_p90": 34.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-03-26",
+          "doy": 85,
+          "et0": 8.33,
+          "p90": 7.33,
+          "flag": true,
+          "tmax": 33.9,
+          "tmax_p90": 34.8,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2012-05-31",
+      "end": "2012-06-02",
+      "season": "pre_monsoon",
+      "days": 3,
+      "excess_mm": 1.55,
+      "max_tmax_c": 32.4,
+      "max_tmax_minus_p90_c": -0.1,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2012-05-31",
+          "doy": 151,
+          "et0": 6.15,
+          "p90": 5.78,
+          "flag": true,
+          "tmax": 32.4,
+          "tmax_p90": 32.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-06-01",
+          "doy": 152,
+          "et0": 6.61,
+          "p90": 5.73,
+          "flag": true,
+          "tmax": 31.9,
+          "tmax_p90": 32.51,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-06-02",
+          "doy": 153,
+          "et0": 6.02,
+          "p90": 5.72,
+          "flag": true,
+          "tmax": 32.3,
+          "tmax_p90": 32.4,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2012-10-03",
+      "end": "2012-10-05",
+      "season": "post_monsoon",
+      "days": 3,
+      "excess_mm": 1.19,
+      "max_tmax_c": 27.9,
+      "max_tmax_minus_p90_c": -0.2,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2012-10-03",
+          "doy": 276,
+          "et0": 5.16,
+          "p90": 4.54,
+          "flag": true,
+          "tmax": 27.3,
+          "tmax_p90": 28.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-10-04",
+          "doy": 277,
+          "et0": 4.88,
+          "p90": 4.53,
+          "flag": true,
+          "tmax": 27.4,
+          "tmax_p90": 28.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-10-05",
+          "doy": 278,
+          "et0": 4.75,
+          "p90": 4.53,
+          "flag": true,
+          "tmax": 27.9,
+          "tmax_p90": 28.1,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2012-11-17",
+      "end": "2012-11-19",
+      "season": "post_monsoon",
+      "days": 3,
+      "excess_mm": 0.08,
+      "max_tmax_c": 26.9,
+      "max_tmax_minus_p90_c": -0.4,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2012-11-17",
+          "doy": 321,
+          "et0": 4.64,
+          "p90": 4.63,
+          "flag": true,
+          "tmax": 26.0,
+          "tmax_p90": 27.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-11-18",
+          "doy": 322,
+          "et0": 4.69,
+          "p90": 4.63,
+          "flag": true,
+          "tmax": 26.5,
+          "tmax_p90": 27.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-11-19",
+          "doy": 323,
+          "et0": 4.64,
+          "p90": 4.63,
+          "flag": true,
+          "tmax": 26.9,
+          "tmax_p90": 27.3,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2013-01-13",
+      "end": "2013-01-16",
+      "season": "winter",
+      "days": 4,
+      "excess_mm": 1.07,
+      "max_tmax_c": 28.9,
+      "max_tmax_minus_p90_c": 0.0,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2013-01-13",
+          "doy": 13,
+          "et0": 5.22,
+          "p90": 5.04,
+          "flag": true,
+          "tmax": 28.5,
+          "tmax_p90": 28.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "2013-01-14",
+          "doy": 14,
+          "et0": 5.49,
+          "p90": 5.1,
+          "flag": true,
+          "tmax": 28.9,
+          "tmax_p90": 28.9,
+          "tmax_flag": false
+        },
+        {
+          "date": "2013-01-15",
+          "doy": 15,
+          "et0": 5.6,
+          "p90": 5.17,
+          "flag": true,
+          "tmax": 28.4,
+          "tmax_p90": 28.91,
+          "tmax_flag": false
+        },
+        {
+          "date": "2013-01-16",
+          "doy": 16,
+          "et0": 5.26,
+          "p90": 5.19,
+          "flag": true,
+          "tmax": 27.8,
+          "tmax_p90": 29.0,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2013-12-04",
+      "end": "2013-12-06",
+      "season": "winter",
+      "days": 3,
+      "excess_mm": 0.18,
+      "max_tmax_c": 26.7,
+      "max_tmax_minus_p90_c": -0.5,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2013-12-04",
+          "doy": 338,
+          "et0": 4.64,
+          "p90": 4.6,
+          "flag": true,
+          "tmax": 26.3,
+          "tmax_p90": 27.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "2013-12-05",
+          "doy": 339,
+          "et0": 4.7,
+          "p90": 4.6,
+          "flag": true,
+          "tmax": 26.5,
+          "tmax_p90": 27.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "2013-12-06",
+          "doy": 340,
+          "et0": 4.64,
+          "p90": 4.6,
+          "flag": true,
+          "tmax": 26.7,
+          "tmax_p90": 27.2,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2014-03-15",
+      "end": "2014-03-17",
+      "season": "pre_monsoon",
+      "days": 3,
+      "excess_mm": 0.71,
+      "max_tmax_c": 33.4,
+      "max_tmax_minus_p90_c": -0.8,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2014-03-15",
+          "doy": 74,
+          "et0": 7.51,
+          "p90": 7.35,
+          "flag": true,
+          "tmax": 32.5,
+          "tmax_p90": 33.91,
+          "tmax_flag": false
+        },
+        {
+          "date": "2014-03-16",
+          "doy": 75,
+          "et0": 7.73,
+          "p90": 7.35,
+          "flag": true,
+          "tmax": 32.9,
+          "tmax_p90": 34.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2014-03-17",
+          "doy": 76,
+          "et0": 7.52,
+          "p90": 7.35,
+          "flag": true,
+          "tmax": 33.4,
+          "tmax_p90": 34.21,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2016-01-02",
+      "end": "2016-01-04",
+      "season": "winter",
+      "days": 3,
+      "excess_mm": 0.25,
+      "max_tmax_c": 26.6,
+      "max_tmax_minus_p90_c": -1.4,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2016-01-02",
+          "doy": 2,
+          "et0": 4.81,
+          "p90": 4.75,
+          "flag": true,
+          "tmax": 26.2,
+          "tmax_p90": 27.91,
+          "tmax_flag": false
+        },
+        {
+          "date": "2016-01-03",
+          "doy": 3,
+          "et0": 4.84,
+          "p90": 4.76,
+          "flag": true,
+          "tmax": 26.6,
+          "tmax_p90": 28.0,
+          "tmax_flag": false
+        },
+        {
+          "date": "2016-01-04",
+          "doy": 4,
+          "et0": 4.88,
+          "p90": 4.77,
+          "flag": true,
+          "tmax": 26.4,
+          "tmax_p90": 28.1,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2016-05-21",
+      "end": "2016-05-25",
+      "season": "pre_monsoon",
+      "days": 5,
+      "excess_mm": 1.15,
+      "max_tmax_c": 33.2,
+      "max_tmax_minus_p90_c": -0.2,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2016-05-21",
+          "doy": 141,
+          "et0": 6.28,
+          "p90": 6.21,
+          "flag": true,
+          "tmax": 32.3,
+          "tmax_p90": 33.5,
+          "tmax_flag": false
+        },
+        {
+          "date": "2016-05-22",
+          "doy": 142,
+          "et0": 6.52,
+          "p90": 6.21,
+          "flag": true,
+          "tmax": 32.9,
+          "tmax_p90": 33.5,
+          "tmax_flag": false
+        },
+        {
+          "date": "2016-05-23",
+          "doy": 143,
+          "et0": 6.65,
+          "p90": 6.15,
+          "flag": true,
+          "tmax": 33.2,
+          "tmax_p90": 33.41,
+          "tmax_flag": false
+        },
+        {
+          "date": "2016-05-24",
+          "doy": 144,
+          "et0": 6.35,
+          "p90": 6.12,
+          "flag": true,
+          "tmax": 33.0,
+          "tmax_p90": 33.41,
+          "tmax_flag": false
+        },
+        {
+          "date": "2016-05-25",
+          "doy": 145,
+          "et0": 6.15,
+          "p90": 6.11,
+          "flag": true,
+          "tmax": 32.9,
+          "tmax_p90": 33.4,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2018-10-22",
+      "end": "2018-10-25",
+      "season": "post_monsoon",
+      "days": 4,
+      "excess_mm": 0.74,
+      "max_tmax_c": 27.8,
+      "max_tmax_minus_p90_c": -0.4,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2018-10-22",
+          "doy": 295,
+          "et0": 4.91,
+          "p90": 4.88,
+          "flag": true,
+          "tmax": 27.3,
+          "tmax_p90": 28.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "2018-10-23",
+          "doy": 296,
+          "et0": 4.99,
+          "p90": 4.89,
+          "flag": true,
+          "tmax": 27.8,
+          "tmax_p90": 28.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "2018-10-24",
+          "doy": 297,
+          "et0": 5.27,
+          "p90": 4.88,
+          "flag": true,
+          "tmax": 27.8,
+          "tmax_p90": 28.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "2018-10-25",
+          "doy": 298,
+          "et0": 5.09,
+          "p90": 4.87,
+          "flag": true,
+          "tmax": 27.8,
+          "tmax_p90": 28.2,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2019-01-01",
+      "end": "2019-01-05",
+      "season": "winter",
+      "days": 5,
+      "excess_mm": 1.24,
+      "max_tmax_c": 27.6,
+      "max_tmax_minus_p90_c": -0.4,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2019-01-01",
+          "doy": 1,
+          "et0": 4.89,
+          "p90": 4.73,
+          "flag": true,
+          "tmax": 26.8,
+          "tmax_p90": 27.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "2019-01-02",
+          "doy": 2,
+          "et0": 5.01,
+          "p90": 4.75,
+          "flag": true,
+          "tmax": 26.9,
+          "tmax_p90": 27.91,
+          "tmax_flag": false
+        },
+        {
+          "date": "2019-01-03",
+          "doy": 3,
+          "et0": 5.11,
+          "p90": 4.76,
+          "flag": true,
+          "tmax": 27.6,
+          "tmax_p90": 28.0,
+          "tmax_flag": false
+        },
+        {
+          "date": "2019-01-04",
+          "doy": 4,
+          "et0": 5.23,
+          "p90": 4.77,
+          "flag": true,
+          "tmax": 27.4,
+          "tmax_p90": 28.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2019-01-05",
+          "doy": 5,
+          "et0": 4.81,
+          "p90": 4.8,
+          "flag": true,
+          "tmax": 27.2,
+          "tmax_p90": 28.11,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2019-01-19",
+      "end": "2019-01-21",
+      "season": "winter",
+      "days": 3,
+      "excess_mm": 0.12,
+      "max_tmax_c": 28.8,
+      "max_tmax_minus_p90_c": -0.5,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2019-01-19",
+          "doy": 19,
+          "et0": 5.32,
+          "p90": 5.29,
+          "flag": true,
+          "tmax": 28.8,
+          "tmax_p90": 29.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "2019-01-20",
+          "doy": 20,
+          "et0": 5.33,
+          "p90": 5.31,
+          "flag": true,
+          "tmax": 28.1,
+          "tmax_p90": 29.31,
+          "tmax_flag": false
+        },
+        {
+          "date": "2019-01-21",
+          "doy": 21,
+          "et0": 5.38,
+          "p90": 5.31,
+          "flag": true,
+          "tmax": 28.3,
+          "tmax_p90": 29.4,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2019-03-13",
+      "end": "2019-03-16",
+      "season": "pre_monsoon",
+      "days": 4,
+      "excess_mm": 1.59,
+      "max_tmax_c": 33.2,
+      "max_tmax_minus_p90_c": -0.7,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2019-03-13",
+          "doy": 72,
+          "et0": 7.63,
+          "p90": 7.35,
+          "flag": true,
+          "tmax": 33.0,
+          "tmax_p90": 33.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "2019-03-14",
+          "doy": 73,
+          "et0": 7.87,
+          "p90": 7.38,
+          "flag": true,
+          "tmax": 33.0,
+          "tmax_p90": 33.9,
+          "tmax_flag": false
+        },
+        {
+          "date": "2019-03-15",
+          "doy": 74,
+          "et0": 7.96,
+          "p90": 7.35,
+          "flag": true,
+          "tmax": 33.2,
+          "tmax_p90": 33.91,
+          "tmax_flag": false
+        },
+        {
+          "date": "2019-03-16",
+          "doy": 75,
+          "et0": 7.56,
+          "p90": 7.35,
+          "flag": true,
+          "tmax": 32.6,
+          "tmax_p90": 34.1,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2020-04-13",
+      "end": "2020-04-15",
+      "season": "pre_monsoon",
+      "days": 3,
+      "excess_mm": 0.99,
+      "max_tmax_c": 34.2,
+      "max_tmax_minus_p90_c": -0.9,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2020-04-13",
+          "doy": 103,
+          "et0": 7.09,
+          "p90": 6.9,
+          "flag": true,
+          "tmax": 33.9,
+          "tmax_p90": 35.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2020-04-14",
+          "doy": 104,
+          "et0": 7.55,
+          "p90": 6.82,
+          "flag": true,
+          "tmax": 34.2,
+          "tmax_p90": 35.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2020-04-15",
+          "doy": 105,
+          "et0": 6.8,
+          "p90": 6.73,
+          "flag": true,
+          "tmax": 33.8,
+          "tmax_p90": 35.1,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2022-08-16",
+      "end": "2022-08-18",
+      "season": "monsoon",
+      "days": 3,
+      "excess_mm": 0.23,
+      "max_tmax_c": 27.7,
+      "max_tmax_minus_p90_c": 0.0,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2022-08-16",
+          "doy": 228,
+          "et0": 4.44,
+          "p90": 4.3,
+          "flag": true,
+          "tmax": 27.5,
+          "tmax_p90": 27.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "2022-08-17",
+          "doy": 229,
+          "et0": 4.33,
+          "p90": 4.32,
+          "flag": true,
+          "tmax": 27.7,
+          "tmax_p90": 27.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "2022-08-18",
+          "doy": 230,
+          "et0": 4.41,
+          "p90": 4.33,
+          "flag": true,
+          "tmax": 27.0,
+          "tmax_p90": 27.7,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2023-03-03",
+      "end": "2023-03-06",
+      "season": "pre_monsoon",
+      "days": 4,
+      "excess_mm": 0.51,
+      "max_tmax_c": 30.8,
+      "max_tmax_minus_p90_c": -2.3,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2023-03-03",
+          "doy": 62,
+          "et0": 7.34,
+          "p90": 7.21,
+          "flag": true,
+          "tmax": 30.4,
+          "tmax_p90": 33.0,
+          "tmax_flag": false
+        },
+        {
+          "date": "2023-03-04",
+          "doy": 63,
+          "et0": 7.41,
+          "p90": 7.23,
+          "flag": true,
+          "tmax": 30.5,
+          "tmax_p90": 33.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2023-03-05",
+          "doy": 64,
+          "et0": 7.35,
+          "p90": 7.25,
+          "flag": true,
+          "tmax": 30.8,
+          "tmax_p90": 33.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2023-03-06",
+          "doy": 65,
+          "et0": 7.35,
+          "p90": 7.25,
+          "flag": true,
+          "tmax": 30.7,
+          "tmax_p90": 33.2,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2023-04-12",
+      "end": "2023-04-14",
+      "season": "pre_monsoon",
+      "days": 3,
+      "excess_mm": 2.09,
+      "max_tmax_c": 35.1,
+      "max_tmax_minus_p90_c": 0.0,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2023-04-12",
+          "doy": 102,
+          "et0": 7.51,
+          "p90": 6.94,
+          "flag": true,
+          "tmax": 34.7,
+          "tmax_p90": 35.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2023-04-13",
+          "doy": 103,
+          "et0": 7.79,
+          "p90": 6.9,
+          "flag": true,
+          "tmax": 35.1,
+          "tmax_p90": 35.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2023-04-14",
+          "doy": 104,
+          "et0": 7.45,
+          "p90": 6.82,
+          "flag": true,
+          "tmax": 35.1,
+          "tmax_p90": 35.1,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Bengaluru_Urban",
+      "start": "2023-04-16",
+      "end": "2023-04-19",
+      "season": "pre_monsoon",
+      "days": 4,
+      "excess_mm": 2.53,
+      "max_tmax_c": 35.2,
+      "max_tmax_minus_p90_c": 0.0,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2023-04-16",
+          "doy": 106,
+          "et0": 7.82,
+          "p90": 6.73,
+          "flag": true,
+          "tmax": 34.8,
+          "tmax_p90": 35.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2023-04-17",
+          "doy": 107,
+          "et0": 7.41,
+          "p90": 6.73,
+          "flag": true,
+          "tmax": 35.1,
+          "tmax_p90": 35.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "2023-04-18",
+          "doy": 108,
+          "et0": 7.4,
+          "p90": 6.73,
+          "flag": true,
+          "tmax": 35.2,
+          "tmax_p90": 35.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "2023-04-19",
+          "doy": 109,
+          "et0": 6.82,
+          "p90": 6.73,
+          "flag": true,
+          "tmax": 34.8,
+          "tmax_p90": 35.2,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "1994-03-08",
+      "end": "1994-03-11",
+      "season": "pre_monsoon",
+      "days": 4,
+      "excess_mm": 1.29,
+      "max_tmax_c": 33.2,
+      "max_tmax_minus_p90_c": -0.6,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "1994-03-08",
+          "doy": 67,
+          "et0": 7.46,
+          "p90": 7.08,
+          "flag": true,
+          "tmax": 32.9,
+          "tmax_p90": 33.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "1994-03-09",
+          "doy": 68,
+          "et0": 7.61,
+          "p90": 7.08,
+          "flag": true,
+          "tmax": 32.5,
+          "tmax_p90": 33.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "1994-03-10",
+          "doy": 69,
+          "et0": 7.35,
+          "p90": 7.08,
+          "flag": true,
+          "tmax": 32.4,
+          "tmax_p90": 33.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "1994-03-11",
+          "doy": 70,
+          "et0": 7.22,
+          "p90": 7.11,
+          "flag": true,
+          "tmax": 33.2,
+          "tmax_p90": 33.81,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "1994-06-20",
+      "end": "1994-06-22",
+      "season": "monsoon",
+      "days": 3,
+      "excess_mm": 1.13,
+      "max_tmax_c": 30.4,
+      "max_tmax_minus_p90_c": -0.4,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "1994-06-20",
+          "doy": 171,
+          "et0": 6.05,
+          "p90": 5.79,
+          "flag": true,
+          "tmax": 29.9,
+          "tmax_p90": 31.0,
+          "tmax_flag": false
+        },
+        {
+          "date": "1994-06-21",
+          "doy": 172,
+          "et0": 6.15,
+          "p90": 5.76,
+          "flag": true,
+          "tmax": 30.2,
+          "tmax_p90": 30.9,
+          "tmax_flag": false
+        },
+        {
+          "date": "1994-06-22",
+          "doy": 173,
+          "et0": 6.24,
+          "p90": 5.76,
+          "flag": true,
+          "tmax": 30.4,
+          "tmax_p90": 30.8,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "1994-12-11",
+      "end": "1994-12-13",
+      "season": "winter",
+      "days": 3,
+      "excess_mm": 0.72,
+      "max_tmax_c": 25.9,
+      "max_tmax_minus_p90_c": -1.2,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "1994-12-11",
+          "doy": 345,
+          "et0": 4.63,
+          "p90": 4.4,
+          "flag": true,
+          "tmax": 25.8,
+          "tmax_p90": 27.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "1994-12-12",
+          "doy": 346,
+          "et0": 4.72,
+          "p90": 4.4,
+          "flag": true,
+          "tmax": 25.9,
+          "tmax_p90": 27.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "1994-12-13",
+          "doy": 347,
+          "et0": 4.58,
+          "p90": 4.41,
+          "flag": true,
+          "tmax": 25.1,
+          "tmax_p90": 27.2,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "1995-04-22",
+      "end": "1995-04-24",
+      "season": "pre_monsoon",
+      "days": 3,
+      "excess_mm": 0.33,
+      "max_tmax_c": 35.6,
+      "max_tmax_minus_p90_c": -0.5,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "1995-04-22",
+          "doy": 112,
+          "et0": 7.08,
+          "p90": 7.04,
+          "flag": true,
+          "tmax": 34.7,
+          "tmax_p90": 36.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "1995-04-23",
+          "doy": 113,
+          "et0": 7.15,
+          "p90": 7.03,
+          "flag": true,
+          "tmax": 35.0,
+          "tmax_p90": 36.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "1995-04-24",
+          "doy": 114,
+          "et0": 7.17,
+          "p90": 7.0,
+          "flag": true,
+          "tmax": 35.6,
+          "tmax_p90": 36.1,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "1995-12-17",
+      "end": "1995-12-20",
+      "season": "winter",
+      "days": 4,
+      "excess_mm": 0.34,
+      "max_tmax_c": 26.9,
+      "max_tmax_minus_p90_c": -0.2,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "1995-12-17",
+          "doy": 351,
+          "et0": 4.5,
+          "p90": 4.45,
+          "flag": true,
+          "tmax": 26.0,
+          "tmax_p90": 27.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "1995-12-18",
+          "doy": 352,
+          "et0": 4.51,
+          "p90": 4.46,
+          "flag": true,
+          "tmax": 26.1,
+          "tmax_p90": 27.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "1995-12-19",
+          "doy": 353,
+          "et0": 4.65,
+          "p90": 4.46,
+          "flag": true,
+          "tmax": 26.9,
+          "tmax_p90": 27.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "1995-12-20",
+          "doy": 354,
+          "et0": 4.55,
+          "p90": 4.5,
+          "flag": true,
+          "tmax": 26.3,
+          "tmax_p90": 27.11,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "1996-11-03",
+      "end": "1996-11-06",
+      "season": "post_monsoon",
+      "days": 4,
+      "excess_mm": 0.9,
+      "max_tmax_c": 26.9,
+      "max_tmax_minus_p90_c": -1.0,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "1996-11-03",
+          "doy": 307,
+          "et0": 5.03,
+          "p90": 4.71,
+          "flag": true,
+          "tmax": 26.9,
+          "tmax_p90": 27.9,
+          "tmax_flag": false
+        },
+        {
+          "date": "1996-11-04",
+          "doy": 308,
+          "et0": 4.97,
+          "p90": 4.7,
+          "flag": true,
+          "tmax": 26.0,
+          "tmax_p90": 27.9,
+          "tmax_flag": false
+        },
+        {
+          "date": "1996-11-05",
+          "doy": 309,
+          "et0": 4.85,
+          "p90": 4.7,
+          "flag": true,
+          "tmax": 25.9,
+          "tmax_p90": 27.9,
+          "tmax_flag": false
+        },
+        {
+          "date": "1996-11-06",
+          "doy": 310,
+          "et0": 4.86,
+          "p90": 4.7,
+          "flag": true,
+          "tmax": 26.5,
+          "tmax_p90": 27.9,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "1998-05-28",
+      "end": "1998-05-30",
+      "season": "pre_monsoon",
+      "days": 3,
+      "excess_mm": 1.21,
+      "max_tmax_c": 34.5,
+      "max_tmax_minus_p90_c": -0.1,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "1998-05-28",
+          "doy": 148,
+          "et0": 6.78,
+          "p90": 6.57,
+          "flag": true,
+          "tmax": 34.2,
+          "tmax_p90": 34.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "1998-05-29",
+          "doy": 149,
+          "et0": 7.27,
+          "p90": 6.56,
+          "flag": true,
+          "tmax": 34.3,
+          "tmax_p90": 34.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "1998-05-30",
+          "doy": 150,
+          "et0": 6.84,
+          "p90": 6.55,
+          "flag": true,
+          "tmax": 34.5,
+          "tmax_p90": 34.6,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "1999-07-01",
+      "end": "1999-07-03",
+      "season": "monsoon",
+      "days": 3,
+      "excess_mm": 0.52,
+      "max_tmax_c": 30.4,
+      "max_tmax_minus_p90_c": 0.0,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "1999-07-01",
+          "doy": 182,
+          "et0": 5.86,
+          "p90": 5.64,
+          "flag": true,
+          "tmax": 30.3,
+          "tmax_p90": 30.5,
+          "tmax_flag": false
+        },
+        {
+          "date": "1999-07-02",
+          "doy": 183,
+          "et0": 5.84,
+          "p90": 5.57,
+          "flag": true,
+          "tmax": 30.4,
+          "tmax_p90": 30.41,
+          "tmax_flag": false
+        },
+        {
+          "date": "1999-07-03",
+          "doy": 184,
+          "et0": 5.58,
+          "p90": 5.55,
+          "flag": true,
+          "tmax": 29.9,
+          "tmax_p90": 30.4,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "1999-11-07",
+      "end": "1999-11-09",
+      "season": "post_monsoon",
+      "days": 3,
+      "excess_mm": 0.83,
+      "max_tmax_c": 27.8,
+      "max_tmax_minus_p90_c": 0.0,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "1999-11-07",
+          "doy": 311,
+          "et0": 4.89,
+          "p90": 4.7,
+          "flag": true,
+          "tmax": 27.3,
+          "tmax_p90": 27.81,
+          "tmax_flag": false
+        },
+        {
+          "date": "1999-11-08",
+          "doy": 312,
+          "et0": 5.05,
+          "p90": 4.71,
+          "flag": true,
+          "tmax": 27.7,
+          "tmax_p90": 27.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "1999-11-09",
+          "doy": 313,
+          "et0": 5.04,
+          "p90": 4.74,
+          "flag": true,
+          "tmax": 27.8,
+          "tmax_p90": 27.8,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "1999-11-11",
+      "end": "1999-11-17",
+      "season": "post_monsoon",
+      "days": 7,
+      "excess_mm": 1.37,
+      "max_tmax_c": 27.3,
+      "max_tmax_minus_p90_c": -0.5,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "1999-11-11",
+          "doy": 315,
+          "et0": 4.92,
+          "p90": 4.73,
+          "flag": true,
+          "tmax": 26.7,
+          "tmax_p90": 27.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "1999-11-12",
+          "doy": 316,
+          "et0": 4.75,
+          "p90": 4.71,
+          "flag": true,
+          "tmax": 27.0,
+          "tmax_p90": 27.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "1999-11-13",
+          "doy": 317,
+          "et0": 4.88,
+          "p90": 4.71,
+          "flag": true,
+          "tmax": 26.9,
+          "tmax_p90": 27.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "1999-11-14",
+          "doy": 318,
+          "et0": 5.04,
+          "p90": 4.7,
+          "flag": true,
+          "tmax": 26.7,
+          "tmax_p90": 27.81,
+          "tmax_flag": false
+        },
+        {
+          "date": "1999-11-15",
+          "doy": 319,
+          "et0": 4.85,
+          "p90": 4.68,
+          "flag": true,
+          "tmax": 26.3,
+          "tmax_p90": 27.81,
+          "tmax_flag": false
+        },
+        {
+          "date": "1999-11-16",
+          "doy": 320,
+          "et0": 4.86,
+          "p90": 4.65,
+          "flag": true,
+          "tmax": 26.3,
+          "tmax_p90": 27.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "1999-11-17",
+          "doy": 321,
+          "et0": 4.9,
+          "p90": 4.65,
+          "flag": true,
+          "tmax": 27.3,
+          "tmax_p90": 27.8,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2000-05-13",
+      "end": "2000-05-15",
+      "season": "pre_monsoon",
+      "days": 3,
+      "excess_mm": 0.36,
+      "max_tmax_c": 33.5,
+      "max_tmax_minus_p90_c": -1.9,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2000-05-13",
+          "doy": 133,
+          "et0": 6.92,
+          "p90": 6.89,
+          "flag": true,
+          "tmax": 33.1,
+          "tmax_p90": 35.4,
+          "tmax_flag": false
+        },
+        {
+          "date": "2000-05-14",
+          "doy": 134,
+          "et0": 6.97,
+          "p90": 6.88,
+          "flag": true,
+          "tmax": 33.3,
+          "tmax_p90": 35.4,
+          "tmax_flag": false
+        },
+        {
+          "date": "2000-05-15",
+          "doy": 135,
+          "et0": 7.1,
+          "p90": 6.86,
+          "flag": true,
+          "tmax": 33.5,
+          "tmax_p90": 35.4,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2000-10-28",
+      "end": "2000-10-30",
+      "season": "post_monsoon",
+      "days": 3,
+      "excess_mm": 0.22,
+      "max_tmax_c": 28.0,
+      "max_tmax_minus_p90_c": -0.3,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2000-10-28",
+          "doy": 301,
+          "et0": 4.99,
+          "p90": 4.97,
+          "flag": true,
+          "tmax": 27.9,
+          "tmax_p90": 28.41,
+          "tmax_flag": false
+        },
+        {
+          "date": "2000-10-29",
+          "doy": 302,
+          "et0": 5.08,
+          "p90": 4.95,
+          "flag": true,
+          "tmax": 28.0,
+          "tmax_p90": 28.31,
+          "tmax_flag": false
+        },
+        {
+          "date": "2000-10-30",
+          "doy": 303,
+          "et0": 4.97,
+          "p90": 4.9,
+          "flag": true,
+          "tmax": 27.6,
+          "tmax_p90": 28.3,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2000-11-25",
+      "end": "2000-11-27",
+      "season": "post_monsoon",
+      "days": 3,
+      "excess_mm": 0.27,
+      "max_tmax_c": 26.7,
+      "max_tmax_minus_p90_c": -0.7,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2000-11-25",
+          "doy": 329,
+          "et0": 4.53,
+          "p90": 4.52,
+          "flag": true,
+          "tmax": 26.7,
+          "tmax_p90": 27.4,
+          "tmax_flag": false
+        },
+        {
+          "date": "2000-11-26",
+          "doy": 330,
+          "et0": 4.75,
+          "p90": 4.51,
+          "flag": true,
+          "tmax": 26.5,
+          "tmax_p90": 27.4,
+          "tmax_flag": false
+        },
+        {
+          "date": "2000-11-27",
+          "doy": 331,
+          "et0": 4.55,
+          "p90": 4.53,
+          "flag": true,
+          "tmax": 26.5,
+          "tmax_p90": 27.4,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2001-05-30",
+      "end": "2001-06-02",
+      "season": "pre_monsoon",
+      "days": 4,
+      "excess_mm": 1.01,
+      "max_tmax_c": 33.5,
+      "max_tmax_minus_p90_c": -0.8,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2001-05-30",
+          "doy": 150,
+          "et0": 6.72,
+          "p90": 6.55,
+          "flag": true,
+          "tmax": 31.8,
+          "tmax_p90": 34.6,
+          "tmax_flag": false
+        },
+        {
+          "date": "2001-05-31",
+          "doy": 151,
+          "et0": 6.86,
+          "p90": 6.52,
+          "flag": true,
+          "tmax": 32.3,
+          "tmax_p90": 34.5,
+          "tmax_flag": false
+        },
+        {
+          "date": "2001-06-01",
+          "doy": 152,
+          "et0": 6.9,
+          "p90": 6.47,
+          "flag": true,
+          "tmax": 33.5,
+          "tmax_p90": 34.31,
+          "tmax_flag": false
+        },
+        {
+          "date": "2001-06-02",
+          "doy": 153,
+          "et0": 6.45,
+          "p90": 6.38,
+          "flag": true,
+          "tmax": 32.6,
+          "tmax_p90": 34.3,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2002-09-10",
+      "end": "2002-09-13",
+      "season": "monsoon",
+      "days": 4,
+      "excess_mm": 1.69,
+      "max_tmax_c": 29.8,
+      "max_tmax_minus_p90_c": 0.0,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2002-09-10",
+          "doy": 253,
+          "et0": 6.06,
+          "p90": 5.18,
+          "flag": true,
+          "tmax": 29.4,
+          "tmax_p90": 29.71,
+          "tmax_flag": false
+        },
+        {
+          "date": "2002-09-11",
+          "doy": 254,
+          "et0": 5.8,
+          "p90": 5.17,
+          "flag": true,
+          "tmax": 29.0,
+          "tmax_p90": 29.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "2002-09-12",
+          "doy": 255,
+          "et0": 5.29,
+          "p90": 5.17,
+          "flag": true,
+          "tmax": 28.9,
+          "tmax_p90": 29.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "2002-09-13",
+          "doy": 256,
+          "et0": 5.23,
+          "p90": 5.17,
+          "flag": true,
+          "tmax": 29.8,
+          "tmax_p90": 29.8,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2003-03-24",
+      "end": "2003-03-26",
+      "season": "pre_monsoon",
+      "days": 3,
+      "excess_mm": 0.32,
+      "max_tmax_c": 34.1,
+      "max_tmax_minus_p90_c": -1.3,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2003-03-24",
+          "doy": 83,
+          "et0": 7.42,
+          "p90": 7.37,
+          "flag": true,
+          "tmax": 33.9,
+          "tmax_p90": 35.4,
+          "tmax_flag": false
+        },
+        {
+          "date": "2003-03-25",
+          "doy": 84,
+          "et0": 7.58,
+          "p90": 7.41,
+          "flag": true,
+          "tmax": 34.1,
+          "tmax_p90": 35.4,
+          "tmax_flag": false
+        },
+        {
+          "date": "2003-03-26",
+          "doy": 85,
+          "et0": 7.51,
+          "p90": 7.41,
+          "flag": true,
+          "tmax": 33.5,
+          "tmax_p90": 35.5,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2004-06-21",
+      "end": "2004-06-24",
+      "season": "monsoon",
+      "days": 4,
+      "excess_mm": 0.94,
+      "max_tmax_c": 30.2,
+      "max_tmax_minus_p90_c": -0.5,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2004-06-21",
+          "doy": 172,
+          "et0": 5.87,
+          "p90": 5.76,
+          "flag": true,
+          "tmax": 29.4,
+          "tmax_p90": 30.9,
+          "tmax_flag": false
+        },
+        {
+          "date": "2004-06-22",
+          "doy": 173,
+          "et0": 6.05,
+          "p90": 5.76,
+          "flag": true,
+          "tmax": 30.1,
+          "tmax_p90": 30.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "2004-06-23",
+          "doy": 174,
+          "et0": 6.16,
+          "p90": 5.74,
+          "flag": true,
+          "tmax": 30.2,
+          "tmax_p90": 30.71,
+          "tmax_flag": false
+        },
+        {
+          "date": "2004-06-24",
+          "doy": 175,
+          "et0": 5.86,
+          "p90": 5.74,
+          "flag": true,
+          "tmax": 29.9,
+          "tmax_p90": 30.61,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2004-10-07",
+      "end": "2004-10-10",
+      "season": "post_monsoon",
+      "days": 4,
+      "excess_mm": 1.13,
+      "max_tmax_c": 29.4,
+      "max_tmax_minus_p90_c": -0.2,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2004-10-07",
+          "doy": 280,
+          "et0": 5.08,
+          "p90": 4.87,
+          "flag": true,
+          "tmax": 28.0,
+          "tmax_p90": 29.6,
+          "tmax_flag": false
+        },
+        {
+          "date": "2004-10-08",
+          "doy": 281,
+          "et0": 5.17,
+          "p90": 4.89,
+          "flag": true,
+          "tmax": 29.1,
+          "tmax_p90": 29.6,
+          "tmax_flag": false
+        },
+        {
+          "date": "2004-10-09",
+          "doy": 282,
+          "et0": 5.31,
+          "p90": 4.89,
+          "flag": true,
+          "tmax": 29.4,
+          "tmax_p90": 29.6,
+          "tmax_flag": false
+        },
+        {
+          "date": "2004-10-10",
+          "doy": 283,
+          "et0": 5.09,
+          "p90": 4.87,
+          "flag": true,
+          "tmax": 29.4,
+          "tmax_p90": 29.6,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2006-07-16",
+      "end": "2006-07-18",
+      "season": "monsoon",
+      "days": 3,
+      "excess_mm": 0.78,
+      "max_tmax_c": 29.6,
+      "max_tmax_minus_p90_c": -0.1,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2006-07-16",
+          "doy": 197,
+          "et0": 5.34,
+          "p90": 5.17,
+          "flag": true,
+          "tmax": 28.9,
+          "tmax_p90": 29.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "2006-07-17",
+          "doy": 198,
+          "et0": 5.41,
+          "p90": 5.17,
+          "flag": true,
+          "tmax": 29.4,
+          "tmax_p90": 29.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "2006-07-18",
+          "doy": 199,
+          "et0": 5.54,
+          "p90": 5.17,
+          "flag": true,
+          "tmax": 29.6,
+          "tmax_p90": 29.7,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2007-11-14",
+      "end": "2007-11-16",
+      "season": "post_monsoon",
+      "days": 3,
+      "excess_mm": 0.55,
+      "max_tmax_c": 26.3,
+      "max_tmax_minus_p90_c": -1.5,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2007-11-14",
+          "doy": 318,
+          "et0": 4.83,
+          "p90": 4.7,
+          "flag": true,
+          "tmax": 25.8,
+          "tmax_p90": 27.81,
+          "tmax_flag": false
+        },
+        {
+          "date": "2007-11-15",
+          "doy": 319,
+          "et0": 4.9,
+          "p90": 4.68,
+          "flag": true,
+          "tmax": 26.3,
+          "tmax_p90": 27.81,
+          "tmax_flag": false
+        },
+        {
+          "date": "2007-11-16",
+          "doy": 320,
+          "et0": 4.85,
+          "p90": 4.65,
+          "flag": true,
+          "tmax": 25.9,
+          "tmax_p90": 27.8,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2008-03-07",
+      "end": "2008-03-09",
+      "season": "pre_monsoon",
+      "days": 3,
+      "excess_mm": 0.46,
+      "max_tmax_c": 31.4,
+      "max_tmax_minus_p90_c": -2.3,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2008-03-07",
+          "doy": 66,
+          "et0": 7.11,
+          "p90": 7.07,
+          "flag": true,
+          "tmax": 30.8,
+          "tmax_p90": 33.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-03-08",
+          "doy": 67,
+          "et0": 7.38,
+          "p90": 7.08,
+          "flag": true,
+          "tmax": 30.9,
+          "tmax_p90": 33.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-03-09",
+          "doy": 68,
+          "et0": 7.2,
+          "p90": 7.08,
+          "flag": true,
+          "tmax": 31.4,
+          "tmax_p90": 33.7,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2008-05-02",
+      "end": "2008-05-05",
+      "season": "pre_monsoon",
+      "days": 4,
+      "excess_mm": 1.42,
+      "max_tmax_c": 35.2,
+      "max_tmax_minus_p90_c": -0.5,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2008-05-02",
+          "doy": 122,
+          "et0": 7.08,
+          "p90": 6.94,
+          "flag": true,
+          "tmax": 35.0,
+          "tmax_p90": 35.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-05-03",
+          "doy": 123,
+          "et0": 7.33,
+          "p90": 6.92,
+          "flag": true,
+          "tmax": 35.0,
+          "tmax_p90": 35.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-05-04",
+          "doy": 124,
+          "et0": 7.48,
+          "p90": 6.88,
+          "flag": true,
+          "tmax": 35.2,
+          "tmax_p90": 35.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-05-05",
+          "doy": 125,
+          "et0": 7.07,
+          "p90": 6.8,
+          "flag": true,
+          "tmax": 34.3,
+          "tmax_p90": 35.71,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2008-05-13",
+      "end": "2008-05-17",
+      "season": "pre_monsoon",
+      "days": 5,
+      "excess_mm": 1.92,
+      "max_tmax_c": 34.9,
+      "max_tmax_minus_p90_c": -0.5,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2008-05-13",
+          "doy": 133,
+          "et0": 6.95,
+          "p90": 6.89,
+          "flag": true,
+          "tmax": 34.8,
+          "tmax_p90": 35.4,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-05-14",
+          "doy": 134,
+          "et0": 6.93,
+          "p90": 6.88,
+          "flag": true,
+          "tmax": 33.9,
+          "tmax_p90": 35.4,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-05-15",
+          "doy": 135,
+          "et0": 7.31,
+          "p90": 6.86,
+          "flag": true,
+          "tmax": 34.9,
+          "tmax_p90": 35.4,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-05-16",
+          "doy": 136,
+          "et0": 7.58,
+          "p90": 6.86,
+          "flag": true,
+          "tmax": 34.7,
+          "tmax_p90": 35.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-05-17",
+          "doy": 137,
+          "et0": 7.49,
+          "p90": 6.85,
+          "flag": true,
+          "tmax": 34.4,
+          "tmax_p90": 35.3,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2008-10-31",
+      "end": "2008-11-04",
+      "season": "post_monsoon",
+      "days": 5,
+      "excess_mm": 0.87,
+      "max_tmax_c": 27.4,
+      "max_tmax_minus_p90_c": -0.5,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2008-10-31",
+          "doy": 304,
+          "et0": 4.93,
+          "p90": 4.86,
+          "flag": true,
+          "tmax": 27.2,
+          "tmax_p90": 28.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-11-01",
+          "doy": 305,
+          "et0": 4.91,
+          "p90": 4.84,
+          "flag": true,
+          "tmax": 26.8,
+          "tmax_p90": 28.0,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-11-02",
+          "doy": 306,
+          "et0": 4.96,
+          "p90": 4.77,
+          "flag": true,
+          "tmax": 27.1,
+          "tmax_p90": 27.9,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-11-03",
+          "doy": 307,
+          "et0": 4.95,
+          "p90": 4.71,
+          "flag": true,
+          "tmax": 27.3,
+          "tmax_p90": 27.9,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-11-04",
+          "doy": 308,
+          "et0": 5.0,
+          "p90": 4.7,
+          "flag": true,
+          "tmax": 27.4,
+          "tmax_p90": 27.9,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2008-12-27",
+      "end": "2008-12-29",
+      "season": "winter",
+      "days": 3,
+      "excess_mm": 0.17,
+      "max_tmax_c": 26.8,
+      "max_tmax_minus_p90_c": -0.5,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2008-12-27",
+          "doy": 361,
+          "et0": 4.51,
+          "p90": 4.41,
+          "flag": true,
+          "tmax": 26.8,
+          "tmax_p90": 27.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-12-28",
+          "doy": 362,
+          "et0": 4.5,
+          "p90": 4.45,
+          "flag": true,
+          "tmax": 26.4,
+          "tmax_p90": 27.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-12-29",
+          "doy": 363,
+          "et0": 4.49,
+          "p90": 4.47,
+          "flag": true,
+          "tmax": 25.7,
+          "tmax_p90": 27.4,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2009-08-02",
+      "end": "2009-08-07",
+      "season": "monsoon",
+      "days": 6,
+      "excess_mm": 0.95,
+      "max_tmax_c": 29.4,
+      "max_tmax_minus_p90_c": -0.1,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2009-08-02",
+          "doy": 214,
+          "et0": 5.26,
+          "p90": 5.2,
+          "flag": true,
+          "tmax": 29.1,
+          "tmax_p90": 29.5,
+          "tmax_flag": false
+        },
+        {
+          "date": "2009-08-03",
+          "doy": 215,
+          "et0": 5.34,
+          "p90": 5.17,
+          "flag": true,
+          "tmax": 28.7,
+          "tmax_p90": 29.5,
+          "tmax_flag": false
+        },
+        {
+          "date": "2009-08-04",
+          "doy": 216,
+          "et0": 5.4,
+          "p90": 5.15,
+          "flag": true,
+          "tmax": 29.0,
+          "tmax_p90": 29.5,
+          "tmax_flag": false
+        },
+        {
+          "date": "2009-08-05",
+          "doy": 217,
+          "et0": 5.2,
+          "p90": 5.17,
+          "flag": true,
+          "tmax": 28.3,
+          "tmax_p90": 29.5,
+          "tmax_flag": false
+        },
+        {
+          "date": "2009-08-06",
+          "doy": 218,
+          "et0": 5.27,
+          "p90": 5.16,
+          "flag": true,
+          "tmax": 29.4,
+          "tmax_p90": 29.5,
+          "tmax_flag": false
+        },
+        {
+          "date": "2009-08-07",
+          "doy": 219,
+          "et0": 5.44,
+          "p90": 5.11,
+          "flag": true,
+          "tmax": 29.3,
+          "tmax_p90": 29.5,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2010-03-21",
+      "end": "2010-03-24",
+      "season": "pre_monsoon",
+      "days": 4,
+      "excess_mm": 0.76,
+      "max_tmax_c": 35.4,
+      "max_tmax_minus_p90_c": 0.0,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2010-03-21",
+          "doy": 80,
+          "et0": 7.73,
+          "p90": 7.36,
+          "flag": true,
+          "tmax": 34.8,
+          "tmax_p90": 35.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2010-03-22",
+          "doy": 81,
+          "et0": 7.55,
+          "p90": 7.35,
+          "flag": true,
+          "tmax": 35.0,
+          "tmax_p90": 35.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "2010-03-23",
+          "doy": 82,
+          "et0": 7.5,
+          "p90": 7.35,
+          "flag": true,
+          "tmax": 35.1,
+          "tmax_p90": 35.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "2010-03-24",
+          "doy": 83,
+          "et0": 7.41,
+          "p90": 7.37,
+          "flag": true,
+          "tmax": 35.4,
+          "tmax_p90": 35.4,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2010-05-25",
+      "end": "2010-05-28",
+      "season": "pre_monsoon",
+      "days": 4,
+      "excess_mm": 1.22,
+      "max_tmax_c": 34.8,
+      "max_tmax_minus_p90_c": 0.0,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2010-05-25",
+          "doy": 145,
+          "et0": 6.77,
+          "p90": 6.73,
+          "flag": true,
+          "tmax": 33.9,
+          "tmax_p90": 35.0,
+          "tmax_flag": false
+        },
+        {
+          "date": "2010-05-26",
+          "doy": 146,
+          "et0": 6.88,
+          "p90": 6.67,
+          "flag": true,
+          "tmax": 34.1,
+          "tmax_p90": 34.9,
+          "tmax_flag": false
+        },
+        {
+          "date": "2010-05-27",
+          "doy": 147,
+          "et0": 7.31,
+          "p90": 6.6,
+          "flag": true,
+          "tmax": 34.5,
+          "tmax_p90": 34.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "2010-05-28",
+          "doy": 148,
+          "et0": 6.83,
+          "p90": 6.57,
+          "flag": true,
+          "tmax": 34.8,
+          "tmax_p90": 34.8,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2011-02-09",
+      "end": "2011-02-11",
+      "season": "winter",
+      "days": 3,
+      "excess_mm": 0.79,
+      "max_tmax_c": 29.2,
+      "max_tmax_minus_p90_c": -1.5,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2011-02-09",
+          "doy": 40,
+          "et0": 6.1,
+          "p90": 5.8,
+          "flag": true,
+          "tmax": 28.9,
+          "tmax_p90": 30.5,
+          "tmax_flag": false
+        },
+        {
+          "date": "2011-02-10",
+          "doy": 41,
+          "et0": 6.17,
+          "p90": 5.87,
+          "flag": true,
+          "tmax": 29.2,
+          "tmax_p90": 30.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "2011-02-11",
+          "doy": 42,
+          "et0": 6.12,
+          "p90": 5.93,
+          "flag": true,
+          "tmax": 28.1,
+          "tmax_p90": 30.9,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2011-06-20",
+      "end": "2011-06-22",
+      "season": "monsoon",
+      "days": 3,
+      "excess_mm": 1.16,
+      "max_tmax_c": 30.7,
+      "max_tmax_minus_p90_c": -0.3,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2011-06-20",
+          "doy": 171,
+          "et0": 6.23,
+          "p90": 5.79,
+          "flag": true,
+          "tmax": 30.7,
+          "tmax_p90": 31.0,
+          "tmax_flag": false
+        },
+        {
+          "date": "2011-06-21",
+          "doy": 172,
+          "et0": 6.25,
+          "p90": 5.76,
+          "flag": true,
+          "tmax": 30.3,
+          "tmax_p90": 30.9,
+          "tmax_flag": false
+        },
+        {
+          "date": "2011-06-22",
+          "doy": 173,
+          "et0": 5.99,
+          "p90": 5.76,
+          "flag": true,
+          "tmax": 29.6,
+          "tmax_p90": 30.8,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2011-11-12",
+      "end": "2011-11-16",
+      "season": "post_monsoon",
+      "days": 5,
+      "excess_mm": 0.64,
+      "max_tmax_c": 27.5,
+      "max_tmax_minus_p90_c": -0.3,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2011-11-12",
+          "doy": 316,
+          "et0": 4.74,
+          "p90": 4.71,
+          "flag": true,
+          "tmax": 27.5,
+          "tmax_p90": 27.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "2011-11-13",
+          "doy": 317,
+          "et0": 4.73,
+          "p90": 4.71,
+          "flag": true,
+          "tmax": 27.5,
+          "tmax_p90": 27.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "2011-11-14",
+          "doy": 318,
+          "et0": 4.87,
+          "p90": 4.7,
+          "flag": true,
+          "tmax": 27.5,
+          "tmax_p90": 27.81,
+          "tmax_flag": false
+        },
+        {
+          "date": "2011-11-15",
+          "doy": 319,
+          "et0": 4.78,
+          "p90": 4.68,
+          "flag": true,
+          "tmax": 27.2,
+          "tmax_p90": 27.81,
+          "tmax_flag": false
+        },
+        {
+          "date": "2011-11-16",
+          "doy": 320,
+          "et0": 4.97,
+          "p90": 4.65,
+          "flag": true,
+          "tmax": 27.5,
+          "tmax_p90": 27.8,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2011-11-19",
+      "end": "2011-11-22",
+      "season": "post_monsoon",
+      "days": 4,
+      "excess_mm": 1.01,
+      "max_tmax_c": 27.1,
+      "max_tmax_minus_p90_c": -0.5,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2011-11-19",
+          "doy": 323,
+          "et0": 5.11,
+          "p90": 4.62,
+          "flag": true,
+          "tmax": 27.1,
+          "tmax_p90": 27.6,
+          "tmax_flag": false
+        },
+        {
+          "date": "2011-11-20",
+          "doy": 324,
+          "et0": 5.08,
+          "p90": 4.6,
+          "flag": true,
+          "tmax": 26.8,
+          "tmax_p90": 27.6,
+          "tmax_flag": false
+        },
+        {
+          "date": "2011-11-21",
+          "doy": 325,
+          "et0": 4.6,
+          "p90": 4.58,
+          "flag": true,
+          "tmax": 26.6,
+          "tmax_p90": 27.51,
+          "tmax_flag": false
+        },
+        {
+          "date": "2011-11-22",
+          "doy": 326,
+          "et0": 4.57,
+          "p90": 4.55,
+          "flag": true,
+          "tmax": 26.7,
+          "tmax_p90": 27.51,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2012-02-21",
+      "end": "2012-02-27",
+      "season": "winter",
+      "days": 7,
+      "excess_mm": 1.86,
+      "max_tmax_c": 32.4,
+      "max_tmax_minus_p90_c": -0.2,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2012-02-21",
+          "doy": 52,
+          "et0": 6.76,
+          "p90": 6.51,
+          "flag": true,
+          "tmax": 32.4,
+          "tmax_p90": 32.6,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-02-22",
+          "doy": 53,
+          "et0": 6.7,
+          "p90": 6.63,
+          "flag": true,
+          "tmax": 31.2,
+          "tmax_p90": 32.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-02-23",
+          "doy": 54,
+          "et0": 6.71,
+          "p90": 6.68,
+          "flag": true,
+          "tmax": 31.9,
+          "tmax_p90": 32.9,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-02-24",
+          "doy": 55,
+          "et0": 7.25,
+          "p90": 6.74,
+          "flag": true,
+          "tmax": 32.2,
+          "tmax_p90": 32.94,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-02-25",
+          "doy": 56,
+          "et0": 7.12,
+          "p90": 6.81,
+          "flag": true,
+          "tmax": 31.4,
+          "tmax_p90": 33.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-02-26",
+          "doy": 57,
+          "et0": 7.32,
+          "p90": 6.85,
+          "flag": true,
+          "tmax": 31.5,
+          "tmax_p90": 33.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-02-27",
+          "doy": 58,
+          "et0": 7.12,
+          "p90": 6.9,
+          "flag": true,
+          "tmax": 32.3,
+          "tmax_p90": 33.34,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2012-03-23",
+      "end": "2012-03-26",
+      "season": "pre_monsoon",
+      "days": 4,
+      "excess_mm": 1.45,
+      "max_tmax_c": 35.1,
+      "max_tmax_minus_p90_c": -0.2,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2012-03-23",
+          "doy": 82,
+          "et0": 7.59,
+          "p90": 7.35,
+          "flag": true,
+          "tmax": 35.1,
+          "tmax_p90": 35.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-03-24",
+          "doy": 83,
+          "et0": 7.8,
+          "p90": 7.37,
+          "flag": true,
+          "tmax": 34.5,
+          "tmax_p90": 35.4,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-03-25",
+          "doy": 84,
+          "et0": 7.92,
+          "p90": 7.41,
+          "flag": true,
+          "tmax": 34.3,
+          "tmax_p90": 35.4,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-03-26",
+          "doy": 85,
+          "et0": 7.68,
+          "p90": 7.41,
+          "flag": true,
+          "tmax": 33.7,
+          "tmax_p90": 35.5,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2013-01-13",
+      "end": "2013-01-15",
+      "season": "winter",
+      "days": 3,
+      "excess_mm": 0.69,
+      "max_tmax_c": 28.7,
+      "max_tmax_minus_p90_c": 0.0,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2013-01-13",
+          "doy": 13,
+          "et0": 5.06,
+          "p90": 4.91,
+          "flag": true,
+          "tmax": 28.5,
+          "tmax_p90": 28.5,
+          "tmax_flag": false
+        },
+        {
+          "date": "2013-01-14",
+          "doy": 14,
+          "et0": 5.19,
+          "p90": 4.96,
+          "flag": true,
+          "tmax": 28.7,
+          "tmax_p90": 28.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "2013-01-15",
+          "doy": 15,
+          "et0": 5.29,
+          "p90": 4.98,
+          "flag": true,
+          "tmax": 28.3,
+          "tmax_p90": 28.8,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2014-04-20",
+      "end": "2014-04-22",
+      "season": "pre_monsoon",
+      "days": 3,
+      "excess_mm": 2.27,
+      "max_tmax_c": 35.9,
+      "max_tmax_minus_p90_c": -0.2,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2014-04-20",
+          "doy": 110,
+          "et0": 7.66,
+          "p90": 7.1,
+          "flag": true,
+          "tmax": 35.7,
+          "tmax_p90": 36.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2014-04-21",
+          "doy": 111,
+          "et0": 7.94,
+          "p90": 7.05,
+          "flag": true,
+          "tmax": 35.9,
+          "tmax_p90": 36.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2014-04-22",
+          "doy": 112,
+          "et0": 7.86,
+          "p90": 7.04,
+          "flag": true,
+          "tmax": 35.7,
+          "tmax_p90": 36.1,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2015-03-20",
+      "end": "2015-03-22",
+      "season": "pre_monsoon",
+      "days": 3,
+      "excess_mm": 0.28,
+      "max_tmax_c": 35.1,
+      "max_tmax_minus_p90_c": -0.1,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2015-03-20",
+          "doy": 79,
+          "et0": 7.46,
+          "p90": 7.35,
+          "flag": true,
+          "tmax": 33.6,
+          "tmax_p90": 35.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2015-03-21",
+          "doy": 80,
+          "et0": 7.42,
+          "p90": 7.36,
+          "flag": true,
+          "tmax": 33.9,
+          "tmax_p90": 35.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2015-03-22",
+          "doy": 81,
+          "et0": 7.46,
+          "p90": 7.35,
+          "flag": true,
+          "tmax": 35.1,
+          "tmax_p90": 35.2,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2016-05-22",
+      "end": "2016-05-25",
+      "season": "pre_monsoon",
+      "days": 4,
+      "excess_mm": 0.58,
+      "max_tmax_c": 33.8,
+      "max_tmax_minus_p90_c": -1.3,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2016-05-22",
+          "doy": 142,
+          "et0": 6.98,
+          "p90": 6.79,
+          "flag": true,
+          "tmax": 33.5,
+          "tmax_p90": 35.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "2016-05-23",
+          "doy": 143,
+          "et0": 6.98,
+          "p90": 6.72,
+          "flag": true,
+          "tmax": 33.8,
+          "tmax_p90": 35.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2016-05-24",
+          "doy": 144,
+          "et0": 6.77,
+          "p90": 6.69,
+          "flag": true,
+          "tmax": 33.6,
+          "tmax_p90": 35.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2016-05-25",
+          "doy": 145,
+          "et0": 6.78,
+          "p90": 6.73,
+          "flag": true,
+          "tmax": 33.7,
+          "tmax_p90": 35.0,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2017-02-08",
+      "end": "2017-02-10",
+      "season": "winter",
+      "days": 3,
+      "excess_mm": 0.71,
+      "max_tmax_c": 30.5,
+      "max_tmax_minus_p90_c": -0.1,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2017-02-08",
+          "doy": 39,
+          "et0": 6.08,
+          "p90": 5.73,
+          "flag": true,
+          "tmax": 30.4,
+          "tmax_p90": 30.5,
+          "tmax_flag": false
+        },
+        {
+          "date": "2017-02-09",
+          "doy": 40,
+          "et0": 5.97,
+          "p90": 5.8,
+          "flag": true,
+          "tmax": 30.4,
+          "tmax_p90": 30.5,
+          "tmax_flag": false
+        },
+        {
+          "date": "2017-02-10",
+          "doy": 41,
+          "et0": 6.06,
+          "p90": 5.87,
+          "flag": true,
+          "tmax": 30.5,
+          "tmax_p90": 30.7,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2018-02-01",
+      "end": "2018-02-03",
+      "season": "winter",
+      "days": 3,
+      "excess_mm": 0.52,
+      "max_tmax_c": 28.3,
+      "max_tmax_minus_p90_c": -1.5,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2018-02-01",
+          "doy": 32,
+          "et0": 5.7,
+          "p90": 5.45,
+          "flag": true,
+          "tmax": 28.3,
+          "tmax_p90": 29.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "2018-02-02",
+          "doy": 33,
+          "et0": 5.75,
+          "p90": 5.51,
+          "flag": true,
+          "tmax": 28.1,
+          "tmax_p90": 29.9,
+          "tmax_flag": false
+        },
+        {
+          "date": "2018-02-03",
+          "doy": 34,
+          "et0": 5.6,
+          "p90": 5.57,
+          "flag": true,
+          "tmax": 26.8,
+          "tmax_p90": 30.0,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2018-03-02",
+      "end": "2018-03-04",
+      "season": "pre_monsoon",
+      "days": 3,
+      "excess_mm": 0.55,
+      "max_tmax_c": 32.9,
+      "max_tmax_minus_p90_c": -0.7,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2018-03-02",
+          "doy": 61,
+          "et0": 7.07,
+          "p90": 6.98,
+          "flag": true,
+          "tmax": 31.7,
+          "tmax_p90": 33.5,
+          "tmax_flag": false
+        },
+        {
+          "date": "2018-03-03",
+          "doy": 62,
+          "et0": 7.1,
+          "p90": 7.0,
+          "flag": true,
+          "tmax": 32.5,
+          "tmax_p90": 33.5,
+          "tmax_flag": false
+        },
+        {
+          "date": "2018-03-04",
+          "doy": 63,
+          "et0": 7.39,
+          "p90": 7.03,
+          "flag": true,
+          "tmax": 32.9,
+          "tmax_p90": 33.6,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2018-10-22",
+      "end": "2018-10-25",
+      "season": "post_monsoon",
+      "days": 4,
+      "excess_mm": 0.83,
+      "max_tmax_c": 28.8,
+      "max_tmax_minus_p90_c": -0.4,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2018-10-22",
+          "doy": 295,
+          "et0": 5.09,
+          "p90": 4.98,
+          "flag": true,
+          "tmax": 28.1,
+          "tmax_p90": 29.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "2018-10-23",
+          "doy": 296,
+          "et0": 5.15,
+          "p90": 4.99,
+          "flag": true,
+          "tmax": 28.5,
+          "tmax_p90": 29.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "2018-10-24",
+          "doy": 297,
+          "et0": 5.4,
+          "p90": 4.98,
+          "flag": true,
+          "tmax": 28.8,
+          "tmax_p90": 29.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "2018-10-25",
+          "doy": 298,
+          "et0": 5.12,
+          "p90": 4.98,
+          "flag": true,
+          "tmax": 28.4,
+          "tmax_p90": 29.1,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2019-01-14",
+      "end": "2019-01-16",
+      "season": "winter",
+      "days": 3,
+      "excess_mm": 0.54,
+      "max_tmax_c": 28.4,
+      "max_tmax_minus_p90_c": -0.3,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2019-01-14",
+          "doy": 14,
+          "et0": 5.02,
+          "p90": 4.96,
+          "flag": true,
+          "tmax": 28.4,
+          "tmax_p90": 28.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "2019-01-15",
+          "doy": 15,
+          "et0": 5.34,
+          "p90": 4.98,
+          "flag": true,
+          "tmax": 28.0,
+          "tmax_p90": 28.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "2019-01-16",
+          "doy": 16,
+          "et0": 5.11,
+          "p90": 4.99,
+          "flag": true,
+          "tmax": 28.1,
+          "tmax_p90": 28.81,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2019-01-19",
+      "end": "2019-01-21",
+      "season": "winter",
+      "days": 3,
+      "excess_mm": 0.61,
+      "max_tmax_c": 28.9,
+      "max_tmax_minus_p90_c": -0.2,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2019-01-19",
+          "doy": 19,
+          "et0": 5.27,
+          "p90": 5.06,
+          "flag": true,
+          "tmax": 28.9,
+          "tmax_p90": 29.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2019-01-20",
+          "doy": 20,
+          "et0": 5.19,
+          "p90": 5.08,
+          "flag": true,
+          "tmax": 28.2,
+          "tmax_p90": 29.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2019-01-21",
+          "doy": 21,
+          "et0": 5.37,
+          "p90": 5.08,
+          "flag": true,
+          "tmax": 28.5,
+          "tmax_p90": 29.1,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2020-03-31",
+      "end": "2020-04-02",
+      "season": "pre_monsoon",
+      "days": 3,
+      "excess_mm": 0.22,
+      "max_tmax_c": 35.2,
+      "max_tmax_minus_p90_c": -0.4,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2020-03-31",
+          "doy": 90,
+          "et0": 7.39,
+          "p90": 7.38,
+          "flag": true,
+          "tmax": 34.0,
+          "tmax_p90": 35.6,
+          "tmax_flag": false
+        },
+        {
+          "date": "2020-04-01",
+          "doy": 91,
+          "et0": 7.45,
+          "p90": 7.33,
+          "flag": true,
+          "tmax": 34.9,
+          "tmax_p90": 35.6,
+          "tmax_flag": false
+        },
+        {
+          "date": "2020-04-02",
+          "doy": 92,
+          "et0": 7.38,
+          "p90": 7.29,
+          "flag": true,
+          "tmax": 35.2,
+          "tmax_p90": 35.6,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2020-04-13",
+      "end": "2020-04-15",
+      "season": "pre_monsoon",
+      "days": 3,
+      "excess_mm": 0.96,
+      "max_tmax_c": 34.9,
+      "max_tmax_minus_p90_c": -1.2,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2020-04-13",
+          "doy": 103,
+          "et0": 7.38,
+          "p90": 7.1,
+          "flag": true,
+          "tmax": 34.9,
+          "tmax_p90": 36.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2020-04-14",
+          "doy": 104,
+          "et0": 7.65,
+          "p90": 7.09,
+          "flag": true,
+          "tmax": 34.8,
+          "tmax_p90": 36.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2020-04-15",
+          "doy": 105,
+          "et0": 7.2,
+          "p90": 7.08,
+          "flag": true,
+          "tmax": 34.8,
+          "tmax_p90": 36.1,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2023-03-03",
+      "end": "2023-03-05",
+      "season": "pre_monsoon",
+      "days": 3,
+      "excess_mm": 0.22,
+      "max_tmax_c": 30.8,
+      "max_tmax_minus_p90_c": -2.8,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2023-03-03",
+          "doy": 62,
+          "et0": 7.15,
+          "p90": 7.0,
+          "flag": true,
+          "tmax": 30.3,
+          "tmax_p90": 33.5,
+          "tmax_flag": false
+        },
+        {
+          "date": "2023-03-04",
+          "doy": 63,
+          "et0": 7.08,
+          "p90": 7.03,
+          "flag": true,
+          "tmax": 30.4,
+          "tmax_p90": 33.6,
+          "tmax_flag": false
+        },
+        {
+          "date": "2023-03-05",
+          "doy": 64,
+          "et0": 7.06,
+          "p90": 7.04,
+          "flag": true,
+          "tmax": 30.8,
+          "tmax_p90": 33.6,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2023-04-12",
+      "end": "2023-04-14",
+      "season": "pre_monsoon",
+      "days": 3,
+      "excess_mm": 1.67,
+      "max_tmax_c": 35.5,
+      "max_tmax_minus_p90_c": -0.6,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2023-04-12",
+          "doy": 102,
+          "et0": 7.51,
+          "p90": 7.14,
+          "flag": true,
+          "tmax": 34.8,
+          "tmax_p90": 36.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2023-04-13",
+          "doy": 103,
+          "et0": 7.65,
+          "p90": 7.1,
+          "flag": true,
+          "tmax": 35.5,
+          "tmax_p90": 36.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2023-04-14",
+          "doy": 104,
+          "et0": 7.84,
+          "p90": 7.09,
+          "flag": true,
+          "tmax": 35.4,
+          "tmax_p90": 36.1,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Kolar",
+      "start": "2023-04-16",
+      "end": "2023-04-19",
+      "season": "pre_monsoon",
+      "days": 4,
+      "excess_mm": 1.95,
+      "max_tmax_c": 35.7,
+      "max_tmax_minus_p90_c": -0.4,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2023-04-16",
+          "doy": 106,
+          "et0": 7.59,
+          "p90": 7.08,
+          "flag": true,
+          "tmax": 35.2,
+          "tmax_p90": 36.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2023-04-17",
+          "doy": 107,
+          "et0": 7.85,
+          "p90": 7.09,
+          "flag": true,
+          "tmax": 35.4,
+          "tmax_p90": 36.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "2023-04-18",
+          "doy": 108,
+          "et0": 7.72,
+          "p90": 7.08,
+          "flag": true,
+          "tmax": 35.7,
+          "tmax_p90": 36.11,
+          "tmax_flag": false
+        },
+        {
+          "date": "2023-04-19",
+          "doy": 109,
+          "et0": 7.14,
+          "p90": 7.1,
+          "flag": true,
+          "tmax": 35.5,
+          "tmax_p90": 36.1,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Mandya",
+      "start": "1994-12-11",
+      "end": "1994-12-13",
+      "season": "winter",
+      "days": 3,
+      "excess_mm": 0.65,
+      "max_tmax_c": 29.1,
+      "max_tmax_minus_p90_c": -0.3,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "1994-12-11",
+          "doy": 345,
+          "et0": 5.03,
+          "p90": 4.99,
+          "flag": true,
+          "tmax": 29.1,
+          "tmax_p90": 29.4,
+          "tmax_flag": false
+        },
+        {
+          "date": "1994-12-12",
+          "doy": 346,
+          "et0": 5.33,
+          "p90": 4.99,
+          "flag": true,
+          "tmax": 28.8,
+          "tmax_p90": 29.5,
+          "tmax_flag": false
+        },
+        {
+          "date": "1994-12-13",
+          "doy": 347,
+          "et0": 5.27,
+          "p90": 5.0,
+          "flag": true,
+          "tmax": 28.1,
+          "tmax_p90": 29.5,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Mandya",
+      "start": "1995-03-19",
+      "end": "1995-03-23",
+      "season": "pre_monsoon",
+      "days": 5,
+      "excess_mm": 2.78,
+      "max_tmax_c": 35.6,
+      "max_tmax_minus_p90_c": -0.2,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "1995-03-19",
+          "doy": 78,
+          "et0": 8.31,
+          "p90": 7.52,
+          "flag": true,
+          "tmax": 35.0,
+          "tmax_p90": 35.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "1995-03-20",
+          "doy": 79,
+          "et0": 8.15,
+          "p90": 7.52,
+          "flag": true,
+          "tmax": 35.0,
+          "tmax_p90": 35.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "1995-03-21",
+          "doy": 80,
+          "et0": 8.18,
+          "p90": 7.49,
+          "flag": true,
+          "tmax": 35.3,
+          "tmax_p90": 35.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "1995-03-22",
+          "doy": 81,
+          "et0": 7.88,
+          "p90": 7.48,
+          "flag": true,
+          "tmax": 35.6,
+          "tmax_p90": 35.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "1995-03-23",
+          "doy": 82,
+          "et0": 7.71,
+          "p90": 7.44,
+          "flag": true,
+          "tmax": 35.6,
+          "tmax_p90": 35.9,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Mandya",
+      "start": "1996-01-22",
+      "end": "1996-01-31",
+      "season": "winter",
+      "days": 10,
+      "excess_mm": 3.7,
+      "max_tmax_c": 30.6,
+      "max_tmax_minus_p90_c": -0.5,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "1996-01-22",
+          "doy": 22,
+          "et0": 6.06,
+          "p90": 5.6,
+          "flag": true,
+          "tmax": 29.8,
+          "tmax_p90": 30.9,
+          "tmax_flag": false
+        },
+        {
+          "date": "1996-01-23",
+          "doy": 23,
+          "et0": 5.86,
+          "p90": 5.62,
+          "flag": true,
+          "tmax": 29.4,
+          "tmax_p90": 30.91,
+          "tmax_flag": false
+        },
+        {
+          "date": "1996-01-24",
+          "doy": 24,
+          "et0": 5.95,
+          "p90": 5.66,
+          "flag": true,
+          "tmax": 29.7,
+          "tmax_p90": 31.0,
+          "tmax_flag": false
+        },
+        {
+          "date": "1996-01-25",
+          "doy": 25,
+          "et0": 5.78,
+          "p90": 5.7,
+          "flag": true,
+          "tmax": 29.5,
+          "tmax_p90": 31.01,
+          "tmax_flag": false
+        },
+        {
+          "date": "1996-01-26",
+          "doy": 26,
+          "et0": 6.38,
+          "p90": 5.75,
+          "flag": true,
+          "tmax": 30.5,
+          "tmax_p90": 31.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "1996-01-27",
+          "doy": 27,
+          "et0": 6.64,
+          "p90": 5.78,
+          "flag": true,
+          "tmax": 30.6,
+          "tmax_p90": 31.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "1996-01-28",
+          "doy": 28,
+          "et0": 6.15,
+          "p90": 5.81,
+          "flag": true,
+          "tmax": 30.0,
+          "tmax_p90": 31.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "1996-01-29",
+          "doy": 29,
+          "et0": 5.94,
+          "p90": 5.82,
+          "flag": true,
+          "tmax": 29.5,
+          "tmax_p90": 31.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "1996-01-30",
+          "doy": 30,
+          "et0": 6.15,
+          "p90": 5.86,
+          "flag": true,
+          "tmax": 30.5,
+          "tmax_p90": 31.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "1996-01-31",
+          "doy": 31,
+          "et0": 6.3,
+          "p90": 5.91,
+          "flag": true,
+          "tmax": 30.5,
+          "tmax_p90": 31.31,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Mandya",
+      "start": "1996-02-16",
+      "end": "1996-02-18",
+      "season": "winter",
+      "days": 3,
+      "excess_mm": 0.77,
+      "max_tmax_c": 32.7,
+      "max_tmax_minus_p90_c": -0.8,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "1996-02-16",
+          "doy": 47,
+          "et0": 6.78,
+          "p90": 6.61,
+          "flag": true,
+          "tmax": 31.9,
+          "tmax_p90": 33.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "1996-02-17",
+          "doy": 48,
+          "et0": 6.76,
+          "p90": 6.7,
+          "flag": true,
+          "tmax": 31.8,
+          "tmax_p90": 33.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "1996-02-18",
+          "doy": 49,
+          "et0": 7.3,
+          "p90": 6.76,
+          "flag": true,
+          "tmax": 32.7,
+          "tmax_p90": 33.5,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Mandya",
+      "start": "1997-05-18",
+      "end": "1997-05-20",
+      "season": "pre_monsoon",
+      "days": 3,
+      "excess_mm": 0.66,
+      "max_tmax_c": 33.5,
+      "max_tmax_minus_p90_c": -1.7,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "1997-05-18",
+          "doy": 138,
+          "et0": 6.7,
+          "p90": 6.37,
+          "flag": true,
+          "tmax": 33.5,
+          "tmax_p90": 35.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "1997-05-19",
+          "doy": 139,
+          "et0": 6.58,
+          "p90": 6.37,
+          "flag": true,
+          "tmax": 33.3,
+          "tmax_p90": 35.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "1997-05-20",
+          "doy": 140,
+          "et0": 6.49,
+          "p90": 6.37,
+          "flag": true,
+          "tmax": 33.5,
+          "tmax_p90": 35.2,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Mandya",
+      "start": "1999-11-13",
+      "end": "1999-11-18",
+      "season": "post_monsoon",
+      "days": 6,
+      "excess_mm": 0.75,
+      "max_tmax_c": 28.0,
+      "max_tmax_minus_p90_c": -0.9,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "1999-11-13",
+          "doy": 317,
+          "et0": 4.82,
+          "p90": 4.81,
+          "flag": true,
+          "tmax": 27.6,
+          "tmax_p90": 28.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "1999-11-14",
+          "doy": 318,
+          "et0": 4.92,
+          "p90": 4.81,
+          "flag": true,
+          "tmax": 27.4,
+          "tmax_p90": 28.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "1999-11-15",
+          "doy": 319,
+          "et0": 4.97,
+          "p90": 4.81,
+          "flag": true,
+          "tmax": 26.9,
+          "tmax_p90": 28.9,
+          "tmax_flag": false
+        },
+        {
+          "date": "1999-11-16",
+          "doy": 320,
+          "et0": 4.99,
+          "p90": 4.81,
+          "flag": true,
+          "tmax": 27.2,
+          "tmax_p90": 28.92,
+          "tmax_flag": false
+        },
+        {
+          "date": "1999-11-17",
+          "doy": 321,
+          "et0": 5.01,
+          "p90": 4.8,
+          "flag": true,
+          "tmax": 27.9,
+          "tmax_p90": 28.9,
+          "tmax_flag": false
+        },
+        {
+          "date": "1999-11-18",
+          "doy": 322,
+          "et0": 4.89,
+          "p90": 4.81,
+          "flag": true,
+          "tmax": 28.0,
+          "tmax_p90": 28.9,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Mandya",
+      "start": "2000-05-13",
+      "end": "2000-05-15",
+      "season": "pre_monsoon",
+      "days": 3,
+      "excess_mm": 0.91,
+      "max_tmax_c": 33.6,
+      "max_tmax_minus_p90_c": -1.6,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2000-05-13",
+          "doy": 133,
+          "et0": 6.73,
+          "p90": 6.37,
+          "flag": true,
+          "tmax": 32.8,
+          "tmax_p90": 35.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "2000-05-14",
+          "doy": 134,
+          "et0": 6.57,
+          "p90": 6.38,
+          "flag": true,
+          "tmax": 33.5,
+          "tmax_p90": 35.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "2000-05-15",
+          "doy": 135,
+          "et0": 6.74,
+          "p90": 6.38,
+          "flag": true,
+          "tmax": 33.6,
+          "tmax_p90": 35.2,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Mandya",
+      "start": "2001-07-19",
+      "end": "2001-07-21",
+      "season": "monsoon",
+      "days": 3,
+      "excess_mm": 0.68,
+      "max_tmax_c": 28.6,
+      "max_tmax_minus_p90_c": -0.4,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2001-07-19",
+          "doy": 200,
+          "et0": 4.71,
+          "p90": 4.57,
+          "flag": true,
+          "tmax": 28.1,
+          "tmax_p90": 29.01,
+          "tmax_flag": false
+        },
+        {
+          "date": "2001-07-20",
+          "doy": 201,
+          "et0": 4.87,
+          "p90": 4.53,
+          "flag": true,
+          "tmax": 28.6,
+          "tmax_p90": 29.0,
+          "tmax_flag": false
+        },
+        {
+          "date": "2001-07-21",
+          "doy": 202,
+          "et0": 4.73,
+          "p90": 4.53,
+          "flag": true,
+          "tmax": 28.4,
+          "tmax_p90": 28.9,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Mandya",
+      "start": "2002-02-21",
+      "end": "2002-02-25",
+      "season": "winter",
+      "days": 5,
+      "excess_mm": 0.97,
+      "max_tmax_c": 33.1,
+      "max_tmax_minus_p90_c": -0.8,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2002-02-21",
+          "doy": 52,
+          "et0": 7.08,
+          "p90": 6.95,
+          "flag": true,
+          "tmax": 33.0,
+          "tmax_p90": 33.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "2002-02-22",
+          "doy": 53,
+          "et0": 7.3,
+          "p90": 7.0,
+          "flag": true,
+          "tmax": 31.9,
+          "tmax_p90": 33.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "2002-02-23",
+          "doy": 54,
+          "et0": 7.19,
+          "p90": 7.05,
+          "flag": true,
+          "tmax": 31.8,
+          "tmax_p90": 33.9,
+          "tmax_flag": false
+        },
+        {
+          "date": "2002-02-24",
+          "doy": 55,
+          "et0": 7.38,
+          "p90": 7.1,
+          "flag": true,
+          "tmax": 32.7,
+          "tmax_p90": 33.9,
+          "tmax_flag": false
+        },
+        {
+          "date": "2002-02-25",
+          "doy": 56,
+          "et0": 7.27,
+          "p90": 7.15,
+          "flag": true,
+          "tmax": 33.1,
+          "tmax_p90": 34.0,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Mandya",
+      "start": "2002-03-18",
+      "end": "2002-03-20",
+      "season": "pre_monsoon",
+      "days": 3,
+      "excess_mm": 1.02,
+      "max_tmax_c": 34.6,
+      "max_tmax_minus_p90_c": -1.1,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2002-03-18",
+          "doy": 77,
+          "et0": 7.98,
+          "p90": 7.51,
+          "flag": true,
+          "tmax": 34.5,
+          "tmax_p90": 35.6,
+          "tmax_flag": false
+        },
+        {
+          "date": "2002-03-19",
+          "doy": 78,
+          "et0": 8.05,
+          "p90": 7.52,
+          "flag": true,
+          "tmax": 34.5,
+          "tmax_p90": 35.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "2002-03-20",
+          "doy": 79,
+          "et0": 7.54,
+          "p90": 7.52,
+          "flag": true,
+          "tmax": 34.6,
+          "tmax_p90": 35.7,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Mandya",
+      "start": "2004-10-06",
+      "end": "2004-10-08",
+      "season": "post_monsoon",
+      "days": 3,
+      "excess_mm": 0.69,
+      "max_tmax_c": 28.7,
+      "max_tmax_minus_p90_c": -0.9,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2004-10-06",
+          "doy": 279,
+          "et0": 4.87,
+          "p90": 4.83,
+          "flag": true,
+          "tmax": 28.0,
+          "tmax_p90": 29.6,
+          "tmax_flag": false
+        },
+        {
+          "date": "2004-10-07",
+          "doy": 280,
+          "et0": 5.06,
+          "p90": 4.75,
+          "flag": true,
+          "tmax": 28.3,
+          "tmax_p90": 29.6,
+          "tmax_flag": false
+        },
+        {
+          "date": "2004-10-08",
+          "doy": 281,
+          "et0": 5.1,
+          "p90": 4.76,
+          "flag": true,
+          "tmax": 28.7,
+          "tmax_p90": 29.6,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Mandya",
+      "start": "2005-02-27",
+      "end": "2005-03-01",
+      "season": "winter",
+      "days": 3,
+      "excess_mm": 1.0,
+      "max_tmax_c": 34.0,
+      "max_tmax_minus_p90_c": -0.2,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2005-02-27",
+          "doy": 58,
+          "et0": 7.51,
+          "p90": 7.2,
+          "flag": true,
+          "tmax": 33.9,
+          "tmax_p90": 34.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2005-02-28",
+          "doy": 59,
+          "et0": 7.47,
+          "p90": 7.23,
+          "flag": true,
+          "tmax": 33.8,
+          "tmax_p90": 34.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2005-03-01",
+          "doy": 60,
+          "et0": 7.7,
+          "p90": 7.25,
+          "flag": true,
+          "tmax": 34.0,
+          "tmax_p90": 34.2,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Mandya",
+      "start": "2005-03-17",
+      "end": "2005-03-19",
+      "season": "pre_monsoon",
+      "days": 3,
+      "excess_mm": 1.33,
+      "max_tmax_c": 35.7,
+      "max_tmax_minus_p90_c": 0.0,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2005-03-17",
+          "doy": 76,
+          "et0": 7.84,
+          "p90": 7.49,
+          "flag": true,
+          "tmax": 34.8,
+          "tmax_p90": 35.6,
+          "tmax_flag": false
+        },
+        {
+          "date": "2005-03-18",
+          "doy": 77,
+          "et0": 7.86,
+          "p90": 7.51,
+          "flag": true,
+          "tmax": 35.1,
+          "tmax_p90": 35.6,
+          "tmax_flag": false
+        },
+        {
+          "date": "2005-03-19",
+          "doy": 78,
+          "et0": 8.15,
+          "p90": 7.52,
+          "flag": true,
+          "tmax": 35.7,
+          "tmax_p90": 35.7,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Mandya",
+      "start": "2006-01-19",
+      "end": "2006-01-21",
+      "season": "winter",
+      "days": 3,
+      "excess_mm": 0.76,
+      "max_tmax_c": 30.7,
+      "max_tmax_minus_p90_c": -0.1,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2006-01-19",
+          "doy": 19,
+          "et0": 5.78,
+          "p90": 5.54,
+          "flag": true,
+          "tmax": 30.2,
+          "tmax_p90": 30.71,
+          "tmax_flag": false
+        },
+        {
+          "date": "2006-01-20",
+          "doy": 20,
+          "et0": 5.91,
+          "p90": 5.58,
+          "flag": true,
+          "tmax": 30.5,
+          "tmax_p90": 30.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "2006-01-21",
+          "doy": 21,
+          "et0": 5.77,
+          "p90": 5.58,
+          "flag": true,
+          "tmax": 30.7,
+          "tmax_p90": 30.8,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Mandya",
+      "start": "2006-02-20",
+      "end": "2006-02-24",
+      "season": "winter",
+      "days": 5,
+      "excess_mm": 0.78,
+      "max_tmax_c": 33.5,
+      "max_tmax_minus_p90_c": -0.2,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2006-02-20",
+          "doy": 51,
+          "et0": 7.06,
+          "p90": 6.9,
+          "flag": true,
+          "tmax": 33.5,
+          "tmax_p90": 33.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "2006-02-21",
+          "doy": 52,
+          "et0": 6.99,
+          "p90": 6.95,
+          "flag": true,
+          "tmax": 32.8,
+          "tmax_p90": 33.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "2006-02-22",
+          "doy": 53,
+          "et0": 7.18,
+          "p90": 7.0,
+          "flag": true,
+          "tmax": 32.6,
+          "tmax_p90": 33.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "2006-02-23",
+          "doy": 54,
+          "et0": 7.14,
+          "p90": 7.05,
+          "flag": true,
+          "tmax": 32.6,
+          "tmax_p90": 33.9,
+          "tmax_flag": false
+        },
+        {
+          "date": "2006-02-24",
+          "doy": 55,
+          "et0": 7.41,
+          "p90": 7.1,
+          "flag": true,
+          "tmax": 32.8,
+          "tmax_p90": 33.9,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Mandya",
+      "start": "2006-06-12",
+      "end": "2006-06-14",
+      "season": "monsoon",
+      "days": 3,
+      "excess_mm": 1.15,
+      "max_tmax_c": 30.6,
+      "max_tmax_minus_p90_c": -0.5,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2006-06-12",
+          "doy": 163,
+          "et0": 5.73,
+          "p90": 5.24,
+          "flag": true,
+          "tmax": 30.3,
+          "tmax_p90": 31.31,
+          "tmax_flag": false
+        },
+        {
+          "date": "2006-06-13",
+          "doy": 164,
+          "et0": 5.64,
+          "p90": 5.16,
+          "flag": true,
+          "tmax": 30.6,
+          "tmax_p90": 31.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2006-06-14",
+          "doy": 165,
+          "et0": 5.33,
+          "p90": 5.15,
+          "flag": true,
+          "tmax": 30.3,
+          "tmax_p90": 30.81,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Mandya",
+      "start": "2008-03-04",
+      "end": "2008-03-09",
+      "season": "pre_monsoon",
+      "days": 6,
+      "excess_mm": 1.63,
+      "max_tmax_c": 33.6,
+      "max_tmax_minus_p90_c": -0.9,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2008-03-04",
+          "doy": 63,
+          "et0": 7.37,
+          "p90": 7.3,
+          "flag": true,
+          "tmax": 32.8,
+          "tmax_p90": 34.4,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-03-05",
+          "doy": 64,
+          "et0": 7.41,
+          "p90": 7.33,
+          "flag": true,
+          "tmax": 33.6,
+          "tmax_p90": 34.5,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-03-06",
+          "doy": 65,
+          "et0": 7.45,
+          "p90": 7.34,
+          "flag": true,
+          "tmax": 33.2,
+          "tmax_p90": 34.6,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-03-07",
+          "doy": 66,
+          "et0": 7.91,
+          "p90": 7.37,
+          "flag": true,
+          "tmax": 32.9,
+          "tmax_p90": 34.6,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-03-08",
+          "doy": 67,
+          "et0": 8.12,
+          "p90": 7.4,
+          "flag": true,
+          "tmax": 32.9,
+          "tmax_p90": 34.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-03-09",
+          "doy": 68,
+          "et0": 7.52,
+          "p90": 7.41,
+          "flag": true,
+          "tmax": 32.9,
+          "tmax_p90": 34.7,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Mandya",
+      "start": "2008-10-31",
+      "end": "2008-11-04",
+      "season": "post_monsoon",
+      "days": 5,
+      "excess_mm": 0.26,
+      "max_tmax_c": 27.6,
+      "max_tmax_minus_p90_c": -1.4,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2008-10-31",
+          "doy": 304,
+          "et0": 4.86,
+          "p90": 4.82,
+          "flag": true,
+          "tmax": 27.4,
+          "tmax_p90": 29.4,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-11-01",
+          "doy": 305,
+          "et0": 4.85,
+          "p90": 4.82,
+          "flag": true,
+          "tmax": 27.2,
+          "tmax_p90": 29.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-11-02",
+          "doy": 306,
+          "et0": 4.88,
+          "p90": 4.79,
+          "flag": true,
+          "tmax": 27.4,
+          "tmax_p90": 29.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-11-03",
+          "doy": 307,
+          "et0": 4.83,
+          "p90": 4.79,
+          "flag": true,
+          "tmax": 27.6,
+          "tmax_p90": 29.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2008-11-04",
+          "doy": 308,
+          "et0": 4.82,
+          "p90": 4.76,
+          "flag": true,
+          "tmax": 27.6,
+          "tmax_p90": 29.0,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Mandya",
+      "start": "2011-05-07",
+      "end": "2011-05-09",
+      "season": "pre_monsoon",
+      "days": 3,
+      "excess_mm": 0.79,
+      "max_tmax_c": 33.7,
+      "max_tmax_minus_p90_c": -1.8,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2011-05-07",
+          "doy": 127,
+          "et0": 6.83,
+          "p90": 6.39,
+          "flag": true,
+          "tmax": 33.5,
+          "tmax_p90": 35.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "2011-05-08",
+          "doy": 128,
+          "et0": 6.48,
+          "p90": 6.38,
+          "flag": true,
+          "tmax": 33.1,
+          "tmax_p90": 35.6,
+          "tmax_flag": false
+        },
+        {
+          "date": "2011-05-09",
+          "doy": 129,
+          "et0": 6.62,
+          "p90": 6.37,
+          "flag": true,
+          "tmax": 33.7,
+          "tmax_p90": 35.5,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Mandya",
+      "start": "2012-02-22",
+      "end": "2012-02-27",
+      "season": "winter",
+      "days": 6,
+      "excess_mm": 1.31,
+      "max_tmax_c": 33.6,
+      "max_tmax_minus_p90_c": -0.5,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2012-02-22",
+          "doy": 53,
+          "et0": 7.04,
+          "p90": 7.0,
+          "flag": true,
+          "tmax": 32.2,
+          "tmax_p90": 33.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-02-23",
+          "doy": 54,
+          "et0": 7.06,
+          "p90": 7.05,
+          "flag": true,
+          "tmax": 32.5,
+          "tmax_p90": 33.9,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-02-24",
+          "doy": 55,
+          "et0": 7.43,
+          "p90": 7.1,
+          "flag": true,
+          "tmax": 32.9,
+          "tmax_p90": 33.9,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-02-25",
+          "doy": 56,
+          "et0": 7.29,
+          "p90": 7.15,
+          "flag": true,
+          "tmax": 32.5,
+          "tmax_p90": 34.0,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-02-26",
+          "doy": 57,
+          "et0": 7.62,
+          "p90": 7.16,
+          "flag": true,
+          "tmax": 32.9,
+          "tmax_p90": 34.0,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-02-27",
+          "doy": 58,
+          "et0": 7.53,
+          "p90": 7.2,
+          "flag": true,
+          "tmax": 33.6,
+          "tmax_p90": 34.1,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Mandya",
+      "start": "2012-03-24",
+      "end": "2012-03-26",
+      "season": "pre_monsoon",
+      "days": 3,
+      "excess_mm": 1.21,
+      "max_tmax_c": 35.5,
+      "max_tmax_minus_p90_c": -0.5,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2012-03-24",
+          "doy": 83,
+          "et0": 7.59,
+          "p90": 7.43,
+          "flag": true,
+          "tmax": 35.3,
+          "tmax_p90": 35.91,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-03-25",
+          "doy": 84,
+          "et0": 7.71,
+          "p90": 7.41,
+          "flag": true,
+          "tmax": 34.8,
+          "tmax_p90": 36.0,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-03-26",
+          "doy": 85,
+          "et0": 8.09,
+          "p90": 7.34,
+          "flag": true,
+          "tmax": 35.5,
+          "tmax_p90": 36.01,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Mandya",
+      "start": "2012-05-31",
+      "end": "2012-06-02",
+      "season": "pre_monsoon",
+      "days": 3,
+      "excess_mm": 0.58,
+      "max_tmax_c": 33.6,
+      "max_tmax_minus_p90_c": -0.1,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2012-05-31",
+          "doy": 151,
+          "et0": 5.97,
+          "p90": 5.85,
+          "flag": true,
+          "tmax": 32.9,
+          "tmax_p90": 34.0,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-06-01",
+          "doy": 152,
+          "et0": 5.99,
+          "p90": 5.81,
+          "flag": true,
+          "tmax": 32.4,
+          "tmax_p90": 33.9,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-06-02",
+          "doy": 153,
+          "et0": 6.08,
+          "p90": 5.8,
+          "flag": true,
+          "tmax": 33.6,
+          "tmax_p90": 33.7,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Mandya",
+      "start": "2012-09-20",
+      "end": "2012-09-26",
+      "season": "monsoon",
+      "days": 7,
+      "excess_mm": 1.97,
+      "max_tmax_c": 29.8,
+      "max_tmax_minus_p90_c": -0.1,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2012-09-20",
+          "doy": 263,
+          "et0": 5.03,
+          "p90": 4.95,
+          "flag": true,
+          "tmax": 28.7,
+          "tmax_p90": 30.01,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-09-21",
+          "doy": 264,
+          "et0": 5.13,
+          "p90": 4.94,
+          "flag": true,
+          "tmax": 29.3,
+          "tmax_p90": 29.91,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-09-22",
+          "doy": 265,
+          "et0": 5.36,
+          "p90": 4.93,
+          "flag": true,
+          "tmax": 29.4,
+          "tmax_p90": 29.9,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-09-23",
+          "doy": 266,
+          "et0": 5.33,
+          "p90": 4.93,
+          "flag": true,
+          "tmax": 29.8,
+          "tmax_p90": 29.9,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-09-24",
+          "doy": 267,
+          "et0": 5.41,
+          "p90": 4.94,
+          "flag": true,
+          "tmax": 29.7,
+          "tmax_p90": 29.9,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-09-25",
+          "doy": 268,
+          "et0": 5.32,
+          "p90": 4.96,
+          "flag": true,
+          "tmax": 29.7,
+          "tmax_p90": 30.0,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-09-26",
+          "doy": 269,
+          "et0": 4.99,
+          "p90": 4.95,
+          "flag": true,
+          "tmax": 29.3,
+          "tmax_p90": 30.0,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Mandya",
+      "start": "2012-11-13",
+      "end": "2012-11-15",
+      "season": "post_monsoon",
+      "days": 3,
+      "excess_mm": 0.58,
+      "max_tmax_c": 28.3,
+      "max_tmax_minus_p90_c": -0.5,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2012-11-13",
+          "doy": 317,
+          "et0": 4.84,
+          "p90": 4.81,
+          "flag": true,
+          "tmax": 28.3,
+          "tmax_p90": 28.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-11-14",
+          "doy": 318,
+          "et0": 5.12,
+          "p90": 4.81,
+          "flag": true,
+          "tmax": 27.5,
+          "tmax_p90": 28.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "2012-11-15",
+          "doy": 319,
+          "et0": 5.05,
+          "p90": 4.81,
+          "flag": true,
+          "tmax": 26.7,
+          "tmax_p90": 28.9,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Mandya",
+      "start": "2014-03-15",
+      "end": "2014-03-17",
+      "season": "pre_monsoon",
+      "days": 3,
+      "excess_mm": 0.98,
+      "max_tmax_c": 34.9,
+      "max_tmax_minus_p90_c": -0.5,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2014-03-15",
+          "doy": 74,
+          "et0": 7.74,
+          "p90": 7.51,
+          "flag": true,
+          "tmax": 34.4,
+          "tmax_p90": 35.4,
+          "tmax_flag": false
+        },
+        {
+          "date": "2014-03-16",
+          "doy": 75,
+          "et0": 8.07,
+          "p90": 7.49,
+          "flag": true,
+          "tmax": 34.9,
+          "tmax_p90": 35.4,
+          "tmax_flag": false
+        },
+        {
+          "date": "2014-03-17",
+          "doy": 76,
+          "et0": 7.66,
+          "p90": 7.49,
+          "flag": true,
+          "tmax": 34.9,
+          "tmax_p90": 35.6,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Mandya",
+      "start": "2016-05-21",
+      "end": "2016-05-24",
+      "season": "pre_monsoon",
+      "days": 4,
+      "excess_mm": 0.71,
+      "max_tmax_c": 35.0,
+      "max_tmax_minus_p90_c": 0.0,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2016-05-21",
+          "doy": 141,
+          "et0": 6.49,
+          "p90": 6.35,
+          "flag": true,
+          "tmax": 33.2,
+          "tmax_p90": 35.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2016-05-22",
+          "doy": 142,
+          "et0": 6.57,
+          "p90": 6.33,
+          "flag": true,
+          "tmax": 34.9,
+          "tmax_p90": 35.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2016-05-23",
+          "doy": 143,
+          "et0": 6.62,
+          "p90": 6.3,
+          "flag": true,
+          "tmax": 34.7,
+          "tmax_p90": 35.0,
+          "tmax_flag": false
+        },
+        {
+          "date": "2016-05-24",
+          "doy": 144,
+          "et0": 6.21,
+          "p90": 6.2,
+          "flag": true,
+          "tmax": 35.0,
+          "tmax_p90": 35.0,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Mandya",
+      "start": "2017-02-15",
+      "end": "2017-02-17",
+      "season": "winter",
+      "days": 3,
+      "excess_mm": 0.92,
+      "max_tmax_c": 31.6,
+      "max_tmax_minus_p90_c": -1.4,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2017-02-15",
+          "doy": 46,
+          "et0": 6.52,
+          "p90": 6.49,
+          "flag": true,
+          "tmax": 31.6,
+          "tmax_p90": 33.0,
+          "tmax_flag": false
+        },
+        {
+          "date": "2017-02-16",
+          "doy": 47,
+          "et0": 7.2,
+          "p90": 6.61,
+          "flag": true,
+          "tmax": 31.1,
+          "tmax_p90": 33.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "2017-02-17",
+          "doy": 48,
+          "et0": 7.0,
+          "p90": 6.7,
+          "flag": true,
+          "tmax": 31.3,
+          "tmax_p90": 33.3,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Mandya",
+      "start": "2019-01-01",
+      "end": "2019-01-05",
+      "season": "winter",
+      "days": 5,
+      "excess_mm": 1.45,
+      "max_tmax_c": 29.3,
+      "max_tmax_minus_p90_c": -0.5,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2019-01-01",
+          "doy": 1,
+          "et0": 5.26,
+          "p90": 5.06,
+          "flag": true,
+          "tmax": 28.7,
+          "tmax_p90": 29.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "2019-01-02",
+          "doy": 2,
+          "et0": 5.32,
+          "p90": 5.07,
+          "flag": true,
+          "tmax": 28.5,
+          "tmax_p90": 29.7,
+          "tmax_flag": false
+        },
+        {
+          "date": "2019-01-03",
+          "doy": 3,
+          "et0": 5.47,
+          "p90": 5.11,
+          "flag": true,
+          "tmax": 29.2,
+          "tmax_p90": 29.71,
+          "tmax_flag": false
+        },
+        {
+          "date": "2019-01-04",
+          "doy": 4,
+          "et0": 5.64,
+          "p90": 5.11,
+          "flag": true,
+          "tmax": 29.3,
+          "tmax_p90": 29.8,
+          "tmax_flag": false
+        },
+        {
+          "date": "2019-01-05",
+          "doy": 5,
+          "et0": 5.25,
+          "p90": 5.14,
+          "flag": true,
+          "tmax": 29.2,
+          "tmax_p90": 29.81,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Mandya",
+      "start": "2019-03-13",
+      "end": "2019-03-16",
+      "season": "pre_monsoon",
+      "days": 4,
+      "excess_mm": 0.86,
+      "max_tmax_c": 35.0,
+      "max_tmax_minus_p90_c": -0.4,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2019-03-13",
+          "doy": 72,
+          "et0": 7.52,
+          "p90": 7.49,
+          "flag": true,
+          "tmax": 34.6,
+          "tmax_p90": 35.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "2019-03-14",
+          "doy": 73,
+          "et0": 7.83,
+          "p90": 7.51,
+          "flag": true,
+          "tmax": 34.9,
+          "tmax_p90": 35.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "2019-03-15",
+          "doy": 74,
+          "et0": 7.95,
+          "p90": 7.51,
+          "flag": true,
+          "tmax": 35.0,
+          "tmax_p90": 35.4,
+          "tmax_flag": false
+        },
+        {
+          "date": "2019-03-16",
+          "doy": 75,
+          "et0": 7.56,
+          "p90": 7.49,
+          "flag": true,
+          "tmax": 34.6,
+          "tmax_p90": 35.4,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Mandya",
+      "start": "2020-03-31",
+      "end": "2020-04-03",
+      "season": "pre_monsoon",
+      "days": 4,
+      "excess_mm": 0.5,
+      "max_tmax_c": 36.2,
+      "max_tmax_minus_p90_c": 0.0,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2020-03-31",
+          "doy": 90,
+          "et0": 7.44,
+          "p90": 7.4,
+          "flag": true,
+          "tmax": 35.7,
+          "tmax_p90": 36.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "2020-04-01",
+          "doy": 91,
+          "et0": 7.79,
+          "p90": 7.36,
+          "flag": true,
+          "tmax": 36.2,
+          "tmax_p90": 36.21,
+          "tmax_flag": false
+        },
+        {
+          "date": "2020-04-02",
+          "doy": 92,
+          "et0": 7.32,
+          "p90": 7.3,
+          "flag": true,
+          "tmax": 36.0,
+          "tmax_p90": 36.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "2020-04-03",
+          "doy": 93,
+          "et0": 7.24,
+          "p90": 7.23,
+          "flag": true,
+          "tmax": 36.1,
+          "tmax_p90": 36.21,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Mandya",
+      "start": "2023-04-08",
+      "end": "2023-04-14",
+      "season": "pre_monsoon",
+      "days": 7,
+      "excess_mm": 2.62,
+      "max_tmax_c": 36.2,
+      "max_tmax_minus_p90_c": 0.0,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2023-04-08",
+          "doy": 98,
+          "et0": 7.6,
+          "p90": 7.12,
+          "flag": true,
+          "tmax": 34.0,
+          "tmax_p90": 36.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "2023-04-09",
+          "doy": 99,
+          "et0": 7.12,
+          "p90": 7.1,
+          "flag": true,
+          "tmax": 33.9,
+          "tmax_p90": 36.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "2023-04-10",
+          "doy": 100,
+          "et0": 7.4,
+          "p90": 7.05,
+          "flag": true,
+          "tmax": 34.5,
+          "tmax_p90": 36.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "2023-04-11",
+          "doy": 101,
+          "et0": 7.25,
+          "p90": 6.99,
+          "flag": true,
+          "tmax": 34.8,
+          "tmax_p90": 36.3,
+          "tmax_flag": false
+        },
+        {
+          "date": "2023-04-12",
+          "doy": 102,
+          "et0": 7.47,
+          "p90": 6.93,
+          "flag": true,
+          "tmax": 35.6,
+          "tmax_p90": 36.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "2023-04-13",
+          "doy": 103,
+          "et0": 7.65,
+          "p90": 6.89,
+          "flag": true,
+          "tmax": 36.2,
+          "tmax_p90": 36.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "2023-04-14",
+          "doy": 104,
+          "et0": 7.05,
+          "p90": 6.84,
+          "flag": true,
+          "tmax": 35.6,
+          "tmax_p90": 36.2,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Mandya",
+      "start": "2023-04-16",
+      "end": "2023-04-19",
+      "season": "pre_monsoon",
+      "days": 4,
+      "excess_mm": 1.42,
+      "max_tmax_c": 36.2,
+      "max_tmax_minus_p90_c": 0.0,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2023-04-16",
+          "doy": 106,
+          "et0": 7.42,
+          "p90": 6.73,
+          "flag": true,
+          "tmax": 35.6,
+          "tmax_p90": 36.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "2023-04-17",
+          "doy": 107,
+          "et0": 7.09,
+          "p90": 6.73,
+          "flag": true,
+          "tmax": 35.4,
+          "tmax_p90": 36.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "2023-04-18",
+          "doy": 108,
+          "et0": 6.93,
+          "p90": 6.7,
+          "flag": true,
+          "tmax": 36.0,
+          "tmax_p90": 36.2,
+          "tmax_flag": false
+        },
+        {
+          "date": "2023-04-19",
+          "doy": 109,
+          "et0": 6.83,
+          "p90": 6.69,
+          "flag": true,
+          "tmax": 36.2,
+          "tmax_p90": 36.21,
+          "tmax_flag": false
+        }
+      ]
+    },
+    {
+      "district": "Mandya",
+      "start": "2023-06-05",
+      "end": "2023-06-07",
+      "season": "monsoon",
+      "days": 3,
+      "excess_mm": 0.95,
+      "max_tmax_c": 32.6,
+      "max_tmax_minus_p90_c": -0.1,
+      "tmax_days_above_p90": 0,
+      "daily": [
+        {
+          "date": "2023-06-05",
+          "doy": 156,
+          "et0": 6.25,
+          "p90": 5.69,
+          "flag": true,
+          "tmax": 32.5,
+          "tmax_p90": 33.1,
+          "tmax_flag": false
+        },
+        {
+          "date": "2023-06-06",
+          "doy": 157,
+          "et0": 5.73,
+          "p90": 5.64,
+          "flag": true,
+          "tmax": 32.2,
+          "tmax_p90": 32.91,
+          "tmax_flag": false
+        },
+        {
+          "date": "2023-06-07",
+          "doy": 158,
+          "et0": 5.88,
+          "p90": 5.58,
+          "flag": true,
+          "tmax": 32.6,
+          "tmax_p90": 32.7,
+          "tmax_flag": false
+        }
+      ]
+    }
+  ],
+  "caveat": "1994-2023 events are in-sample for the thresholds. District-centroid estimate (~10 km grid). Historical, not a live alert."
+}

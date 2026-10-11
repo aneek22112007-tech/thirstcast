@@ -23,6 +23,27 @@ test("F-11 a stale forecast shows the cached badge", async ({ page }) => {
   await expect(page.locator("#forecast-note")).toContainText("Cached at 2023-10-04");
 });
 
+test("U-3 the landing timeline reads the hero event from the file", async ({ page }) => {
+  await page.route("**/data/blindspot_timeline.json", async (route) => {
+    const body = await (await route.fetch()).json();
+    const hero = body.events.find((event) => event.district === body.hero.district && event.start === body.hero.start);
+    hero.excess_mm = 9.99;
+    await route.fulfill({ json: body });
+  });
+  await page.goto("/index.html");
+  const order = await page.locator("main section").evaluateAll((nodes) => nodes.map((node) => node.getAttribute("aria-labelledby") || node.className));
+  expect(order.slice(0, 5)).toEqual(["hero", "evidence-title", "blind-title", "pilots-title", "try-title"]);
+  await expect(page.locator("#story-blind")).toContainText("ET0 above its p90 while Tmax stayed below its own p90");
+  await expect(page.locator("#timeline-hero")).toContainText("9.99", { timeout: 20000 });
+  await expect(page.locator("#timeline-hero")).toContainText("36.2");
+  await expect(page.locator("#timeline-hero")).toContainText("7 days");
+  await page.locator("#timeline-filters").getByRole("button", { name: "Mandya", exact: true }).click();
+  await page.locator("#timeline-filters").getByRole("button", { name: "Pre-monsoon" }).click();
+  await expect(page.locator("#timeline-count")).not.toContainText("129 of 129");
+  await page.locator("#timeline-list button").first().click();
+  await expect(page.locator("#timeline-detail .chart-wrap")).toHaveCount(2);
+});
+
 test("U-2 thirty Aprils highlight 2024 on the map and the landing page", async ({ page }) => {
   await page.goto("/app.html#d=Bengaluru_Urban&tab=history");
   const bar = page.locator("#april-chart [data-year='2024']");

@@ -110,7 +110,15 @@ it records days with ET₀ above the day-of-year p90, the cumulative excess in m
 among those 31 Aprils. Rank 1 is the largest cumulative excess. The chart is April only; other months
 are not computed. 2024 is the marked bar.
 
-## 12. Sources
+## 12. Thirsty, not hot
+
+`frontend/scripts/build_static_data.py` writes `frontend/data/blindspot_timeline.json` from the blindspot
+events. Each event is a thirstwave during which maximum temperature stayed at or below its own
+day-of-year p90: ET0 above its p90 while Tmax stayed below its own p90. The landing page reads the
+hero event (district and start date) from that file and displays the days, excess and peak Tmax
+stored on the event. It does not keep a second copy of those figures in the page.
+
+## 13. Sources
 
 Open-Meteo (Zippenfeld 2023, doi:10.5281/ZENODO.7970649; ERA5/ERA5-Land © Copernicus C3S); Allen et al. 1998,
 FAO-56; Kukal & Hobbins 2025, Earth's Future; The Hindu, 24 June 2025; Ramachandra et al. 2017 (IISc ETR-116);

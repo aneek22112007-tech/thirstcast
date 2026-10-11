@@ -91,28 +91,7 @@
       </div>
     </section>
 
-    <section class="section" aria-labelledby="what-title">
-      <h2 id="what-title" data-i18n="explainer.title">What is a thirstwave?</h2>
-      <div class="steps">
-        <article class="card">
-          <div class="step-no">01</div>
-          <h3 data-i18n="explainer.s1t">Heat, dry air, wind and sun</h3>
-          <p data-i18n="explainer.s1">Together they set how fast water can leave a crop or a lake.</p>
-        </article>
-        <article class="card">
-          <div class="step-no">02</div>
-          <h3 data-i18n="explainer.s2t">The sky pulls water</h3>
-          <p data-i18n="explainer.s2">That pull is reference evapotranspiration, ET₀, in millimetres per day.</p>
-        </article>
-        <article class="card">
-          <div class="step-no">03</div>
-          <h3 data-i18n="explainer.s3t">Three days above the local p90</h3>
-          <p data-i18n="explainer.s3">A thirstwave is 3 or more days in a row above the local day-of-year 90th percentile.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="evidence" aria-labelledby="evidence-title">
+<section class="evidence" aria-labelledby="evidence-title">
       <div class="evidence-inner">
         <p class="eyebrow" data-i18n="evidence.kicker">Historical replay · April 2024 · ERA5</p>
         <h2 id="evidence-title" data-i18n="evidence.title">Bengaluru Urban, April 2024</h2>
@@ -138,7 +117,53 @@
       </div>
     </section>
 
-    <section class="section" aria-labelledby="why-title">
+    <section class="section" id="story-blind" aria-labelledby="blind-title">
+      <h2 id="blind-title" data-i18n="timeline.title">Thirsty, not hot</h2>
+      <p data-i18n="timeline.framing">ET0 above its p90 while Tmax stayed below its own p90</p>
+      <p id="timeline-hero"></p>
+      <div id="timeline-filters" class="chips"></div>
+      <p id="timeline-count" class="small"></p>
+      <div id="timeline-list" class="timeline"></div>
+      <div id="timeline-detail"></div>
+    </section>
+
+<section class="section" aria-labelledby="pilots-title">
+      <h2 id="pilots-title" data-i18n="pilots.title">Pilot districts</h2>
+      <div id="pilot-grid" class="pilot-grid" aria-live="polite">
+        <div class="skeleton" style="height:140px"></div>
+        <div class="skeleton" style="height:140px"></div>
+        <div class="skeleton" style="height:140px"></div>
+      </div>
+    </section>
+
+<section class="section" aria-labelledby="try-title">
+      <h2 id="try-title" data-i18n="try.title">Try a question</h2>
+      <p data-i18n="try.body">These open the map with the chat pre-filled. Nothing is sent until you press Ask.</p>
+      <div class="chips" id="try-chips"></div>
+    </section>
+
+<section class="section" aria-labelledby="what-title">
+      <h2 id="what-title" data-i18n="explainer.title">What is a thirstwave?</h2>
+      <div class="steps">
+        <article class="card">
+          <div class="step-no">01</div>
+          <h3 data-i18n="explainer.s1t">Heat, dry air, wind and sun</h3>
+          <p data-i18n="explainer.s1">Together they set how fast water can leave a crop or a lake.</p>
+        </article>
+        <article class="card">
+          <div class="step-no">02</div>
+          <h3 data-i18n="explainer.s2t">The sky pulls water</h3>
+          <p data-i18n="explainer.s2">That pull is reference evapotranspiration, ET₀, in millimetres per day.</p>
+        </article>
+        <article class="card">
+          <div class="step-no">03</div>
+          <h3 data-i18n="explainer.s3t">Three days above the local p90</h3>
+          <p data-i18n="explainer.s3">A thirstwave is 3 or more days in a row above the local day-of-year 90th percentile.</p>
+        </article>
+      </div>
+    </section>
+
+<section class="section" aria-labelledby="why-title">
       <h2 id="why-title" data-i18n="why.title">Why it matters</h2>
       <div class="why-grid">
         <div>
@@ -153,7 +178,7 @@
       </div>
     </section>
 
-    <section class="section" aria-labelledby="how-title">
+<section class="section" aria-labelledby="how-title">
       <h2 id="how-title" data-i18n="how.title">How it works</h2>
       <div class="arch" aria-label="Pipeline">
         <div class="arch-step"><strong data-i18n="how.s1">Open-Meteo</strong><span data-i18n="how.s1b">Forecast and ERA5 archive</span></div>
@@ -179,7 +204,7 @@
       </div>
     </section>
 
-    <section class="section" aria-labelledby="features-title">
+<section class="section" aria-labelledby="features-title">
       <h2 id="features-title" data-i18n="features.title">What you can do</h2>
       <div class="feature-grid">
         <article class="card"><h3 data-i18n="features.f1t">Live map</h3><p data-i18n="features.f1"></p></article>
@@ -192,22 +217,7 @@
       </div>
     </section>
 
-    <section class="section" aria-labelledby="pilots-title">
-      <h2 id="pilots-title" data-i18n="pilots.title">Pilot districts</h2>
-      <div id="pilot-grid" class="pilot-grid" aria-live="polite">
-        <div class="skeleton" style="height:140px"></div>
-        <div class="skeleton" style="height:140px"></div>
-        <div class="skeleton" style="height:140px"></div>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="try-title">
-      <h2 id="try-title" data-i18n="try.title">Try a question</h2>
-      <p data-i18n="try.body">These open the map with the chat pre-filled. Nothing is sent until you press Ask.</p>
-      <div class="chips" id="try-chips"></div>
-    </section>
-
-    <section class="section" aria-labelledby="api-title">
+<section class="section" aria-labelledby="api-title">
       <h2 id="api-title" data-i18n="api.title">Open data and API</h2>
       <p data-i18n="api.body">The same JSON the map reads. Replace $API with the deployed ApiUrl, without a trailing slash.</p>
       <div class="code-head">
@@ -226,7 +236,7 @@ curl -X POST "$API/ask" -H 'content-type: application/json' \
       <pre class="snippet" id="json-block"></pre>
     </section>
 
-    <section class="section" aria-labelledby="limits-title">
+<section class="section" aria-labelledby="limits-title">
       <h2 id="limits-title" data-i18n="limits.title">Honest limits</h2>
       <ul class="limits">
         <li data-i18n="limits.l1"></li>
@@ -236,7 +246,7 @@ curl -X POST "$API/ask" -H 'content-type: application/json' \
       </ul>
     </section>
 
-    <section class="section" aria-labelledby="team-title">
+<section class="section" aria-labelledby="team-title">
       <h2 id="team-title" data-i18n="team.title">Team LLF</h2>
       <div class="team-grid">
         <article class="card"><h3>Aneek Das</h3><p data-i18n="team.lead">Lead</p><p class="placeholder" data-i18n="team.placeholder">Profile link coming soon</p></article>
