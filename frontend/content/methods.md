@@ -130,3 +130,10 @@ The compare view (`app.html#view=compare`) places the three pilot districts side
 It reads the district list and each district's thirstwave response, the same JSON the map
 already loads. It does not call a new endpoint and it does not compute a new statistic.
 Arrow keys move between the three columns.
+
+## 15. Share card
+
+The share card is drawn in the browser on a 1200 by 630 canvas, in the same navy, gold and
+water colours as `frontend/og.svg`. It copies the numbers already on the district overview
+or the April 2024 replay summary, and it bakes in the caveat, the date, a mock or historical
+label, and the page URL. No image library is loaded.

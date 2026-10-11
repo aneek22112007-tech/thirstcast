@@ -204,6 +204,12 @@
     "kcNote": "Kc ±10%",
     "mockOn": "MOCK DATA"
   },
+  "card": {
+    "save": "Save card",
+    "mock": "Mock data, not a live alert",
+    "historical": "Historical, not a live alert",
+    "live": "Live forecast"
+  },
   "compare": {
     "open": "Compare",
     "title": "Compare the three districts",
