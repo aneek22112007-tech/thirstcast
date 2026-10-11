@@ -33,6 +33,15 @@ test("F-01 chat and alerts sit above the map at 360px", async ({ page }) => {
   await expect(page.locator("#alert-dialog")).toBeHidden();
 });
 
+test("F-14 Leaflet is loaded from the vendored copy", async ({ page }) => {
+  const urls = [];
+  page.on("request", (req) => urls.push(req.url()));
+  await page.goto("/app.html");
+  await expect(page.locator("#district-select")).toBeVisible({ timeout: 20000 });
+  expect(urls.some((url) => url.includes("/vendor/leaflet/leaflet.js"))).toBe(true);
+  expect(urls.some((url) => url.includes("unpkg.com"))).toBe(false);
+});
+
 test("F-03 each suggested question returns a real template answer", async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
   await page.goto("/app.html");

@@ -9,8 +9,8 @@ const SUGGESTIONS = [
   { district: "Kolar", q: "Is Kolar just hot this week, or also thirsty?" },
   { district: "Kolar", q: "कोलार में 1 एकड़ टमाटर को इस हफ्ते कितना अतिरिक्त पानी चाहिए?" },
 ];
-const LEAFLET_CSS = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
-const LEAFLET_JS = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
+const LEAFLET_CSS = "vendor/leaflet/leaflet.css";
+const LEAFLET_JS = "vendor/leaflet/leaflet.js";
 const $ = (id) => document.getElementById(id);
 
 const state = {
