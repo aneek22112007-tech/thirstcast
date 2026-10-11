@@ -1,5 +1,5 @@
 import { bindLangToggle, getLang, initI18n, initTheme, onLang, t } from "./i18n.js";
-import { et0Chart } from "./charts.js";
+import { aprilChart, et0Chart } from "./charts.js";
 import { esc, formatMm, formatNumber, formatScale, prefersReducedMotion } from "./format.js";
 
 const $ = (id) => document.getElementById(id);
@@ -11,6 +11,8 @@ const QUESTIONS = [
 
 let replays = null;
 let districtsPayload = null;
+let aprilHistory = null;
+let aprilDistrict = "Bengaluru_Urban";
 let evidenceDrawn = false;
 
 function showError(message) {
@@ -101,6 +103,26 @@ function paintMockBanner() {
   banner.textContent = t("app.mockNote", { date });
 }
 
+function renderApril() {
+  if (!aprilHistory || !$("april-chart")) return;
+  const switcher = $("april-switch");
+  switcher.replaceChildren();
+  Object.entries(aprilHistory.districts).forEach(([id, district]) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "chip";
+    btn.textContent = district.name;
+    btn.setAttribute("aria-pressed", String(id === aprilDistrict));
+    btn.addEventListener("click", () => {
+      aprilDistrict = id;
+      renderApril();
+    });
+    switcher.appendChild(btn);
+  });
+  const district = aprilHistory.districts[aprilDistrict];
+  $("april-chart").innerHTML = aprilChart(district.series, t("april.title"), district.highlight);
+}
+
 function renderTry() {
   const lang = getLang();
   $("try-chips").innerHTML = QUESTIONS.map((item) => {
@@ -143,19 +165,23 @@ async function boot() {
     if (replays) renderEvidence();
     renderTry();
     if (window.__catalog && districtsPayload) renderPilots(window.__catalog);
+    renderApril();
     paintMockBanner();
   });
   try {
-    const [districts, bengaluru, kolar, mandya, catalog] = await Promise.all([
+    const [districts, bengaluru, kolar, mandya, catalog, april] = await Promise.all([
       window.ThirstAPI.getDistricts(),
       window.ThirstAPI.getReplay("Bengaluru_Urban"),
       window.ThirstAPI.getReplay("Kolar"),
       window.ThirstAPI.getReplay("Mandya"),
       fetch("data/catalog.json").then((r) => { if (!r.ok) throw new Error(`catalog ${r.status}`); return r.json(); }),
+      fetch("data/april_history.json").then((r) => { if (!r.ok) throw new Error(`april ${r.status}`); return r.json(); }),
     ]);
     districtsPayload = districts;
     replays = { Bengaluru_Urban: bengaluru, Kolar: kolar, Mandya: mandya };
     window.__catalog = catalog;
+    aprilHistory = april;
+    renderApril();
     renderEvidence();
     renderPilots(catalog);
     const snippet = {

@@ -267,6 +267,11 @@
     "sample": "Sample from the mock detector for Mandya. This preview does not send it.",
     "close": "Close"
   },
+  "april": {
+    "title": "Thirty Aprils",
+    "body": "Cumulative excess ET₀ for each April, 1994–2024. The marked bar is 2024. Focus a bar for its rank and the days above p90.",
+    "note": "April only. Other months are not computed."
+  },
   "whyToday": {
     "title": "Why today",
     "et0": "Today's ET₀ against the day-of-year p90",

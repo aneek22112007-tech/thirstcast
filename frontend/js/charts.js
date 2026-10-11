@@ -128,6 +128,36 @@ export function climateChart(series, markDoy, label) {
   return s;
 }
 
+/** One bar per April. `highlightYear` is drawn in the mark colour. Each bar is focusable. */
+export function aprilChart(series, label, highlightYear) {
+  const width = 640;
+  const height = 220;
+  const pad = { l: 36, r: 8, t: 12, b: 28 };
+  const ymax = Math.max(1, Math.ceil(Math.max(...series.map((row) => Number(row.cum_excess_mm) || 0), 1)));
+  const innerW = width - pad.l - pad.r;
+  const innerH = height - pad.t - pad.b;
+  const bw = innerW / Math.max(series.length, 1);
+  const y = (v) => pad.t + innerH - (v / ymax) * innerH;
+  let s = `<svg viewBox="0 0 ${width} ${height}" role="group" aria-label="${esc(label)}" style="color:var(--chart-ink)">`;
+  s += axis(y, ymax, pad, width);
+  series.forEach((row, i) => {
+    const value = Number(row.cum_excess_mm) || 0;
+    const h = Math.max(0, (value / ymax) * innerH);
+    const x = pad.l + i * bw + bw * 0.18;
+    const marked = row.year === highlightYear;
+    const tip = `${row.year}: rank ${row.rank} of ${series.length}, ${row.days_above_p90} days above p90, ${value} mm cumulative excess`;
+    s += `<g tabindex="0" data-year="${row.year}" role="img" aria-label="${esc(tip)}">`;
+    s += `<rect x="${x}" y="${y(value)}" width="${(bw * 0.64).toFixed(2)}" height="${h.toFixed(2)}" fill="${marked ? "var(--chart-mark)" : "var(--chart-plain)"}" rx="1"><title>${esc(tip)}</title></rect>`;
+    s += `</g>`;
+  });
+  if (series.length) {
+    s += `<text x="${pad.l}" y="${height - 6}" fill="var(--chart-ink)">${series[0].year}</text>`;
+    s += `<text x="${width - pad.r}" y="${height - 6}" text-anchor="end" fill="var(--chart-ink)">${series[series.length - 1].year}</text>`;
+  }
+  s += `</svg>`;
+  return s;
+}
+
 export function dataTable(days, columns) {
   const head = columns.map((c) => `<th scope="col">${esc(c.label)}</th>`).join("");
   const body = days.map((d) => {
