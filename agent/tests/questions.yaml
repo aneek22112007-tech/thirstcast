@@ -19,7 +19,7 @@
 - {id: hi04, q: "कोलार में 1 एकड़ टमाटर को इस हफ्ते कितना अतिरिक्त पानी चाहिए?", lang: hi, district: Kolar, tools: [water_gap], must_include: ["टमाटर"]}
 - {id: hi05, q: "कोलार में इस हफ्ते सिर्फ़ गर्मी है या प्यास भी?", lang: hi, district: Kolar, tools: [compare_with_heat], must_include: ["कोलार"]}
 - {id: hi06, q: "बेंगलुरु की झीलों से इस हफ्ते कितना अतिरिक्त पानी उड़ेगा?", lang: hi, district: Bengaluru_Urban, tools: [get_status], must_include: ["अनुमान"]}
-- {id: hi07, q: "मंड्या में 1 एकड़ गन्ने को कितना अतिरिक्त पानी चाहिए?", lang: hi, district: Mandya, tools: [water_gap], must_include: ["गन्ना"], range: true}
+- {id: hi07, q: "मंड्या में 1 एकड़ गन्ने को कितना अतिरिक्त पानी चाहिए?", lang: hi, district: Mandya, tools: [water_gap], must_include: ["गन्न"], range: true}
 - {id: hi08, q: "कोलार में अगले 7 दिन का पूर्वानुमान क्या है?", lang: hi, district: Kolar, tools: [get_status, get_forecast], must_include: ["कोलार"]}
 - {id: hi09, q: "क्या मैसूर में थर्स्टवेव आएगी?", lang: hi, district: null, tools: [], must_include: ["मंड्या"]}
 - {id: hi10, q: "थर्स्टवेव क्या होती है?", lang: hi, district: null, tools: [], must_include: ["90वें"]}
