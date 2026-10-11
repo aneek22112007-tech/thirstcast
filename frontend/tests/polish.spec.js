@@ -8,6 +8,43 @@ async function topElementId(page, selector) {
   });
 }
 
+test("F-08 the replay summary scrolls inside the panel", async ({ page }) => {
+  async function endState() {
+    return page.evaluate(() => {
+      const panel = document.getElementById("panel");
+      const card = document.getElementById("replay-summary");
+      const shell = document.getElementById("shell");
+      const topbar = document.querySelector(".topbar");
+      return {
+        doc: document.scrollingElement.scrollTop,
+        panelScroll: panel.scrollTop,
+        overflow: getComputedStyle(shell).overflowY,
+        expanded: panel.classList.contains("expanded"),
+        cardTop: card.getBoundingClientRect().top,
+        panelTop: panel.getBoundingClientRect().top,
+        topbarBottom: topbar.getBoundingClientRect().bottom,
+      };
+    });
+  }
+  await page.setViewportSize({ width: 360, height: 780 });
+  await page.goto("/app.html#d=Bengaluru_Urban&replay=30");
+  await expect(page.locator("#replay-summary")).toBeVisible({ timeout: 20000 });
+  const mobile = await endState();
+  expect(mobile.doc).toBe(0);
+  expect(mobile.overflow).toBe("hidden");
+  expect(mobile.expanded).toBe(true);
+  expect(mobile.panelScroll).toBeGreaterThan(0);
+  expect(Math.abs(mobile.cardTop - mobile.panelTop)).toBeLessThan(2);
+  expect(mobile.cardTop).toBeGreaterThanOrEqual(mobile.topbarBottom - 1);
+
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto("/app.html#d=Bengaluru_Urban&replay=30");
+  await expect(page.locator("#replay-summary")).toBeVisible({ timeout: 20000 });
+  const desktop = await endState();
+  expect(desktop.doc).toBe(0);
+  expect(desktop.cardTop).toBeGreaterThanOrEqual(desktop.topbarBottom - 1);
+});
+
 test("F-06 zero excess hides the tanker line", async ({ page }) => {
   const sentence = "No day in the next 7 days is above the local p90, so there is no extra demand to estimate";
   await page.goto("/app.html#d=Kolar&tab=farmers");
