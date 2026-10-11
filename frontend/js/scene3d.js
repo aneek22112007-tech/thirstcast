@@ -232,54 +232,35 @@ export function init3DScene() {
   );
   globeGroup.add(earthMesh);
 
-  // Fresnel atmospheric shell
+  // Atmosphere limb-glow — FrontSide, exterior Fresnel (1 - |dot|)
+  // Uses the perpendicularity to view direction to peak at the limb
   const atmoMat = new THREE.ShaderMaterial({
     vertexShader: `
-      varying vec3 vNormal;
-      varying vec3 vViewDir;
+      varying float vFresnel;
       void main() {
-        vNormal  = normalize(normalMatrix * normal);
-        vec4 mvPos = modelViewMatrix * vec4(position, 1.0);
-        vViewDir = normalize(-mvPos.xyz);
-        gl_Position = projectionMatrix * mvPos;
+        vec3 worldNormal = normalize((modelMatrix * vec4(normal, 0.0)).xyz);
+        vec3 worldPos    = (modelMatrix * vec4(position, 1.0)).xyz;
+        vec3 viewDir     = normalize(cameraPosition - worldPos);
+        vFresnel = 1.0 - abs(dot(worldNormal, viewDir));
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
       }`,
     fragmentShader: `
-      varying vec3 vNormal;
-      varying vec3 vViewDir;
+      varying float vFresnel;
       void main() {
-        float rim = pow(1.0 - max(dot(vNormal, vViewDir), 0.0), 3.2);
-        vec3  col = mix(vec3(0.20, 0.80, 0.72), vec3(0.12, 0.45, 0.85), rim);
-        gl_FragColor = vec4(col, rim * 0.85);
+        float rim   = pow(vFresnel, 2.8);
+        vec3  color = mix(vec3(0.18, 0.78, 0.70), vec3(0.10, 0.55, 0.80), rim);
+        gl_FragColor = vec4(color, rim * 0.65);
       }`,
-    blending: THREE.AdditiveBlending, side: THREE.BackSide, transparent: true,
+    blending: THREE.AdditiveBlending,
+    side: THREE.FrontSide,
+    transparent: true,
+    depthWrite: false,
   });
-  globeGroup.add(new THREE.Mesh(new THREE.SphereGeometry(GLOBE_R * 1.06, 48, 48), atmoMat));
+  globeGroup.add(new THREE.Mesh(new THREE.SphereGeometry(GLOBE_R * 1.055, 48, 48), atmoMat));
 
-  // Inner glow shell (slightly inside surface)
-  const innerGlowMat = new THREE.ShaderMaterial({
-    vertexShader: `
-      varying vec3 vNormal;
-      varying vec3 vViewDir;
-      void main() {
-        vNormal  = normalize(normalMatrix * normal);
-        vec4 mvPos = modelViewMatrix * vec4(position, 1.0);
-        vViewDir = normalize(-mvPos.xyz);
-        gl_Position = projectionMatrix * mvPos;
-      }`,
-    fragmentShader: `
-      varying vec3 vNormal;
-      varying vec3 vViewDir;
-      void main() {
-        float rim = pow(1.0 - max(dot(vNormal, vViewDir), 0.0), 5.0);
-        gl_FragColor = vec4(0.33, 0.90, 0.82, rim * 0.30);
-      }`,
-    blending: THREE.AdditiveBlending, side: THREE.FrontSide, transparent: true,
-  });
-  globeGroup.add(new THREE.Mesh(new THREE.SphereGeometry(GLOBE_R * 0.998, 48, 48), innerGlowMat));
-
-  // Graticule rings
-  const gratMat = new THREE.LineBasicMaterial({ color: 0x55e6cd, transparent: true, opacity: 0.10 });
-  [-60,-40,-20,0,20,40,60].forEach(lat => {
+  // Graticule rings (very faint latitude lines on the globe surface)
+  const gratMat = new THREE.LineBasicMaterial({ color: 0x55e6cd, transparent: true, opacity: 0.08 });
+  [-40, -20, 0, 20, 40].forEach(lat => {
     const r = GLOBE_R * Math.cos((lat * Math.PI) / 180);
     const y = GLOBE_R * Math.sin((lat * Math.PI) / 180);
     const pts = [];
@@ -291,6 +272,7 @@ export function init3DScene() {
     g.setAttribute("position", new THREE.Float32BufferAttribute(pts, 3));
     globeGroup.add(new THREE.Line(g, gratMat));
   });
+
 
   // ── District markers ─────────────────────────────────────────────────────
   const markersGroup = new THREE.Group();
