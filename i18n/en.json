@@ -267,6 +267,22 @@
     "sample": "Sample from the mock detector for Mandya. This preview does not send it.",
     "close": "Close"
   },
+  "timeline": {
+    "title": "Thirsty, not hot",
+    "framing": "ET0 above its p90 while Tmax stayed below its own p90",
+    "hero": "{district}, {start} to {end}: {days} days, {excess} mm cumulative excess, Tmax peak {tmax} °C.",
+    "allDistricts": "All districts",
+    "allSeasons": "All seasons",
+    "shown": "{n} of {total} events",
+    "et0": "Daily ET₀ versus the day-of-year p90",
+    "tmax": "Daily Tmax versus its p90",
+    "season": {
+      "winter": "Winter",
+      "pre_monsoon": "Pre-monsoon",
+      "monsoon": "Monsoon",
+      "post_monsoon": "Post-monsoon"
+    }
+  },
   "april": {
     "title": "Thirty Aprils",
     "body": "Cumulative excess ET₀ for each April, 1994–2024. The marked bar is 2024. Focus a bar for its rank and the days above p90.",

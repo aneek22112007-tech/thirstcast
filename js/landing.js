@@ -1,5 +1,5 @@
 import { bindLangToggle, getLang, initI18n, initTheme, onLang, t } from "./i18n.js";
-import { aprilChart, et0Chart } from "./charts.js";
+import { aprilChart, et0Chart, tmaxChart } from "./charts.js";
 import { esc, formatMm, formatNumber, formatScale, prefersReducedMotion } from "./format.js";
 
 const $ = (id) => document.getElementById(id);
@@ -13,6 +13,9 @@ let replays = null;
 let districtsPayload = null;
 let aprilHistory = null;
 let aprilDistrict = "Bengaluru_Urban";
+let timeline = null;
+let timelineDistrict = "all";
+let timelineSeason = "all";
 let evidenceDrawn = false;
 
 function showError(message) {
@@ -103,6 +106,66 @@ function paintMockBanner() {
   banner.textContent = t("app.mockNote", { date });
 }
 
+function districtLabel(id) {
+  const row = districtsPayload && (districtsPayload.districts || []).find((d) => d.id === id);
+  return row ? row.name : id;
+}
+
+function renderTimeline() {
+  if (!timeline || !$("timeline-list")) return;
+  const hero = (timeline.events || []).find((event) => event.district === timeline.hero.district && event.start === timeline.hero.start);
+  if (hero) {
+    $("timeline-hero").textContent = t("timeline.hero", {
+      district: districtLabel(hero.district),
+      start: hero.start,
+      end: hero.end,
+      days: hero.days,
+      excess: formatNumber(hero.excess_mm, 2),
+      tmax: formatNumber(hero.max_tmax_c, 1),
+    });
+  }
+  const filters = $("timeline-filters");
+  filters.replaceChildren();
+  const add = (group, value, label) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "chip";
+    btn.textContent = label;
+    const on = (group === "district" ? timelineDistrict : timelineSeason) === value;
+    btn.setAttribute("aria-pressed", String(on));
+    btn.addEventListener("click", () => {
+      if (group === "district") timelineDistrict = value;
+      else timelineSeason = value;
+      renderTimeline();
+    });
+    filters.appendChild(btn);
+  };
+  add("district", "all", t("timeline.allDistricts"));
+  [...new Set((timeline.events || []).map((event) => event.district))].forEach((id) => add("district", id, districtLabel(id)));
+  add("season", "all", t("timeline.allSeasons"));
+  (timeline.seasons || []).forEach((season) => add("season", season, t(`timeline.season.${season}`)));
+  const rows = (timeline.events || []).filter((event) => (
+    (timelineDistrict === "all" || event.district === timelineDistrict)
+    && (timelineSeason === "all" || event.season === timelineSeason)
+  ));
+  $("timeline-count").textContent = t("timeline.shown", { n: rows.length, total: timeline.count });
+  const list = $("timeline-list");
+  list.replaceChildren();
+  rows.forEach((event) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "chip";
+    btn.textContent = `${event.start} · ${districtLabel(event.district)} · ${event.days}`;
+    btn.addEventListener("click", () => {
+      $("timeline-detail").innerHTML = `
+        <h3>${esc(event.start)} – ${esc(event.end)} · ${esc(districtLabel(event.district))}</h3>
+        <div class="chart-wrap">${et0Chart(event.daily, { label: t("timeline.et0"), height: 200 })}</div>
+        <div class="chart-wrap">${tmaxChart(event.daily, { label: t("timeline.tmax"), height: 180 })}</div>`;
+    });
+    list.appendChild(btn);
+  });
+}
+
 function renderApril() {
   if (!aprilHistory || !$("april-chart")) return;
   const switcher = $("april-switch");
@@ -166,22 +229,26 @@ async function boot() {
     renderTry();
     if (window.__catalog && districtsPayload) renderPilots(window.__catalog);
     renderApril();
+    renderTimeline();
     paintMockBanner();
   });
   try {
-    const [districts, bengaluru, kolar, mandya, catalog, april] = await Promise.all([
+    const [districts, bengaluru, kolar, mandya, catalog, april, story] = await Promise.all([
       window.ThirstAPI.getDistricts(),
       window.ThirstAPI.getReplay("Bengaluru_Urban"),
       window.ThirstAPI.getReplay("Kolar"),
       window.ThirstAPI.getReplay("Mandya"),
       fetch("data/catalog.json").then((r) => { if (!r.ok) throw new Error(`catalog ${r.status}`); return r.json(); }),
       fetch("data/april_history.json").then((r) => { if (!r.ok) throw new Error(`april ${r.status}`); return r.json(); }),
+      fetch("data/blindspot_timeline.json").then((r) => { if (!r.ok) throw new Error(`timeline ${r.status}`); return r.json(); }),
     ]);
     districtsPayload = districts;
     replays = { Bengaluru_Urban: bengaluru, Kolar: kolar, Mandya: mandya };
     window.__catalog = catalog;
     aprilHistory = april;
+    timeline = story;
     renderApril();
+    renderTimeline();
     renderEvidence();
     renderPilots(catalog);
     const snippet = {
