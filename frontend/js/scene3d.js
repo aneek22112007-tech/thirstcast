@@ -530,7 +530,9 @@ export function init3DScene() {
     // Compute which scene pair we are interpolating between
     const rawScene = smoothProgress * SCENES.length;
     const scIdx    = Math.min(SCENES.length - 1, Math.floor(rawScene));
-    const t        = easeInOutCubic(rawScene - Math.floor(rawScene));
+    // Clamp t to [0,1] to avoid easing fn edge case at exact integers
+    const tRaw     = rawScene - Math.floor(rawScene);
+    const t        = easeInOutCubic(Math.min(0.9999, tRaw));
 
     const scA = SCENES[scIdx];
     const scB = SCENES[Math.min(SCENES.length - 1, scIdx + 1)];
@@ -607,9 +609,9 @@ export function init3DScene() {
     });
 
     // ── Evaporation particles (scenes 1-2) ──────────────────────────────────
-    const s1w = Math.min(sceneWeight(1, p, 0.25), sceneWeight(2, p, 0.22)) * 2;
-    const pWeight = Math.min(1, s1w);
-    pMat.opacity += (pWeight * 0.80 - pMat.opacity) * 0.06;
+    // Use Math.max so particles are visible across the full extent of scenes 1 AND 2
+    const pWeight = Math.min(1, Math.max(sceneWeight(1, p, 0.20), sceneWeight(2, p, 0.20)) * 1.3);
+    pMat.opacity += (pWeight * 0.82 - pMat.opacity) * 0.06;
 
     if (pMat.opacity > 0.01) {
       const posArr = pGeo.attributes.position.array;
@@ -627,8 +629,8 @@ export function init3DScene() {
     }
 
     // ── ET₀ contours (scenes 2-3) ───────────────────────────────────────────
-    const cw = Math.min(sceneWeight(2, p, 0.22), sceneWeight(3, p, 0.22)) * 2;
-    const contourAlpha = Math.min(1, cw);
+    // Use Math.max so contours span scenes 2 AND 3
+    const contourAlpha = Math.min(1, Math.max(sceneWeight(2, p, 0.20), sceneWeight(3, p, 0.20)) * 1.3);
     contours.forEach((c, idx) => {
       const tOp = contourAlpha * (0.28 + idx * 0.13);
       c.material.opacity += (tOp - c.material.opacity) * 0.07;
