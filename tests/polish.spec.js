@@ -23,6 +23,19 @@ test("F-11 a stale forecast shows the cached badge", async ({ page }) => {
   await expect(page.locator("#forecast-note")).toContainText("Cached at 2023-10-04");
 });
 
+test("F-17 the landing quotes the thirstwave abstract", async ({ page }) => {
+  const sentence = "Statistically significant trends appear across 17%, 7%, and 23% of cropland area for intensity, frequency, and duration.";
+  await page.goto("/index.html");
+  const paper = page.locator("blockquote[data-i18n='why.paper']");
+  await expect(paper).toContainText(sentence, { timeout: 15000 });
+  await expect(paper).toContainText("0.06 mm");
+  await expect(page.locator("body")).not.toContainText("23% frequency");
+  await expect(page.locator("body")).not.toContainText("7% for frequency");
+  await page.getByRole("button", { name: "हिंदी", exact: true }).click();
+  await expect(paper).toContainText(sentence);
+  await expect(page.locator("body")).not.toContainText("23% frequency");
+});
+
 test("F-16 litre units are not called tankers", async ({ page }) => {
   await page.goto("/app.html#d=Mandya&tab=farmers");
   await expect(page.locator("#farm-result")).toContainText("10,000-litre units", { timeout: 20000 });
