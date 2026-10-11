@@ -62,7 +62,7 @@
 
     <nav class="topnav" aria-label="Main navigation" data-i18n-aria="nav.main">
       <a href="index.html" data-i18n="nav.overview">Overview</a>
-      <a href="#story-3d">3D Story</a>
+      <a href="#story-3d" data-i18n="nav.story">How It Works</a>
       <a href="#pilots">Districts</a>
       <a href="app.html#d=Bengaluru_Urban&replay=1" data-i18n="nav.replay">April 2024</a>
       <a href="methods.html" data-i18n="nav.methods">Methodology</a>
@@ -261,92 +261,90 @@
       </div>
     </section>
 
-    <!-- ════════════════════ 3D SCROLL STORYTELLING EXPERIENCE ══ -->
-    <div id="story-3d" class="story-3d-experience">
-      <!-- Floating scene dots HUD -->
-      <div class="story-indicators" id="story-indicators" aria-hidden="true">
-        <div class="story-dot active" data-scene="0"></div>
-        <div class="story-dot" data-scene="1"></div>
-        <div class="story-dot" data-scene="2"></div>
-        <div class="story-dot" data-scene="3"></div>
-        <div class="story-dot" data-scene="4"></div>
-        <div class="story-dot" data-scene="5"></div>
-      </div>
+    <!-- ════════════════════ HOW IT WORKS / SCIENCE STORY ══ -->
+    <section id="story-3d" class="story-narrative-section" aria-labelledby="story-title">
+      <div class="story-narrative-inner">
+        <div class="section-header reveal">
+          <div class="section-kicker" data-i18n="story.kicker">The Science</div>
+          <h2 id="story-title" data-i18n="story.title">Understanding Atmospheric Thirst</h2>
+          <p class="section-lead">
+            Standard weather forecasts track air temperature. ThirstCast reveals the invisible atmospheric pull on water — step by step.
+          </p>
+        </div>
 
-      <!-- Sticky 3D WebGL Canvas Stage -->
-      <div id="story-3d-stage" class="story-3d-stage" aria-hidden="true"></div>
-
-      <!-- 6 Narrative Step Cards Track -->
-      <div class="story-3d-track">
-
-        <!-- Scene 1: The Atmosphere -->
-        <div class="story-step" data-scene-index="0">
-          <div class="story-card active" role="region" aria-labelledby="sc-title-1">
-            <div class="story-card-step" data-i18n="story.s1Step">01 / 06 · The Atmosphere</div>
-            <h2 class="story-card-title" id="sc-title-1" data-i18n="story.s1Title">The invisible water sponge above us</h2>
+        <div class="story-cards-grid">
+          <!-- Step 1: The Atmosphere -->
+          <article class="story-card reveal">
+            <div class="story-card-top">
+              <span class="story-card-step" data-i18n="story.s1Step">01 / 06 · The Atmosphere</span>
+              <span class="story-card-badge" data-i18n="story.s1Badge">Orbital Climatology</span>
+            </div>
+            <h3 class="story-card-title" id="sc-title-1" data-i18n="story.s1Title">The invisible water sponge above us</h3>
             <p class="story-card-body" data-i18n="story.s1Body">
               Standard weather alerts focus almost exclusively on air temperature. But temperature alone cannot tell you how aggressively the atmosphere pulls moisture from the soil, foliage, and open water.
             </p>
-            <span class="story-card-badge" data-i18n="story.s1Badge">Orbital Climatology</span>
-          </div>
-        </div>
+          </article>
 
-        <!-- Scene 2: The Water Cycle -->
-        <div class="story-step" data-scene-index="1">
-          <div class="story-card" role="region" aria-labelledby="sc-title-2">
-            <div class="story-card-step" data-i18n="story.s2Step">02 / 06 · Evaporative Demand</div>
-            <h2 class="story-card-title" id="sc-title-2" data-i18n="story.s2Title">How weather pulls water upward</h2>
+          <!-- Step 2: Evaporative Demand -->
+          <article class="story-card reveal">
+            <div class="story-card-top">
+              <span class="story-card-step" data-i18n="story.s2Step">02 / 06 · Evaporative Demand</span>
+              <span class="story-card-badge" data-i18n="story.s2Badge">FAO-56 Penman-Monteith</span>
+            </div>
+            <h3 class="story-card-title" id="sc-title-2" data-i18n="story.s2Title">How weather pulls water upward</h3>
             <p class="story-card-body" data-i18n="story.s2Body">
               Solar radiation, wind speed, vapor-pressure deficit (dryness), and heat combine into a physical pulling force called reference evapotranspiration (ET₀). When the air is hot and dry with high wind, this pull intensifies dramatically.
             </p>
-            <span class="story-card-badge" data-i18n="story.s2Badge">FAO-56 Penman-Monteith</span>
-          </div>
-        </div>
+          </article>
 
-        <!-- Scene 3: Atmospheric Demand -->
-        <div class="story-step" data-scene-index="2">
-          <div class="story-card" role="region" aria-labelledby="sc-title-3">
-            <div class="story-card-step" data-i18n="story.s3Step">03 / 06 · The Baseline</div>
-            <h2 class="story-card-title" id="sc-title-3" data-i18n="story.s3Title">Comparing against 30 years of local norms</h2>
+          <!-- Step 3: The Baseline -->
+          <article class="story-card reveal">
+            <div class="story-card-top">
+              <span class="story-card-step" data-i18n="story.s3Step">03 / 06 · The Baseline</span>
+              <span class="story-card-badge" data-i18n="story.s3Badge">30-Year ERA5 Baseline</span>
+            </div>
+            <h3 class="story-card-title" id="sc-title-3" data-i18n="story.s3Title">Comparing against 30 years of local norms</h3>
             <p class="story-card-body" data-i18n="story.s3Body">
               A 6 mm/day rate in April might be routine for arid Rajasthan, but extreme for coastal or south interior Karnataka. ThirstCast compares every day's ET₀ against that specific location's 1994–2023 day-of-year 90th percentile threshold (p90).
             </p>
-            <span class="story-card-badge" data-i18n="story.s3Badge">30-Year ERA5 Baseline</span>
-          </div>
-        </div>
+          </article>
 
-        <!-- Scene 4: Thirstwave Detection -->
-        <div class="story-step" data-scene-index="3">
-          <div class="story-card" role="region" aria-labelledby="sc-title-4">
-            <div class="story-card-step" data-i18n="story.s4Step">04 / 06 · The Trigger</div>
-            <h2 class="story-card-title" id="sc-title-4" data-i18n="story.s4Title">What defines a thirstwave?</h2>
+          <!-- Step 4: The Trigger -->
+          <article class="story-card reveal">
+            <div class="story-card-top">
+              <span class="story-card-step" data-i18n="story.s4Step">04 / 06 · The Trigger</span>
+              <span class="story-card-badge" data-i18n="story.s4Badge">≥3 Consecutive Days &gt; p90</span>
+            </div>
+            <h3 class="story-card-title" id="sc-title-4" data-i18n="story.s4Title">What defines a thirstwave?</h3>
             <p class="story-card-body" data-i18n="story.s4Body">
               A thirstwave is declared when ET₀ exceeds the local seasonal 90th percentile for three or more consecutive days. It isolates periods of sustained, compound atmospheric thirst from brief, normal hot afternoons.
             </p>
-            <span class="story-card-badge" data-i18n="story.s4Badge">≥3 Consecutive Days &gt; p90</span>
-          </div>
-        </div>
+          </article>
 
-        <!-- Scene 5: From Atmosphere to Litres -->
-        <div class="story-step" data-scene-index="4">
-          <div class="story-card" role="region" aria-labelledby="sc-title-5">
-            <div class="story-card-step" data-i18n="story.s5Step">05 / 06 · Ground Truth</div>
-            <h2 class="story-card-title" id="sc-title-5" data-i18n="story.s5Title">Translating millimetres into litres</h2>
+          <!-- Step 5: Ground Truth -->
+          <article class="story-card reveal">
+            <div class="story-card-top">
+              <span class="story-card-step" data-i18n="story.s5Step">05 / 06 · Ground Truth</span>
+              <span class="story-card-badge" data-i18n="story.s5Badge">Litres &amp; Cubic Metres</span>
+            </div>
+            <h3 class="story-card-title" id="sc-title-5" data-i18n="story.s5Title">Translating millimetres into litres</h3>
             <p class="story-card-body" data-i18n="story.s5Body">
               Excess millimetres of atmospheric pull translate directly into water volume. Using FAO-56 crop coefficients (Kc) and lake surface areas, ThirstCast computes estimated additional litres required per acre of crop and millions of litres lost from reservoirs.
             </p>
-            <span class="story-card-badge" data-i18n="story.s5Badge">Litres &amp; Cubic Metres</span>
-          </div>
-        </div>
+          </article>
 
-        <!-- Scene 6: The Dashboard Reveal -->
-        <div class="story-step" data-scene-index="5">
-          <div class="story-card" role="region" aria-labelledby="sc-title-6">
-            <div class="story-card-step" data-i18n="story.s6Step">06 / 06 · Platform Access</div>
-            <h2 class="story-card-title" id="sc-title-6" data-i18n="story.s6Title">Operational intelligence for water resilience</h2>
-            <p class="story-card-body" data-i18n="story.s6Body">
-              Monitor live 7-day thirstwave alerts, query our AI advisor in English or Hindi, and explore historical evidence for Karnataka's pilot districts.
-            </p>
+          <!-- Step 6: Platform Access (Featured) -->
+          <article class="story-card story-card--featured reveal">
+            <div class="story-card-featured-content">
+              <div class="story-card-top">
+                <span class="story-card-step" data-i18n="story.s6Step">06 / 06 · Platform Access</span>
+                <span class="story-card-badge" data-i18n="story.s6Badge">Live Operational Map</span>
+              </div>
+              <h3 class="story-card-title" id="sc-title-6" data-i18n="story.s6Title">Operational intelligence for water resilience</h3>
+              <p class="story-card-body" data-i18n="story.s6Body">
+                Monitor live 7-day thirstwave alerts, query our AI advisor in English or Hindi, and explore historical evidence for Karnataka's pilot districts.
+              </p>
+            </div>
             <div class="dashboard-reveal-preview">
               <div class="dashboard-window-bar">
                 <span class="window-dot red"></span>
@@ -359,11 +357,10 @@
                 <a href="app.html" class="btn btn-primary" data-i18n="story.openDashboard">Explore Live Dashboard →</a>
               </div>
             </div>
-          </div>
+          </article>
         </div>
-
       </div>
-    </div>
+    </section>
 
     <!-- ══════════════════════════════════ EVIDENCE ══ -->
     <section class="evidence-section" id="evidence-section" aria-labelledby="evidence-title">

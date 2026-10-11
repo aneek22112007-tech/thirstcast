@@ -700,291 +700,173 @@ blockquote p { font-size: 0.95rem; color: var(--ink-2); line-height: 1.65; font-
   line-height: 1.5;
 }
 
-/* ─── 3D Storytelling Experience ─────────────────────────────── */
-.story-3d-experience {
+/* ─── Story Narrative Section ─────────────────────────────────── */
+.story-narrative-section {
   position: relative;
-  background: #030709;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(85,230,205,0.06) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 60% at 85% 90%, rgba(56,189,248,0.04) 0%, transparent 60%),
+    linear-gradient(180deg, #030709 0%, #061014 45%, #030709 100%);
   border-top: 1px solid rgba(85, 230, 205, 0.14);
   border-bottom: 1px solid rgba(85, 230, 205, 0.14);
-  min-height: 580vh;
-  /* Radial ambient glow beneath the globe */
-  --story-glow: radial-gradient(
-    ellipse 55% 30% at 65% 50%,
-    rgba(85,230,205,0.04) 0%,
-    transparent 70%
-  );
-  background-image: var(--story-glow);
-}
-
-/* Cinematic top fade so the 3D section transitions smoothly from the section above */
-.story-3d-experience::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 12rem;
-  background: linear-gradient(to bottom, #030709 0%, transparent 100%);
-  z-index: 3;
-  pointer-events: none;
-}
-.story-3d-experience::after {
-  content: "";
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 12rem;
-  background: linear-gradient(to top, #030709 0%, transparent 100%);
-  z-index: 3;
-  pointer-events: none;
-}
-
-/* Sticky WebGL stage */
-.story-3d-stage {
-  position: sticky;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 1;
-  pointer-events: none;
+  padding: 6.5rem 0;
   overflow: hidden;
 }
-.story-3d-stage canvas {
-  width: 100% !important;
-  height: 100% !important;
-  display: block;
-}
 
-/* Vignette overlay on top of canvas for cinematic depth */
-.story-3d-stage::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse 100% 100% at 50% 50%,
-    transparent 48%,
-    rgba(3, 7, 9, 0.62) 100%
-  );
-  pointer-events: none;
-}
-
-/* Scroll narrative track floats over the canvas */
-.story-3d-track {
-  position: relative;
-  z-index: 4;
-  max-width: var(--max);
+.story-narrative-inner {
+  max-width: var(--max, 1200px);
   margin: 0 auto;
   padding: 0 2rem;
-  pointer-events: none;
-  /* Push track down to create initial blank 3D viewport */
-  padding-top: 10vh;
-  padding-bottom: 10vh;
 }
 
-/* Each step is a full-viewport slice */
-.story-step {
-  min-height: 95vh;
-  display: flex;
-  align-items: center;
-  padding: 2rem 0;
-  pointer-events: none;
+.story-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+  margin-top: 3.5rem;
 }
-/* Odd steps push card to right side */
-.story-step:nth-child(odd)  { justify-content: flex-start; }
-.story-step:nth-child(even) { justify-content: flex-end; }
 
-/* ── Story card ─────────────────────────────────────────────── */
 .story-card {
-  pointer-events: auto;
   position: relative;
-  width: min(30rem, 90vw);
-  background: rgba(4, 12, 15, 0.78);
-  backdrop-filter: blur(28px) saturate(1.4);
-  -webkit-backdrop-filter: blur(28px) saturate(1.4);
-  border: 1px solid rgba(85, 230, 205, 0.16);
+  background: rgba(4, 14, 18, 0.76);
+  backdrop-filter: blur(24px) saturate(1.3);
+  -webkit-backdrop-filter: blur(24px) saturate(1.3);
+  border: 1px solid rgba(85, 230, 205, 0.14);
   border-radius: 20px;
-  padding: 2.4rem 2.6rem;
+  padding: 2.2rem 2.4rem;
   box-shadow:
-    0 32px 64px rgba(0, 0, 0, 0.75),
-    0 0 0 0.5px rgba(85, 230, 205, 0.08) inset,
-    0 0 40px rgba(85, 230, 205, 0.05);
-  /* Default: invisible, slightly below and scaled down */
-  opacity: 0;
-  transform: translateY(32px) translateX(-8px) scale(0.94);
+    0 24px 48px rgba(0, 0, 0, 0.65),
+    0 0 0 0.5px rgba(85, 230, 205, 0.08) inset;
+  display: flex;
+  flex-direction: column;
   transition:
-    opacity   0.70s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.70s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.50s ease,
-    box-shadow   0.50s ease;
-  /* Thin top-line accent that animates in */
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
   overflow: hidden;
 }
 
-/* Accent line at top of card */
 .story-card::before {
   content: "";
   position: absolute;
   top: 0; left: 10%; right: 10%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(85,230,205,0.7), transparent);
-  opacity: 0;
-  transition: opacity 0.6s ease 0.15s;
+  background: linear-gradient(90deg, transparent, rgba(85,230,205,0.45), transparent);
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
 }
 
-/* Subtle noise grain texture overlay */
-.story-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-  pointer-events: none;
-  border-radius: inherit;
-}
-
-/* Active / in-view card */
-.story-card.active {
-  opacity: 1;
-  transform: translateY(0) translateX(0) scale(1);
-  border-color: rgba(85, 230, 205, 0.50);
+.story-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(85, 230, 205, 0.38);
   box-shadow:
-    0 32px 70px rgba(0, 0, 0, 0.80),
-    0 0 0 0.5px rgba(85, 230, 205, 0.20) inset,
-    0 0 60px rgba(85, 230, 205, 0.14),
-    0 0 120px rgba(85, 230, 205, 0.06);
-}
-.story-card.active::before { opacity: 1; }
-
-/* Even-step cards come in from opposite side */
-.story-step:nth-child(even) .story-card {
-  transform: translateY(32px) translateX(8px) scale(0.94);
-}
-.story-step:nth-child(even) .story-card.active {
-  transform: translateY(0) translateX(0) scale(1);
+    0 32px 60px rgba(0, 0, 0, 0.75),
+    0 0 0 0.5px rgba(85, 230, 205, 0.22) inset,
+    0 0 40px rgba(85, 230, 205, 0.08);
 }
 
-/* Step label */
+.story-card:hover::before {
+  opacity: 1;
+}
+
+.story-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.1rem;
+  flex-wrap: wrap;
+}
+
 .story-card-step {
-  font-size: 0.70rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--aqua);
-  margin-bottom: 0.85rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  opacity: 0.85;
+  opacity: 0.9;
 }
+
 .story-card-step::before {
   content: "";
   display: block;
-  width: 18px; height: 1px;
+  width: 14px;
+  height: 1px;
   background: var(--aqua);
-  flex-shrink: 0;
 }
 
-/* Title */
-.story-card-title {
-  font-family: var(--font-display, inherit);
-  font-size: clamp(1.55rem, 2.4vw, 1.95rem);
-  line-height: 1.20;
-  color: #f0faf8;
-  margin-bottom: 1rem;
-  letter-spacing: -0.02em;
-}
-
-/* Body */
-.story-card-body {
-  color: rgba(180, 205, 200, 0.90);
-  font-size: 0.94rem;
-  line-height: 1.70;
-  margin-bottom: 1.35rem;
-}
-
-/* Badge */
 .story-card-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.33rem 0.85rem;
+  padding: 0.3rem 0.8rem;
   border-radius: 999px;
   background: rgba(85, 230, 205, 0.08);
-  border: 1px solid rgba(85, 230, 205, 0.30);
-  font-size: 0.75rem;
+  border: 1px solid rgba(85, 230, 205, 0.28);
+  font-size: 0.74rem;
   font-weight: 600;
   color: var(--aqua);
-  letter-spacing: 0.04em;
-  transition: background 0.3s ease, border-color 0.3s ease;
-}
-.story-card.active .story-card-badge {
-  background: rgba(85, 230, 205, 0.14);
-  border-color: rgba(85, 230, 205, 0.50);
+  letter-spacing: 0.03em;
+  white-space: nowrap;
 }
 
-/* ── Floating scene-progress indicators (right rail) ─────────── */
-.story-indicators {
-  position: fixed;
-  right: 1.8rem;
-  top: 50%;
-  transform: translateY(-50%);
+.story-card-title {
+  font-family: var(--font-display, inherit);
+  font-size: clamp(1.35rem, 1.8vw, 1.65rem);
+  line-height: 1.25;
+  color: #f0faf8;
+  margin: 0 0 0.9rem;
+  letter-spacing: -0.015em;
+}
+
+.story-card-body {
+  color: rgba(180, 205, 200, 0.88);
+  font-size: 0.94rem;
+  line-height: 1.7;
+  margin: 0;
+  flex: 1;
+}
+
+/* Featured card for Scene 6 */
+.story-card--featured {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  padding: 2.8rem 3rem;
+  background:
+    radial-gradient(ellipse 60% 80% at 80% 50%, rgba(85,230,205,0.08) 0%, transparent 70%),
+    rgba(4, 14, 18, 0.84);
+  border-color: rgba(85, 230, 205, 0.25);
+}
+
+.story-card-featured-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
-  z-index: 50;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-.story-indicators.visible { opacity: 1; }
-
-/* Connecting line between dots */
-.story-indicators::before {
-  content: "";
-  position: absolute;
-  top: 4px; bottom: 4px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1px;
-  background: linear-gradient(to bottom, transparent, rgba(85,230,205,0.20), transparent);
-  pointer-events: none;
-}
-
-.story-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(85,230,205,0.15);
-  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-  position: relative;
-  z-index: 1;
-}
-.story-dot.active {
-  width: 11px;
-  height: 11px;
-  background: var(--aqua);
-  border-color: rgba(85,230,205,0.8);
-  box-shadow: 0 0 0 3px rgba(85,230,205,0.18), 0 0 16px rgba(85,230,205,0.55);
-  transform: scale(1);
 }
 
 /* Dashboard preview window reveal (Scene 6) */
 .dashboard-reveal-preview {
-  margin-top: 1.4rem;
   background: rgba(4, 10, 12, 0.95);
   border: 1px solid rgba(85, 230, 205, 0.3);
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.8);
   position: relative;
 }
+
 .dashboard-window-bar {
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 12px;
-  background: rgba(7, 20, 24, 0.9);
+  padding: 8px 14px;
+  background: rgba(7, 20, 24, 0.95);
   border-bottom: 1px solid rgba(85, 230, 205, 0.15);
 }
+
 .window-dot { width: 10px; height: 10px; border-radius: 50%; }
 .window-dot.red { background: #ff5f56; }
 .window-dot.yellow { background: #ffbd2e; }
@@ -995,14 +877,16 @@ blockquote p { font-size: 0.95rem; color: var(--ink-2); line-height: 1.65; font-
   color: var(--muted);
   font-family: monospace;
 }
+
 .dashboard-reveal-preview img {
   width: 100%;
   height: auto;
   display: block;
 }
+
 .dashboard-reveal-overlay {
-  padding: 1rem;
-  background: linear-gradient(to top, rgba(4, 10, 12, 0.95) 0%, rgba(4, 10, 12, 0.3) 100%);
+  padding: 1.1rem;
+  background: linear-gradient(to top, rgba(4, 10, 12, 0.95) 0%, rgba(4, 10, 12, 0.4) 100%);
   text-align: center;
 }
 
@@ -1011,16 +895,7 @@ blockquote p { font-size: 0.95rem; color: var(--ink-2); line-height: 1.65; font-
   .hero-content { grid-template-columns: 1fr; }
   .hero-visual { display: none; }
   .steps-grid { grid-template-columns: repeat(2, 1fr); }
-  .story-indicators { display: none; }
-  /* On tablet, both card positions are left-aligned */
-  .story-step:nth-child(odd),
-  .story-step:nth-child(even) { justify-content: flex-start; }
-  .story-step:nth-child(even) .story-card {
-    transform: translateY(32px) translateX(-8px) scale(0.94);
-  }
-  .story-step:nth-child(even) .story-card.active {
-    transform: translateY(0) translateX(0) scale(1);
-  }
+  .story-card--featured { grid-template-columns: 1fr; gap: 2rem; }
 }
 @media (max-width: 900px) {
   .stat-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1029,7 +904,8 @@ blockquote p { font-size: 0.95rem; color: var(--ink-2); line-height: 1.65; font-
   .why-grid { grid-template-columns: 1fr; }
   .team-grid { grid-template-columns: repeat(2, 1fr); }
   .concept-flow { justify-content: center; }
-  .story-card { width: min(28rem, 92vw); }
+  .story-cards-grid { grid-template-columns: 1fr; }
+  .story-card--featured { padding: 2rem 1.6rem; }
 }
 @media (max-width: 640px) {
   .hero-section { min-height: 92vh; align-items: flex-end; }
@@ -1044,9 +920,7 @@ blockquote p { font-size: 0.95rem; color: var(--ink-2); line-height: 1.65; font-
   .arch-arrow { transform: rotate(90deg); text-align: center; }
   .concept-flow { flex-direction: column; }
   .concept-arrow { transform: rotate(90deg); }
-  .story-card { padding: 1.6rem 1.4rem; width: min(22rem, 94vw); }
-  .story-card-title { font-size: 1.35rem; }
-  .story-3d-track { padding: 0 1rem; padding-top: 6vh; padding-bottom: 6vh; }
+  .story-narrative-section { padding: 4.5rem 0; }
+  .story-card { padding: 1.6rem 1.4rem; border-radius: 16px; }
+  .story-card-title { font-size: 1.25rem; }
 }
-
-

@@ -16,20 +16,12 @@ const QUESTIONS = [
 // ─── Premium UI: scroll-progress & scroll-linked nav ────────────────────────
 function initScrollProgress() {
   const bar = $("scroll-progress");
-  const indicators = $("story-indicators");
-  const story = $("story-3d");
   if (!bar) return;
   const update = () => {
     const total = document.documentElement.scrollHeight - window.innerHeight;
     if (total <= 0) return;
     const p = Math.min(100, Math.max(0, (window.scrollY / total) * 100));
     bar.style.width = p + "%";
-
-    if (indicators && story) {
-      const rect = story.getBoundingClientRect();
-      const inView = rect.top <= window.innerHeight * 0.5 && rect.bottom >= window.innerHeight * 0.2;
-      indicators.classList.toggle("visible", inView);
-    }
   };
   window.addEventListener("scroll", update, { passive: true });
   update();
