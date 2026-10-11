@@ -12,11 +12,30 @@ function lookup(dict, key) {
   return typeof node === "string" ? node : undefined;
 }
 
+function fill(text, vars) {
+  if (!vars || text == null) return text;
+  return text.replace(/\{(\w+)\}/g, (_, name) => (vars[name] == null ? "" : String(vars[name])));
+}
+
 export function t(key, vars) {
   let text = lookup(store.dict, key);
   if (text == null) text = key;
-  if (vars) text = text.replace(/\{(\w+)\}/g, (_, name) => (vars[name] == null ? "" : String(vars[name])));
-  return text;
+  return fill(text, vars);
+}
+
+function locale() {
+  if (store.lang === "hi") return "hi";
+  if (store.lang === "kn") return "kn";
+  return "en";
+}
+
+/** Intl.PluralRules. Keys are `${key}_one` and `${key}_other` (and other CLDR forms). */
+export function plural(key, n, vars) {
+  const rule = new Intl.PluralRules(locale()).select(Number(n));
+  const text = lookup(store.dict, `${key}_${rule}`)
+    || lookup(store.dict, `${key}_other`)
+    || lookup(store.dict, key);
+  return fill(text == null ? key : text, Object.assign({ n }, vars || {}));
 }
 
 export function getLang() {
