@@ -104,7 +104,7 @@
   "evidence": {
     "kicker": "Historical replay · April 2024 · ERA5",
     "title": "Bengaluru Urban, April 2024",
-    "leadText": "April 2024 was one of the highest-demand Aprils in 30 years for Bengaluru Urban. The charts below use ERA5 reanalysis — not real-time data.",
+    "leadText": "April 2024 was the highest-demand April for Bengaluru Urban since 1994 (ERA5, rank 1 of 31). The charts below use ERA5 reanalysis — not real-time data.",
     "days": "days with ET₀ above the day-of-year p90",
     "mm": "cumulative excess ET₀",
     "litres": "extra litres per acre, reference crop (estimate)",
