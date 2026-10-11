@@ -1,0 +1,11 @@
+{
+ "answer": "Kolar: no thirstwave signal in the next 7 days. Excess ET0 over the 7 days: 0.0 mm (sum of daily ET0 above the local day-of-year p90).\n\n[Template advisory (non-LLM mode)]",
+ "lang": "en",
+ "mode": "template",
+ "tools_used": [
+  "get_status",
+  "get_forecast"
+ ],
+ "district": "Kolar",
+ "caveat": "Estimates only. District-centroid estimate (~10 km grid)"
+}

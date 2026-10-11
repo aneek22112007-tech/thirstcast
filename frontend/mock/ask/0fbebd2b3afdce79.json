@@ -1,0 +1,11 @@
+{
+ "answer": "मंड्या में 2 एकड़ धान को अगले 7 दिनों में सामान्य से लगभग 5,944–7,265 लीटर अतिरिक्त पानी चाहिए हो सकता है (अनुमान; अतिरिक्त ET0 0.7 मिमी, Kc 1.2 ±10%).\n\n[टेम्पलेट सलाह (नॉन-LLM मोड)]",
+ "lang": "hi",
+ "mode": "template",
+ "tools_used": [
+  "get_status",
+  "water_gap"
+ ],
+ "district": "Mandya",
+ "caveat": "Estimates only. District-centroid estimate (~10 km grid)"
+}

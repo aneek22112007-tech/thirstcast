@@ -1,0 +1,11 @@
+{
+ "answer": "Mandya is in a thirstwave now (day 4): the air is pulling water out much faster than usual. Excess ET0 over the 7 days: 0.7 mm (sum of daily ET0 above the local day-of-year p90). Extra water: paddy: about 2,972–3,633 L per acre (estimate); sugarcane: about 3,096–3,784 L per acre (estimate); KRS: about 9,28,20,000 L (estimate, upper bound).\n\n[Template advisory (non-LLM mode)]",
+ "lang": "en",
+ "mode": "template",
+ "tools_used": [
+  "get_status",
+  "get_forecast"
+ ],
+ "district": "Mandya",
+ "caveat": "Estimates only. District-centroid estimate (~10 km grid)"
+}

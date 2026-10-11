@@ -23,14 +23,34 @@
     }
   }
 
+  function normQuestion(text) {
+    return String(text || "").normalize("NFC").trim().replace(/\s+/g, " ").toLowerCase();
+  }
+
+  const MISS = {
+    answer: "Offline demo: try one of the suggested questions; the live agent answers anything.",
+    lang: "en",
+    mode: "template",
+    tools_used: [],
+    district: null,
+    caveat: "Estimates only. District-centroid estimate (~10 km grid)",
+  };
+
   const enc = encodeURIComponent;
   window.ThirstAPI = {
     isMock: mock,
     getDistricts: () => mock ? getJSON("mock/districts.json") : getJSON(`${base}/districts`),
     getThirstwave: (id) => mock ? getJSON(`mock/thirstwave_${enc(id)}.json`) : getJSON(`${base}/thirstwave/${enc(id)}`),
     getReplay: (id) => mock ? getJSON(`mock/replay_${enc(id)}.json`) : getJSON(`${base}/replay/${enc(id)}`),
-    ask: (question, district) => {
-      if (mock) return getJSON(/[\u0900-\u097F]/.test(question) ? "mock/ask_template.json" : "mock/ask_llm.json");
+    ask: async (question, district) => {
+      if (mock) {
+        const index = await getJSON("mock/ask/index.json");
+        const file = index[normQuestion(question)];
+        if (!file || !/^[\da-f]+\.json$/.test(file)) {
+          return Object.assign({}, MISS, { lang: /[\u0900-\u097F]/.test(question) ? "hi" : "en", district: district || null });
+        }
+        return getJSON(`mock/ask/${file}`);
+      }
       const body = { question };
       if (district) body.district = district;
       return getJSON(`${base}/ask`, {

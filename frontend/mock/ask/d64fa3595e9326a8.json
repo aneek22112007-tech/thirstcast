@@ -1,0 +1,10 @@
+{
+ "answer": "Mandya, extra evaporation over the next 7 days (from 0.7 mm excess ET0): KRS: about 9,28,20,000 L (estimate, upper bound).\n\n[Template advisory (non-LLM mode)]",
+ "lang": "en",
+ "mode": "template",
+ "tools_used": [
+  "get_status"
+ ],
+ "district": "Mandya",
+ "caveat": "Estimates only. District-centroid estimate (~10 km grid)"
+}
