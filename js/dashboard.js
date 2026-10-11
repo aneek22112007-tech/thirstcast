@@ -755,12 +755,24 @@ async function ask(question) {
     const tools = (response.tools_used || []).length
       ? `<span>${esc(t("chat.tools"))}: ${esc(response.tools_used.join(", "))}</span>` : "";
     pending.removeAttribute("aria-busy");
-    pending.innerHTML = `<div lang="${esc(response.lang || "en")}">${esc(response.answer)}</div>
+    pending.innerHTML = `<p class="small advisory-note">${esc(t("chat.advisory"))}</p>
+      <div class="advisory" lang="${esc(response.lang || "en")}">${esc(response.answer)}</div>
       <div class="meta">${mode}${tools}<span>${esc(response.caveat || t("app.caveat"))}</span>
-      <button class="btn" type="button" data-copy>${esc(t("chat.copy"))}</button></div>`;
-    pending.querySelector("[data-copy]").addEventListener("click", async () => {
+      <button class="btn" type="button" data-copy>${esc(t("chat.copy"))}</button>
+      <button class="btn" type="button" data-share>${esc(t("chat.share"))}</button></div>`;
+    const copyAnswer = async () => {
       try { await navigator.clipboard.writeText(response.answer || ""); } catch (e) { /* ignore */ }
       toast(t("api.copied"));
+    };
+    pending.querySelector("[data-copy]").addEventListener("click", copyAnswer);
+    pending.querySelector("[data-share]").addEventListener("click", async () => {
+      if (navigator.share) {
+        try {
+          await navigator.share({ title: "ThirstCast", text: response.answer || "" });
+          return;
+        } catch (e) { /* copy fallback */ }
+      }
+      await copyAnswer();
     });
   } catch (err) {
     const aborted = err.name === "AbortError" || /abort|timeout/i.test(err.message || "");
