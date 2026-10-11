@@ -1,4 +1,4 @@
-import { bindLangToggle, getLang, initI18n, initTheme, onLang, t } from "./i18n.js";
+import { bindLangToggle, getLang, initI18n, initTheme, onLang, plural, t } from "./i18n.js";
 import { climateChart, dataTable, et0Chart, tmaxChart } from "./charts.js";
 import { dayOfYear, esc, formatDate, formatMm, formatNumber, formatScale, prefersReducedMotion } from "./format.js";
 
@@ -336,7 +336,7 @@ function renderHeat(detail) {
     </article>` : "";
   return `
     <p>${esc(t("app.heatIntro"))}</p>
-    <p>${days.length ? esc(t("app.heatCount", { et, tx, both })) : ""}</p>
+    <p>${days.length ? esc(t("app.heatCount", { et: plural("app.day", et), tx: plural("app.day", tx), both: plural("app.day", both) })) : ""}</p>
     <div class="chart-wrap">${et0Chart(days, { label: t("evidence.chart") })}</div>
     <div class="chart-wrap">${tmaxChart(days, { label: t("app.colTmax") })}</div>
     <p class="small">${esc(t("evidence.legend"))}</p>

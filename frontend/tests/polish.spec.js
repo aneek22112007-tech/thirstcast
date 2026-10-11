@@ -33,6 +33,30 @@ test("F-01 chat and alerts sit above the map at 360px", async ({ page }) => {
   await expect(page.locator("#alert-dialog")).toBeHidden();
 });
 
+test("F-19 small excesses keep two decimals", async ({ page }) => {
+  await page.goto("/app.html");
+  const values = await page.evaluate(async () => {
+    const format = await import("/js/format.js");
+    return { small: format.formatMm(0.03), large: format.formatMm(13.27), zero: format.formatMm(0) };
+  });
+  expect(values.small).toBe("+0.03");
+  expect(values.large).toBe("+13.3");
+  expect(values.zero).toBe("0.0");
+});
+
+test("F-13 day counts use plural rules", async ({ page }) => {
+  await page.goto("/app.html");
+  await expect(page.locator("#district-select")).toBeVisible({ timeout: 20000 });
+  const words = await page.evaluate(async () => {
+    const i18n = await import("/js/i18n.js");
+    return { one: i18n.plural("app.day", 1), many: i18n.plural("app.day", 2) };
+  });
+  expect(words.one).toBe("1 day");
+  expect(words.many).toBe("2 days");
+  await page.getByRole("tab", { name: "Heat vs thirst" }).click();
+  await expect(page.locator("#tab-panel")).not.toContainText("1 days");
+});
+
 test("F-07 theme follows the system until the user chooses", async ({ page }) => {
   await page.emulateMedia({ colorScheme: "dark" });
   await page.addInitScript(() => localStorage.removeItem("thirstcast.theme"));
