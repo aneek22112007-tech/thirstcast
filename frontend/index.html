@@ -14,6 +14,8 @@
   <meta name="twitter:description" content="Everyone forecasts how hot the air will be. Nobody forecasts how thirsty it will be.">
   <meta name="twitter:image" content="og.png">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#0c2340">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
@@ -25,10 +27,13 @@
     (function () {
       try {
         var theme = localStorage.getItem("thirstcast.theme");
-        if (theme === "dark" || theme === "light") document.documentElement.setAttribute("data-theme", theme);
+        if (theme !== "dark" && theme !== "light") {
+          theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", theme);
         var params = new URLSearchParams((location.hash || "").replace(/^#/, ""));
         var lang = params.get("lang") || localStorage.getItem("thirstcast.lang");
-        if (lang === "hi" || lang === "en") document.documentElement.lang = lang;
+        if (lang === "hi" || lang === "en" || lang === "kn") document.documentElement.lang = lang;
       } catch (e) {}
     })();
   </script>
@@ -49,11 +54,13 @@
     <div class="top-actions">
       <button class="btn btn-ghost" type="button" data-set-lang="en" data-lang-pressed="en" aria-pressed="true">EN</button>
       <button class="btn btn-ghost" type="button" data-set-lang="hi" data-lang-pressed="hi" aria-pressed="false">हिंदी</button>
+      <button class="btn btn-ghost" type="button" data-set-lang="kn" data-lang-pressed="kn" aria-pressed="false">ಕನ್ನಡ</button>
       <button class="btn icon-btn" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark theme"><span data-theme-label aria-hidden="true">Dark</span></button>
       <span id="mock-badge" class="badge badge-mock" hidden>MOCK DATA</span>
     </div>
   </header>
   <div id="error-banner" class="banner banner-error" role="alert" hidden></div>
+  <div id="offline-banner" class="banner banner-info" role="status" hidden></div>
   <main id="content">
     <section class="hero">
       <div class="hero-copy">
@@ -88,7 +95,58 @@
       </div>
     </section>
 
-    <section class="section" aria-labelledby="what-title">
+<section class="evidence" aria-labelledby="evidence-title">
+      <div class="evidence-inner">
+        <p class="eyebrow" data-i18n="evidence.kicker">Historical replay · April 2024 · ERA5</p>
+        <h2 id="evidence-title" data-i18n="evidence.title">Bengaluru Urban, April 2024</h2>
+        <div id="evidence-stats" class="stat-grid" aria-live="polite">
+          <div class="skeleton" style="height:92px"></div>
+          <div class="skeleton" style="height:92px"></div>
+          <div class="skeleton" style="height:92px"></div>
+          <div class="skeleton" style="height:92px"></div>
+        </div>
+        <div class="chart-card">
+          <div id="evidence-chart" class="chart-wrap" aria-busy="true"></div>
+          <p class="small" data-i18n="evidence.legend">Hatched bar: ET₀ above p90. Dashed line: day-of-year p90.</p>
+        </div>
+        <p id="evidence-tmax" class="small"></p>
+        <p class="framing" data-i18n="evidence.framing">Bengaluru's 2024 crisis was a supply failure. We don't claim thirstwaves caused it. We show the demand side nobody was measuring.</p>
+        <h3 data-i18n="evidence.compare">The same April in the other pilot districts</h3>
+        <div id="evidence-compare"></div>
+        <h3 id="april-title" data-i18n="april.title">Thirty Aprils</h3>
+        <p data-i18n="april.body">Cumulative excess ET₀ for each April, 1994–2024. The marked bar is 2024.</p>
+        <div id="april-switch" class="chips" role="group"></div>
+        <div id="april-chart" class="chart-wrap"></div>
+        <p class="small" data-i18n="april.note">April only. Other months are not computed.</p>
+      </div>
+    </section>
+
+    <section class="section" id="story-blind" aria-labelledby="blind-title">
+      <h2 id="blind-title" data-i18n="timeline.title">Thirsty, not hot</h2>
+      <p data-i18n="timeline.framing">ET0 above its p90 while Tmax stayed below its own p90</p>
+      <p id="timeline-hero"></p>
+      <div id="timeline-filters" class="chips"></div>
+      <p id="timeline-count" class="small"></p>
+      <div id="timeline-list" class="timeline"></div>
+      <div id="timeline-detail"></div>
+    </section>
+
+<section class="section" aria-labelledby="pilots-title">
+      <h2 id="pilots-title" data-i18n="pilots.title">Pilot districts</h2>
+      <div id="pilot-grid" class="pilot-grid" aria-live="polite">
+        <div class="skeleton" style="height:140px"></div>
+        <div class="skeleton" style="height:140px"></div>
+        <div class="skeleton" style="height:140px"></div>
+      </div>
+    </section>
+
+<section class="section" aria-labelledby="try-title">
+      <h2 id="try-title" data-i18n="try.title">Try a question</h2>
+      <p data-i18n="try.body">These open the map with the chat pre-filled. Nothing is sent until you press Ask.</p>
+      <div class="chips" id="try-chips"></div>
+    </section>
+
+<section class="section" aria-labelledby="what-title">
       <h2 id="what-title" data-i18n="explainer.title">What is a thirstwave?</h2>
       <div class="steps">
         <article class="card">
@@ -109,33 +167,12 @@
       </div>
     </section>
 
-    <section class="evidence" aria-labelledby="evidence-title">
-      <div class="evidence-inner">
-        <p class="eyebrow" data-i18n="evidence.kicker">Historical replay · April 2024 · ERA5</p>
-        <h2 id="evidence-title" data-i18n="evidence.title">Bengaluru Urban, April 2024</h2>
-        <div id="evidence-stats" class="stat-grid" aria-live="polite">
-          <div class="skeleton" style="height:92px"></div>
-          <div class="skeleton" style="height:92px"></div>
-          <div class="skeleton" style="height:92px"></div>
-          <div class="skeleton" style="height:92px"></div>
-        </div>
-        <div class="chart-card">
-          <div id="evidence-chart" class="chart-wrap" aria-busy="true"></div>
-          <p class="small" data-i18n="evidence.legend">Hatched bar: ET₀ above p90. Dashed line: day-of-year p90.</p>
-        </div>
-        <p id="evidence-tmax" class="small"></p>
-        <p class="framing" data-i18n="evidence.framing">Bengaluru's 2024 crisis was a supply failure. We don't claim thirstwaves caused it. We show the demand side nobody was measuring.</p>
-        <h3 data-i18n="evidence.compare">The same April in the other pilot districts</h3>
-        <div id="evidence-compare"></div>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="why-title">
+<section class="section" aria-labelledby="why-title">
       <h2 id="why-title" data-i18n="why.title">Why it matters</h2>
       <div class="why-grid">
         <div>
           <p data-i18n="why.body">Heat alerts say the air is hot. ThirstCast says how much faster water is leaving the surface, in litres, for a farmer, a lake manager and a city.</p>
-          <p data-i18n="why.paper">For US cropland, 1981–2021, the research found statistically significant increasing trends over 17% of cropland area for intensity, 7% for frequency and 23% for duration.</p>
+          <blockquote lang="en" cite="https://doi.org/10.1029/2024EF004870" data-i18n="why.paper">Weighted for cropland area harvested, thirstwave intensity, duration, and frequency have increased by 0.06 mm d⁻¹ decade⁻¹, 0.10 days decade⁻¹, and 0.39 events decade⁻¹, respectively during 1981–2021. Statistically significant trends appear across 17%, 7%, and 23% of cropland area for intensity, frequency, and duration.</blockquote>
           <p class="small"><a href="https://doi.org/10.1029/2024EF004870">Kukal &amp; Hobbins 2025, Earth's Future</a></p>
         </div>
         <blockquote>
@@ -145,7 +182,7 @@
       </div>
     </section>
 
-    <section class="section" aria-labelledby="how-title">
+<section class="section" aria-labelledby="how-title">
       <h2 id="how-title" data-i18n="how.title">How it works</h2>
       <div class="arch" aria-label="Pipeline">
         <div class="arch-step"><strong data-i18n="how.s1">Open-Meteo</strong><span data-i18n="how.s1b">Forecast and ERA5 archive</span></div>
@@ -171,7 +208,7 @@
       </div>
     </section>
 
-    <section class="section" aria-labelledby="features-title">
+<section class="section" aria-labelledby="features-title">
       <h2 id="features-title" data-i18n="features.title">What you can do</h2>
       <div class="feature-grid">
         <article class="card"><h3 data-i18n="features.f1t">Live map</h3><p data-i18n="features.f1"></p></article>
@@ -184,22 +221,7 @@
       </div>
     </section>
 
-    <section class="section" aria-labelledby="pilots-title">
-      <h2 id="pilots-title" data-i18n="pilots.title">Pilot districts</h2>
-      <div id="pilot-grid" class="pilot-grid" aria-live="polite">
-        <div class="skeleton" style="height:140px"></div>
-        <div class="skeleton" style="height:140px"></div>
-        <div class="skeleton" style="height:140px"></div>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="try-title">
-      <h2 id="try-title" data-i18n="try.title">Try a question</h2>
-      <p data-i18n="try.body">These open the map with the chat pre-filled. Nothing is sent until you press Ask.</p>
-      <div class="chips" id="try-chips"></div>
-    </section>
-
-    <section class="section" aria-labelledby="api-title">
+<section class="section" aria-labelledby="api-title">
       <h2 id="api-title" data-i18n="api.title">Open data and API</h2>
       <p data-i18n="api.body">The same JSON the map reads. Replace $API with the deployed ApiUrl, without a trailing slash.</p>
       <div class="code-head">
@@ -218,7 +240,7 @@ curl -X POST "$API/ask" -H 'content-type: application/json' \
       <pre class="snippet" id="json-block"></pre>
     </section>
 
-    <section class="section" aria-labelledby="limits-title">
+<section class="section" aria-labelledby="limits-title">
       <h2 id="limits-title" data-i18n="limits.title">Honest limits</h2>
       <ul class="limits">
         <li data-i18n="limits.l1"></li>
@@ -228,7 +250,7 @@ curl -X POST "$API/ask" -H 'content-type: application/json' \
       </ul>
     </section>
 
-    <section class="section" aria-labelledby="team-title">
+<section class="section" aria-labelledby="team-title">
       <h2 id="team-title" data-i18n="team.title">Team LLF</h2>
       <div class="team-grid">
         <article class="card"><h3>Aneek Das</h3><p data-i18n="team.lead">Lead</p><p class="placeholder" data-i18n="team.placeholder">Profile link coming soon</p></article>

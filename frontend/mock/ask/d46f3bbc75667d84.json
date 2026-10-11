@@ -1,0 +1,11 @@
+{
+ "answer": "कोलार, अगले 7 दिन: 0 दिन गर्मी और प्यास दोनों अपने p90 से ऊपर, 0 दिन सिर्फ़ प्यास (ET0) और 3 दिन सिर्फ़ गर्मी (Tmax) ऊपर रहने का अनुमान है. प्यास वाले दिनों में तापमान अलर्ट अकेले पूरी तस्वीर नहीं दिखाते.\n\n[टेम्पलेट सलाह (नॉन-LLM मोड)]",
+ "lang": "hi",
+ "mode": "template",
+ "tools_used": [
+  "get_status",
+  "compare_with_heat"
+ ],
+ "district": "Kolar",
+ "caveat": "Estimates only. District-centroid estimate (~10 km grid)"
+}

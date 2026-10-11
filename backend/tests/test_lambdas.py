@@ -127,7 +127,7 @@ def test_detector_replay_does_not_touch_status(aws):
 def test_api_before_detector_runs(aws):
     api = load("api")
     t = json.loads(api.lambda_handler({"routeKey": "GET /thirstwave/{district}", "pathParameters": {"district": "Kolar"}}, None)["body"])
-    assert t["status"] == "NONE" and t["forecast"] == [] and "detector has not run" in t["note"]
+    assert t["status"] == "UNKNOWN" and t["forecast"] == [] and "detector has not run" in t["note"]
     d = json.loads(api.lambda_handler({"routeKey": "GET /districts"}, None)["body"])
     assert {x["status"] for x in d["districts"]} == {"UNKNOWN"}
 

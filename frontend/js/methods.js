@@ -1,4 +1,5 @@
-import { bindLangToggle, initI18n, initTheme, onLang, t } from "./i18n.js";
+import { bindLangToggle, getLang, initI18n, initTheme, onLang, t } from "./i18n.js";
+import { initPwa, warmPwa } from "./pwa.js";
 
 const SOURCES = [
   ["Kukal & Hobbins 2025, Earth's Future", "https://doi.org/10.1029/2024EF004870"],
@@ -23,7 +24,21 @@ async function render() {
     if (!res.ok) throw new Error(String(res.status));
     const markdown = await res.text();
     if (!window.marked) throw new Error("marked");
-    doc.innerHTML = window.marked.parse(markdown);
+    doc.replaceChildren();
+    if (getLang() !== "en") {
+      const note = document.createElement("p");
+      note.className = "note";
+      note.id = "english-notice";
+      note.textContent = t("app.englishNotice");
+      doc.appendChild(note);
+    }
+    const body = document.createElement("div");
+    if (getLang() !== "en") {
+      body.className = "english-source";
+      body.lang = "en";
+    }
+    body.innerHTML = window.marked.parse(markdown);
+    doc.appendChild(body);
     doc.querySelectorAll("img").forEach((img) => {
       if (!img.getAttribute("alt")) img.alt = "Chart from the methods note";
     });
@@ -39,25 +54,31 @@ async function render() {
       heading.id = id;
       links.push(`<a href="#${id}">${heading.textContent}</a>`);
     });
-    nav.innerHTML = `<strong>${t("methods.onThisPage")}</strong>${links.join("")}`;
+    const outline = links.length
+      ? `<div class="english-source" lang="en">${links.join("")}</div>`
+      : "";
+    nav.innerHTML = `<strong>${t("methods.onThisPage")}</strong>${outline}`;
   } catch (err) {
     doc.textContent = t("methods.fail", { message: err.message });
   }
 }
 
 async function boot() {
+  initPwa();
   bindLangToggle();
   await initI18n("meta.methodsTitle");
   initTheme();
   const desc = document.querySelector('meta[name="description"]');
   if (desc) desc.content = t("meta.methodsDescription");
   const list = document.getElementById("source-list");
+  list.lang = "en";
   list.innerHTML = SOURCES.map(([label, href]) => `<a href="${href}">${label}</a>`).join("");
   onLang(() => {
     document.title = t("meta.methodsTitle");
     render();
   });
   await render();
+  warmPwa();
 }
 
 boot();

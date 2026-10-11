@@ -28,15 +28,25 @@ def _llm_answer(question, district, lang):
     return str(result).strip()
 
 
+def resolve_district(question, hint=None):
+    """A district named in the question wins. The hint is used only when the question names none."""
+    named = find_district(question)
+    if named:
+        return named
+    if hint in tools.VALID:
+        return hint
+    return None
+
+
 def handle_ask(question, district=None, repo=None, mode="llm", time_budget_s=None):
     question = (question or "").strip()[:MAX_QUESTION]
     if repo is not None:
         tools.set_repo(repo)
     lang = detect_lang(question)
-    did = district if district in tools.VALID else find_district(question)
+    did = resolve_district(question, district)
     use_llm = mode == "llm" and os.environ.get("MODEL_PROVIDER", "none").lower() != "none"
     if not use_llm:
-        return fallback.answer(question, district, lang=lang)
+        return fallback.answer(question, did, lang=lang)
 
     budget = float(time_budget_s or os.environ.get("AGENT_TIME_BUDGET_S", "20"))
     used = []
@@ -57,4 +67,4 @@ def handle_ask(question, district=None, repo=None, mode="llm", time_budget_s=Non
         log.warning("agent error %r, using template", e)
     finally:
         tools.TOOLS_USED.reset(token)
-    return fallback.answer(question, district, lang=lang)
+    return fallback.answer(question, did, lang=lang)

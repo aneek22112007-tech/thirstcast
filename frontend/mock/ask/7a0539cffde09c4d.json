@@ -1,0 +1,10 @@
+{
+ "answer": "बेंगलुरु अर्बन, अगले 7 दिनों में अतिरिक्त वाष्पीकरण (0.3 मिमी अतिरिक्त ET0 पर): Bellandur: लगभग 11,94,227 लीटर (अनुमान, ऊपरी सीमा); Varthur: लगभग 5,88,504 लीटर (अनुमान, ऊपरी सीमा).\n\n[टेम्पलेट सलाह (नॉन-LLM मोड)]",
+ "lang": "hi",
+ "mode": "template",
+ "tools_used": [
+  "get_status"
+ ],
+ "district": "Bengaluru_Urban",
+ "caveat": "Estimates only. District-centroid estimate (~10 km grid)"
+}

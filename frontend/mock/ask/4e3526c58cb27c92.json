@@ -1,0 +1,11 @@
+{
+ "answer": "2 acre(s) of paddy in Mandya may need about 5,944–7,265 litres of extra water over the next 7 days (estimate; excess ET0 0.7 mm, Kc 1.2 ±10%).\n\n[Template advisory (non-LLM mode)]",
+ "lang": "en",
+ "mode": "template",
+ "tools_used": [
+  "get_status",
+  "water_gap"
+ ],
+ "district": "Mandya",
+ "caveat": "Estimates only. District-centroid estimate (~10 km grid)"
+}

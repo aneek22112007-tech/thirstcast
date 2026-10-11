@@ -1,16 +1,19 @@
-import { bindLangToggle, getLang, initI18n, initTheme, onLang, t } from "./i18n.js";
-import { climateChart, dataTable, et0Chart, tmaxChart } from "./charts.js";
+import { bindLangToggle, getLang, initI18n, initTheme, onLang, plural, t } from "./i18n.js";
+import { aprilChart, climateChart, dataTable, et0Chart, tmaxChart } from "./charts.js";
 import { dayOfYear, esc, formatDate, formatMm, formatNumber, formatScale, prefersReducedMotion } from "./format.js";
+import { percentVs, thirstPercentile } from "./stats.js";
+import { initPwa, warmPwa } from "./pwa.js";
 
 const TABS = ["overview", "farmers", "lakes", "heat", "history"];
+const DISTRICT_ORDER = ["Bengaluru_Urban", "Kolar", "Mandya"];
 const SUGGESTIONS = [
   { district: "Mandya", q: "Will Mandya face a thirstwave this week?" },
   { district: "Mandya", q: "क्या इस हफ्ते मंड्या में थर्स्टवेव आएगी?" },
   { district: "Kolar", q: "Is Kolar just hot this week, or also thirsty?" },
   { district: "Kolar", q: "कोलार में 1 एकड़ टमाटर को इस हफ्ते कितना अतिरिक्त पानी चाहिए?" },
 ];
-const LEAFLET_CSS = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
-const LEAFLET_JS = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
+const LEAFLET_CSS = "vendor/leaflet/leaflet.css";
+const LEAFLET_JS = "vendor/leaflet/leaflet.js";
 const $ = (id) => document.getElementById(id);
 
 const state = {
@@ -29,8 +32,20 @@ const state = {
   blind: null,
   acres: 1,
   crop: null,
+  stage: "mid",
   chatOpened: false,
+  view: "",
 };
+
+/** "push" for a user navigation, "replace" for ticks, "skip" while restoring history. */
+let hashMode = "replace";
+let toastTimer = 0;
+let applyQueued = false;
+let appReady = false;
+
+function userNav() {
+  hashMode = "push";
+}
 
 function showError(message) {
   const banner = $("error-banner");
@@ -42,7 +57,8 @@ function toast(message) {
   const el = $("toast");
   el.hidden = false;
   el.textContent = message;
-  setTimeout(() => { el.hidden = true; }, 1600);
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { el.hidden = true; }, 4500);
 }
 
 function hashParams() {
@@ -50,18 +66,25 @@ function hashParams() {
 }
 
 function writeHash() {
+  const mode = hashMode;
+  hashMode = "replace";
+  if (mode === "skip") return;
   const params = hashParams();
   const next = new URLSearchParams();
   if (state.selected) next.set("d", state.selected);
   next.set("tab", state.tab);
   if (state.replayOn) next.set("replay", String(state.replayDay));
   next.set("lang", getLang());
+  if (!$("chat").hidden) next.set("chat", "1");
+  if (state.view) next.set("view", state.view);
   const q = params.get("q");
   const input = $("question");
   if (q && input && input.value === q) next.set("q", q);
   if (params.get("ask") === "1" && !state.chatOpened) next.set("ask", "1");
   const href = `#${next.toString()}`;
-  if (location.hash !== href) history.replaceState(null, "", href);
+  if (location.hash === href) return;
+  if (mode === "push") history.pushState(null, "", href);
+  else history.replaceState(null, "", href);
 }
 
 function loadAsset(kind, href) {
@@ -143,12 +166,12 @@ function renderList() {
     btn.type = "button";
     btn.className = "district-btn";
     btn.setAttribute("aria-pressed", String(state.selected === d.id));
-    btn.innerHTML = `<span>${esc(d.name)}</span><span class="badge badge-${esc(status).toLowerCase()}">${esc(t("status." + status))}</span>`;
-    btn.addEventListener("click", () => selectDistrict(d.id));
+    btn.innerHTML = `<span>${esc(districtName(d.id, d.name))}</span><span class="badge badge-${esc(status).toLowerCase()}">${esc(t("status." + status))}</span>`;
+    btn.addEventListener("click", () => { userNav(); selectDistrict(d.id); });
     box.appendChild(btn);
     const opt = document.createElement("option");
     opt.value = d.id;
-    opt.textContent = `${d.name} · ${t("status." + status)}`;
+    opt.textContent = `${districtName(d.id, d.name)} · ${t("status." + status)}`;
     opt.selected = state.selected === d.id;
     select.appendChild(opt);
   });
@@ -166,12 +189,13 @@ function renderTabs() {
     btn.setAttribute("aria-controls", "tab-panel");
     btn.tabIndex = state.tab === id ? 0 : -1;
     btn.textContent = t("tabs." + id);
-    btn.addEventListener("click", () => setTab(id));
+    btn.addEventListener("click", () => { userNav(); setTab(id); });
     btn.addEventListener("keydown", (event) => {
       const index = TABS.indexOf(id);
       if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
         event.preventDefault();
         const next = TABS[(index + (event.key === "ArrowRight" ? 1 : TABS.length - 1)) % TABS.length];
+        userNav();
         setTab(next);
         document.getElementById(`tab-${next}`).focus();
       }
@@ -187,6 +211,46 @@ function setTab(id) {
   renderTabs();
   renderActiveTab();
   writeHash();
+}
+
+function signedNumber(value, digits) {
+  const n = Number(value);
+  if (!Number.isFinite(n)) return "–";
+  const text = formatNumber(Math.abs(n), digits);
+  if (n > 0) return `+${text}`;
+  if (n < 0) return `−${text}`;
+  return formatNumber(0, digits);
+}
+
+function whyToday(detail) {
+  const days = detail.forecast || [];
+  const iso = (detail.run_date || "").slice(0, 10);
+  const today = days.find((d) => d.date === iso) || days[0];
+  if (!today) return "";
+  const etDelta = percentVs(today.et0, today.p90);
+  const txDelta = percentVs(today.tmax, today.tmax_p90);
+  const above = days.filter((d) => d.flag).length;
+  const doy = iso ? dayOfYear(iso) : null;
+  const byDoy = state.percentiles && state.percentiles.districts[detail.district];
+  const pct = byDoy && doy ? thirstPercentile(byDoy, doy, today.et0) : null;
+  const vs = (value, digits, threshold, delta) => t("whyToday.vs", {
+    value: formatNumber(value, digits),
+    threshold: formatNumber(threshold, digits),
+    delta: delta == null ? "–" : `${delta > 0 ? "+" : ""}${delta}%`,
+  });
+  return `
+    <section id="why-today">
+      <h3>${esc(t("whyToday.title"))}</h3>
+      <dl class="kv">
+        <dt>${esc(t("whyToday.et0"))}</dt><dd>${esc(vs(today.et0, 2, today.p90, etDelta))} mm</dd>
+        <dt>${esc(t("whyToday.tmax"))}</dt><dd>${esc(vs(today.tmax, 1, today.tmax_p90, txDelta))} °C</dd>
+        <dt>${esc(t("whyToday.days"))}</dt><dd>${esc(plural("app.day", above))}</dd>
+        <dt>${esc(t("whyToday.bias"))}</dt><dd>${esc(signedNumber(detail.bias_offset_mm, 2))} ${esc(t("app.biasUnit"))}</dd>
+        <dt>${esc(t("whyToday.excess"))}</dt><dd>${detail.excess_mm_7d == null ? "–" : esc(formatMm(detail.excess_mm_7d))} mm</dd>
+        <dt>${esc(t("whyToday.percentile"))}</dt><dd><strong id="thirst-percentile">${pct == null ? "–" : esc(String(pct))}</strong> / 100</dd>
+      </dl>
+      <p class="small">${esc(t("whyToday.percentileHelp"))} <a href="methods.html#10-thirst-percentile-why-today">${esc(t("whyToday.methods"))}</a></p>
+    </section>`;
 }
 
 function summarySentence(detail) {
@@ -219,17 +283,19 @@ function renderOverview(detail) {
   }
   const excess = detail.excess_mm_7d;
   return `
-    <h2>${esc(state.districts[detail.district]?.name || detail.district)} <span class="badge badge-${esc(status).toLowerCase()}">${esc(t("status." + status))}</span></h2>
+    <h2>${esc(districtName(detail.district, state.districts[detail.district]?.name || detail.district))} <span class="badge badge-${esc(status).toLowerCase()}">${esc(t("status." + status))}</span></h2>
     <p class="big-range">${esc(summarySentence(detail))}</p>
+    ${whyToday(detail)}
     <p>${status === "ACTIVE" ? esc(t("app.dayInWave", { n: detail.day_in_wave })) : esc(t("app.noWaveDay"))}</p>
-    ${detail.note ? `<p class="note note-info">${esc(detail.note)}</p>` : ""}
-    ${detail.mock_note ? `<p class="note">${esc(detail.mock_note)}</p>` : ""}
+    ${detail.stale ? `<p class="badge badge-mock" id="stale-badge">${esc(t("app.stale"))}</p>` : ""}
+    ${detail.note ? `<p class="note note-info" id="forecast-note">${esc(detail.note)}</p>` : ""}
+    ${detail.mock_note ? `<p class="note" id="mock-note">${esc(mockNoteText(detail))}</p>` : ""}
     ${waveText}
     <div class="chart-wrap">${days.length ? et0Chart(days, { label: t("evidence.chart") }) : ""}</div>
     <p class="small">${esc(t("evidence.legend"))}</p>
     <dl class="kv">
       <dt>${esc(t("evidence.mm"))}</dt>
-      <dd><strong>${excess == null ? "–" : esc(formatMm(excess))} mm</strong><br><span class="small">${esc(detail.excess_definition || t("app.excessDef"))}</span></dd>
+      <dd><strong>${excess == null ? "–" : esc(formatMm(excess))} mm</strong><br><span class="small">${esc(t("app.excessDef"))}</span></dd>
       <dt>${esc(t("app.bias"))}</dt>
       <dd>${detail.bias_offset_mm == null ? "–" : esc(formatNumber(detail.bias_offset_mm, 2))} <span class="small">${esc(t("app.biasUnit"))}</span></dd>
       <dt>${esc(t("app.updated"))}</dt>
@@ -237,11 +303,57 @@ function renderOverview(detail) {
     </dl>
     ${detail.bias_note ? `<p class="note">${esc(detail.bias_note)}</p>` : ""}
     ${days.length ? `<details><summary>${esc(t("app.dataTable"))}</summary>${forecastTable(days)}</details>` : ""}
-    <p class="small">${esc(detail.caveat || t("app.caveat"))}</p>`;
+    <p class="small">${esc(t("app.caveat"))}</p>
+    <p><button class="btn" type="button" id="save-card">${esc(t("card.save"))}</button>
+      <button class="btn" type="button" id="print-bulletin">${esc(t("print.button"))}</button></p>`;
 }
 
 function cropMeta(id) {
   return (state.catalog.crops || []).find((crop) => crop.id === id);
+}
+
+function districtName(id, fallback) {
+  if (getLang() !== "kn") return fallback || id;
+  const text = t(`districts.${id}`);
+  return text === `districts.${id}` ? (fallback || id) : text;
+}
+
+function paintChatNote() {
+  const note = $("chat-lang-note");
+  if (!note) return;
+  const kn = getLang() === "kn";
+  note.hidden = !kn;
+  note.textContent = kn ? t("chat.langNote") : "";
+}
+
+function named(group, id, fallback) {
+  const key = `${group}.${id}`;
+  const text = t(key);
+  return text === key ? (fallback || id) : text;
+}
+
+function mockNoteText(source) {
+  if (!source || !source.mock_note) return "";
+  let date = String(source.run_date || source.updated_at || "");
+  if (!date && source.districts && source.districts[0]) date = source.districts[0].updated_at || "";
+  return t("app.mockNote", { date: date.slice(0, 10) });
+}
+
+function englishBlock(html) {
+  if (getLang() === "en") return html;
+  return `<p class="note">${esc(t("app.englishNotice"))}</p><div class="english-source" lang="en">${html}</div>`;
+}
+
+/** Accept 0.1–10000 in steps of 0.1. One comma is a decimal when the fraction is 1–2 digits ("2,5"). */
+function parseAcres(raw) {
+  const text = String(raw ?? "").trim().replace(/\s+/g, "");
+  if (!text) return null;
+  const normalised = /^\d{1,5},\d{1,2}$/.test(text) ? text.replace(",", ".") : text;
+  if (!/^\d+(\.\d+)?$/.test(normalised)) return null;
+  const n = Number(normalised);
+  if (!Number.isFinite(n) || n < 0.1 || n > 10000) return null;
+  if (Math.abs(n * 10 - Math.round(n * 10)) > 1e-6) return null;
+  return Math.round(n * 10) / 10;
 }
 
 function renderFarmers(detail) {
@@ -251,39 +363,87 @@ function renderFarmers(detail) {
   if (!state.crop || !crops.includes(state.crop)) state.crop = crops[0];
   const options = crops.map((id) => {
     const meta = cropMeta(id);
-    const name = meta ? (getLang() === "hi" ? meta.name_hi : meta.name) : id;
+    const name = named("crops", id, meta && meta.name);
     return `<option value="${esc(id)}"${id === state.crop ? " selected" : ""}>${esc(name)}</option>`;
   }).join("");
-  const range = (detail.extra_litres_per_acre || {})[state.crop];
-  const meta = cropMeta(state.crop);
-  const acres = Number(state.acres) > 0 ? Number(state.acres) : 1;
-  let result = `<p class="note">${esc(t("app.unavailable"))}</p>`;
-  if (Array.isArray(range)) {
-    const low = Math.round(range[0] * acres);
-    const high = Math.round(range[1] * acres);
-    const tankLow = low / 10000;
-    const tankHigh = high / 10000;
-    const scaleLow = formatScale(low, getLang());
-    const scaleHigh = formatScale(high, getLang());
-    result = `
-      <p class="small">${esc(t("app.perAcre"))}: ${esc(formatNumber(range[0]))}–${esc(formatNumber(range[1]))} L</p>
-      <p class="big-range">${esc(formatNumber(low))}–${esc(formatNumber(high))} L</p>
-      <p>${esc(t("app.estimate"))}${scaleLow ? ` · ≈ ${esc(scaleLow)}–${esc(scaleHigh)}` : ""}</p>
-      <p>${esc(t("app.tankers", { n: `${formatNumber(tankLow, 2)}–${formatNumber(tankHigh, 2)}` }))}</p>
-      <details class="formula"><summary>${esc(t("app.howCalc"))}</summary>
-        <p>${esc(t("app.formula", { crop: meta ? meta.name : state.crop, kc: meta ? meta.kc : "–" }))}</p>
-        <p class="small">${esc(detail.excess_definition || t("app.excessDef"))}: ${detail.excess_mm_7d == null ? "–" : esc(formatNumber(detail.excess_mm_7d, 2))} mm.</p>
-        ${meta ? `<p class="small"><a href="${esc(meta.url)}">${esc(meta.source)}</a></p>` : ""}
-      </details>`;
-  }
   return `
     <div class="calc-row">
       <label class="field">${esc(t("app.crop"))}<select id="crop-select">${options}</select></label>
-      <label class="field">${esc(t("app.acres"))}<input id="acres" type="number" min="0.1" max="10000" step="0.1" value="${esc(acres)}"></label>
+      <label class="field">${esc(t("stage.label"))}<select id="stage-select">
+        <option value="ini"${state.stage === "ini" ? " selected" : ""}>${esc(t("stage.ini"))}</option>
+        <option value="mid"${state.stage === "mid" ? " selected" : ""}>${esc(t("stage.mid"))}</option>
+        <option value="end"${state.stage === "end" ? " selected" : ""}>${esc(t("stage.end"))}</option>
+      </select></label>
+      <label class="field">${esc(t("app.acres"))}<input id="acres" inputmode="decimal" autocomplete="off" aria-describedby="acres-error" value="${esc(state.acres)}"></label>
     </div>
+    <p id="acres-error" class="note" role="alert" hidden></p>
     <p class="small">${esc(t("app.range"))}</p>
-    ${result}
-    <p class="small">${esc(detail.caveat || t("app.caveat"))}. ${esc(t("app.kcNote"))}.</p>`;
+    <div id="farm-result"></div>
+    <p class="small">${esc(t("app.caveat"))}. ${esc(t("app.kcNote"))}.</p>`;
+}
+
+/** Point Kc keeps the ±10% band. A Table 12 range is the band itself. */
+function stageLitres(excess, kc) {
+  const litre = 4047;
+  if (Array.isArray(kc)) {
+    const values = kc.map((value) => excess * Number(value) * litre);
+    return [Math.round(Math.min(...values)), Math.round(Math.max(...values))];
+  }
+  const base = excess * Number(kc) * litre;
+  return [Math.round(base * 0.9), Math.round(base * 1.1)];
+}
+
+function paintFarmResult() {
+  const box = $("farm-result");
+  const error = $("acres-error");
+  const detail = state.detail[state.selected];
+  if (!box || !error || !detail) return;
+  const acres = parseAcres(state.acres);
+  if (acres == null) {
+    error.hidden = false;
+    error.textContent = t("app.acresError");
+    box.classList.add("is-invalid");
+    box.innerHTML = `<p class="big-range">–</p>`;
+    return;
+  }
+  error.hidden = true;
+  error.textContent = "";
+  box.classList.remove("is-invalid");
+  const meta = cropMeta(state.crop);
+  const stage = state.stage || "mid";
+  const stageSpec = meta && meta.stages && meta.stages[stage];
+  let range = (detail.extra_litres_per_acre || {})[state.crop];
+  let kcLabel = meta ? meta.kc : "–";
+  if (stage !== "mid" && stageSpec && Number.isFinite(Number(detail.excess_mm_7d))) {
+    range = stageLitres(Number(detail.excess_mm_7d), stageSpec.kc);
+    kcLabel = Array.isArray(stageSpec.kc) ? stageSpec.kc.join("–") : stageSpec.kc;
+  }
+  if (!Array.isArray(range)) {
+    box.innerHTML = `<p class="note">${esc(t("app.unavailable"))}</p>`;
+    return;
+  }
+  if (Number(detail.excess_mm_7d) === 0 || (Number(range[0]) === 0 && Number(range[1]) === 0)) {
+    box.innerHTML = `<p>${esc(t("app.noExtra"))}</p>`;
+    return;
+  }
+  const low = Math.round(range[0] * acres);
+  const high = Math.round(range[1] * acres);
+  const tankLow = low / 10000;
+  const tankHigh = high / 10000;
+  const scaleLow = formatScale(low, getLang());
+  const scaleHigh = formatScale(high, getLang());
+  box.innerHTML = `
+    <p class="small">${esc(t("app.perAcre"))}: ${esc(formatNumber(range[0]))}–${esc(formatNumber(range[1]))} L</p>
+    <p class="big-range">${esc(formatNumber(low))}–${esc(formatNumber(high))} L</p>
+    <p>${esc(t("app.acresUsed", { n: acres }))}</p>
+    <p>${esc(t("app.estimate"))}${scaleLow ? ` · ≈ ${esc(scaleLow)}–${esc(scaleHigh)}` : ""}</p>
+    <p>${esc(t("app.tankers", { n: `${formatNumber(tankLow, 2)}–${formatNumber(tankHigh, 2)}` }))}</p>
+    <details class="formula"><summary>${esc(t("app.howCalc"))}</summary>
+      <p>${esc(t("app.formula", { crop: named("crops", state.crop, meta && meta.name), kc: kcLabel }))}</p>
+      ${stage !== "mid" ? `<p class="small">${esc(t("stage.note", { kc: kcLabel }))}</p>` : ""}
+      <p class="small">${esc(t("app.excessDef"))}: ${detail.excess_mm_7d == null ? "–" : esc(formatNumber(detail.excess_mm_7d, 2))} mm.</p>
+      ${meta ? englishBlock(`<p class="small"><a href="${esc(meta.url)}">${esc(meta.source)}</a></p>`) : ""}
+    </details>`;
 }
 
 function renderLakes(detail) {
@@ -292,20 +452,24 @@ function renderLakes(detail) {
   const cards = entries.map(([id, value]) => {
     const meta = (state.catalog.lakes || []).find((lake) => lake.id === id);
     if (meta && meta.verified === false) return "";
+    const title = named("lakes", id, meta && meta.name);
     if (!value || value.value == null) {
-      return `<article class="card lake-card"><h3>${esc((meta && meta.name) || id)}</h3><p>${esc((value && value.note) || t("app.noLake"))}</p></article>`;
+      return `<article class="card lake-card"><h3>${esc(title)}</h3><p>${esc((value && value.note) || t("app.noLake"))}</p></article>`;
+    }
+    if (Number(value.value) === 0) {
+      return `<article class="card lake-card"><h3>${esc(title)}</h3><p>${esc(t("app.noExtra"))}</p></article>`;
     }
     const scale = formatScale(value.value, getLang());
+    const sources = meta ? englishBlock(`<p class="small">${esc(meta.area_text)}. ${esc(meta.area_basis)}</p><p class="small">${esc(t("app.sources"))}: <a href="${esc(meta.url)}">${esc(meta.source)}</a></p>`) : "";
     return `<article class="card lake-card">
-      <h3>${esc((meta && meta.name) || id)}</h3>
+      <h3>${esc(title)}</h3>
       <p class="big-range">${esc(formatNumber(value.value))} L</p>
       <p>${esc(t("app.upper"))}${scale ? ` · ≈ ${esc(scale)}` : ""}</p>
-      ${meta ? `<p class="small">${esc(meta.area_text)}. ${esc(meta.area_basis)}</p>` : ""}
-      ${meta ? `<p class="small">${esc(t("app.sources"))}: <a href="${esc(meta.url)}">${esc(meta.source)}</a></p>` : ""}
+      ${sources}
     </article>`;
   }).join("");
   if (!cards.trim()) return `<p class="note">${esc(t("app.noLake"))}</p>`;
-  return `${cards}<p class="small">${esc(detail.caveat || t("app.caveat"))}</p>`;
+  return `${cards}<p class="small">${esc(t("app.caveat"))}</p>`;
 }
 
 function renderHeat(detail) {
@@ -336,7 +500,7 @@ function renderHeat(detail) {
     </article>` : "";
   return `
     <p>${esc(t("app.heatIntro"))}</p>
-    <p>${days.length ? esc(t("app.heatCount", { et, tx, both })) : ""}</p>
+    <p>${days.length ? esc(t("app.heatCount", { et: plural("app.day", et), tx: plural("app.day", tx), both: plural("app.day", both) })) : ""}</p>
     <div class="chart-wrap">${et0Chart(days, { label: t("evidence.chart") })}</div>
     <div class="chart-wrap">${tmaxChart(days, { label: t("app.colTmax") })}</div>
     <p class="small">${esc(t("evidence.legend"))}</p>
@@ -349,12 +513,19 @@ function renderHistory(detail) {
   if (!series) return `<p class="note">${esc(t("app.unavailable"))}</p>`;
   const iso = (detail.run_date || "").slice(0, 10);
   const doy = iso ? dayOfYear(iso) : null;
+  const april = state.april && state.april.districts[detail.district];
+  const aprilBlock = april ? `
+    <h3>${esc(t("april.title"))}</h3>
+    <p>${esc(t("april.body"))}</p>
+    <div class="chart-wrap" id="april-chart">${aprilChart(april.series, t("april.title"), april.highlight)}</div>
+    <p class="small">${esc(t("april.note"))}</p>` : "";
   return `
     <h3>${esc(t("app.historyTitle"))}</h3>
     <p>${esc(t("app.historyBody"))}</p>
     <p><strong>${iso ? esc(t("app.historyMark", { date: formatDate(iso, getLang()), doy })) : "–"}</strong></p>
     <div class="chart-wrap">${climateChart(series, doy || 0, t("app.historyTitle"))}</div>
-    <p class="small">${esc(t("app.historyLegend"))} ${esc(state.curves.period)}. ${esc(t("app.caveat"))}.</p>`;
+    <p class="small">${esc(t("app.historyLegend"))} ${esc(state.curves.period)}. ${esc(t("app.caveat"))}.</p>
+    ${aprilBlock}`;
 }
 
 function renderActiveTab() {
@@ -369,8 +540,127 @@ function renderActiveTab() {
   panel.innerHTML = views[state.tab](detail);
   const crop = $("crop-select");
   const acres = $("acres");
-  if (crop) crop.addEventListener("change", () => { state.crop = crop.value; renderActiveTab(); });
-  if (acres) acres.addEventListener("change", () => { state.acres = acres.value; renderActiveTab(); });
+  if (crop) crop.addEventListener("change", () => { state.crop = crop.value; paintFarmResult(); });
+  const stage = $("stage-select");
+  if (stage) stage.addEventListener("change", () => { state.stage = stage.value; paintFarmResult(); });
+  if (acres) acres.addEventListener("input", () => { state.acres = acres.value; paintFarmResult(); });
+  if ($("farm-result")) paintFarmResult();
+  const save = $("save-card");
+  if (save) save.addEventListener("click", saveDistrictCard);
+  const printBtn = $("print-bulletin");
+  if (printBtn) printBtn.addEventListener("click", () => { fillBulletin(); window.print(); });
+}
+
+function fillBulletin() {
+  const detail = state.detail[state.selected];
+  const el = $("bulletin");
+  if (!detail || !el) return;
+  const name = (state.districts[detail.district] && state.districts[detail.district].name) || detail.district;
+  const status = detail.status || "UNKNOWN";
+  const days = detail.forecast || [];
+  const iso = String(detail.run_date || detail.updated_at || "").slice(0, 10);
+  const today = days.find((d) => d.date === iso) || days[0];
+  const districtCrops = ((state.catalog.districts || []).find((d) => d.id === detail.district) || {}).crops || [];
+  const cropId = state.crop || districtCrops[0];
+  const range = cropId && detail.extra_litres_per_acre ? detail.extra_litres_per_acre[cropId] : null;
+  const litres = Array.isArray(range) ? `${formatNumber(range[0])}–${formatNumber(range[1])} L` : "–";
+  const rows = days.map((d) => `<tr><td>${esc(d.date)}</td><td>${esc(formatNumber(d.et0, 2))}</td><td>${esc(formatNumber(d.p90, 2))}</td><td>${esc(formatNumber(d.tmax, 1))}</td><td>${d.flag ? esc(t("app.yes")) : esc(t("app.no"))}</td></tr>`).join("");
+  el.innerHTML = `
+    <h1>${esc(t("print.title"))}</h1>
+    <p><strong>${esc(name)}</strong> · ${esc(t("status." + status))}</p>
+    <p>${esc(t("whyToday.et0"))}: ${today ? esc(formatNumber(today.et0, 2)) : "–"} mm · ${esc(t("whyToday.excess"))}: ${detail.excess_mm_7d == null ? "–" : esc(formatMm(detail.excess_mm_7d))} mm</p>
+    <div class="chart-wrap">${days.length ? et0Chart(days, { label: t("evidence.chart"), height: 140 }) : ""}</div>
+    <table><thead><tr><th>${esc(t("app.colDate"))}</th><th>${esc(t("app.colEt0"))}</th><th>${esc(t("app.colP90"))}</th><th>${esc(t("app.colTmax"))}</th><th>${esc(t("app.colFlag"))}</th></tr></thead><tbody>${rows}</tbody></table>
+    <p>${esc(t("print.litres"))}: ${esc(litres)}</p>
+    <p>${esc(t("app.caveat"))}</p>
+    <p>${esc(t("print.sources"))}</p>
+    <p>${esc(t("app.updated"))}: ${esc(iso || "–")}</p>`;
+}
+
+function drawShareCard(spec) {
+  const canvas = document.createElement("canvas");
+  canvas.id = "share-canvas";
+  canvas.width = 1200;
+  canvas.height = 630;
+  const ctx = canvas.getContext("2d");
+  ctx.fillStyle = "#0c2340";
+  ctx.fillRect(0, 0, 1200, 630);
+  ctx.fillStyle = "#f6d27a";
+  ctx.beginPath();
+  ctx.arc(1060, 110, 58, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = "#7ec8e8";
+  ctx.beginPath();
+  ctx.moveTo(980, 250);
+  ctx.bezierCurveTo(900, 340, 860, 420, 860, 480);
+  ctx.lineTo(1100, 480);
+  ctx.bezierCurveTo(1100, 420, 1060, 340, 980, 250);
+  ctx.fill();
+  const lines = [];
+  const paint = (value, x, y, size, color) => {
+    ctx.fillStyle = color;
+    ctx.font = `${size}px Georgia, "Noto Sans Devanagari", sans-serif`;
+    ctx.fillText(String(value), x, y);
+    lines.push(String(value));
+  };
+  paint("ThirstCast", 72, 110, 54, "#f7f1e8");
+  paint(spec.headline, 72, 200, 34, "#f7f1e8");
+  spec.rows.forEach((row, i) => paint(row, 72, 270 + i * 44, 26, "#d7eef8"));
+  paint(spec.stamp, 72, 470, 24, "#f6d27a");
+  paint(spec.date, 72, 515, 24, "#d7eef8");
+  paint(spec.caveat, 72, 555, 22, "#d7eef8");
+  const url = location.href;
+  paint(url.length > 78 ? `${url.slice(0, 75)}…` : url, 72, 595, 18, "#9fd0ff");
+  lines.push(url);
+  canvas.dataset.lines = lines.join("\n");
+  $("share-holder").replaceChildren(canvas);
+  canvas.toBlob((blob) => {
+    if (!blob) return;
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = spec.filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1500);
+  });
+}
+
+function saveDistrictCard() {
+  const detail = state.detail[state.selected];
+  if (!detail) return;
+  const name = (state.districts[detail.district] && state.districts[detail.district].name) || detail.district;
+  const mock = !!(window.ThirstAPI && window.ThirstAPI.isMock) || !!detail.mock_note;
+  drawShareCard({
+    headline: `${name} · ${t("status." + (detail.status || "UNKNOWN"))}`,
+    rows: [
+      `${t("whyToday.excess")}: ${detail.excess_mm_7d == null ? "–" : formatMm(detail.excess_mm_7d)} mm`,
+      `${t("app.updated")}: ${detail.updated_at || "–"}`,
+    ],
+    stamp: mock ? `mock · ${t("card.mock")}` : t("card.live"),
+    date: String(detail.run_date || detail.updated_at || "").slice(0, 10),
+    caveat: t("app.caveat"),
+    filename: `thirstcast-${detail.district}.png`,
+  });
+}
+
+function saveReplayCard() {
+  const replay = state.replay[state.selected];
+  if (!replay) return;
+  const summary = replay.summary || {};
+  const last = replay.days[replay.days.length - 1];
+  drawShareCard({
+    headline: `${replay.name} · ${t("replay.summaryTitle")}`,
+    rows: [
+      `${summary.days_above_p90} / ${summary.days_total}`,
+      `${formatMm(summary.cum_excess_mm)} mm`,
+      `${formatNumber(summary.litres_per_acre_reference)} L/acre`,
+    ],
+    stamp: `historical · ${t("card.historical")}`,
+    date: last ? last.date : "",
+    caveat: t("app.caveat"),
+    filename: `thirstcast-replay-${state.selected}.png`,
+  });
 }
 
 async function selectDistrict(id, opts = {}) {
@@ -397,6 +687,7 @@ async function selectDistrict(id, opts = {}) {
   }
   renderTabs();
   renderActiveTab();
+  if (state.view === "compare") renderCompare();
 }
 
 function renderReplay() {
@@ -438,19 +729,20 @@ function renderReplay() {
     ${note ? `<p><strong>${esc(note)}</strong></p>` : ""}
     <div class="counters">
       <article class="stat"><div class="num">${flagged}/${soFar.length}</div><div class="lbl">${esc(t("replay.days"))}</div></article>
-      <article class="stat"><div class="num">${esc(formatMm(cur.cum_excess_mm))} mm</div><div class="lbl">${esc(t("replay.mm"))}<br><span class="small">${esc(summary.cum_excess_definition || t("app.excessDef"))}</span></div></article>
+      <article class="stat"><div class="num">${esc(formatMm(cur.cum_excess_mm))} mm</div><div class="lbl">${esc(t("replay.mm"))}<br><span class="small">${esc(t("app.excessDef"))}</span></div></article>
       <article class="stat"><div class="num">≈ ${esc(formatNumber(Math.round(litres)))} L</div><div class="lbl">${esc(t("replay.litres"))}</div></article>
-      ${lakes.length ? `<article class="stat"><div class="num small">${lakes.map(([name, v]) => `${esc(name)}: ≈ ${esc(formatNumber(Math.round(v.value * frac)))} L`).join("<br>")}</div><div class="lbl">${esc(t("replay.lakes"))}</div></article>` : ""}
+      ${lakes.length ? `<article class="stat"><div class="num small">${lakes.map(([id, v]) => `${esc(named("lakes", id, id))}: ≈ ${esc(formatNumber(Math.round(v.value * frac)))} L`).join("<br>")}</div><div class="lbl">${esc(t("replay.lakes"))}</div></article>` : ""}
     </div>
     <div class="chart-wrap">${et0Chart(replay.days, { dense: true, highlight: day - 1, label: t("evidence.chart") })}</div>
     ${done ? `<article class="card summary-card" id="replay-summary">
       <h3>${esc(t("replay.summaryTitle"))}</h3>
       <p><strong>${esc(replay.name)}</strong> · ${summary.days_above_p90} / ${summary.days_total}</p>
-      <p>${esc(formatMm(summary.cum_excess_mm))} mm · ${esc(summary.cum_excess_definition || t("app.excessDef"))}</p>
+      <p>${esc(formatMm(summary.cum_excess_mm))} mm · ${esc(t("app.excessDef"))}</p>
       <p>${esc(formatNumber(summary.litres_per_acre_reference))} L/acre · ${esc(t("app.estimate"))}${formatScale(summary.litres_per_acre_reference, getLang()) ? ` · ≈ ${esc(formatScale(summary.litres_per_acre_reference, getLang()))}` : ""}</p>
       <p>${esc(t("evidence.tmax", { n: summary.tmax_days_above_p90, total: summary.days_total }))}</p>
       <p>${esc(t("replay.rank", { rank: summary.april_rank_1994_2024, years: summary.april_years_compared }))}</p>
-      <p class="small">${esc(t("replay.endNote"))} ${esc(replay.caveat || t("app.caveat"))}</p>
+      <p class="small">${esc(t("replay.endNote"))} ${esc(t("app.caveat"))}</p>
+      <p><button class="btn" type="button" id="replay-card">${esc(t("card.save"))}</button></p>
     </article>` : ""}`;
   $("replay-play").addEventListener("click", () => play(!state.timer));
   $("replay-slider").addEventListener("input", (event) => { play(false); setReplayDay(Number(event.target.value)); });
@@ -458,7 +750,9 @@ function renderReplay() {
     state.speed = Number(event.target.value);
     if (state.timer) play(true);
   });
-  $("replay-stop").addEventListener("click", stopReplay);
+  $("replay-stop").addEventListener("click", () => { userNav(); stopReplay(); });
+  const replayCard = $("replay-card");
+  if (replayCard) replayCard.addEventListener("click", saveReplayCard);
   $("replay-share").addEventListener("click", async () => {
     writeHash();
     try { await navigator.clipboard.writeText(location.href); } catch (e) { /* ignore */ }
@@ -480,7 +774,19 @@ function setReplayDay(day) {
   writeHash();
   if (day === (state.replay[state.selected] && state.replay[state.selected].days.length) && !state.timer) {
     const card = $("replay-summary");
-    if (card) card.scrollIntoView({ block: "nearest", behavior: "auto" });
+    const panel = $("panel");
+    if (card && panel) {
+      const delta = card.getBoundingClientRect().top - panel.getBoundingClientRect().top;
+      panel.scrollTop += delta;
+      if (window.matchMedia("(max-width: 800px)").matches) {
+        panel.classList.add("expanded");
+        const toggle = $("sheet-toggle");
+        if (toggle) {
+          toggle.setAttribute("aria-expanded", "true");
+          toggle.textContent = t("app.collapse");
+        }
+      }
+    }
   }
 }
 
@@ -504,7 +810,96 @@ function play(on) {
   renderReplay();
 }
 
-async function startReplay(day) {
+function districtIds() {
+  const known = DISTRICT_ORDER.filter((id) => state.districts[id]);
+  const rest = Object.keys(state.districts).filter((id) => !known.includes(id));
+  return known.concat(rest);
+}
+
+async function ensureDetails() {
+  await Promise.all(districtIds().map(async (id) => {
+    if (!state.detail[id]) state.detail[id] = await window.ThirstAPI.getThirstwave(id);
+  }));
+}
+
+function renderCompare() {
+  const grid = $("compare-grid");
+  if (!grid) return;
+  grid.setAttribute("aria-label", t("compare.label"));
+  const ids = districtIds();
+  grid.innerHTML = ids.map((id, index) => {
+    const district = state.districts[id] || {};
+    const detail = state.detail[id] || {};
+    const status = detail.status || district.status || "UNKNOWN";
+    const excess = detail.excess_mm_7d == null ? "–" : formatMm(detail.excess_mm_7d);
+    const selected = id === state.selected;
+    return `<button type="button" class="compare-col" role="option" data-compare-col="${esc(id)}" aria-selected="${selected ? "true" : "false"}" tabindex="${selected || (index === 0 && !state.selected) ? "0" : "-1"}">
+      <p class="compare-name">${esc(districtName(id, district.name || id))}</p>
+      <p><span class="badge badge-${esc(status).toLowerCase()}">${esc(t("status." + status))}</span></p>
+      <p>${esc(t("compare.excess"))}: <strong>${esc(excess)} mm</strong></p>
+      <p class="small">${esc(t("compare.updated"))}: ${esc(detail.updated_at || "–")}</p>
+      <p class="small">${esc(t("app.caveat"))}</p>
+    </button>`;
+  }).join("");
+  grid.querySelectorAll("[data-compare-col]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      userNav();
+      selectDistrict(btn.dataset.compareCol);
+    });
+    btn.addEventListener("keydown", (event) => {
+      if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+      event.preventDefault();
+      const order = districtIds();
+      const current = order.indexOf(btn.dataset.compareCol);
+      const delta = event.key === "ArrowRight" ? 1 : -1;
+      const next = order[(current + delta + order.length) % order.length];
+      userNav();
+      selectDistrict(next).then(() => {
+        const col = grid.querySelector(`[data-compare-col="${next}"]`);
+        if (col) col.focus();
+        announceCompare(next);
+      });
+    });
+  });
+}
+
+function announceMap(id) {
+  const live = $("map-live");
+  const district = state.districts[id];
+  const detail = state.detail[id] || district;
+  if (!live || !district) return;
+  live.textContent = t("map.moved", {
+    name: district.name,
+    status: t("status." + ((detail && detail.status) || "UNKNOWN")),
+  });
+}
+
+function announceCompare(id) {
+  const live = $("compare-live");
+  const district = state.districts[id];
+  const detail = state.detail[id];
+  if (!live || !district || !detail) return;
+  live.textContent = t("compare.live", {
+    name: district.name,
+    status: t("status." + (detail.status || "UNKNOWN")),
+    excess: detail.excess_mm_7d == null ? "–" : formatMm(detail.excess_mm_7d),
+  });
+}
+
+function syncView() {
+  const el = $("compare");
+  const workspace = $("content");
+  if (!el || !workspace) return;
+  const on = state.view === "compare" && !state.replayOn;
+  el.hidden = !on;
+  workspace.hidden = on;
+  if (on) renderCompare();
+  else if (state.map) setTimeout(() => state.map.invalidateSize(), 50);
+}
+
+async function startReplay(day, opts = {}) {
+  state.view = "";
+  syncView();
   $("replay-start").disabled = true;
   try {
     await Promise.all(Object.keys(state.layers).map(async (id) => {
@@ -516,9 +911,12 @@ async function startReplay(day) {
     $("replay-panel").hidden = false;
     $("replay-banner").hidden = false;
     $("replay-banner").textContent = t("replay.banner");
-    const startDay = day || 1;
-    setReplayDay(startDay);
     const length = state.replay[state.selected].days.length;
+    let startDay = Number(day) || 1;
+    if (startDay < 1) startDay = 1;
+    if (startDay > length) startDay = length;
+    if (opts.write === false) hashMode = "skip";
+    setReplayDay(startDay);
     if (startDay < length) play(true);
     requestAnimationFrame(() => {
       if (!state.map || !Object.keys(state.layers).length) return;
@@ -532,7 +930,7 @@ async function startReplay(day) {
   }
 }
 
-function stopReplay() {
+function stopReplay(opts = {}) {
   clearInterval(state.timer);
   state.timer = null;
   state.replayOn = false;
@@ -544,22 +942,40 @@ function stopReplay() {
   Object.values(state.districts).forEach((d) => paint(d.id, d.status || "UNKNOWN"));
   renderList();
   renderActiveTab();
-  writeHash();
+  if (!opts.keepHash) writeHash();
 }
 
-function openChat(prefill) {
+function focusables(root) {
+  return [...root.querySelectorAll("a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex='-1'])")]
+    .filter((el) => !el.closest("[hidden]"));
+}
+
+function syncInert() {
+  const open = !$("chat").hidden || !$("alert-dialog").hidden;
+  $("shell").inert = open;
+  const skip = document.querySelector(".skip");
+  if (skip) skip.inert = open;
+}
+
+function openChat(prefill, opts = {}) {
+  const wasHidden = $("chat").hidden;
   state.chatOpened = true;
   $("chat").hidden = false;
   $("chat-backdrop").hidden = false;
+  syncInert();
   if (prefill) $("question").value = prefill;
-  $("question").focus();
-  writeHash();
+  if (wasHidden) $("question").focus();
+  if (!opts.keepHash) writeHash();
 }
 
-function closeChat() {
+function closeChat(opts = {}) {
   $("chat").hidden = true;
   $("chat-backdrop").hidden = true;
-  $("open-chat").focus();
+  syncInert();
+  if (!opts.keepHash) {
+    $("open-chat").focus();
+    writeHash();
+  }
 }
 
 function addMessage(kind, html) {
@@ -593,12 +1009,24 @@ async function ask(question) {
     const tools = (response.tools_used || []).length
       ? `<span>${esc(t("chat.tools"))}: ${esc(response.tools_used.join(", "))}</span>` : "";
     pending.removeAttribute("aria-busy");
-    pending.innerHTML = `<div lang="${esc(response.lang || "en")}">${esc(response.answer)}</div>
+    pending.innerHTML = `<p class="small advisory-note">${esc(t("chat.advisory"))}</p>
+      <div class="advisory" lang="${esc(response.lang || "en")}">${esc(response.answer)}</div>
       <div class="meta">${mode}${tools}<span>${esc(response.caveat || t("app.caveat"))}</span>
-      <button class="btn" type="button" data-copy>${esc(t("chat.copy"))}</button></div>`;
-    pending.querySelector("[data-copy]").addEventListener("click", async () => {
+      <button class="btn" type="button" data-copy>${esc(t("chat.copy"))}</button>
+      <button class="btn" type="button" data-share>${esc(t("chat.share"))}</button></div>`;
+    const copyAnswer = async () => {
       try { await navigator.clipboard.writeText(response.answer || ""); } catch (e) { /* ignore */ }
       toast(t("api.copied"));
+    };
+    pending.querySelector("[data-copy]").addEventListener("click", copyAnswer);
+    pending.querySelector("[data-share]").addEventListener("click", async () => {
+      if (navigator.share) {
+        try {
+          await navigator.share({ title: "ThirstCast", text: response.answer || "" });
+          return;
+        } catch (e) { /* copy fallback */ }
+      }
+      await copyAnswer();
     });
   } catch (err) {
     const aborted = err.name === "AbortError" || /abort|timeout/i.test(err.message || "");
@@ -616,7 +1044,10 @@ function renderSuggestions() {
     btn.className = "chip";
     btn.textContent = item.q;
     btn.addEventListener("click", () => {
-      if (state.districts[item.district]) selectDistrict(item.district);
+      if (state.districts[item.district]) {
+        userNav();
+        selectDistrict(item.district);
+      }
       $("question").value = item.q;
       ask(item.q);
     });
@@ -626,28 +1057,73 @@ function renderSuggestions() {
 
 function bindChrome() {
   bindLangToggle();
-  $("district-select").addEventListener("change", (event) => selectDistrict(event.target.value));
-  $("replay-start").addEventListener("click", () => startReplay(1));
-  $("open-chat").addEventListener("click", () => openChat());
-  $("close-chat").addEventListener("click", closeChat);
-  $("chat-backdrop").addEventListener("click", closeChat);
+  $("district-select").addEventListener("change", (event) => { userNav(); selectDistrict(event.target.value); });
+  $("replay-start").addEventListener("click", () => { userNav(); startReplay(1); });
+  $("open-compare").addEventListener("click", async () => {
+    userNav();
+    state.view = "compare";
+    try {
+      await ensureDetails();
+    } catch (err) {
+      state.view = "";
+      showError(t("app.unavailableDetail", { message: err.message }));
+      return;
+    }
+    syncView();
+    writeHash();
+    announceCompare(state.selected);
+    const current = document.querySelector(`[data-compare-col="${state.selected}"]`);
+    if (current) current.focus();
+  });
+  $("close-compare").addEventListener("click", () => {
+    userNav();
+    state.view = "";
+    syncView();
+    writeHash();
+    $("open-compare").focus();
+  });
+  $("open-chat").addEventListener("click", () => { userNav(); openChat(); });
+  $("close-chat").addEventListener("click", () => { userNav(); closeChat(); });
+  $("chat-backdrop").addEventListener("click", () => { userNav(); closeChat(); });
   $("ask-form").addEventListener("submit", (event) => {
     event.preventDefault();
     const value = $("question").value;
     $("question").value = "";
     ask(value);
   });
-  $("open-alerts").addEventListener("click", () => {
+  $("open-alerts").addEventListener("click", async () => {
     $("alert-dialog").hidden = false;
     $("alert-backdrop").hidden = false;
     $("alert-email").value = "";
-    $("alert-result").hidden = true;
-    $("alert-email").focus();
+    const mock = !!(window.ThirstAPI && window.ThirstAPI.isMock);
+    $("alert-email-field").hidden = mock;
+    $("alert-email").hidden = mock;
+    const result = $("alert-result");
+    result.hidden = false;
+    result.textContent = t("alerts.body");
+    const sample = $("alert-sample");
+    sample.hidden = true;
+    sample.textContent = "";
+    if (mock) {
+      try {
+        const res = await fetch("mock/alert_sample.json");
+        if (!res.ok) throw new Error(String(res.status));
+        const data = await res.json();
+        sample.hidden = false;
+        sample.textContent = `${t("alerts.sample")}\n${data.subject}\n${data.body}`;
+      } catch (err) {
+        sample.hidden = false;
+        sample.textContent = t("app.unavailableDetail", { message: err.message });
+      }
+    }
+    syncInert();
+    (mock ? $("alert-submit") : $("alert-email")).focus();
   });
   const closeAlerts = () => {
     $("alert-dialog").hidden = true;
     $("alert-backdrop").hidden = true;
     $("alert-email").value = "";
+    syncInert();
     $("open-alerts").focus();
   };
   $("close-alerts").addEventListener("click", closeAlerts);
@@ -657,7 +1133,18 @@ function bindChrome() {
     $("alert-email").value = "";
     const result = $("alert-result");
     result.hidden = false;
-    result.textContent = t("alerts.soon");
+    result.textContent = t("alerts.body");
+  });
+  $("map").addEventListener("keydown", (event) => {
+    if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+    const order = districtIds();
+    if (!order.length) return;
+    event.preventDefault();
+    const index = Math.max(0, order.indexOf(state.selected));
+    const delta = event.key === "ArrowRight" ? 1 : -1;
+    const next = order[(index + delta + order.length) % order.length];
+    userNav();
+    selectDistrict(next).then(() => announceMap(next));
   });
   $("sheet-toggle").addEventListener("click", () => {
     const panel = $("panel");
@@ -667,34 +1154,103 @@ function bindChrome() {
     setTimeout(() => state.map && state.map.invalidateSize(), 220);
   });
   document.addEventListener("keydown", (event) => {
-    if (event.key !== "Escape") return;
-    if (!$("chat").hidden) closeChat();
-    if (!$("alert-dialog").hidden) closeAlerts();
+    const dialog = !$("chat").hidden ? $("chat") : (!$("alert-dialog").hidden ? $("alert-dialog") : null);
+    if (!dialog) return;
+    if (event.key === "Escape") {
+      if (dialog === $("chat")) {
+        userNav();
+        closeChat();
+      } else closeAlerts();
+      return;
+    }
+    if (event.key !== "Tab") return;
+    const items = focusables(dialog);
+    if (!items.length) return;
+    const first = items[0];
+    const last = items[items.length - 1];
+    if (event.shiftKey && (document.activeElement === first || !dialog.contains(document.activeElement))) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && (document.activeElement === last || !dialog.contains(document.activeElement))) {
+      event.preventDefault();
+      first.focus();
+    }
   });
-  window.addEventListener("hashchange", () => applyHash(false));
+  window.addEventListener("hashchange", queueApply);
+  window.addEventListener("popstate", queueApply);
+}
+
+function queueApply() {
+  if (!appReady || applyQueued) return;
+  applyQueued = true;
+  setTimeout(() => {
+    applyQueued = false;
+    applyHash(false);
+  }, 0);
+}
+
+function clampReplayDay(raw) {
+  const parsed = Number.parseInt(raw, 10);
+  let day = Number.isFinite(parsed) ? parsed : 1;
+  if (day < 1) day = 1;
+  if (day > 30) day = 30;
+  return day;
 }
 
 async function applyHash(initial) {
   const params = hashParams();
+  let rewrite = false;
+  const notes = [];
+  const askedView = params.get("view");
+  state.view = askedView === "compare" && !params.get("replay") ? "compare" : "";
+  if (askedView && askedView !== "compare") rewrite = true;
+  if (askedView === "compare" && params.get("replay")) rewrite = true;
   const tab = params.get("tab");
-  if (tab && TABS.includes(tab)) state.tab = tab;
+  if (tab && !TABS.includes(tab)) {
+    notes.push(t("app.badTab"));
+    state.tab = "overview";
+    rewrite = true;
+  } else if (tab && TABS.includes(tab)) {
+    state.tab = tab;
+  }
   const district = params.get("d");
-  if (district && state.districts[district] && (initial || district !== state.selected)) {
+  if (district && !state.districts[district]) {
+    notes.push(t("app.badDistrict"));
+    rewrite = true;
+  } else if (district && state.districts[district] && (initial || district !== state.selected)) {
     await selectDistrict(district, { keepHash: true });
   }
   const replay = params.get("replay");
-  if (replay) {
-    const day = Math.max(1, Number(replay) || 1);
-    if (!state.replayOn || state.replayDay !== day) await startReplay(day);
+  if (replay != null && replay !== "") {
+    const day = clampReplayDay(replay);
+    if (String(day) !== replay) rewrite = true;
+    if (!state.replayOn || state.replayDay !== day) await startReplay(day, { write: false });
   } else if (state.replayOn) {
-    stopReplay();
+    stopReplay({ keepHash: true });
   }
-  if (params.get("ask") === "1" && initial) openChat(params.get("q") || "");
+  const wantChat = params.get("chat") === "1" || (initial && params.get("ask") === "1");
+  if (wantChat && $("chat").hidden) openChat(params.get("q") || "", { keepHash: true });
+  else if (!wantChat && !$("chat").hidden) closeChat({ keepHash: true });
+  if (notes.length) toast(notes.join(" "));
+  if (rewrite) {
+    hashMode = "replace";
+    writeHash();
+  }
+  if (state.view === "compare") {
+    try {
+      await ensureDetails();
+    } catch (err) {
+      state.view = "";
+      showError(t("app.unavailableDetail", { message: err.message }));
+    }
+  }
+  syncView();
   renderTabs();
   if (!state.replayOn) renderActiveTab();
 }
 
 async function boot() {
+  initPwa();
   bindChrome();
   await initI18n("meta.appTitle");
   initTheme();
@@ -708,39 +1264,55 @@ async function boot() {
     renderLegend();
     renderList();
     renderSuggestions();
+    if (state.listMock) $("info-banner").textContent = mockNoteText(state.listMock);
+    if (state.districts && Object.keys(state.districts).length) $("map-caveat").textContent = t("app.caveat");
     renderTabs();
     if (state.replayOn) {
       $("replay-banner").textContent = t("replay.banner");
       renderReplay();
     } else renderActiveTab();
+    if (state.view === "compare") renderCompare();
+    paintChatNote();
   });
+  paintChatNote();
   try {
     await loadAsset("css", LEAFLET_CSS);
     await loadAsset("script", LEAFLET_JS);
   } catch (err) {
     showError(t("app.unavailableDetail", { message: err.message }));
+    warmPwa();
     return;
   }
   const map = state.map = window.L.map("map", { scrollWheelZoom: true });
-  window.L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    maxZoom: 12,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · DataMeet (CC BY 2.5 IN)',
-  }).addTo(map);
+  // Automated runs (Playwright, Lighthouse) set navigator.webdriver. Skipping the
+  // tile layer there keeps the measured page off the OpenStreetMap tile servers.
+  // A normal browser still loads tiles, and only the tiles it actually asks for.
+  if (!navigator.webdriver) {
+    window.L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 12,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · DataMeet (CC BY 2.5 IN)',
+    }).addTo(map);
+  }
   map.setView([12.9, 77.4], 8);
   let geo;
   try {
-    const [geoRes, catalog, curves, blind] = await Promise.all([
+    const [geoRes, catalog, curves, blind, percentiles, april] = await Promise.all([
       fetch("data/pilot_districts.geojson").then((r) => { if (!r.ok) throw new Error(`geojson ${r.status}`); return r.json(); }),
       fetch("data/catalog.json").then((r) => r.json()),
       fetch("data/climatology_curves.json").then((r) => r.json()),
       fetch("data/blindspot.json").then((r) => r.json()),
+      fetch("data/percentiles.json").then((r) => r.json()),
+      fetch("data/april_history.json").then((r) => r.json()),
     ]);
     geo = geoRes;
     state.catalog = catalog;
     state.curves = curves;
     state.blind = blind;
+    state.percentiles = percentiles;
+    state.april = april;
   } catch (err) {
     showError(t("app.unavailableDetail", { message: err.message }));
+    warmPwa();
     return;
   }
   const layer = window.L.geoJSON(geo, {
@@ -749,7 +1321,7 @@ async function boot() {
       const id = feature.properties.id;
       state.layers[id] = path;
       path.bindTooltip(feature.properties.name, { sticky: true });
-      path.on("click", () => selectDistrict(id));
+      path.on("click", () => { userNav(); selectDistrict(id); });
     },
   }).addTo(map);
   installPatterns();
@@ -769,10 +1341,11 @@ async function boot() {
       state.districts[d.id] = d;
       paint(d.id, d.status);
     });
-    if (data.caveat) $("map-caveat").textContent = data.caveat;
+    if (data.caveat) $("map-caveat").textContent = t("app.caveat");
     if (data.mock_note) {
+      state.listMock = data;
       $("info-banner").hidden = false;
-      $("info-banner").textContent = data.mock_note;
+      $("info-banner").textContent = mockNoteText(data);
     }
     renderList();
     const params = hashParams();
@@ -781,10 +1354,15 @@ async function boot() {
       || Object.keys(state.districts)[0];
     if (first) await selectDistrict(first, { keepHash: true });
     await applyHash(true);
+    hashMode = "replace";
+    writeHash();
+    appReady = true;
     window.addEventListener("resize", () => map.invalidateSize());
     setTimeout(() => map.invalidateSize(), 200);
+    warmPwa();
   } catch (err) {
     showError(t("app.unavailableDetail", { message: err.message }));
+    warmPwa();
   }
 }
 

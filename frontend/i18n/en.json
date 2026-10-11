@@ -62,7 +62,7 @@
     "body": "Heat alerts say the air is hot. ThirstCast says how much faster water is leaving the surface, in litres, for a farmer, a lake manager and a city.",
     "quote": "This said, according to experts, there is essentially no data about extreme thirstwaves over India.",
     "cite": "The Hindu, 24 June 2025",
-    "paper": "For US cropland, 1981–2021, the research found statistically significant increasing trends over 17% of cropland area for intensity, 7% for frequency and 23% for duration."
+    "paper": "Weighted for cropland area harvested, thirstwave intensity, duration, and frequency have increased by 0.06 mm d⁻¹ decade⁻¹, 0.10 days decade⁻¹, and 0.39 events decade⁻¹, respectively during 1981–2021. Statistically significant trends appear across 17%, 7%, and 23% of cropland area for intensity, frequency, and duration."
   },
   "how": {
     "title": "How it works",
@@ -156,7 +156,17 @@
     "crop": "Crop",
     "range": "Extra litres for this area",
     "perAcre": "Per acre, from the forecast",
-    "tankers": "≈ {n} tanker loads (10,000 L each)",
+    "tankers": "≈ {n} × 10,000-litre units",
+    "noExtra": "No day in the next 7 days is above the local p90, so there is no extra demand to estimate",
+    "acresUsed": "for {n} acres",
+    "acresError": "Enter a number from 0.1 to 10,000, in steps of 0.1.",
+    "day_one": "{n} day",
+    "day_other": "{n} days",
+    "stale": "Using cached forecast",
+    "badDistrict": "That district is not in this pilot. Showing the current district.",
+    "badTab": "That section is not available. Showing Overview.",
+    "englishNotice": "Detailed methods/sources are in English",
+    "mockNote": "MOCK: historical ERA5 data for {date} evaluated as if it were a forecast (no bias correction). Not live.",
     "formula": "Shown range = the forecast endpoint's per-acre range × acres. That range is excess millimetres × Kc × 4,047 L, with Kc ±10%. Kc for {crop} is {kc} (FAO-56, mid-season).",
     "excessDef": "Sum of daily ET₀ above the local day-of-year p90 threshold",
     "bias": "Bias offset",
@@ -172,7 +182,7 @@
     "waveOngoing": "This run is already underway.",
     "waveExtends": "It may continue past the forecast.",
     "heatIntro": "ET₀ and maximum temperature do not have to cross their own p90 thresholds on the same days.",
-    "heatCount": "In this 7-day window: ET₀ above p90 on {et} days, Tmax above its p90 on {tx} days, both on {both} days.",
+    "heatCount": "In this 7-day window: ET₀ above p90 on {et}, Tmax above its p90 on {tx}, both on {both}.",
     "blindTitle": "A hot-season example where temperature stayed at or below its own p90",
     "blindBody": "Mandya, 8–14 April 2023: a {days}-day thirstwave, {excess} mm of cumulative excess ET₀ (sum of daily ET₀ above the local day-of-year p90 threshold), while Tmax peaked at {tmax} °C. Temperature stayed below heatwave levels. Tmax did not rise above its own day-of-year p90.",
     "blindCount": "The blindspot file records {n} such thirstwaves across the three districts (Bengaluru Urban {b}, Kolar {k}, Mandya {m}).",
@@ -192,7 +202,39 @@
     "no": "No",
     "sources": "Sources for this lake",
     "kcNote": "Kc ±10%",
-    "mockOn": "MOCK DATA"
+    "mockOn": "MOCK DATA",
+    "offline": "Offline: showing saved data from {time}"
+  },
+  "card": {
+    "save": "Save card",
+    "mock": "Mock data, not a live alert",
+    "historical": "Historical, not a live alert",
+    "live": "Live forecast"
+  },
+  "map": {
+    "moved": "{name}, {status}"
+  },
+  "print": {
+    "button": "Print bulletin",
+    "title": "ThirstCast bulletin",
+    "litres": "Extra litres per acre, mid-season (estimate)",
+    "sources": "Sources: Open-Meteo / ERA5, FAO-56 Table 12, and the methods page."
+  },
+  "stage": {
+    "label": "Crop stage",
+    "ini": "Initial",
+    "mid": "Mid-season",
+    "end": "Late season",
+    "note": "FAO-56 Table 12 Kc {kc}. One Kc is shown ±10%. A Kc range is the whole band, with no extra ±10%."
+  },
+  "compare": {
+    "open": "Compare",
+    "title": "Compare the three districts",
+    "close": "Back to map",
+    "label": "District comparison",
+    "excess": "Cumulative excess",
+    "updated": "Updated",
+    "live": "{name}, {status}, excess {excess} mm"
   },
   "status": {
     "ACTIVE": "ACTIVE",
@@ -241,20 +283,68 @@
     "tooLong": "Please keep the question under 500 characters.",
     "empty": "Type a question first.",
     "copy": "Copy answer",
+    "share": "Share",
+    "advisory": "Preview of a text advisory; ThirstCast does not send WhatsApp messages.",
     "tools": "Tools",
     "modeLlm": "AI agent",
     "modeTemplate": "Template advisory (non-LLM mode)",
+    "langNote": "Answers come in English or Hindi.",
     "hint": "Answers come only from ThirstCast data. All litres are estimates.",
     "suggestions": "Suggested questions"
   },
   "alerts": {
-    "title": "Get email alerts",
-    "body": "When a district becomes ACTIVE, ThirstCast can send mail through Amazon SNS.",
+    "title": "Email alerts",
+    "body": "Alerts are sent by the deployed backend: an SNS email, daily at 06:00 IST, only when a district turns ACTIVE.",
     "email": "Email address",
     "submit": "Notify me",
-    "soon": "Coming soon: email alerts via AWS SNS.",
+    "soon": "Alerts are sent by the deployed backend: an SNS email, daily at 06:00 IST, only when a district turns ACTIVE.",
     "privacy": "This preview does not collect or store an address.",
+    "sample": "Sample from the mock detector for Mandya. This preview does not send it.",
     "close": "Close"
+  },
+  "timeline": {
+    "title": "Thirsty, not hot",
+    "framing": "ET0 above its p90 while Tmax stayed below its own p90",
+    "hero": "{district}, {start} to {end}: {days} days, {excess} mm cumulative excess, Tmax peak {tmax} °C.",
+    "allDistricts": "All districts",
+    "allSeasons": "All seasons",
+    "shown": "{n} of {total} events",
+    "et0": "Daily ET₀ versus the day-of-year p90",
+    "tmax": "Daily Tmax versus its p90",
+    "season": {
+      "winter": "Winter",
+      "pre_monsoon": "Pre-monsoon",
+      "monsoon": "Monsoon",
+      "post_monsoon": "Post-monsoon"
+    }
+  },
+  "april": {
+    "title": "Thirty Aprils",
+    "body": "Cumulative excess ET₀ for each April, 1994–2024. The marked bar is 2024. Focus a bar for its rank and the days above p90.",
+    "note": "April only. Other months are not computed."
+  },
+  "whyToday": {
+    "title": "Why today",
+    "et0": "Today's ET₀ against the day-of-year p90",
+    "tmax": "Today's maximum temperature against its p90",
+    "days": "Days in this 7-day window above the ET₀ p90",
+    "bias": "Signed bias offset",
+    "excess": "Cumulative excess",
+    "percentile": "Thirst percentile",
+    "percentileHelp": "Share of 1994–2023 ET₀ values in the ±7 day window that are at or below today. 100 means today is at least as thirsty as every value in that window.",
+    "vs": "{value} vs {threshold} ({delta})",
+    "methods": "How this percentile is calculated"
+  },
+  "crops": {
+    "paddy": "Paddy (rice)",
+    "sugarcane": "Sugarcane",
+    "tomato": "Tomato",
+    "ragi": "Ragi (finger millet)"
+  },
+  "lakes": {
+    "Bellandur": "Bellandur Lake",
+    "Varthur": "Varthur Lake",
+    "KRS": "KRS reservoir (Krishna Raja Sagara)"
   },
   "methods": {
     "back": "Back to the map",

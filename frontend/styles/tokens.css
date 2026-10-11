@@ -9,6 +9,14 @@
   line-gap-override: 0%;
 }
 @font-face {
+  font-family: "Noto Sans Kannada";
+  src: url("../vendor/fonts/NotoSansKannada.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0951-0952, U+0964-0965, U+0C80-0CF3, U+200C-200D, U+20B9, U+25CC;
+}
+@font-face {
   font-family: "Space Grotesk Fallback";
   src: local("Arial");
   size-adjust: 103%;
@@ -48,11 +56,24 @@
   --font-sans: "Inter", "Inter Fallback", "Segoe UI", sans-serif;
   --font-display: "Space Grotesk", "Space Grotesk Fallback", "Inter", sans-serif;
   --font-hi: "Noto Sans Devanagari", "Inter", sans-serif;
+  --font-kn: "Noto Sans Kannada", "Inter", sans-serif;
   --motion: 200ms;
   --active: #8f291f;
   --watch: #8a5a00;
   --none: #0f6844;
   --unknown: #5c6b7a;
+  --chart-grid: #d9d0c4;
+  --chart-ink: #142033;
+  --chart-plain: #1d6a93;
+  --chart-et0: #8f291f;
+  --chart-et0-line: #f7f1e8;
+  --chart-tmax: #6e4200;
+  --chart-tmax-plain: #8a5a00;
+  --chart-tmax-line: #1a1203;
+  --chart-mean: #0f5f98;
+  --chart-p90: #8f291f;
+  --chart-mark: #0c2340;
+  --chart-wrap: #ffffff;
   color-scheme: light;
 }
 
@@ -78,9 +99,24 @@
   --btn-ink: #071422;
   --shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --chart-grid: #3d5270;
+  --chart-ink: #eef3f8;
+  --chart-plain: #9fd0ff;
+  --chart-et0: #ffb4ab;
+  --chart-et0-line: #3c221f;
+  --chart-tmax: #f6c56b;
+  --chart-tmax-plain: #f0c36a;
+  --chart-tmax-line: #1a1203;
+  --chart-mean: #9fd0ff;
+  --chart-p90: #ffb4ab;
+  --chart-mark: #f6d27a;
+  --chart-wrap: #172333;
   color-scheme: dark;
 }
 
 html[lang="hi"] body {
   font-family: var(--font-hi);
+}
+html[lang="kn"] body {
+  font-family: var(--font-kn);
 }

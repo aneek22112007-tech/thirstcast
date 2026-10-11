@@ -14,6 +14,8 @@
   <meta name="twitter:description" content="Definitions, formulas and sources for ThirstCast.">
   <meta name="twitter:image" content="og.png">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#0c2340">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
@@ -25,10 +27,13 @@
     (function () {
       try {
         var theme = localStorage.getItem("thirstcast.theme");
-        if (theme === "dark" || theme === "light") document.documentElement.setAttribute("data-theme", theme);
+        if (theme !== "dark" && theme !== "light") {
+          theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", theme);
         var params = new URLSearchParams((location.hash || "").replace(/^#/, ""));
         var lang = params.get("lang") || localStorage.getItem("thirstcast.lang");
-        if (lang === "hi" || lang === "en") document.documentElement.lang = lang;
+        if (lang === "hi" || lang === "en" || lang === "kn") document.documentElement.lang = lang;
       } catch (e) {}
     })();
   </script>
@@ -49,9 +54,11 @@
     <div class="top-actions">
       <button class="btn btn-ghost" type="button" data-set-lang="en" data-lang-pressed="en" aria-pressed="true">EN</button>
       <button class="btn btn-ghost" type="button" data-set-lang="hi" data-lang-pressed="hi" aria-pressed="false">हिंदी</button>
+      <button class="btn btn-ghost" type="button" data-set-lang="kn" data-lang-pressed="kn" aria-pressed="false">ಕನ್ನಡ</button>
       <button class="btn icon-btn" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark theme"><span data-theme-label>Dark</span></button>
     </div>
   </header>
+  <div id="offline-banner" class="banner banner-info" role="status" hidden></div>
   <main id="content" class="methods-layout">
     <nav id="method-nav" class="methods-nav" data-i18n-aria="methods.onThisPage" aria-label="On this page"></nav>
     <article>
@@ -68,7 +75,7 @@
     <a href="https://github.com/aneek22112007-tech/thirstcast/blob/main/docs/methods.md" data-i18n="footer.methods">Methods</a>
     <span data-i18n="footer.credits">Data: Open-Meteo / ERA5, DataMeet, FAO-56. Map © OpenStreetMap contributors.</span>
   </footer>
-  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+  <script src="vendor/marked/marked.min.js"></script>
   <script src="config.js"></script>
   <script type="module" src="js/methods.js"></script>
 </body>

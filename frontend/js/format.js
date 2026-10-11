@@ -29,8 +29,10 @@ export function formatNumber(value, digits = 0) {
 
 export function formatMm(value) {
   if (value === null || value === undefined || Number.isNaN(Number(value))) return "–";
-  const n = roundHalfEven(Number(value), 1);
-  const text = n.toLocaleString("en-IN", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+  const raw = Number(value);
+  const digits = Math.abs(raw) > 0 && Math.abs(raw) < 1 ? 2 : 1;
+  const n = roundHalfEven(raw, digits);
+  const text = n.toLocaleString("en-IN", { minimumFractionDigits: digits, maximumFractionDigits: digits });
   return (n > 0 ? "+" : "") + text;
 }
 

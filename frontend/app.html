@@ -14,6 +14,10 @@
   <meta name="twitter:description" content="Thirstwave map for Bengaluru Urban, Kolar and Mandya.">
   <meta name="twitter:image" content="og.png">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#0c2340">
+  <link rel="preload" href="vendor/leaflet/leaflet.css" as="style">
+  <link rel="preload" href="vendor/leaflet/leaflet.js" as="script">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
@@ -25,10 +29,13 @@
     (function () {
       try {
         var theme = localStorage.getItem("thirstcast.theme");
-        if (theme === "dark" || theme === "light") document.documentElement.setAttribute("data-theme", theme);
+        if (theme !== "dark" && theme !== "light") {
+          theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", theme);
         var params = new URLSearchParams((location.hash || "").replace(/^#/, ""));
         var lang = params.get("lang") || localStorage.getItem("thirstcast.lang");
-        if (lang === "hi" || lang === "en") document.documentElement.lang = lang;
+        if (lang === "hi" || lang === "en" || lang === "kn") document.documentElement.lang = lang;
       } catch (e) {}
     })();
   </script>
@@ -53,7 +60,9 @@
       <div class="top-actions">
         <button class="btn btn-ghost" type="button" data-set-lang="en" data-lang-pressed="en" aria-pressed="true">EN</button>
         <button class="btn btn-ghost" type="button" data-set-lang="hi" data-lang-pressed="hi" aria-pressed="false">हिंदी</button>
+        <button class="btn btn-ghost" type="button" data-set-lang="kn" data-lang-pressed="kn" aria-pressed="false">ಕನ್ನಡ</button>
         <button class="btn icon-btn" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark theme"><span data-theme-label>Dark</span></button>
+        <button class="btn" type="button" id="open-compare" data-i18n="compare.open">Compare</button>
         <button class="btn" type="button" id="open-chat" data-i18n="nav.ask">Ask</button>
         <button class="btn btn-ghost" type="button" id="open-alerts" data-i18n="nav.alerts">Alerts</button>
         <button class="btn" type="button" id="replay-start" data-i18n="replay.start">Replay April 2024</button>
@@ -61,10 +70,12 @@
       </div>
     </header>
     <div id="error-banner" class="banner banner-error" role="alert" hidden></div>
+  <div id="offline-banner" class="banner banner-info" role="status" hidden></div>
     <div id="info-banner" class="banner banner-info" role="status" hidden></div>
     <div class="workspace" id="content">
       <div class="map-wrap">
         <div id="map" role="region" tabindex="0" data-i18n-aria="app.mapLabel" aria-label="Map of Bengaluru Urban, Kolar and Mandya"></div>
+        <p id="map-live" class="sr-only" aria-live="polite"></p>
         <div class="map-caveat" id="map-caveat">District-centroid estimate (~10 km grid)</div>
         <div class="legend" id="legend"></div>
         <div class="replay-banner" id="replay-banner" hidden></div>
@@ -79,6 +90,14 @@
         <div id="replay-panel" class="replay-stage" hidden></div>
       </aside>
     </div>
+    <section id="compare" class="compare" hidden aria-labelledby="compare-title">
+      <div class="compare-bar">
+        <h2 id="compare-title" data-i18n="compare.title">Compare the three districts</h2>
+        <button class="btn" type="button" id="close-compare" data-i18n="compare.close">Back to map</button>
+      </div>
+      <div id="compare-grid" class="compare-grid" role="listbox"></div>
+      <p id="compare-live" class="sr-only" aria-live="polite"></p>
+    </section>
   </div>
 
   <div id="chat-backdrop" class="drawer-backdrop" hidden></div>
@@ -97,6 +116,7 @@
       <input id="question" name="question" maxlength="500" autocomplete="off" data-i18n-placeholder="chat.placeholder" placeholder="Ask in English or Hindi">
       <button class="btn btn-primary" type="submit" id="ask-btn" data-i18n="chat.send">Ask</button>
     </form>
+    <p class="small" id="chat-lang-note" hidden></p>
     <p class="small" style="padding:0 0.8rem 0.8rem" data-i18n="chat.hint">Answers come only from ThirstCast data. All litres are estimates.</p>
   </aside>
 
@@ -105,17 +125,20 @@
     <h2 id="alert-title" data-i18n="alerts.title">Get email alerts</h2>
     <p data-i18n="alerts.body"></p>
     <form id="alert-form">
-      <label class="field" for="alert-email" data-i18n="alerts.email">Email address</label>
+      <label class="field" id="alert-email-field" for="alert-email" data-i18n="alerts.email">Email address</label>
       <input id="alert-email" type="email" autocomplete="off" inputmode="email">
       <p class="small" data-i18n="alerts.privacy"></p>
+      <pre id="alert-sample" class="note" hidden></pre>
       <div id="alert-result" class="note" hidden></div>
       <div style="display:flex; gap:0.4rem; margin-top:0.6rem">
-        <button class="btn btn-primary" type="submit" data-i18n="alerts.submit">Notify me</button>
+        <button class="btn btn-primary" type="submit" id="alert-submit" data-i18n="alerts.submit">Notify me</button>
         <button class="btn" type="button" id="close-alerts" data-i18n="alerts.close">Close</button>
       </div>
     </form>
   </div>
   <div id="toast" class="toast" role="status" hidden></div>
+  <div id="share-holder" class="sr-only"></div>
+  <article id="bulletin"></article>
   <script src="config.js"></script>
   <script src="api.js"></script>
   <script type="module" src="js/dashboard.js"></script>

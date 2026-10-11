@@ -17,9 +17,12 @@ Exact abstract sentences:
 **Mismatch with our plan:** the plan says "17% (intensity) and 23% (frequency)". The abstract lists the three
 percentages in the order **intensity, frequency, duration**, so it is **17% intensity, 7% frequency, 23% duration**.
 
-**Safe wording to use:** "For US cropland, 1981–2021, the paper finds statistically significant increasing trends in
-thirstwave intensity over 17% of cropland area and in duration over 23%, with frequency rising about 0.39 events per
-decade (cropland-weighted)." Never "17% more intense".
+**Safe wording to use:** quote the two abstract sentences above, unchanged. Do not restate which percentage belongs
+to which metric in our own words. Never "17% more intense".
+
+Checked again on 2026-10-11 from the NOAA repository PDF of the same paper (the Wiley page was behind a browser
+check). The abstract printed there matches the sentences above. A results paragraph in that PDF assigns the shares
+in a different order from the abstract's grammar. Public pages quote the abstract and do not choose between the two.
 
 ## 2. The Hindu (June 2025)
 

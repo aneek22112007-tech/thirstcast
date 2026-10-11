@@ -88,8 +88,93 @@ day-of-year p90, so a temperature-threshold alert would have stayed silent. Hot-
 * City household demand is not modelled.
 * 1994-2023 events are in-sample for the thresholds.
 
-## 10. Sources
+## 10. Thirst percentile ("why today")
+
+The overview reports where today's ET₀ sits inside the same ±7 day climatology used for the p90.
+`frontend/scripts/build_percentiles.py` reads `data/raw/archive_*_1994_2023.json` and stores, for each
+non-leap day of year, the sorted ET₀ values in that window as integer hundredths of a millimetre
+(`frontend/data/percentiles.json`). It does not store the expanded window twice.
+
+The page rebuilds day *d*−7 … *d*+7, wrapping with `(k−1) mod 365 + 1`, quantises today's ET₀ with
+`round(ET₀ × 100)`, and sets the percentile to `round(100 × count(value ≤ today) / N)`. A value of 100
+means today is at or above every reference value in the window. The panel also shows today's ET₀ and
+Tmax beside their own p90, the count of days above the ET₀ p90 in the 7-day window, the signed bias
+offset in mm/day, and the cumulative excess. It does not attribute the day to a weather driver,
+because no separate driver series was fetched.
+
+## 11. Thirty Aprils
+
+`data/scripts/april_history.py` reads the ERA5 archive and writes `data/out/april_history.json`
+(copied to `frontend/data/april_history.json`). For each district and each April from 1994 through 2024
+it records days with ET₀ above the day-of-year p90, the cumulative excess in millimetres, and the rank
+among those 31 Aprils. Rank 1 is the largest cumulative excess. The chart is April only; other months
+are not computed. 2024 is the marked bar.
+
+## 12. Thirsty, not hot
+
+`frontend/scripts/build_static_data.py` writes `frontend/data/blindspot_timeline.json` from the blindspot
+events. Each event is a thirstwave during which maximum temperature stayed at or below its own
+day-of-year p90: ET0 above its p90 while Tmax stayed below its own p90. The landing page reads the
+hero event (district and start date) from that file and displays the days, excess and peak Tmax
+stored on the event. It does not keep a second copy of those figures in the page.
+
+## 17. Crop stage
+
+The farmer calculator can switch the FAO-56 Table 12 stage. The stored `kc` field stays the
+mid-season value the pipeline uses, so the default view is unchanged. Initial and late stages
+are read from `stages` on the same crop row in `data/config/crops.json`, copied into
+`frontend/data/catalog.json` by `frontend/scripts/build_static_data.py`. Rice is 1.05, 1.20,
+and 0.60–0.90. Sugar cane is 0.40, 1.25, and 0.75. Tomato is 0.60, 1.15, and 0.70–0.90.
+The Table 12 footnote gives stalk tomatoes a mid-season Kc of 1.20; this project keeps 1.15.
+Millet is 0.30, 1.00, and 0.30. A single Kc is still shown with ±10%. When the table gives a
+range, that range is the band and the ±10% is not applied again.
+
+## 18. Print bulletin
+
+The print button fills one A4 page from the district already on screen: status, today's ET₀
+and the cumulative excess, the 7-day chart, the forecast table, the mid-season litre range,
+the caveat, the source line, and the run date. It does not fetch a new response.
+
+## 19. Map keyboard
+
+When the map has focus, the left and right arrow keys move through the three pilot districts
+and a polite live region reads the district name and status. The order is Bengaluru Urban,
+Kolar, Mandya.
+
+## 13. Sources
 
 Open-Meteo (Zippenfeld 2023, doi:10.5281/ZENODO.7970649; ERA5/ERA5-Land © Copernicus C3S); Allen et al. 1998,
 FAO-56; Kukal & Hobbins 2025, Earth's Future; The Hindu, 24 June 2025; Ramachandra et al. 2017 (IISc ETR-116);
 IRJET 6(9) 2019 (KRS); DataMeet India district boundaries (CC BY 2.5 IN). Details: `docs/sources.md`.
+
+## 14. Compare view
+
+The compare view (`app.html#view=compare`) places the three pilot districts side by side.
+It reads the district list and each district's thirstwave response, the same JSON the map
+already loads. It does not call a new endpoint and it does not compute a new statistic.
+Arrow keys move between the three columns.
+
+## 15. Share card
+
+The share card is drawn in the browser on a 1200 by 630 canvas, in the same navy, gold and
+water colours as `frontend/og.svg`. It copies the numbers already on the district overview
+or the April 2024 replay summary, and it bakes in the caveat, the date, a mock or historical
+label, and the page URL. No image library is loaded.
+
+## 16. Offline copy
+
+`frontend/sw.js` is a network-first service worker. On install it stores the pages, styles,
+scripts, vendored Leaflet (including marker images) and vendored marked. Responses under
+`data/` and `mock/`, and the last successful live `GET /districts`, `GET /thirstwave/{d}` and
+`GET /replay/{d}`, are stored when they arrive. A saved live response is used only if it is
+under 24 hours old. OpenStreetMap tiles are stored only after the map requests that tile.
+Nothing prefetches tiles. When a saved response is shown because the network failed, the page
+says which time that copy was saved. The methods page reads `frontend/vendor/marked/` instead
+of a CDN.
+
+## 20. Kannada
+
+The Kannada strings in `frontend/i18n/kn.json` are machine-assisted and need a native review.
+District names on that setting are ಬೆಂಗಳೂರು, ಕೋಲಾರ and ಮಂಡ್ಯ. The typeface is Noto Sans Kannada,
+vendored as `frontend/vendor/fonts/NotoSansKannada.woff2` (SIL Open Font License). The agent
+still answers in English or Hindi. The Kannada screen says so. It does not detect Kannada.

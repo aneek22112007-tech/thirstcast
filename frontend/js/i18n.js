@@ -12,11 +12,32 @@ function lookup(dict, key) {
   return typeof node === "string" ? node : undefined;
 }
 
+function fill(text, vars) {
+  if (!vars || text == null) return text;
+  return text.replace(/\{(\w+)\}/g, (_, name) => (vars[name] == null ? "" : String(vars[name])));
+}
+
 export function t(key, vars) {
   let text = lookup(store.dict, key);
   if (text == null) text = key;
-  if (vars) text = text.replace(/\{(\w+)\}/g, (_, name) => (vars[name] == null ? "" : String(vars[name])));
-  return text;
+  return fill(text, vars);
+}
+
+const LANGS = ["en", "hi", "kn"];
+
+function locale() {
+  if (store.lang === "hi") return "hi";
+  if (store.lang === "kn") return "kn";
+  return "en";
+}
+
+/** Intl.PluralRules. Keys are `${key}_one` and `${key}_other` (and other CLDR forms). */
+export function plural(key, n, vars) {
+  const rule = new Intl.PluralRules(locale()).select(Number(n));
+  const text = lookup(store.dict, `${key}_${rule}`)
+    || lookup(store.dict, `${key}_other`)
+    || lookup(store.dict, key);
+  return fill(text == null ? key : text, Object.assign({ n }, vars || {}));
 }
 
 export function getLang() {
@@ -40,7 +61,7 @@ function apply(root) {
   root.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
     el.setAttribute("placeholder", t(el.dataset.i18nPlaceholder));
   });
-  document.documentElement.lang = store.lang === "hi" ? "hi" : "en";
+  document.documentElement.lang = LANGS.includes(store.lang) ? store.lang : "en";
   document.querySelectorAll("[data-lang-pressed]").forEach((el) => {
     el.setAttribute("aria-pressed", String(el.dataset.langPressed === store.lang));
   });
@@ -55,20 +76,20 @@ function apply(root) {
 export async function initI18n(defaultPageTitleKey) {
   const fromHash = new URLSearchParams(location.hash.replace(/^#/, "")).get("lang");
   let lang = fromHash || localStorage.getItem(KEY) || document.documentElement.lang || "en";
-  if (lang !== "hi" && lang !== "en") lang = "en";
+  if (!LANGS.includes(lang)) lang = "en";
   await setLang(lang, { silentHash: true });
   if (defaultPageTitleKey) document.title = t(defaultPageTitleKey);
   return lang;
 }
 
 export async function setLang(lang, opts = {}) {
-  if (lang !== "hi" && lang !== "en") lang = "en";
+  if (!LANGS.includes(lang)) lang = "en";
   const res = await fetch(`i18n/${lang}.json`);
   if (!res.ok) throw new Error(`i18n ${res.status}`);
   store.dict = await res.json();
   store.lang = lang;
   try { localStorage.setItem(KEY, lang); } catch (e) { /* private mode */ }
-  document.documentElement.lang = lang === "hi" ? "hi" : "en";
+  document.documentElement.lang = lang;
   apply(document);
   store.listeners.forEach((fn) => fn(lang));
   if (!opts.silentHash) {
@@ -87,10 +108,26 @@ export function bindLangToggle() {
 
 const THEME_KEY = "thirstcast.theme";
 
+function systemTheme() {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
+function savedTheme() {
+  try {
+    const saved = localStorage.getItem(THEME_KEY);
+    return saved === "dark" || saved === "light" ? saved : null;
+  } catch (e) {
+    return null;
+  }
+}
+
 export function initTheme() {
-  const saved = localStorage.getItem(THEME_KEY);
-  const theme = saved === "dark" || saved === "light" ? saved : "light";
-  applyTheme(theme);
+  applyTheme(savedTheme() || systemTheme());
+  const media = window.matchMedia("(prefers-color-scheme: dark)");
+  const follow = () => {
+    if (!savedTheme()) applyTheme(systemTheme());
+  };
+  if (media.addEventListener) media.addEventListener("change", follow);
   document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
     btn.addEventListener("click", () => {
       const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";

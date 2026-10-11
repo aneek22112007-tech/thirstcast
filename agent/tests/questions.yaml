@@ -24,3 +24,5 @@
 - {id: hi09, q: "क्या मैसूर में थर्स्टवेव आएगी?", lang: hi, district: null, tools: [], must_include: ["मंड्या"]}
 - {id: hi10, q: "थर्स्टवेव क्या होती है?", lang: hi, district: null, tools: [], must_include: ["90वें"]}
 - {id: hi11, q: "मंड्या में रागी के लिए कितना अतिरिक्त पानी लगेगा?", lang: hi, district: Mandya, tools: [water_gap], must_include: ["रागी"]}
+- {id: en13, q: "Is Kolar just hot this week, or also thirsty?", lang: en, district: Kolar, hint: Mandya, tools: [compare_with_heat], must_include: ["Kolar"]}
+- {id: hi12, q: "कोलार में इस हफ्ते सिर्फ़ गर्मी है या प्यास भी?", lang: hi, district: Kolar, hint: Mandya, tools: [compare_with_heat], must_include: ["कोलार"]}

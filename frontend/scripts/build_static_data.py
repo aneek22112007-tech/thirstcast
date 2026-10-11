@@ -189,10 +189,88 @@ def build_catalog() -> None:
     )
 
 
+def season_of(iso: str) -> str:
+    month = int(iso[5:7])
+    if month in (12, 1, 2):
+        return "winter"
+    if month in (3, 4, 5):
+        return "pre_monsoon"
+    if month in (6, 7, 8, 9):
+        return "monsoon"
+    return "post_monsoon"
+
+
+def build_timeline() -> None:
+    """Daily ET0 and Tmax for every blindspot event (all_below_p90). Numbers come from the archive."""
+    events = [e for e in load(ROOT / "data" / "out" / "blindspot_events.json") if e.get("all_below_p90")]
+    clim = {(row["district"], int(row["doy"])): row for row in load(ROOT / "data" / "out" / "climatology.json")}
+    archives = {}
+    for district in ("Bengaluru_Urban", "Kolar", "Mandya"):
+        raw = load(ROOT / "data" / "raw" / f"archive_{district}_1994_2023.json")
+        archives[district] = {
+            "index": {t: i for i, t in enumerate(raw["daily"]["time"])},
+            "et0": raw["daily"]["et0_fao_evapotranspiration"],
+            "tmax": raw["daily"]["temperature_2m_max"],
+        }
+    built = []
+    for event in events:
+        district = event["district"]
+        arch = archives[district]
+        daily = []
+        cursor = date.fromisoformat(event["start"])
+        end = date.fromisoformat(event["end"])
+        while cursor <= end:
+            iso = cursor.isoformat()
+            i = arch["index"][iso]
+            doy = doy_non_leap(iso)
+            threshold = clim[(district, doy)]
+            et0 = arch["et0"][i]
+            tmax = arch["tmax"][i]
+            daily.append({
+                "date": iso,
+                "doy": doy,
+                "et0": et0,
+                "p90": threshold["et0_p90"],
+                "flag": et0 > threshold["et0_p90"],
+                "tmax": tmax,
+                "tmax_p90": threshold["tmax_p90"],
+                "tmax_flag": tmax > threshold["tmax_p90"],
+            })
+            cursor = date.fromordinal(cursor.toordinal() + 1)
+        built.append({
+            "district": district,
+            "start": event["start"],
+            "end": event["end"],
+            "season": season_of(event["start"]),
+            "days": event["days"],
+            "excess_mm": event["excess_mm"],
+            "max_tmax_c": event["max_tmax"],
+            "max_tmax_minus_p90_c": event["max_tmax_minus_p90"],
+            "tmax_days_above_p90": event["tmax_days_above_p90"],
+            "daily": daily,
+        })
+    hero = next(e for e in built if e["district"] == "Mandya" and e["start"] == "2023-04-08")
+    if hero["days"] != 7 or hero["excess_mm"] != 2.62 or hero["max_tmax_c"] != 36.2:
+        raise SystemExit(f"hero card drifted from the event file: {hero['days']} {hero['excess_mm']} {hero['max_tmax_c']}")
+    write("blindspot_timeline.json", {
+        "generated_by": "frontend/scripts/build_static_data.py",
+        "events_source": "data/out/blindspot_events.json",
+        "daily_source": "data/raw/archive_*_1994_2023.json joined to data/out/climatology.json",
+        "definition": "ET0 above its p90 while Tmax stayed below its own p90.",
+        "framing": "ET0 above its p90 while Tmax stayed below its own p90",
+        "count": len(built),
+        "hero": {"district": "Mandya", "start": "2023-04-08"},
+        "seasons": ["winter", "pre_monsoon", "monsoon", "post_monsoon"],
+        "events": built,
+        "caveat": "1994-2023 events are in-sample for the thresholds. District-centroid estimate (~10 km grid). Historical, not a live alert.",
+    })
+
+
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     build_climatology()
     build_blindspot()
+    build_timeline()
     build_catalog()
 
 
