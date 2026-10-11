@@ -8,6 +8,39 @@ async function topElementId(page, selector) {
   });
 }
 
+test("F-05 acres are validated in place and never replaced with 1", async ({ page }) => {
+  await page.goto("/app.html#d=Mandya&tab=farmers");
+  const input = page.locator("#acres");
+  await expect(input).toBeVisible({ timeout: 20000 });
+  await expect(page.locator("#farm-result")).toContainText("for 1 acres");
+  await expect(page.locator("#farm-result")).toContainText("2,972");
+
+  for (const bad of ["", "0", "-5", "100000", "abc", "1.11"]) {
+    await input.fill(bad);
+    await expect(page.locator("#acres-error")).toBeVisible();
+    await expect(page.locator("#acres-error")).toContainText("0.1");
+    await expect(page.locator("#farm-result")).toHaveClass(/is-invalid/);
+    await expect(page.locator("#farm-result")).not.toContainText("2,972");
+  }
+
+  await input.fill("2,5");
+  await expect(page.locator("#acres-error")).toBeHidden();
+  await expect(page.locator("#farm-result")).toContainText("for 2.5 acres");
+  await expect(page.locator("#farm-result")).toContainText("7,430");
+  await expect(page.locator("#farm-result")).toContainText("9,083");
+  await input.focus();
+  await input.press("End");
+  await page.keyboard.type("0");
+  await expect(input).toHaveValue("2,50");
+  await expect(page.locator("#farm-result")).toContainText("for 2.5 acres");
+
+  await input.fill("10000");
+  await expect(page.locator("#acres-error")).toBeHidden();
+  await input.fill("0.1");
+  await expect(page.locator("#acres-error")).toBeHidden();
+  await expect(page.locator("#farm-result")).toContainText("for 0.1 acres");
+});
+
 test("F-04 back and forward restore district, tab, replay and chat", async ({ page }) => {
   await page.goto("/app.html");
   await expect(page.locator("#district-select")).toBeVisible({ timeout: 20000 });
