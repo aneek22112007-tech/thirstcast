@@ -129,6 +129,12 @@ The Table 12 footnote gives stalk tomatoes a mid-season Kc of 1.20; this project
 Millet is 0.30, 1.00, and 0.30. A single Kc is still shown with ±10%. When the table gives a
 range, that range is the band and the ±10% is not applied again.
 
+## 18. Print bulletin
+
+The print button fills one A4 page from the district already on screen: status, today's ET₀
+and the cumulative excess, the 7-day chart, the forecast table, the mid-season litre range,
+the caveat, the source line, and the run date. It does not fetch a new response.
+
 ## 13. Sources
 
 Open-Meteo (Zippenfeld 2023, doi:10.5281/ZENODO.7970649; ERA5/ERA5-Land © Copernicus C3S); Allen et al. 1998,

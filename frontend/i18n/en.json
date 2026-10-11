@@ -211,6 +211,12 @@
     "historical": "Historical, not a live alert",
     "live": "Live forecast"
   },
+  "print": {
+    "button": "Print bulletin",
+    "title": "ThirstCast bulletin",
+    "litres": "Extra litres per acre, mid-season (estimate)",
+    "sources": "Sources: Open-Meteo / ERA5, FAO-56 Table 12, and the methods page."
+  },
   "stage": {
     "label": "Crop stage",
     "ini": "Initial",
