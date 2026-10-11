@@ -28,6 +28,8 @@ const SHELL_URLS = [
   "js/methods.js",
   "i18n/en.json",
   "i18n/hi.json",
+  "i18n/kn.json",
+  "vendor/fonts/NotoSansKannada.woff2",
   "vendor/leaflet/leaflet.css",
   "vendor/leaflet/leaflet.js",
   "vendor/leaflet/images/marker-icon.png",

@@ -171,3 +171,10 @@ under 24 hours old. OpenStreetMap tiles are stored only after the map requests t
 Nothing prefetches tiles. When a saved response is shown because the network failed, the page
 says which time that copy was saved. The methods page reads `frontend/vendor/marked/` instead
 of a CDN.
+
+## 20. Kannada
+
+The Kannada strings in `frontend/i18n/kn.json` are machine-assisted and need a native review.
+District names on that setting are ಬೆಂಗಳೂರು, ಕೋಲಾರ and ಮಂಡ್ಯ. The typeface is Noto Sans Kannada,
+vendored as `frontend/vendor/fonts/NotoSansKannada.woff2` (SIL Open Font License). The agent
+still answers in English or Hindi. The Kannada screen says so. It does not detect Kannada.

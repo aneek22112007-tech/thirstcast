@@ -23,6 +23,8 @@ export function t(key, vars) {
   return fill(text, vars);
 }
 
+const LANGS = ["en", "hi", "kn"];
+
 function locale() {
   if (store.lang === "hi") return "hi";
   if (store.lang === "kn") return "kn";
@@ -59,7 +61,7 @@ function apply(root) {
   root.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
     el.setAttribute("placeholder", t(el.dataset.i18nPlaceholder));
   });
-  document.documentElement.lang = store.lang === "hi" ? "hi" : "en";
+  document.documentElement.lang = LANGS.includes(store.lang) ? store.lang : "en";
   document.querySelectorAll("[data-lang-pressed]").forEach((el) => {
     el.setAttribute("aria-pressed", String(el.dataset.langPressed === store.lang));
   });
@@ -74,20 +76,20 @@ function apply(root) {
 export async function initI18n(defaultPageTitleKey) {
   const fromHash = new URLSearchParams(location.hash.replace(/^#/, "")).get("lang");
   let lang = fromHash || localStorage.getItem(KEY) || document.documentElement.lang || "en";
-  if (lang !== "hi" && lang !== "en") lang = "en";
+  if (!LANGS.includes(lang)) lang = "en";
   await setLang(lang, { silentHash: true });
   if (defaultPageTitleKey) document.title = t(defaultPageTitleKey);
   return lang;
 }
 
 export async function setLang(lang, opts = {}) {
-  if (lang !== "hi" && lang !== "en") lang = "en";
+  if (!LANGS.includes(lang)) lang = "en";
   const res = await fetch(`i18n/${lang}.json`);
   if (!res.ok) throw new Error(`i18n ${res.status}`);
   store.dict = await res.json();
   store.lang = lang;
   try { localStorage.setItem(KEY, lang); } catch (e) { /* private mode */ }
-  document.documentElement.lang = lang === "hi" ? "hi" : "en";
+  document.documentElement.lang = lang;
   apply(document);
   store.listeners.forEach((fn) => fn(lang));
   if (!opts.silentHash) {

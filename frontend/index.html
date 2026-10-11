@@ -33,7 +33,7 @@
         document.documentElement.setAttribute("data-theme", theme);
         var params = new URLSearchParams((location.hash || "").replace(/^#/, ""));
         var lang = params.get("lang") || localStorage.getItem("thirstcast.lang");
-        if (lang === "hi" || lang === "en") document.documentElement.lang = lang;
+        if (lang === "hi" || lang === "en" || lang === "kn") document.documentElement.lang = lang;
       } catch (e) {}
     })();
   </script>
@@ -54,6 +54,7 @@
     <div class="top-actions">
       <button class="btn btn-ghost" type="button" data-set-lang="en" data-lang-pressed="en" aria-pressed="true">EN</button>
       <button class="btn btn-ghost" type="button" data-set-lang="hi" data-lang-pressed="hi" aria-pressed="false">हिंदी</button>
+      <button class="btn btn-ghost" type="button" data-set-lang="kn" data-lang-pressed="kn" aria-pressed="false">ಕನ್ನಡ</button>
       <button class="btn icon-btn" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark theme"><span data-theme-label aria-hidden="true">Dark</span></button>
       <span id="mock-badge" class="badge badge-mock" hidden>MOCK DATA</span>
     </div>

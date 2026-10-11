@@ -288,6 +288,7 @@
     "tools": "Tools",
     "modeLlm": "AI agent",
     "modeTemplate": "Template advisory (non-LLM mode)",
+    "langNote": "Answers come in English or Hindi.",
     "hint": "Answers come only from ThirstCast data. All litres are estimates.",
     "suggestions": "Suggested questions"
   },

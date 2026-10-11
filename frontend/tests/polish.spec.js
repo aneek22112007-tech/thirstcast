@@ -545,3 +545,52 @@ test("F-03 each suggested question returns a real template answer", async ({ pag
     "Offline demo: try one of the suggested questions; the live agent answers anything.",
   );
 });
+
+test("U-7 Kannada uses the same keys and district names", async ({ page }) => {
+  const en = await (await page.request.get("/i18n/en.json")).json();
+  const kn = await (await page.request.get("/i18n/kn.json")).json();
+  function leaves(obj, path = "") {
+    const out = [];
+    if (obj && typeof obj === "object" && !Array.isArray(obj)) {
+      for (const [key, value] of Object.entries(obj)) {
+        out.push(...leaves(value, path ? `${path}.${key}` : key));
+      }
+    } else if (typeof obj === "string") out.push(path);
+    return out;
+  }
+  function get(obj, path) {
+    return path.split(".").reduce((current, key) => (current == null ? undefined : current[key]), obj);
+  }
+  for (const path of leaves(en)) {
+    if (path === "_comment") continue;
+    expect(typeof get(kn, path), path).toBe("string");
+  }
+  expect(kn._comment).toMatch(/needs a native review/);
+  expect(kn._comment).toMatch(/ಸ್ಥಳೀಯ ಪರಿಶೀಲನೆ/);
+  expect(kn.districts).toEqual({
+    Bengaluru_Urban: "ಬೆಂಗಳೂರು",
+    Kolar: "ಕೋಲಾರ",
+    Mandya: "ಮಂಡ್ಯ",
+  });
+  expect(kn.why.quote).toBe(en.why.quote);
+  expect(kn.why.paper).toBe(en.why.paper);
+
+  await page.goto("/app.html");
+  await expect(page.locator("#district-list")).toContainText("Mandya", { timeout: 20000 });
+  await page.getByRole("button", { name: "ಕನ್ನಡ", exact: true }).click();
+  await expect(page.locator("html")).toHaveAttribute("lang", "kn");
+  await expect(page.locator("#district-list")).toContainText("ಮಂಡ್ಯ");
+  await expect(page.locator("#district-list")).toContainText("ಬೆಂಗಳೂರು");
+  await expect(page.locator("#district-select")).toContainText("ಮಂಡ್ಯ");
+  await page.locator("#open-chat").click();
+  const note = page.locator("#chat-lang-note");
+  await expect(note).toBeVisible();
+  await expect(note).toContainText("ಇಂಗ್ಲಿಷ್");
+  await expect(note).toContainText("ಹಿಂದಿ");
+  await expect(page.locator("#question")).toHaveAttribute("placeholder", /ಇಂಗ್ಲಿಷ್/);
+  const font = await page.request.get("/vendor/fonts/NotoSansKannada.woff2");
+  expect(font.ok()).toBeTruthy();
+  const css = await (await page.request.get("/styles/tokens.css")).text();
+  expect(css).toContain("Noto Sans Kannada");
+  expect(css).not.toContain("fonts.gstatic.com");
+});
