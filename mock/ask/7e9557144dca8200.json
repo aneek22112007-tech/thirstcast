@@ -1,0 +1,11 @@
+{
+ "answer": "Kolar, next 7 days: 0 day(s) are forecast to be both hot and thirsty (above their own p90), 0 thirsty only (ET0) and 3 hot only (Tmax). On thirst-only days a temperature alert alone would not show the extra water demand.\n\n[Template advisory (non-LLM mode)]",
+ "lang": "en",
+ "mode": "template",
+ "tools_used": [
+  "get_status",
+  "compare_with_heat"
+ ],
+ "district": "Kolar",
+ "caveat": "Estimates only. District-centroid estimate (~10 km grid)"
+}

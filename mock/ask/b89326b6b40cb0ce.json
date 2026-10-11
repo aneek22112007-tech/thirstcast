@@ -1,0 +1,11 @@
+{
+ "answer": "कोलार में अगले 7 दिनों में ET0 अपनी स्थानीय p90 सीमा से ऊपर जाने का अनुमान नहीं है, इसलिए टमाटर के लिए सामान्य से अतिरिक्त पानी का कोई अनुमान नहीं है (अतिरिक्त ET0 0 मिमी).\n\n[टेम्पलेट सलाह (नॉन-LLM मोड)]",
+ "lang": "hi",
+ "mode": "template",
+ "tools_used": [
+  "get_status",
+  "water_gap"
+ ],
+ "district": "Kolar",
+ "caveat": "Estimates only. District-centroid estimate (~10 km grid)"
+}

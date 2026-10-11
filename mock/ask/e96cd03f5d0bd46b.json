@@ -1,0 +1,10 @@
+{
+ "answer": "Bengaluru Urban, extra evaporation over the next 7 days (from 0.3 mm excess ET0): Bellandur: about 11,94,227 L (estimate, upper bound); Varthur: about 5,88,504 L (estimate, upper bound).\n\n[Template advisory (non-LLM mode)]",
+ "lang": "en",
+ "mode": "template",
+ "tools_used": [
+  "get_status"
+ ],
+ "district": "Bengaluru_Urban",
+ "caveat": "Estimates only. District-centroid estimate (~10 km grid)"
+}

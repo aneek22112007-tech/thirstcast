@@ -32,3 +32,29 @@ test("F-01 chat and alerts sit above the map at 360px", async ({ page }) => {
   await page.keyboard.press("Escape");
   await expect(page.locator("#alert-dialog")).toBeHidden();
 });
+
+test("F-03 each suggested question returns a real template answer", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto("/app.html");
+  await expect(page.locator("#mock-badge")).toBeVisible({ timeout: 20000 });
+  await page.locator("#open-chat").click();
+  const chips = page.locator("#suggest .chip");
+  await expect(chips).toHaveCount(4);
+  const count = await chips.count();
+  for (let i = 0; i < count; i += 1) {
+    const question = await chips.nth(i).innerText();
+    await chips.nth(i).click();
+    const bot = page.locator(".msg.bot").last();
+    await expect(bot).toContainText(/Template advisory|estimate|Estimates|अनुमान/, { timeout: 15000 });
+    await expect(bot).not.toContainText("MOCK answer");
+    await expect(bot).not.toContainText("Connect the live API");
+    const hindi = /[\u0900-\u097F]/.test(question);
+    if (/Kolar|कोलार/.test(question)) await expect(bot).toContainText(hindi ? "कोलार" : "Kolar");
+    if (/Mandya|मंड्या/.test(question)) await expect(bot).toContainText(hindi ? "मंड्या" : "Mandya");
+  }
+  await page.locator("#question").fill("What is the rainfall in Atlantis tomorrow please");
+  await page.locator("#ask-btn").click();
+  await expect(page.locator(".msg.bot").last()).toContainText(
+    "Offline demo: try one of the suggested questions; the live agent answers anything.",
+  );
+});

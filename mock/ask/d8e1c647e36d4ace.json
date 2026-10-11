@@ -1,0 +1,11 @@
+{
+ "answer": "Bengaluru's 2024 water crisis was mainly a supply failure (poor 2023 monsoon, failing borewells, Cauvery shortfalls). ThirstCast does not claim thirstwaves caused it; it shows the demand side: how much faster the air pulls water out. Bengaluru Urban is on WATCH: some of the next 7 days are forecast to have evaporative demand above the local 90th percentile. Excess ET0 over the 7 days: 0.3 mm (sum of daily ET0 above the local day-of-year p90). Extra water: Bellandur: about 11,94,227 L (estimate, upper bound); Varthur: about 5,88,504 L (estimate, upper bound).\n\n[Template advisory (non-LLM mode)]",
+ "lang": "en",
+ "mode": "template",
+ "tools_used": [
+  "get_status",
+  "get_forecast"
+ ],
+ "district": "Bengaluru_Urban",
+ "caveat": "Estimates only. District-centroid estimate (~10 km grid)"
+}
