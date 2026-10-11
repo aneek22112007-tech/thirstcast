@@ -8,6 +8,21 @@ async function topElementId(page, selector) {
   });
 }
 
+test("F-11 a stale forecast shows the cached badge", async ({ page }) => {
+  await page.goto("/app.html#d=Mandya&tab=overview");
+  await expect(page.locator("#tab-panel")).toBeVisible({ timeout: 20000 });
+  await expect(page.locator("#stale-badge")).toHaveCount(0);
+  await page.route("**/mock/thirstwave_Kolar.json", async (route) => {
+    const body = await (await route.fetch()).json();
+    body.stale = true;
+    body.note = "Cached at 2023-10-04. Not a new forecast.";
+    await route.fulfill({ json: body });
+  });
+  await page.goto("/app.html#d=Kolar&tab=overview");
+  await expect(page.locator("#stale-badge")).toHaveText("Using cached forecast", { timeout: 20000 });
+  await expect(page.locator("#forecast-note")).toContainText("Cached at 2023-10-04");
+});
+
 test("F-09 Hindi names crops and lakes, and marks English sources", async ({ page }) => {
   await page.goto("/app.html#d=Mandya&tab=farmers&lang=hi");
   await expect(page.locator("#crop-select")).toContainText("धान", { timeout: 20000 });

@@ -242,7 +242,8 @@ function renderOverview(detail) {
     <h2>${esc(state.districts[detail.district]?.name || detail.district)} <span class="badge badge-${esc(status).toLowerCase()}">${esc(t("status." + status))}</span></h2>
     <p class="big-range">${esc(summarySentence(detail))}</p>
     <p>${status === "ACTIVE" ? esc(t("app.dayInWave", { n: detail.day_in_wave })) : esc(t("app.noWaveDay"))}</p>
-    ${detail.note ? `<p class="note note-info">${esc(detail.note)}</p>` : ""}
+    ${detail.stale ? `<p class="badge badge-mock" id="stale-badge">${esc(t("app.stale"))}</p>` : ""}
+    ${detail.note ? `<p class="note note-info" id="forecast-note">${esc(detail.note)}</p>` : ""}
     ${detail.mock_note ? `<p class="note" id="mock-note">${esc(mockNoteText(detail))}</p>` : ""}
     ${waveText}
     <div class="chart-wrap">${days.length ? et0Chart(days, { label: t("evidence.chart") }) : ""}</div>
