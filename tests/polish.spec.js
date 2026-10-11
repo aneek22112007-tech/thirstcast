@@ -8,6 +8,24 @@ async function topElementId(page, selector) {
   });
 }
 
+test("F-06 zero excess hides the tanker line", async ({ page }) => {
+  const sentence = "No day in the next 7 days is above the local p90, so there is no extra demand to estimate";
+  await page.goto("/app.html#d=Kolar&tab=farmers");
+  await expect(page.locator("#farm-result")).toContainText(sentence, { timeout: 20000 });
+  await expect(page.locator("#farm-result")).not.toContainText("10,000-litre");
+
+  await page.route("**/mock/thirstwave_Bengaluru_Urban.json", async (route) => {
+    const body = await (await route.fetch()).json();
+    body.extra_litres_lakes.Bellandur.value = 0;
+    await route.fulfill({ json: body });
+  });
+  await page.goto("/app.html#d=Bengaluru_Urban&tab=lakes");
+  const bellandur = page.locator(".lake-card", { has: page.getByRole("heading", { name: "Bellandur Lake" }) });
+  await expect(bellandur).toContainText(sentence, { timeout: 20000 });
+  await expect(bellandur).not.toContainText("11,94,227");
+  await expect(page.locator(".lake-card", { has: page.getByRole("heading", { name: "Varthur Lake" }) })).toContainText("5,88,504");
+});
+
 test("F-05 acres are validated in place and never replaced with 1", async ({ page }) => {
   await page.goto("/app.html#d=Mandya&tab=farmers");
   const input = page.locator("#acres");
