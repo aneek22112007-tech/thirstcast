@@ -4,7 +4,7 @@ Base URL: stack output `ApiUrl` (`https://<api-id>.execute-api.<region>.amazonaw
 CORS: localhost dev ports + the Amplify origin (`AmplifyOrigin` stack parameter).
 District IDs: `Bengaluru_Urban`, `Kolar`, `Mandya`. Unknown ID → `404 {"error": "unknown district"}`.
 Status: `ACTIVE` (red) = today inside a run of 3+ flagged days; `WATCH` (amber) = a flagged day in the 7-day
-window; `NONE` (green); `UNKNOWN` (grey, /districts only) = detector has not run yet.
+window; `NONE` (green); `UNKNOWN` (grey) = detector has not run yet (`/districts` and `/thirstwave/{district}`).
 
 ## GET /districts
 ```json
@@ -31,7 +31,7 @@ The Status item (`thirstcast_core.pipeline.build_status`) plus `caveat`:
 * `extra_litres_per_acre`: per crop `[low, high]` = Σexcess × Kc × 4047 with Kc ±10% (estimate).
 * `extra_litres_lakes`: Σexcess × 1.05 × area_m² (estimate, upper bound). `value: null` = area not verified, do not show.
 * `bias_note`: non-empty when |offset| > 0.5 mm/day or the forecast came from cache (`stale: true`).
-* Before the detector's first run: `status: "NONE"`, `forecast: []`, `note: "detector has not run yet"`.
+* Before the detector's first run: `status: "UNKNOWN"`, `forecast: []`, `note: "detector has not run yet"`.
 * (Example values from a local run on 2026-10-09; not live.)
 
 ## GET /replay/{district}

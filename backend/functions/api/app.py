@@ -61,7 +61,7 @@ def get_thirstwave(did):
         return resp(404, {"error": "unknown district"})
     st = repo().get_status(did)
     if not st:
-        return resp(200, {"district": did, "status": "NONE", "day_in_wave": 0, "forecast": [], "excess_mm_7d": 0.0,
+        return resp(200, {"district": did, "status": "UNKNOWN", "day_in_wave": 0, "forecast": [], "excess_mm_7d": 0.0,
                           "extra_litres_per_acre": {}, "extra_litres_lakes": {}, "note": "detector has not run yet",
                           "caveat": CAVEAT})
     st["caveat"] = CAVEAT

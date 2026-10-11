@@ -20,6 +20,8 @@
 * Schedule: `cron(30 0 * * ? *)` UTC = 06:00 IST daily.
 
 ## Change log
+* 2026-10-11 DECISION: before the detector's first run, `GET /thirstwave/{district}` returns `status: "UNKNOWN"`
+  (same as `/districts`), not `NONE`. `NONE` stays "no flagged day in the window".
 * 2026-10-09 DECISION: April 2024 numbers come from the ERA5 pipeline (22/30 days, +13.3 mm, Tmax 24/30, worst April
   since 1994) instead of the source plan's 27/30, +26.9 mm, 28/30 (only reproducible with the mixed best_match series).
 * 2026-10-09 DECISION: paper wording corrected: 17% intensity, 7% frequency, 23% duration (docs/sources.md).
