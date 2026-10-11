@@ -1,6 +1,7 @@
 import { bindLangToggle, getLang, initI18n, initTheme, onLang, plural, t } from "./i18n.js";
 import { climateChart, dataTable, et0Chart, tmaxChart } from "./charts.js";
 import { dayOfYear, esc, formatDate, formatMm, formatNumber, formatScale, prefersReducedMotion } from "./format.js";
+import { percentVs, thirstPercentile } from "./stats.js";
 
 const TABS = ["overview", "farmers", "lakes", "heat", "history"];
 const SUGGESTIONS = [
@@ -209,6 +210,46 @@ function setTab(id) {
   writeHash();
 }
 
+function signedNumber(value, digits) {
+  const n = Number(value);
+  if (!Number.isFinite(n)) return "–";
+  const text = formatNumber(Math.abs(n), digits);
+  if (n > 0) return `+${text}`;
+  if (n < 0) return `−${text}`;
+  return formatNumber(0, digits);
+}
+
+function whyToday(detail) {
+  const days = detail.forecast || [];
+  const iso = (detail.run_date || "").slice(0, 10);
+  const today = days.find((d) => d.date === iso) || days[0];
+  if (!today) return "";
+  const etDelta = percentVs(today.et0, today.p90);
+  const txDelta = percentVs(today.tmax, today.tmax_p90);
+  const above = days.filter((d) => d.flag).length;
+  const doy = iso ? dayOfYear(iso) : null;
+  const byDoy = state.percentiles && state.percentiles.districts[detail.district];
+  const pct = byDoy && doy ? thirstPercentile(byDoy, doy, today.et0) : null;
+  const vs = (value, digits, threshold, delta) => t("whyToday.vs", {
+    value: formatNumber(value, digits),
+    threshold: formatNumber(threshold, digits),
+    delta: delta == null ? "–" : `${delta > 0 ? "+" : ""}${delta}%`,
+  });
+  return `
+    <section id="why-today">
+      <h3>${esc(t("whyToday.title"))}</h3>
+      <dl class="kv">
+        <dt>${esc(t("whyToday.et0"))}</dt><dd>${esc(vs(today.et0, 2, today.p90, etDelta))} mm</dd>
+        <dt>${esc(t("whyToday.tmax"))}</dt><dd>${esc(vs(today.tmax, 1, today.tmax_p90, txDelta))} °C</dd>
+        <dt>${esc(t("whyToday.days"))}</dt><dd>${esc(plural("app.day", above))}</dd>
+        <dt>${esc(t("whyToday.bias"))}</dt><dd>${esc(signedNumber(detail.bias_offset_mm, 2))} ${esc(t("app.biasUnit"))}</dd>
+        <dt>${esc(t("whyToday.excess"))}</dt><dd>${detail.excess_mm_7d == null ? "–" : esc(formatMm(detail.excess_mm_7d))} mm</dd>
+        <dt>${esc(t("whyToday.percentile"))}</dt><dd><strong id="thirst-percentile">${pct == null ? "–" : esc(String(pct))}</strong> / 100</dd>
+      </dl>
+      <p class="small">${esc(t("whyToday.percentileHelp"))} <a href="methods.html#10-thirst-percentile-why-today">${esc(t("whyToday.methods"))}</a></p>
+    </section>`;
+}
+
 function summarySentence(detail) {
   const status = detail.status || "UNKNOWN";
   if (status === "ACTIVE") return t("app.summaryActive");
@@ -241,6 +282,7 @@ function renderOverview(detail) {
   return `
     <h2>${esc(state.districts[detail.district]?.name || detail.district)} <span class="badge badge-${esc(status).toLowerCase()}">${esc(t("status." + status))}</span></h2>
     <p class="big-range">${esc(summarySentence(detail))}</p>
+    ${whyToday(detail)}
     <p>${status === "ACTIVE" ? esc(t("app.dayInWave", { n: detail.day_in_wave })) : esc(t("app.noWaveDay"))}</p>
     ${detail.stale ? `<p class="badge badge-mock" id="stale-badge">${esc(t("app.stale"))}</p>` : ""}
     ${detail.note ? `<p class="note note-info" id="forecast-note">${esc(detail.note)}</p>` : ""}
@@ -924,16 +966,18 @@ async function boot() {
   map.setView([12.9, 77.4], 8);
   let geo;
   try {
-    const [geoRes, catalog, curves, blind] = await Promise.all([
+    const [geoRes, catalog, curves, blind, percentiles] = await Promise.all([
       fetch("data/pilot_districts.geojson").then((r) => { if (!r.ok) throw new Error(`geojson ${r.status}`); return r.json(); }),
       fetch("data/catalog.json").then((r) => r.json()),
       fetch("data/climatology_curves.json").then((r) => r.json()),
       fetch("data/blindspot.json").then((r) => r.json()),
+      fetch("data/percentiles.json").then((r) => r.json()),
     ]);
     geo = geoRes;
     state.catalog = catalog;
     state.curves = curves;
     state.blind = blind;
+    state.percentiles = percentiles;
   } catch (err) {
     showError(t("app.unavailableDetail", { message: err.message }));
     return;

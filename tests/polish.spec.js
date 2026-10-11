@@ -23,6 +23,20 @@ test("F-11 a stale forecast shows the cached badge", async ({ page }) => {
   await expect(page.locator("#forecast-note")).toContainText("Cached at 2023-10-04");
 });
 
+test("U-1 why today compares ET0, Tmax, bias and the thirst percentile", async ({ page }) => {
+  await page.goto("/app.html#d=Mandya&tab=overview");
+  const box = page.locator("#why-today");
+  await expect(box).toBeVisible({ timeout: 20000 });
+  await expect(box).toContainText("5.46 vs 4.78 (+14%)");
+  await expect(box).toContainText("31.1 vs 29.6 (+5%)");
+  await expect(box).toContainText("1 day");
+  await expect(box).toContainText("0.00");
+  await expect(box).toContainText("+0.68");
+  await expect(page.locator("#thirst-percentile")).toHaveText("99");
+  await expect(box).not.toContainText(/\b(wind|humidity|shortwave|radiation)\b/i);
+  await expect(box.locator("a")).toHaveAttribute("href", /thirst-percentile/);
+});
+
 test("F-20 mock alerts show a sample and collect no address", async ({ page }) => {
   await page.goto("/app.html");
   await expect(page.locator("#open-alerts")).toBeVisible({ timeout: 20000 });

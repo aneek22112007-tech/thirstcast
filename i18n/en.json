@@ -267,6 +267,18 @@
     "sample": "Sample from the mock detector for Mandya. This preview does not send it.",
     "close": "Close"
   },
+  "whyToday": {
+    "title": "Why today",
+    "et0": "Today's ET₀ against the day-of-year p90",
+    "tmax": "Today's maximum temperature against its p90",
+    "days": "Days in this 7-day window above the ET₀ p90",
+    "bias": "Signed bias offset",
+    "excess": "Cumulative excess",
+    "percentile": "Thirst percentile",
+    "percentileHelp": "Share of 1994–2023 ET₀ values in the ±7 day window that are at or below today. 100 means today is at least as thirsty as every value in that window.",
+    "vs": "{value} vs {threshold} ({delta})",
+    "methods": "How this percentile is calculated"
+  },
   "crops": {
     "paddy": "Paddy (rice)",
     "sugarcane": "Sugarcane",
