@@ -135,6 +135,12 @@ The print button fills one A4 page from the district already on screen: status, 
 and the cumulative excess, the 7-day chart, the forecast table, the mid-season litre range,
 the caveat, the source line, and the run date. It does not fetch a new response.
 
+## 19. Map keyboard
+
+When the map has focus, the left and right arrow keys move through the three pilot districts
+and a polite live region reads the district name and status. The order is Bengaluru Urban,
+Kolar, Mandya.
+
 ## 13. Sources
 
 Open-Meteo (Zippenfeld 2023, doi:10.5281/ZENODO.7970649; ERA5/ERA5-Land © Copernicus C3S); Allen et al. 1998,

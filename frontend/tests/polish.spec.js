@@ -23,6 +23,18 @@ test("F-11 a stale forecast shows the cached badge", async ({ page }) => {
   await expect(page.locator("#forecast-note")).toContainText("Cached at 2023-10-04");
 });
 
+test("U-11 arrow keys cycle districts while the map is focused", async ({ page }) => {
+  await page.goto("/app.html");
+  await expect(page.locator("#district-select")).toHaveValue("Mandya", { timeout: 20000 });
+  await page.locator("#map").focus();
+  await page.keyboard.press("ArrowRight");
+  await expect(page.locator("#district-select")).toHaveValue("Bengaluru_Urban");
+  await expect(page.locator("#map-live")).toContainText("Bengaluru Urban");
+  await page.keyboard.press("ArrowLeft");
+  await expect(page.locator("#district-select")).toHaveValue("Mandya");
+  await expect(page.locator("#map-live")).toContainText("Mandya");
+});
+
 test("U-10 the bulletin is a single A4 page of the district on screen", async ({ page }) => {
   await page.goto("/app.html#d=Mandya&tab=overview");
   await expect(page.locator("#print-bulletin")).toBeVisible({ timeout: 20000 });
