@@ -86,6 +86,14 @@ th, td { border: 1px solid var(--line); padding: 0.3rem 0.45rem; text-align: lef
 .msg { padding: 0.6rem 0.7rem; border-radius: 12px; white-space: pre-wrap; }
 .msg.user { background: var(--sky-soft); justify-self: end; max-width: 92%; }
 .msg.bot { background: var(--sand); border: 1px solid var(--line); }
+.advisory {
+  background: #d8f3d4;
+  color: #142033;
+  border-radius: 12px 12px 4px 12px;
+  padding: 0.55rem 0.7rem;
+  white-space: pre-wrap;
+}
+html[data-theme="dark"] .advisory { background: #1d4a32; color: #eef3f8; }
 .msg .meta { display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: center; margin-top: 0.4rem; font-size: 0.78rem; color: var(--muted); }
 .ask-form { display: flex; gap: 0.4rem; padding: 0.7rem; border-top: 1px solid var(--line); }
 .ask-form input { flex: 1; min-width: 0; }

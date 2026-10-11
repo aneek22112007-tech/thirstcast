@@ -23,6 +23,24 @@ test("F-11 a stale forecast shows the cached badge", async ({ page }) => {
   await expect(page.locator("#forecast-note")).toContainText("Cached at 2023-10-04");
 });
 
+test("U-4 an answer is a text advisory preview with copy and share", async ({ page }) => {
+  await page.goto("/app.html");
+  await expect(page.locator("#open-chat")).toBeVisible({ timeout: 20000 });
+  await page.locator("#open-chat").click();
+  await page.locator("#suggest .chip").first().click();
+  await expect(page.locator(".advisory-note").last()).toHaveText(
+    "Preview of a text advisory; ThirstCast does not send WhatsApp messages.",
+    { timeout: 15000 },
+  );
+  await expect(page.locator(".advisory").last()).toContainText(/Mandya|मंड्या/);
+  await expect(page.locator("[data-share]").last()).toBeVisible();
+  const canShare = await page.evaluate(() => typeof navigator.share === "function");
+  if (!canShare) {
+    await page.locator("[data-share]").last().click();
+    await expect(page.locator("#toast")).toContainText("Copied");
+  }
+});
+
 test("U-3 the landing timeline reads the hero event from the file", async ({ page }) => {
   await page.route("**/data/blindspot_timeline.json", async (route) => {
     const body = await (await route.fetch()).json();

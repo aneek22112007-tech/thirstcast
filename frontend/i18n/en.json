@@ -251,6 +251,8 @@
     "tooLong": "Please keep the question under 500 characters.",
     "empty": "Type a question first.",
     "copy": "Copy answer",
+    "share": "Share",
+    "advisory": "Preview of a text advisory; ThirstCast does not send WhatsApp messages.",
     "tools": "Tools",
     "modeLlm": "AI agent",
     "modeTemplate": "Template advisory (non-LLM mode)",
