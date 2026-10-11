@@ -50,7 +50,7 @@ function renderEvidence() {
   const box = $("evidence-stats");
   box.innerHTML = `
     <article class="stat"><div class="num" id="stat-days">0</div><div class="lbl">${esc(t("evidence.days"))}</div></article>
-    <article class="stat"><div class="num" id="stat-mm">0</div><div class="lbl">${esc(t("evidence.mm"))}<br><span class="small">${esc(s.cum_excess_definition)}</span></div></article>
+    <article class="stat"><div class="num" id="stat-mm">0</div><div class="lbl">${esc(t("evidence.mm"))}<br><span class="small">${esc(t("app.excessDef"))}</span></div></article>
     <article class="stat"><div class="num" id="stat-l">0</div><div class="lbl">${esc(t("evidence.litres"))}${scale ? `<br><span class="small">≈ ${esc(scale)}</span>` : ""}</div></article>
     <article class="stat"><div class="num" id="stat-rank">0</div><div class="lbl">${esc(t("evidence.rank"))}</div></article>`;
   const paint = evidenceDrawn || prefersReducedMotion()

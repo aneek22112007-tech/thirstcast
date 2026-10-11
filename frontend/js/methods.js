@@ -54,7 +54,10 @@ async function render() {
       heading.id = id;
       links.push(`<a href="#${id}">${heading.textContent}</a>`);
     });
-    nav.innerHTML = `<strong>${t("methods.onThisPage")}</strong>${links.join("")}`;
+    const outline = links.length
+      ? `<div class="english-source" lang="en">${links.join("")}</div>`
+      : "";
+    nav.innerHTML = `<strong>${t("methods.onThisPage")}</strong>${outline}`;
   } catch (err) {
     doc.textContent = t("methods.fail", { message: err.message });
   }
@@ -68,6 +71,7 @@ async function boot() {
   const desc = document.querySelector('meta[name="description"]');
   if (desc) desc.content = t("meta.methodsDescription");
   const list = document.getElementById("source-list");
+  list.lang = "en";
   list.innerHTML = SOURCES.map(([label, href]) => `<a href="${href}">${label}</a>`).join("");
   onLang(() => {
     document.title = t("meta.methodsTitle");
