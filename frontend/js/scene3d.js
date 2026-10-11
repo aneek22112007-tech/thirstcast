@@ -1,547 +1,676 @@
 /**
- * ThirstCast — 3D Earth & Scroll-Driven Storytelling Experience
- * Built with Three.js (local vendor: vendor/three/three.min.js)
+ * ThirstCast — Cinematic 3D Earth & Scroll-Driven Storytelling
+ * Built with Three.js (vendor/three/three.min.js)
  *
- * Implements 6 cinematic scenes linked to scroll progress:
- *   Scene 1: The Atmosphere — Orbital rotating Earth with atmospheric glow & stars
- *   Scene 2: The Water Cycle — Camera zooms to South Asia / Karnataka, evaporation particle streams
- *   Scene 3: Atmospheric Demand — ET₀ topographic contours & heat-energy pulses over Karnataka
- *   Scene 4: Thirstwave Trigger — 3D threshold chart, ≥3 consecutive days p90 breach
- *   Scene 5: Water Litres Conversion — Volumetric crop & reservoir demand particles
- *   Scene 6: Dashboard Reveal — Isometric tilt transition into interactive dashboard preview
+ * Architecture:
+ *   - Uses IntersectionObserver to watch each .story-step element
+ *   - Maps viewport-center position to a 0-1 scroll progress
+ *   - Each scene has a keyframe descriptor: camera position, globe rotation,
+ *     particle/overlay state, and easing
+ *   - Smooth lerp with separate rates for camera vs. overlay elements
  */
 
 import { prefersReducedMotion } from "./format.js";
 
-// Pilot coordinates (lat, lon) mapped to 3D sphere (radius R)
+// ─── Pilot district lat/lon ───────────────────────────────────────────────────
 const PILOT_COORDS = {
   Bengaluru_Urban: { lat: 12.9508, lon: 77.5959, name: "Bengaluru Urban", color: 0x55e6cd },
-  Kolar: { lat: 13.1393, lon: 78.2177, name: "Kolar", color: 0xf6b94a },
-  Mandya: { lat: 12.6104, lon: 76.7980, name: "Mandya", color: 0x5dd68a },
+  Kolar:           { lat: 13.1393, lon: 78.2177, name: "Kolar",           color: 0xf6b94a },
+  Mandya:          { lat: 12.6104, lon: 76.7980, name: "Mandya",          color: 0x5dd68a },
 };
 
 function latLonToVector3(lat, lon, radius) {
-  const phi = (90 - lat) * (Math.PI / 180);
+  const phi   = (90 - lat) * (Math.PI / 180);
   const theta = (lon + 180) * (Math.PI / 180);
-  const x = -(radius * Math.sin(phi) * Math.cos(theta));
-  const z = radius * Math.sin(phi) * Math.sin(theta);
-  const y = radius * Math.cos(phi);
-  return new THREE.Vector3(x, y, z);
+  return new THREE.Vector3(
+    -(radius * Math.sin(phi) * Math.cos(theta)),
+     radius * Math.cos(phi),
+     radius * Math.sin(phi) * Math.sin(theta)
+  );
 }
+
+// ─── Smooth easing functions ──────────────────────────────────────────────────
+const easeInOutCubic = t => t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2;
+const easeOutExpo    = t => t === 1 ? 1 : 1 - Math.pow(2, -10*t);
+const easeOutQuart   = t => 1 - Math.pow(1-t, 4);
+
+// ─── Scene keyframes: 6 scenes, each defines camera & globe target state ──────
+const SCENES = [
+  // Scene 0: The Atmosphere – orbital wide shot
+  {
+    camPos:    { x: 0,    y: 1.5,  z: 22  },
+    camLookAt: { x: 0,    y: 0,    z: 0   },
+    globeRotDelta: { x: 0,     y: 0     },
+    fogDensity: 0.022,
+    label: "Orbital Climatology",
+  },
+  // Scene 1: Water Cycle – begin zoom toward Karnataka
+  {
+    camPos:    { x: 1.5,  y: 0.5,  z: 16  },
+    camLookAt: { x: 0.5,  y: 0,    z: 0   },
+    globeRotDelta: { x: 0.08,  y: -0.18 },
+    fogDensity: 0.019,
+    label: "FAO-56 Penman-Monteith",
+  },
+  // Scene 2: Atmospheric Demand – closer zoom, Karnataka centre
+  {
+    camPos:    { x: 2.5,  y: -0.5, z: 12  },
+    camLookAt: { x: 1.0,  y: -0.3, z: 0   },
+    globeRotDelta: { x: 0.14,  y: -0.34 },
+    fogDensity: 0.016,
+    label: "30-Year ERA5 Baseline",
+  },
+  // Scene 3: Thirstwave Trigger – tight zoom, chart view
+  {
+    camPos:    { x: 3.2,  y: -0.8, z: 9.5 },
+    camLookAt: { x: 1.4,  y: -0.5, z: 0   },
+    globeRotDelta: { x: 0.17,  y: -0.44 },
+    fogDensity: 0.013,
+    label: "≥3 Consecutive Days > p90",
+  },
+  // Scene 4: Litres Conversion – pull back and tilt, particles
+  {
+    camPos:    { x: 2.0,  y: 1.8,  z: 11  },
+    camLookAt: { x: 0.8,  y: 0.5,  z: 0   },
+    globeRotDelta: { x: 0.12,  y: -0.38 },
+    fogDensity: 0.018,
+    label: "Litres & Cubic Metres",
+  },
+  // Scene 5: Dashboard Reveal – pull back to wide isometric angle
+  {
+    camPos:    { x: -2.5, y: 3.5,  z: 18  },
+    camLookAt: { x: -0.5, y: 0.5,  z: 0   },
+    globeRotDelta: { x: 0.04,  y: -0.1  },
+    fogDensity: 0.022,
+    label: "Platform Access",
+  },
+];
 
 export function init3DScene() {
   const container = document.getElementById("story-3d-stage");
   if (!container || typeof THREE === "undefined") {
-    console.warn("Three.js or #story-3d-stage not found, falling back to CSS visual.");
+    console.warn("Three.js or #story-3d-stage not found.");
     return null;
   }
-
-  // Respect reduced motion
   if (prefersReducedMotion()) {
     container.classList.add("reduced-motion-fallback");
     return null;
   }
 
-  let width = container.clientWidth || window.innerWidth;
-  let height = container.clientHeight || window.innerHeight;
+  let W = container.clientWidth  || window.innerWidth;
+  let H = container.clientHeight || window.innerHeight;
 
-  // 1. Scene, Camera, Renderer
+  // ── Scene / Camera / Renderer ────────────────────────────────────────────
   const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x040a0c, 0.022);
+  scene.fog = new THREE.FogExp2(0x020708, 0.022);
 
-  const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
-  camera.position.set(0, 2, 22);
+  const camera = new THREE.PerspectiveCamera(42, W / H, 0.1, 800);
+  camera.position.set(0, 1.5, 22);
 
   let renderer;
   try {
-    renderer = new THREE.WebGLRenderer({
-      antialias: true,
-      alpha: true,
-      powerPreference: "high-performance",
-    });
+    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
   } catch (e) {
-    console.warn("WebGL not supported, falling back:", e);
+    console.warn("WebGL unavailable:", e);
     return null;
   }
-
-  renderer.setSize(width, height);
+  renderer.setSize(W, H);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.25;
+  renderer.toneMappingExposure = 1.3;
   container.appendChild(renderer.domElement);
 
-  // 2. Lighting
-  const ambientLight = new THREE.AmbientLight(0x0f2d36, 1.2);
-  scene.add(ambientLight);
+  // ── Lighting ─────────────────────────────────────────────────────────────
+  scene.add(new THREE.AmbientLight(0x0f2d36, 1.5));
 
-  const sunLight = new THREE.DirectionalLight(0xe0f7fa, 2.4);
-  sunLight.position.set(16, 12, 14);
-  scene.add(sunLight);
+  const sun = new THREE.DirectionalLight(0xd4f0f0, 2.8);
+  sun.position.set(18, 14, 12);
+  scene.add(sun);
 
-  const rimLight = new THREE.DirectionalLight(0x55e6cd, 1.8);
-  rimLight.position.set(-14, -6, -10);
-  scene.add(rimLight);
+  const rim = new THREE.DirectionalLight(0x55e6cd, 1.6);
+  rim.position.set(-16, -8, -10);
+  scene.add(rim);
 
-  // 3. Globe Construction
+  const fill = new THREE.DirectionalLight(0xf6b94a, 0.5);
+  fill.position.set(8, -14, 6);
+  scene.add(fill);
+
+  // ── Globe ────────────────────────────────────────────────────────────────
+  const GLOBE_R = 6.0;
   const globeGroup = new THREE.Group();
   scene.add(globeGroup);
 
-  const GLOBE_RADIUS = 6.0;
+  // Base rotation so India/Karnataka faces front
+  const BASE_ROT_Y = -((77.6 * Math.PI) / 180) - Math.PI / 2 + 0.28;
+  const BASE_ROT_X = ((13.0 * Math.PI) / 180) - 0.18;
+  globeGroup.rotation.y = BASE_ROT_Y;
+  globeGroup.rotation.x = BASE_ROT_X;
 
-  // Globe procedural texture with dark continents & vibrant oceans
+  // Procedural Earth texture
   function createEarthTexture() {
-    const canvas = document.createElement("canvas");
-    canvas.width = 2048;
-    canvas.height = 1024;
-    const ctx = canvas.getContext("2d");
+    const c = document.createElement("canvas");
+    c.width = 2048; c.height = 1024;
+    const ctx = c.getContext("2d");
 
-    // Deep midnight ocean background
-    const oceanGrad = ctx.createLinearGradient(0, 0, 0, 1024);
-    oceanGrad.addColorStop(0, "#05161d");
-    oceanGrad.addColorStop(0.5, "#08212a");
-    oceanGrad.addColorStop(1, "#040d12");
-    ctx.fillStyle = oceanGrad;
-    ctx.fillRect(0, 0, 2048, 1024);
+    // Deep ocean gradient
+    const og = ctx.createLinearGradient(0, 0, 0, 1024);
+    og.addColorStop(0,   "#040d12");
+    og.addColorStop(0.5, "#071a22");
+    og.addColorStop(1,   "#030a0e");
+    ctx.fillStyle = og; ctx.fillRect(0, 0, 2048, 1024);
 
-    // Latitude & longitude grid lines
-    ctx.strokeStyle = "rgba(85, 230, 205, 0.08)";
-    ctx.lineWidth = 1;
-    for (let x = 0; x <= 2048; x += 128) {
+    // Subtle polar ice caps glow
+    const pole = ctx.createRadialGradient(1024, 0, 0, 1024, 0, 340);
+    pole.addColorStop(0,   "rgba(180,230,240,0.18)");
+    pole.addColorStop(1,   "rgba(0,0,0,0)");
+    ctx.fillStyle = pole; ctx.fillRect(0, 0, 2048, 340);
+
+    const pole2 = ctx.createRadialGradient(1024, 1024, 0, 1024, 1024, 300);
+    pole2.addColorStop(0,   "rgba(160,210,230,0.14)");
+    pole2.addColorStop(1,   "rgba(0,0,0,0)");
+    ctx.fillStyle = pole2; ctx.fillRect(0, 724, 2048, 300);
+
+    // Latitude grid
+    ctx.strokeStyle = "rgba(85,230,205,0.07)"; ctx.lineWidth = 0.8;
+    for (let y = 0; y <= 1024; y += 64)  { ctx.beginPath(); ctx.moveTo(0,y);    ctx.lineTo(2048,y);   ctx.stroke(); }
+    for (let x = 0; x <= 2048; x += 128) { ctx.beginPath(); ctx.moveTo(x,0);    ctx.lineTo(x,1024);   ctx.stroke(); }
+
+    // Continents — rendered as dark land with aqua coastal glow
+    const landColor = "rgba(16,48,58,0.88)";
+    const coastStroke = "rgba(85,230,205,0.4)";
+
+    function landmass(pts, glow) {
       ctx.beginPath();
-      ctx.moveTo(x, 0);
-      ctx.lineTo(x, 1024);
-      ctx.stroke();
+      ctx.moveTo(pts[0][0], pts[0][1]);
+      pts.slice(1).forEach(p => ctx.lineTo(p[0], p[1]));
+      ctx.closePath();
+      ctx.fillStyle = landColor; ctx.fill();
+      ctx.strokeStyle = glow || coastStroke; ctx.lineWidth = 1.5; ctx.stroke();
     }
-    for (let y = 0; y <= 1024; y += 64) {
+
+    // India/South Asia
+    landmass([[1408,370],[1418,330],[1465,310],[1520,320],[1540,370],[1530,400],[1510,440],[1520,470],[1500,510],[1475,545],[1460,520],[1448,480],[1430,470],[1415,440]]);
+    // Karnataka highlight
+    ctx.fillStyle = "rgba(85,230,205,0.28)";
+    ctx.beginPath(); ctx.ellipse(1464, 492, 20, 30, 0.18, 0, Math.PI*2); ctx.fill();
+    // Karnataka glow pulse (concentric rings)
+    [36, 52, 70].forEach((r, i) => {
+      ctx.strokeStyle = `rgba(85,230,205,${0.18 - i*0.05})`;
+      ctx.lineWidth = 1; ctx.beginPath(); ctx.ellipse(1464, 492, r, r*1.4, 0.18, 0, Math.PI*2); ctx.stroke();
+    });
+
+    // Africa
+    landmass([[960,370],[1000,350],[1080,360],[1130,400],[1160,470],[1170,550],[1140,700],[1080,730],[1010,680],[950,580],[920,480]]);
+    // Europe/Eurasia
+    landmass([[1060,310],[1240,290],[1420,285],[1620,310],[1750,360],[1800,420],[1680,450],[1520,420],[1380,400],[1200,360],[1080,345]]);
+    // Americas (western)
+    landmass([[200,320],[280,290],[330,350],[340,420],[320,480],[280,550],[240,640],[200,680],[170,620],[160,540],[175,440],[190,380]]);
+    // Australia
+    landmass([[1720,650],[1820,620],[1900,670],[1930,740],[1900,800],[1820,810],[1720,780],[1680,720]]);
+
+    // Atmospheric cloud bands
+    ctx.fillStyle = "rgba(255,255,255,0.055)";
+    for (let i = 0; i < 14; i++) {
       ctx.beginPath();
-      ctx.moveTo(0, y);
-      ctx.lineTo(2048, y);
-      ctx.stroke();
-    }
-
-    // Continents outline (procedural artistic landmass approximation)
-    ctx.fillStyle = "rgba(22, 64, 76, 0.85)";
-    ctx.strokeStyle = "rgba(85, 230, 205, 0.35)";
-    ctx.lineWidth = 2;
-
-    // South Asia / India Peninsula polygon
-    // Lat ~8N to 36N (y ~512 to 310), Lon ~68E to 90E (x ~1410 to 1536)
-    ctx.beginPath();
-    ctx.moveTo(1410, 370); // Gujarat
-    ctx.lineTo(1450, 480); // Goa / Karnataka coast
-    ctx.lineTo(1460, 520); // Kerala
-    ctx.lineTo(1475, 545); // Kanyakumari
-    ctx.lineTo(1495, 500); // Tamil Nadu coast
-    ctx.lineTo(1510, 430); // Andhra coast
-    ctx.lineTo(1530, 390); // Bengal / Odisha
-    ctx.lineTo(1510, 320); // Himalayas
-    ctx.lineTo(1430, 320); // North-West
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-
-    // Karnataka region glowing highlight on map (lat 12-18N, lon 74-78E)
-    ctx.fillStyle = "rgba(85, 230, 205, 0.32)";
-    ctx.beginPath();
-    ctx.ellipse(1465, 490, 18, 28, 0.2, 0, Math.PI * 2);
-    ctx.fill();
-
-    // Africa outline
-    ctx.beginPath();
-    ctx.moveTo(1020, 380);
-    ctx.lineTo(1120, 420);
-    ctx.lineTo(1160, 540);
-    ctx.lineTo(1130, 700);
-    ctx.lineTo(1080, 720);
-    ctx.lineTo(1010, 560);
-    ctx.lineTo(950, 460);
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-
-    // Eurasia generalized
-    ctx.beginPath();
-    ctx.moveTo(1100, 340);
-    ctx.lineTo(1380, 320);
-    ctx.lineTo(1650, 350);
-    ctx.lineTo(1750, 420);
-    ctx.lineTo(1600, 480);
-    ctx.lineTo(1400, 420);
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-
-    // Subtle atmospheric cloud bands
-    ctx.fillStyle = "rgba(255, 255, 255, 0.07)";
-    for (let i = 0; i < 18; i++) {
-      ctx.beginPath();
-      const cy = 150 + i * 45 + Math.sin(i) * 20;
-      ctx.ellipse(1024, cy, 900, 14 + (i % 5) * 4, 0, 0, Math.PI * 2);
+      ctx.ellipse(1024, 160 + i*52 + Math.sin(i*0.9)*18, 900 + Math.sin(i)*80, 16 + (i%4)*5, Math.sin(i*0.4)*0.08, 0, Math.PI*2);
       ctx.fill();
     }
 
-    const tex = new THREE.CanvasTexture(canvas);
+    const tex = new THREE.CanvasTexture(c);
     tex.wrapS = THREE.RepeatWrapping;
     tex.wrapT = THREE.ClampToEdgeWrapping;
     return tex;
   }
 
-  const earthGeo = new THREE.SphereGeometry(GLOBE_RADIUS, 64, 64);
-  const earthMat = new THREE.MeshStandardMaterial({
-    map: createEarthTexture(),
-    roughness: 0.65,
-    metalness: 0.2,
-    color: 0x0c2530,
-    emissive: 0x051318,
-    emissiveIntensity: 0.4,
-  });
-  const earthMesh = new THREE.Mesh(earthGeo, earthMat);
+  const earthMesh = new THREE.Mesh(
+    new THREE.SphereGeometry(GLOBE_R, 72, 72),
+    new THREE.MeshStandardMaterial({
+      map: createEarthTexture(),
+      roughness: 0.60, metalness: 0.22,
+      color: 0x0a1e28, emissive: 0x040d11, emissiveIntensity: 0.35,
+    })
+  );
   globeGroup.add(earthMesh);
 
-  // Atmospheric Fresnel Glow Shell
-  const atmoGeo = new THREE.SphereGeometry(GLOBE_RADIUS * 1.055, 48, 48);
+  // Fresnel atmospheric shell
   const atmoMat = new THREE.ShaderMaterial({
     vertexShader: `
       varying vec3 vNormal;
-      varying vec3 vPosition;
+      varying vec3 vViewDir;
       void main() {
-        vNormal = normalize(normalMatrix * normal);
-        vPosition = (modelViewMatrix * vec4(position, 1.0)).xyz;
-        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-      }
-    `,
+        vNormal  = normalize(normalMatrix * normal);
+        vec4 mvPos = modelViewMatrix * vec4(position, 1.0);
+        vViewDir = normalize(-mvPos.xyz);
+        gl_Position = projectionMatrix * mvPos;
+      }`,
     fragmentShader: `
       varying vec3 vNormal;
-      varying vec3 vPosition;
+      varying vec3 vViewDir;
       void main() {
-        vec3 viewDir = normalize(-vPosition);
-        float intensity = pow(0.7 - dot(vNormal, viewDir), 2.8);
-        vec3 glow = vec3(0.33, 0.90, 0.80);
-        gl_FragColor = vec4(glow, intensity * 0.9);
-      }
-    `,
-    blending: THREE.AdditiveBlending,
-    side: THREE.BackSide,
-    transparent: true,
+        float rim = pow(1.0 - max(dot(vNormal, vViewDir), 0.0), 3.2);
+        vec3  col = mix(vec3(0.20, 0.80, 0.72), vec3(0.12, 0.45, 0.85), rim);
+        gl_FragColor = vec4(col, rim * 0.85);
+      }`,
+    blending: THREE.AdditiveBlending, side: THREE.BackSide, transparent: true,
   });
-  const atmoMesh = new THREE.Mesh(atmoGeo, atmoMat);
-  globeGroup.add(atmoMesh);
+  globeGroup.add(new THREE.Mesh(new THREE.SphereGeometry(GLOBE_R * 1.06, 48, 48), atmoMat));
 
-  // Latitude and longitude graticule rings
-  const ringMat = new THREE.LineBasicMaterial({ color: 0x55e6cd, transparent: true, opacity: 0.12 });
-  [-40, -20, 0, 20, 40].forEach((lat) => {
-    const r = GLOBE_RADIUS * Math.cos((lat * Math.PI) / 180);
-    const y = GLOBE_RADIUS * Math.sin((lat * Math.PI) / 180);
-    const ringGeo = new THREE.BufferGeometry();
+  // Inner glow shell (slightly inside surface)
+  const innerGlowMat = new THREE.ShaderMaterial({
+    vertexShader: `
+      varying vec3 vNormal;
+      varying vec3 vViewDir;
+      void main() {
+        vNormal  = normalize(normalMatrix * normal);
+        vec4 mvPos = modelViewMatrix * vec4(position, 1.0);
+        vViewDir = normalize(-mvPos.xyz);
+        gl_Position = projectionMatrix * mvPos;
+      }`,
+    fragmentShader: `
+      varying vec3 vNormal;
+      varying vec3 vViewDir;
+      void main() {
+        float rim = pow(1.0 - max(dot(vNormal, vViewDir), 0.0), 5.0);
+        gl_FragColor = vec4(0.33, 0.90, 0.82, rim * 0.30);
+      }`,
+    blending: THREE.AdditiveBlending, side: THREE.FrontSide, transparent: true,
+  });
+  globeGroup.add(new THREE.Mesh(new THREE.SphereGeometry(GLOBE_R * 0.998, 48, 48), innerGlowMat));
+
+  // Graticule rings
+  const gratMat = new THREE.LineBasicMaterial({ color: 0x55e6cd, transparent: true, opacity: 0.10 });
+  [-60,-40,-20,0,20,40,60].forEach(lat => {
+    const r = GLOBE_R * Math.cos((lat * Math.PI) / 180);
+    const y = GLOBE_R * Math.sin((lat * Math.PI) / 180);
     const pts = [];
-    for (let i = 0; i <= 64; i++) {
-      const a = (i / 64) * Math.PI * 2;
+    for (let i = 0; i <= 72; i++) {
+      const a = (i / 72) * Math.PI * 2;
       pts.push(Math.cos(a) * r, y, Math.sin(a) * r);
     }
-    ringGeo.setAttribute("position", new THREE.Float32BufferAttribute(pts, 3));
-    const line = new THREE.Line(ringGeo, ringMat);
-    globeGroup.add(line);
+    const g = new THREE.BufferGeometry();
+    g.setAttribute("position", new THREE.Float32BufferAttribute(pts, 3));
+    globeGroup.add(new THREE.Line(g, gratMat));
   });
 
-  // 4. District Pin Beacons & Waves
+  // ── District markers ─────────────────────────────────────────────────────
   const markersGroup = new THREE.Group();
   globeGroup.add(markersGroup);
 
-  const markerBeacons = [];
+  const beacons = [];
   Object.entries(PILOT_COORDS).forEach(([id, info]) => {
-    const pos = latLonToVector3(info.lat, info.lon, GLOBE_RADIUS + 0.05);
+    const pos = latLonToVector3(info.lat, info.lon, GLOBE_R + 0.06);
 
-    // Glowing core dot
-    const dotGeo = new THREE.SphereGeometry(0.12, 16, 16);
-    const dotMat = new THREE.MeshBasicMaterial({ color: info.color });
-    const dot = new THREE.Mesh(dotGeo, dotMat);
+    // Core dot
+    const dot = new THREE.Mesh(
+      new THREE.SphereGeometry(0.11, 16, 16),
+      new THREE.MeshBasicMaterial({ color: info.color })
+    );
     dot.position.copy(pos);
     markersGroup.add(dot);
 
-    // Pulsing ring
-    const ringGeo = new THREE.RingGeometry(0.15, 0.28, 32);
-    const ringMat = new THREE.MeshBasicMaterial({
-      color: info.color,
-      side: THREE.DoubleSide,
-      transparent: true,
-      opacity: 0.7,
-    });
-    const ring = new THREE.Mesh(ringGeo, ringMat);
-    ring.position.copy(pos);
-    ring.lookAt(pos.clone().multiplyScalar(2));
-    markersGroup.add(ring);
+    // Inner ring
+    const ring1 = new THREE.Mesh(
+      new THREE.RingGeometry(0.14, 0.24, 32),
+      new THREE.MeshBasicMaterial({ color: info.color, side: THREE.DoubleSide, transparent: true, opacity: 0.75 })
+    );
+    ring1.position.copy(pos);
+    ring1.lookAt(pos.clone().multiplyScalar(2));
+    markersGroup.add(ring1);
 
-    markerBeacons.push({ id, ring, dot, baseScale: 1, color: info.color });
+    // Outer halo ring
+    const ring2 = new THREE.Mesh(
+      new THREE.RingGeometry(0.30, 0.38, 32),
+      new THREE.MeshBasicMaterial({ color: info.color, side: THREE.DoubleSide, transparent: true, opacity: 0.30 })
+    );
+    ring2.position.copy(pos);
+    ring2.lookAt(pos.clone().multiplyScalar(2));
+    markersGroup.add(ring2);
+
+    beacons.push({ ring1, ring2, dot, basePos: pos, color: info.color, phase: Math.random() * Math.PI * 2 });
   });
 
-  // 5. Water Cycle Evaporation Particles (Scene 2)
-  const PARTICLE_COUNT = 320;
-  const particleGeo = new THREE.BufferGeometry();
-  const particlePositions = new Float32Array(PARTICLE_COUNT * 3);
-  const particleVelocities = [];
+  // ── Evaporation particle stream (Scene 1-2) ───────────────────────────────
+  const PARTICLE_N = 480;
+  const pGeo = new THREE.BufferGeometry();
+  const pPos = new Float32Array(PARTICLE_N * 3);
+  const kCenter = latLonToVector3(13.0, 77.5, GLOBE_R);
+  const kNorm   = kCenter.clone().normalize();
 
-  const karnatakaCenter = latLonToVector3(13.0, 77.5, GLOBE_RADIUS);
-  const normal = karnatakaCenter.clone().normalize();
-
-  for (let i = 0; i < PARTICLE_COUNT; i++) {
-    // Spread around Karnataka
+  const pVel = [];
+  for (let i = 0; i < PARTICLE_N; i++) {
     const jitter = new THREE.Vector3(
-      (Math.random() - 0.5) * 1.2,
-      (Math.random() - 0.5) * 1.2,
-      (Math.random() - 0.5) * 1.2
+      (Math.random() - 0.5) * 1.6, (Math.random() - 0.5) * 1.6, (Math.random() - 0.5) * 1.6
     );
-    const p = karnatakaCenter.clone().add(jitter).normalize().multiplyScalar(GLOBE_RADIUS + 0.1);
-    particlePositions[i * 3] = p.x;
-    particlePositions[i * 3 + 1] = p.y;
-    particlePositions[i * 3 + 2] = p.z;
-
-    particleVelocities.push({
-      height: Math.random() * 2.8,
-      speed: 0.015 + Math.random() * 0.025,
-      offset: Math.random() * Math.PI * 2,
-      basePos: p.clone(),
-    });
+    const base = kCenter.clone().add(jitter).normalize().multiplyScalar(GLOBE_R + 0.08);
+    pPos[i*3]   = base.x;
+    pPos[i*3+1] = base.y;
+    pPos[i*3+2] = base.z;
+    pVel.push({ h: Math.random() * 3.0, spd: 0.012 + Math.random() * 0.022, phase: Math.random() * Math.PI * 2, base });
   }
-
-  particleGeo.setAttribute("position", new THREE.BufferAttribute(particlePositions, 3));
-  const particleMat = new THREE.PointsMaterial({
-    color: 0x55e6cd,
-    size: 0.14,
-    transparent: true,
-    opacity: 0.0,
+  pGeo.setAttribute("position", new THREE.BufferAttribute(pPos, 3));
+  const pMat = new THREE.PointsMaterial({
+    color: 0x55e6cd, size: 0.13, transparent: true, opacity: 0.0,
     blending: THREE.AdditiveBlending,
   });
-  const particleSystem = new THREE.Points(particleGeo, particleMat);
-  globeGroup.add(particleSystem);
+  const particleSys = new THREE.Points(pGeo, pMat);
+  globeGroup.add(particleSys);
 
-  // 6. ET₀ Dynamic Contours (Scene 3)
+  // ── ET₀ contour rings (Scene 2-3) ────────────────────────────────────────
   const contourGroup = new THREE.Group();
   globeGroup.add(contourGroup);
-
-  const contourRings = [];
-  for (let i = 1; i <= 4; i++) {
-    const cGeo = new THREE.BufferGeometry();
-    const cPts = [];
-    const r = 0.5 * i;
-    for (let j = 0; j <= 48; j++) {
-      const a = (j / 48) * Math.PI * 2;
-      cPts.push(Math.cos(a) * r, Math.sin(a) * r, 0);
+  const contours = [];
+  for (let i = 1; i <= 5; i++) {
+    const pts = [];
+    const r = 0.45 * i;
+    for (let j = 0; j <= 60; j++) {
+      const a = (j / 60) * Math.PI * 2;
+      pts.push(Math.cos(a) * r, Math.sin(a) * r, 0);
     }
-    cGeo.setAttribute("position", new THREE.Float32BufferAttribute(cPts, 3));
-    const cMat = new THREE.LineBasicMaterial({
-      color: i >= 3 ? 0xf6b94a : 0x55e6cd,
-      transparent: true,
-      opacity: 0.0,
-      linewidth: 2,
+    const cg = new THREE.BufferGeometry();
+    cg.setAttribute("position", new THREE.Float32BufferAttribute(pts, 3));
+    const cm = new THREE.LineBasicMaterial({
+      color: i >= 4 ? 0xf6b94a : (i >= 3 ? 0xffdd88 : 0x55e6cd),
+      transparent: true, opacity: 0.0,
     });
-    const cLine = new THREE.Line(cGeo, cMat);
-    cLine.position.copy(karnatakaCenter.clone().multiplyScalar(1.02));
-    cLine.lookAt(karnatakaCenter.clone().multiplyScalar(2));
-    contourGroup.add(cLine);
-    contourRings.push(cLine);
+    const cl = new THREE.Line(cg, cm);
+    cl.position.copy(kCenter.clone().multiplyScalar(1.02));
+    cl.lookAt(kCenter.clone().multiplyScalar(2.5));
+    contourGroup.add(cl);
+    contours.push(cl);
   }
 
-  // 7. Thirstwave 3D Holographic Threshold Bars (Scene 4)
+  // ── Threshold bar chart hologram (Scene 3) ───────────────────────────────
   const barGroup = new THREE.Group();
-  barGroup.position.copy(karnatakaCenter.clone().multiplyScalar(1.08));
-  barGroup.lookAt(karnatakaCenter.clone().multiplyScalar(3));
+  barGroup.position.copy(kCenter.clone().multiplyScalar(1.1));
+  barGroup.lookAt(kCenter.clone().multiplyScalar(3.5));
   globeGroup.add(barGroup);
 
-  const barValues = [4.8, 5.2, 6.4, 6.9, 7.2, 7.1, 5.5]; // 7 days (4 days above p90: 6.0)
-  const bars = [];
-  barValues.forEach((val, idx) => {
-    const isAbove = val >= 6.0;
-    const h = (val / 7.2) * 1.6;
-    const bGeo = new THREE.BoxGeometry(0.18, h, 0.1);
-    const bMat = new THREE.MeshBasicMaterial({
-      color: isAbove ? 0xf6b94a : 0x55e6cd,
-      transparent: true,
-      opacity: 0.0,
-    });
-    const bMesh = new THREE.Mesh(bGeo, bMat);
-    bMesh.position.set((idx - 3) * 0.28, h / 2, 0);
-    barGroup.add(bMesh);
-    bars.push(bMesh);
+  const barVals  = [4.8, 5.2, 6.4, 6.9, 7.2, 7.1, 5.5];
+  const barMeshes = [];
+  barVals.forEach((val, idx) => {
+    const above = val >= 6.0;
+    const h     = (val / 7.5) * 1.8;
+    const bm = new THREE.Mesh(
+      new THREE.BoxGeometry(0.17, h, 0.09),
+      new THREE.MeshBasicMaterial({ color: above ? 0xf6b94a : 0x55e6cd, transparent: true, opacity: 0 })
+    );
+    bm.position.set((idx - 3) * 0.27, h / 2, 0);
+    barGroup.add(bm);
+    barMeshes.push({ mesh: bm, above });
   });
-
-  // 3D Dashed p90 threshold line
-  const p90LineGeo = new THREE.BufferGeometry();
-  const p90H = (6.0 / 7.2) * 1.6;
-  const p90Pts = [-1.1, p90H, 0.06, 1.1, p90H, 0.06];
-  p90LineGeo.setAttribute("position", new THREE.Float32BufferAttribute(p90Pts, 3));
-  const p90LineMat = new THREE.LineDashedMaterial({
-    color: 0xff6b6b,
-    dashSize: 0.1,
-    gapSize: 0.05,
-    transparent: true,
-    opacity: 0.0,
-  });
-  const p90Line = new THREE.Line(p90LineGeo, p90LineMat);
+  const p90Geo = new THREE.BufferGeometry();
+  const p90H   = (6.0 / 7.5) * 1.8;
+  p90Geo.setAttribute("position", new THREE.Float32BufferAttribute([-1.1, p90H, 0.06,  1.1, p90H, 0.06], 3));
+  const p90Mat = new THREE.LineDashedMaterial({ color: 0xff6b6b, dashSize: 0.1, gapSize: 0.05, transparent: true, opacity: 0 });
+  const p90Line = new THREE.Line(p90Geo, p90Mat);
   p90Line.computeLineDistances();
   barGroup.add(p90Line);
 
-  // 8. Space Background Starfield
-  const starGeo = new THREE.BufferGeometry();
-  const starPts = [];
-  for (let i = 0; i < 900; i++) {
-    starPts.push(
-      (Math.random() - 0.5) * 80,
-      (Math.random() - 0.5) * 80,
-      (Math.random() - 0.5) * 80
-    );
+  // ── Volumetric water drop particles (Scene 4) ─────────────────────────────
+  const volGeo = new THREE.BufferGeometry();
+  const VOL_N  = 240;
+  const volPos = new Float32Array(VOL_N * 3);
+  const volVel = [];
+  for (let i = 0; i < VOL_N; i++) {
+    const theta = Math.random() * Math.PI * 2;
+    const phi2  = Math.acos(2 * Math.random() - 1);
+    const r2    = GLOBE_R + 0.5 + Math.random() * 2.2;
+    const x = r2 * Math.sin(phi2) * Math.cos(theta);
+    const y = r2 * Math.sin(phi2) * Math.sin(theta);
+    const z = r2 * Math.cos(phi2);
+    volPos[i*3]=x; volPos[i*3+1]=y; volPos[i*3+2]=z;
+    volVel.push({ base: new THREE.Vector3(x,y,z), phase: Math.random()*Math.PI*2, speed: 0.3 + Math.random()*0.4 });
   }
-  starGeo.setAttribute("position", new THREE.Float32BufferAttribute(starPts, 3));
-  const starMat = new THREE.PointsMaterial({
-    color: 0x93c5fd,
-    size: 0.25,
-    transparent: true,
-    opacity: 0.35,
+  volGeo.setAttribute("position", new THREE.BufferAttribute(volPos, 3));
+  const volMat = new THREE.PointsMaterial({
+    color: 0x38bdf8, size: 0.09, transparent: true, opacity: 0.0,
+    blending: THREE.AdditiveBlending,
   });
-  const starField = new THREE.Points(starGeo, starMat);
-  scene.add(starField);
+  const volSys = new THREE.Points(volGeo, volMat);
+  globeGroup.add(volSys);
 
-  // Initial Globe Orientation so India faces front-right
-  // Lat 13N, Lon 77.6E
-  const TARGET_ROT_Y = -((77.6 * Math.PI) / 180) - Math.PI / 2 + 0.3;
-  const TARGET_ROT_X = ((13.0 * Math.PI) / 180) - 0.2;
-  globeGroup.rotation.y = TARGET_ROT_Y;
-  globeGroup.rotation.x = TARGET_ROT_X;
+  // ── Star field ────────────────────────────────────────────────────────────
+  const starGeo = new THREE.BufferGeometry();
+  const starPts = new Float32Array(1600 * 3);
+  for (let i = 0; i < 1600; i++) {
+    const theta = Math.random() * Math.PI * 2;
+    const phi2  = Math.acos(2 * Math.random() - 1);
+    const r2    = 60 + Math.random() * 180;
+    starPts[i*3]   = r2 * Math.sin(phi2) * Math.cos(theta);
+    starPts[i*3+1] = r2 * Math.sin(phi2) * Math.sin(theta);
+    starPts[i*3+2] = r2 * Math.cos(phi2);
+  }
+  starGeo.setAttribute("position", new THREE.BufferAttribute(starPts, 3));
 
-  // 9. Scroll Tracking and Interpolation
-  const storyContainer = document.getElementById("story-3d");
-  let scrollProgress = 0;
+  // Two-tier star field: faint background + brighter foreground
+  const starFar = new THREE.Points(starGeo, new THREE.PointsMaterial({
+    color: 0x8fb8f0, size: 0.18, transparent: true, opacity: 0.28,
+    blending: THREE.AdditiveBlending,
+  }));
+  scene.add(starFar);
+
+  // Sparse bright stars
+  const brightGeo = new THREE.BufferGeometry();
+  const bPts = new Float32Array(120 * 3);
+  for (let i = 0; i < 120; i++) {
+    const theta = Math.random() * Math.PI * 2;
+    const phi2  = Math.acos(2 * Math.random() - 1);
+    const r2    = 80 + Math.random() * 120;
+    bPts[i*3]   = r2 * Math.sin(phi2) * Math.cos(theta);
+    bPts[i*3+1] = r2 * Math.sin(phi2) * Math.sin(theta);
+    bPts[i*3+2] = r2 * Math.cos(phi2);
+  }
+  brightGeo.setAttribute("position", new THREE.BufferAttribute(bPts, 3));
+  const brightStars = new THREE.Points(brightGeo, new THREE.PointsMaterial({
+    color: 0xffffff, size: 0.28, transparent: true, opacity: 0.55,
+    blending: THREE.AdditiveBlending,
+  }));
+  scene.add(brightStars);
+
+  // ── Scroll State ─────────────────────────────────────────────────────────
+  const storyEl    = document.getElementById("story-3d");
+  const storyCards = document.querySelectorAll(".story-card");
+  const storyDots  = document.querySelectorAll(".story-dot");
+
+  let targetScene    = 0;
+  let smoothProgress = 0;   // overall 0-1 progress through all scenes
   let targetProgress = 0;
-  let activeScene = 0;
 
-  function updateScroll() {
-    if (!storyContainer) return;
-    const rect = storyContainer.getBoundingClientRect();
-    const totalDist = storyContainer.offsetHeight - window.innerHeight;
-    if (totalDist <= 0) return;
-    const scrolled = -rect.top;
-    const p = Math.max(0, Math.min(1, scrolled / totalDist));
-    targetProgress = p;
+  // Compute scroll progress from DOM position
+  function onScroll() {
+    if (!storyEl) return;
+    const rect    = storyEl.getBoundingClientRect();
+    const total   = storyEl.offsetHeight - window.innerHeight;
+    if (total <= 0) return;
+    const scrolled = Math.max(0, -rect.top);
+    targetProgress = Math.min(1, scrolled / total);
 
-    // Active scene 0..5
-    const sceneIndex = Math.min(5, Math.floor(p * 6));
-    if (sceneIndex !== activeScene) {
-      activeScene = sceneIndex;
-      updateSceneNarrative(sceneIndex);
+    // Scene index is divided evenly
+    const rawScene = targetProgress * SCENES.length;
+    const newScene = Math.min(SCENES.length - 1, Math.floor(rawScene));
+
+    if (newScene !== targetScene) {
+      targetScene = newScene;
+      activateCard(newScene);
     }
   }
 
-  function updateSceneNarrative(idx) {
-    const cards = document.querySelectorAll(".story-card");
-    cards.forEach((card, i) => {
-      if (i === idx) {
-        card.classList.add("active");
-        card.setAttribute("aria-current", "true");
-      } else {
-        card.classList.remove("active");
-        card.removeAttribute("aria-current");
-      }
+  function activateCard(idx) {
+    storyCards.forEach((c, i) => {
+      const active = i === idx;
+      c.classList.toggle("active", active);
+      c.setAttribute("aria-current", active ? "true" : "false");
     });
-
-    const stepDots = document.querySelectorAll(".story-dot");
-    stepDots.forEach((dot, i) => {
-      dot.classList.toggle("active", i === idx);
-    });
+    storyDots.forEach((d, i) => d.classList.toggle("active", i === idx));
   }
 
-  window.addEventListener("scroll", updateScroll, { passive: true });
-  updateScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll(); // initial
 
-  // Resize handler
+  // ── Resize ────────────────────────────────────────────────────────────────
   function onResize() {
-    width = container.clientWidth || window.innerWidth;
-    height = container.clientHeight || window.innerHeight;
-    camera.aspect = width / height;
+    W = container.clientWidth  || window.innerWidth;
+    H = container.clientHeight || window.innerHeight;
+    camera.aspect = W / H;
     camera.updateProjectionMatrix();
-    renderer.setSize(width, height);
+    renderer.setSize(W, H);
   }
   window.addEventListener("resize", onResize);
 
-  // 10. Animation Loop
-  let clock = new THREE.Clock();
+  // ── Camera interpolation helpers ─────────────────────────────────────────
+  const camCur  = { x: 0,   y: 1.5, z: 22  };
+  const lookCur = { x: 0,   y: 0,   z: 0   };
 
-  function animate() {
-    requestAnimationFrame(animate);
-
-    const delta = clock.getDelta();
+  function lerpScene(clock) {
     const elapsed = clock.getElapsedTime();
 
-    // Smooth scroll interpolation (lerp)
-    scrollProgress += (targetProgress - scrollProgress) * 0.08;
+    // Smooth overall progress with fast lerp (feels responsive)
+    smoothProgress += (targetProgress - smoothProgress) * 0.10;
 
-    // Camera and Scene progression through 6 phases:
-    // P 0.00 - 0.16: Scene 1 — The Atmosphere (orbital overview)
-    // P 0.17 - 0.33: Scene 2 — The Water Cycle (zoom in, evaporation arcs)
-    // P 0.34 - 0.50: Scene 3 — Atmospheric Demand (contours, ET₀ glow)
-    // P 0.51 - 0.67: Scene 4 — Thirstwave Detection (threshold chart)
-    // P 0.68 - 0.84: Scene 5 — Atmosphere to Litres (volumetric conversion)
-    // P 0.85 - 1.00: Scene 6 — Dashboard Reveal (glide into isometric card)
+    // Compute which scene pair we are interpolating between
+    const rawScene = smoothProgress * SCENES.length;
+    const scIdx    = Math.min(SCENES.length - 1, Math.floor(rawScene));
+    const t        = easeInOutCubic(rawScene - Math.floor(rawScene));
 
-    const p = scrollProgress;
+    const scA = SCENES[scIdx];
+    const scB = SCENES[Math.min(SCENES.length - 1, scIdx + 1)];
 
-    // Camera distance: 22 (orbital) down to 11 (close Karnataka focus)
-    const camZ = 22 - Math.sin(p * Math.PI * 0.7) * 11;
-    const camY = 2 + Math.sin(p * 3) * 1.2;
-    const camX = Math.sin(p * Math.PI) * 2.5;
-    camera.position.set(camX, camY, camZ);
-    camera.lookAt(0, 0, 0);
+    // Target camera
+    const tCam = {
+      x: scA.camPos.x + (scB.camPos.x - scA.camPos.x) * t,
+      y: scA.camPos.y + (scB.camPos.y - scA.camPos.y) * t,
+      z: scA.camPos.z + (scB.camPos.z - scA.camPos.z) * t,
+    };
+    const tLook = {
+      x: scA.camLookAt.x + (scB.camLookAt.x - scA.camLookAt.x) * t,
+      y: scA.camLookAt.y + (scB.camLookAt.y - scA.camLookAt.y) * t,
+      z: scA.camLookAt.z + (scB.camLookAt.z - scA.camLookAt.z) * t,
+    };
 
-    // Globe subtle ambient rotation + scroll alignment
-    globeGroup.rotation.y = TARGET_ROT_Y + Math.sin(elapsed * 0.15) * 0.04 + (p - 0.5) * 0.8;
-    globeGroup.rotation.x = TARGET_ROT_X + Math.cos(elapsed * 0.12) * 0.02 + (p - 0.5) * 0.3;
+    // Camera gentle sway (sinusoidal micro-motion)
+    const sway = 0.018;
+    tCam.x += Math.sin(elapsed * 0.22 + 1.1) * sway;
+    tCam.y += Math.cos(elapsed * 0.18 + 0.4) * sway * 0.8;
 
-    // District marker pulsating rings
-    markerBeacons.forEach((b, i) => {
-      const s = 1 + Math.sin(elapsed * 3 + i * 1.5) * 0.35;
-      b.ring.scale.set(s, s, s);
-      b.ring.material.opacity = 0.5 + Math.sin(elapsed * 2 + i) * 0.3;
+    // Smooth camera position with different lerp rates
+    const camLerp  = 0.055;  // slightly slower for cinematic feel
+    const lookLerp = 0.065;
+    camCur.x  += (tCam.x  - camCur.x)  * camLerp;
+    camCur.y  += (tCam.y  - camCur.y)  * camLerp;
+    camCur.z  += (tCam.z  - camCur.z)  * camLerp;
+    lookCur.x += (tLook.x - lookCur.x) * lookLerp;
+    lookCur.y += (tLook.y - lookCur.y) * lookLerp;
+    lookCur.z += (tLook.z - lookCur.z) * lookLerp;
+
+    camera.position.set(camCur.x, camCur.y, camCur.z);
+    camera.lookAt(lookCur.x, lookCur.y, lookCur.z);
+
+    // Globe rotation — base orientation + scroll-driven delta
+    const tRotX = BASE_ROT_X + (scA.globeRotDelta.x + (scB.globeRotDelta.x - scA.globeRotDelta.x) * t);
+    const tRotY = BASE_ROT_Y + (scA.globeRotDelta.y + (scB.globeRotDelta.y - scA.globeRotDelta.y) * t);
+    // Continuous slow drift layered on top
+    const drift = 0.03;
+    globeGroup.rotation.x += (tRotX + Math.sin(elapsed * 0.10) * 0.012 - globeGroup.rotation.x) * 0.042;
+    globeGroup.rotation.y += (tRotY + Math.cos(elapsed * 0.08) * 0.012 - globeGroup.rotation.y) * 0.042;
+
+    // Fog density lerp
+    const tFog = scA.fogDensity + (scB.fogDensity - scA.fogDensity) * t;
+    scene.fog.density += (tFog - scene.fog.density) * 0.03;
+  }
+
+  // Weight functions for each scene's special effects (smooth bell curves)
+  function sceneWeight(targetIdx, p, halfWidth) {
+    const sceneCenter = (targetIdx + 0.5) / SCENES.length;
+    const dist = Math.abs(p - sceneCenter);
+    return Math.max(0, 1 - dist / halfWidth);
+  }
+
+  // ── Clock ─────────────────────────────────────────────────────────────────
+  const clock = new THREE.Clock();
+
+  // ── Animation Loop ────────────────────────────────────────────────────────
+  function animate() {
+    requestAnimationFrame(animate);
+    const elapsed = clock.getElapsedTime();
+    const p = smoothProgress;
+
+    lerpScene(clock);
+
+    // ── Beacons: pulsing rings ──────────────────────────────────────────────
+    beacons.forEach((b, i) => {
+      const pulse = 1 + Math.sin(elapsed * 2.8 + b.phase) * 0.30;
+      const halo  = 1 + Math.sin(elapsed * 1.4 + b.phase + 1.5) * 0.55;
+      b.ring1.scale.set(pulse, pulse, pulse);
+      b.ring2.scale.set(halo,  halo,  halo);
+      b.ring1.material.opacity = 0.55 + Math.sin(elapsed * 2.8 + b.phase) * 0.3;
+      b.ring2.material.opacity = 0.18 + Math.sin(elapsed * 1.4 + b.phase) * 0.12;
     });
 
-    // Particle update for Water Cycle (Scene 2)
-    const s2Weight = Math.max(0, 1 - Math.abs(p - 0.28) / 0.22);
-    particleMat.opacity = s2Weight * 0.85;
+    // ── Evaporation particles (scenes 1-2) ──────────────────────────────────
+    const s1w = Math.min(sceneWeight(1, p, 0.25), sceneWeight(2, p, 0.22)) * 2;
+    const pWeight = Math.min(1, s1w);
+    pMat.opacity += (pWeight * 0.80 - pMat.opacity) * 0.06;
 
-    if (s2Weight > 0.01) {
-      const posArr = particleGeo.attributes.position.array;
-      for (let i = 0; i < PARTICLE_COUNT; i++) {
-        const vel = particleVelocities[i];
-        vel.height = (vel.height + vel.speed) % 3.2;
-        const cur = vel.basePos.clone().add(normal.clone().multiplyScalar(vel.height));
-        // add slight atmospheric spiral
-        cur.x += Math.sin(elapsed * 2 + vel.offset) * 0.12;
-        cur.z += Math.cos(elapsed * 2 + vel.offset) * 0.12;
-
-        posArr[i * 3] = cur.x;
-        posArr[i * 3 + 1] = cur.y;
-        posArr[i * 3 + 2] = cur.z;
+    if (pMat.opacity > 0.01) {
+      const posArr = pGeo.attributes.position.array;
+      for (let i = 0; i < PARTICLE_N; i++) {
+        const v = pVel[i];
+        v.h = (v.h + v.spd) % 3.5;
+        const cur = v.base.clone().add(kNorm.clone().multiplyScalar(v.h));
+        cur.x += Math.sin(elapsed * 1.6 + v.phase) * 0.14;
+        cur.z += Math.cos(elapsed * 1.6 + v.phase) * 0.14;
+        posArr[i*3]   = cur.x;
+        posArr[i*3+1] = cur.y;
+        posArr[i*3+2] = cur.z;
       }
-      particleGeo.attributes.position.needsUpdate = true;
+      pGeo.attributes.position.needsUpdate = true;
     }
 
-    // Contours for Atmospheric Demand (Scene 3)
-    const s3Weight = Math.max(0, 1 - Math.abs(p - 0.48) / 0.20);
-    contourRings.forEach((c, idx) => {
-      c.material.opacity = s3Weight * (0.35 + idx * 0.15);
-      const pulse = 1 + Math.sin(elapsed * 2 + idx) * 0.08;
+    // ── ET₀ contours (scenes 2-3) ───────────────────────────────────────────
+    const cw = Math.min(sceneWeight(2, p, 0.22), sceneWeight(3, p, 0.22)) * 2;
+    const contourAlpha = Math.min(1, cw);
+    contours.forEach((c, idx) => {
+      const tOp = contourAlpha * (0.28 + idx * 0.13);
+      c.material.opacity += (tOp - c.material.opacity) * 0.07;
+      const pulse = 1 + Math.sin(elapsed * 1.8 + idx * 1.1) * 0.07;
       c.scale.set(pulse, pulse, 1);
     });
 
-    // Thirstwave Threshold Chart (Scene 4)
-    const s4Weight = Math.max(0, 1 - Math.abs(p - 0.65) / 0.18);
-    bars.forEach((b, idx) => {
-      b.material.opacity = s4Weight * 0.85;
-      if (s4Weight > 0.05) {
-        b.scale.y = 0.2 + s4Weight * 0.8;
+    // ── Bar chart (scene 3) ─────────────────────────────────────────────────
+    const bw = sceneWeight(3, p, 0.20);
+    const barAlpha = Math.min(1, bw * 1.4);
+    barMeshes.forEach(({ mesh, above }) => {
+      const tOp = barAlpha * (above ? 0.88 : 0.65);
+      mesh.material.opacity += (tOp - mesh.material.opacity) * 0.08;
+      if (barAlpha > 0.02) {
+        const tScl = 0.15 + barAlpha * 0.85;
+        mesh.scale.y += (tScl - mesh.scale.y) * 0.10;
       }
     });
-    p90LineMat.opacity = s4Weight * 0.9;
+    const p90Tgt = barAlpha * 0.92;
+    p90Mat.opacity += (p90Tgt - p90Mat.opacity) * 0.08;
 
-    // Starfield slow drift
-    starField.rotation.y = elapsed * 0.02;
+    // ── Volumetric water drop particles (scene 4) ───────────────────────────
+    const vw = sceneWeight(4, p, 0.22);
+    const volAlpha = Math.min(1, vw * 1.4);
+    volMat.opacity += (volAlpha * 0.75 - volMat.opacity) * 0.06;
+
+    if (volMat.opacity > 0.01) {
+      const vPos = volGeo.attributes.position.array;
+      for (let i = 0; i < VOL_N; i++) {
+        const v = volVel[i];
+        const t2 = (elapsed * v.speed + v.phase) % (Math.PI * 2);
+        const r2 = v.base.length();
+        vPos[i*3]   = v.base.x + Math.sin(t2) * 0.22 * (r2 / GLOBE_R);
+        vPos[i*3+1] = v.base.y + Math.cos(t2*1.3) * 0.15 * (r2 / GLOBE_R);
+        vPos[i*3+2] = v.base.z + Math.sin(t2*0.7+1) * 0.18 * (r2 / GLOBE_R);
+      }
+      volGeo.attributes.position.needsUpdate = true;
+    }
+
+    // ── Stars slow drift ────────────────────────────────────────────────────
+    starFar.rotation.y    = elapsed * 0.018;
+    brightStars.rotation.y = elapsed * 0.012;
 
     renderer.render(scene, camera);
   }
@@ -549,12 +678,13 @@ export function init3DScene() {
   animate();
 
   return {
-    destroy: () => {
-      window.removeEventListener("scroll", updateScroll);
+    destroy() {
+      window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
-      if (renderer && renderer.domElement && container.contains(renderer.domElement)) {
+      if (renderer?.domElement && container.contains(renderer.domElement)) {
         container.removeChild(renderer.domElement);
       }
+      renderer?.dispose();
     },
   };
 }
