@@ -163,11 +163,11 @@ p { margin: 0 0 0.75rem; }
   position: fixed;
   inset: 0;
   background: rgba(8, 18, 32, 0.48);
-  z-index: 60;
+  z-index: 2000;
 }
 .drawer, .modal {
   position: fixed;
-  z-index: 70;
+  z-index: 2010;
   background: var(--card);
   color: var(--ink);
   box-shadow: var(--shadow);
@@ -199,7 +199,7 @@ p { margin: 0 0 0.75rem; }
   color: var(--brand-ink);
   padding: 0.55rem 0.9rem;
   border-radius: 999px;
-  z-index: 80;
+  z-index: 2200;
   font-weight: 600;
 }
 
