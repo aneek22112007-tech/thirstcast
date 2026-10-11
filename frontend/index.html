@@ -25,7 +25,10 @@
     (function () {
       try {
         var theme = localStorage.getItem("thirstcast.theme");
-        if (theme === "dark" || theme === "light") document.documentElement.setAttribute("data-theme", theme);
+        if (theme !== "dark" && theme !== "light") {
+          theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", theme);
         var params = new URLSearchParams((location.hash || "").replace(/^#/, ""));
         var lang = params.get("lang") || localStorage.getItem("thirstcast.lang");
         if (lang === "hi" || lang === "en") document.documentElement.lang = lang;

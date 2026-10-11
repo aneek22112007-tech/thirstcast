@@ -33,6 +33,22 @@ test("F-01 chat and alerts sit above the map at 360px", async ({ page }) => {
   await expect(page.locator("#alert-dialog")).toBeHidden();
 });
 
+test("F-07 theme follows the system until the user chooses", async ({ page }) => {
+  await page.emulateMedia({ colorScheme: "dark" });
+  await page.addInitScript(() => localStorage.removeItem("thirstcast.theme"));
+  await page.goto("/app.html");
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+  await expect(page.locator(".chart-wrap").first()).toBeVisible({ timeout: 20000 });
+  const darkBg = await page.locator(".chart-wrap").first().evaluate((el) => getComputedStyle(el).backgroundColor);
+  expect(darkBg).not.toBe("rgb(255, 255, 255)");
+  await page.emulateMedia({ colorScheme: "light" });
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+  await page.locator("[data-theme-toggle]").click();
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+  await page.emulateMedia({ colorScheme: "light" });
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+});
+
 test("F-14 Leaflet is loaded from the vendored copy", async ({ page }) => {
   const urls = [];
   page.on("request", (req) => urls.push(req.url()));
