@@ -204,7 +204,7 @@ test("U-2 thirty Aprils highlight 2024 on the map and the landing page", async (
   const landing = page.locator("#april-chart [data-year='2024']");
   await expect(landing).toBeVisible({ timeout: 20000 });
   await expect(landing).toHaveAttribute("aria-label", /rank 1 of 31/);
-  await page.getByRole("button", { name: "Kolar" }).click();
+  await page.locator("#april-switch").getByRole("button", { name: "Kolar", exact: true }).click();
   await expect(page.locator("#april-chart [data-year='2024']")).toHaveAttribute("aria-label", /12.25 mm/);
 });
 
