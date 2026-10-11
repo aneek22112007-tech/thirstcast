@@ -8,6 +8,36 @@ async function topElementId(page, selector) {
   });
 }
 
+test("F-09 Hindi names crops and lakes, and marks English sources", async ({ page }) => {
+  await page.goto("/app.html#d=Mandya&tab=farmers&lang=hi");
+  await expect(page.locator("#crop-select")).toContainText("धान", { timeout: 20000 });
+  await expect(page.locator("#crop-select")).not.toContainText("Paddy");
+  await expect(page.locator("#info-banner")).toContainText("ऐतिहासिक");
+  await expect(page.locator("#info-banner")).not.toContainText("evaluated as if");
+  await page.goto("/app.html#d=Bengaluru_Urban&tab=lakes&lang=hi");
+  await expect(page.getByRole("heading", { name: "बेल्लंदूर झील" })).toBeVisible({ timeout: 20000 });
+  await expect(page.getByText("विस्तृत विधियाँ और स्रोत अंग्रेज़ी में हैं").first()).toBeVisible();
+  await expect(page.locator(".english-source").first()).toContainText("Bellandur");
+  const offenders = await page.locator("#tab-panel").evaluate((root) => {
+    const out = [];
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    let node;
+    while ((node = walker.nextNode())) {
+      const parent = node.parentElement;
+      if (!parent || parent.closest(".english-source, [hidden]")) continue;
+      const text = node.textContent.replace(/\s+/g, " ").trim();
+      if (text.length <= 15) continue;
+      if (/[\u0900-\u097F]/.test(text)) continue;
+      out.push(text);
+    }
+    return out;
+  });
+  expect(offenders).toEqual([]);
+  await page.goto("/methods.html#lang=hi");
+  await expect(page.locator("#english-notice")).toContainText("अंग्रेज़ी", { timeout: 20000 });
+  await expect(page.locator("#doc .english-source")).toBeVisible();
+});
+
 test("F-08 the replay summary scrolls inside the panel", async ({ page }) => {
   async function endState() {
     return page.evaluate(() => {
