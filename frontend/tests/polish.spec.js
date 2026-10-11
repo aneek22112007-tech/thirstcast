@@ -156,16 +156,18 @@ test("U-4 an answer is a text advisory preview with copy and share", async ({ pa
   await expect(page.locator("#open-chat")).toBeVisible({ timeout: 20000 });
   await page.locator("#open-chat").click();
   await page.locator("#suggest .chip").first().click();
-  await expect(page.locator(".advisory-note").last()).toHaveText(
-    "Preview of a text advisory; ThirstCast does not send WhatsApp messages.",
-    { timeout: 15000 },
-  );
-  await expect(page.locator(".advisory").last()).toContainText(/Mandya|मंड्या/);
+  await expect(page.locator(".advisory").last()).toContainText(/Mandya|मंड्या/, { timeout: 15000 });
+  // The WhatsApp disclaimer belongs to the share action, not to every chat reply.
+  await expect(page.locator("#messages .advisory-note")).toHaveCount(0);
+  await expect(page.locator("#messages")).not.toContainText("does not send WhatsApp messages");
   await expect(page.locator("[data-share]").last()).toBeVisible();
+  await expect(page.locator("[data-share]").last()).toHaveAttribute(
+    "title", "Preview of a text advisory; ThirstCast does not send WhatsApp messages.");
   const canShare = await page.evaluate(() => typeof navigator.share === "function");
   if (!canShare) {
     await page.locator("[data-share]").last().click();
     await expect(page.locator("#toast")).toContainText("Copied");
+    await expect(page.locator("#toast")).toContainText("does not send WhatsApp messages");
   }
 });
 

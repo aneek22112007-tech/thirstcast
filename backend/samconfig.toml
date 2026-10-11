@@ -11,4 +11,4 @@ s3_prefix = "thirstcast"
 capabilities = "CAPABILITY_IAM CAPABILITY_AUTO_EXPAND"
 confirm_changeset = false
 fail_on_empty_changeset = false
-parameter_overrides = "AskMode=\"template\" AmplifyOrigin=\"https://main.d2hlw69ycq26ka.amplifyapp.com\""
+parameter_overrides = "ModelProvider=\"groq\" GroqModelId=\"openai/gpt-oss-120b\" GroqApiKeyParam=\"/thirstcast/groq_api_key\" AskMode=\"llm\" AmplifyOrigin=\"https://main.d2hlw69ycq26ka.amplifyapp.com\""

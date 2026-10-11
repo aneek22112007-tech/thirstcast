@@ -100,3 +100,22 @@ def test_build_agent_with_bedrock_config(monkeypatch, repo):
     tools.set_repo(repo)
     res = agent.tool.water_gap(district="Mandya", crop="paddy", acres=2)  # direct tool call, no model
     assert res["status"] == "success" and "extra_litres_range" in res["content"][0]["text"]
+
+
+def test_groq_provider_builds_openai_model_without_network(monkeypatch):
+    from thirstcast_agent import agent as ag
+    monkeypatch.setenv("MODEL_PROVIDER", "groq")
+    monkeypatch.setenv("GROQ_API_KEY", "test-not-a-real-key")
+    monkeypatch.setenv("GROQ_MODEL_ID", "openai/gpt-oss-120b")
+    monkeypatch.setattr(ag, "_GROQ_KEY", None)
+    m = ag.get_model()
+    assert type(m).__name__ == "OpenAIModel"
+    assert m.get_config()["model_id"] == "openai/gpt-oss-120b"
+    monkeypatch.setattr(ag, "_GROQ_KEY", None)
+
+
+def test_unknown_provider_falls_back_to_template(monkeypatch):
+    from thirstcast_agent.handler_core import handle_ask
+    monkeypatch.setenv("MODEL_PROVIDER", "nope")
+    out = handle_ask("Will Mandya face a thirstwave this week?", mode="llm")
+    assert out["mode"] == "template" and out["district"] == "Mandya"

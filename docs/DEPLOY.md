@@ -96,5 +96,8 @@ Then delete the Amplify app and check Billing.
 * Frontend: Amplify app `d2hlw69ycq26ka` (manual deployment, no Git connection): https://main.d2hlw69ycq26ka.amplifyapp.com.
   Redeploy: zip `frontend/` (without node_modules/tests/scripts) and run `aws amplify create-deployment` → PUT the zip →
   `aws amplify start-deployment`.
-* `/ask` runs in template mode (Bedrock blocked for the new account; see docs/decisions.md).
+* `/ask` runs on Groq (`openai/gpt-oss-120b`), see docs/decisions.md. Store or rotate the key without echoing it:
+  `python -c "import os,boto3; boto3.client('ssm').put_parameter(Name='/thirstcast/groq_api_key', Value=os.environ['GROQ_API_KEY'], Type='SecureString', Overwrite=True)"`
+  then force a cold start (any `sam deploy` that changes the function, or update its description).
+* Remote eval on the Groq free tier needs pacing: `python agent/tests/run_eval.py --url $API/ask --delay 15 --require-mode llm`.
 * `load_dynamo.py --profile` and `upload_s3.sh` now use the default credential chain unless a profile / `AWS_PROFILE` is set.

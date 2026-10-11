@@ -21,9 +21,11 @@ _POOL = concurrent.futures.ThreadPoolExecutor(max_workers=2)
 def _llm_answer(question, district, lang):
     from .agent import build_agent
     agent = build_agent()
-    prompt = question
+    reply_lang = "Hindi (Devanagari)" if lang == "hi" else "English"
+    prompt = f"[reply language: {reply_lang}]"
     if district:
-        prompt = f"[district hint: {district}] {question}"
+        prompt += f" [district hint: {district}]"
+    prompt += f" {question}"
     result = agent(prompt)
     return str(result).strip()
 

@@ -7,6 +7,19 @@ Parameters:
     Type: String
     Default: ""
     Description: Bedrock model ID or inference-profile ID (docs/decisions.md). Empty = template mode only.
+  ModelProvider:
+    Type: String
+    Default: auto
+    AllowedValues: [auto, bedrock, groq, none]
+    Description: LLM provider for /ask. auto = bedrock when ModelId is set, else none (template only).
+  GroqModelId:
+    Type: String
+    Default: openai/gpt-oss-120b
+    Description: Groq model (OpenAI-compatible API) used when ModelProvider=groq.
+  GroqApiKeyParam:
+    Type: String
+    Default: /thirstcast/groq_api_key
+    Description: SSM SecureString parameter holding the Groq API key (created outside the stack; never in the template).
   AskMode:
     Type: String
     Default: llm
@@ -32,6 +45,7 @@ Parameters:
 
 Conditions:
   HasModel: !Not [!Equals [!Ref ModelId, ""]]
+  IsAuto: !Equals [!Ref ModelProvider, auto]
   HasAmplifyOrigin: !Not [!Equals [!Ref AmplifyOrigin, ""]]
   HasEmail1: !Not [!Equals [!Ref AlertEmail1, ""]]
   HasEmail2: !Not [!Equals [!Ref AlertEmail2, ""]]
@@ -256,7 +270,10 @@ Resources:
         - !Ref AgentLayer
       Environment:
         Variables:
-          MODEL_PROVIDER: !If [HasModel, bedrock, none]
+          MODEL_PROVIDER: !If [IsAuto, !If [HasModel, bedrock, none], !Ref ModelProvider]
+          GROQ_MODEL_ID: !Ref GroqModelId
+          GROQ_API_KEY_PARAM: !Ref GroqApiKeyParam
+          LLM_READ_TIMEOUT: "18"
           MODEL_ID: !Ref ModelId
           ASK_MODE: !Ref AskMode
           MAX_TOKENS: "400"
@@ -278,6 +295,17 @@ Resources:
               Resource:
                 - "arn:aws:bedrock:*::foundation-model/*"
                 - !Sub "arn:aws:bedrock:*:${AWS::AccountId}:inference-profile/*"
+        - Statement:
+            - Effect: Allow
+              Action: ssm:GetParameter
+              Resource: !Sub "arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter${GroqApiKeyParam}"
+            - Effect: Allow
+              Action: kms:Decrypt
+              Resource: !Sub "arn:aws:kms:${AWS::Region}:${AWS::AccountId}:key/*"
+              Condition:
+                StringEquals:
+                  kms:ViaService: !Sub "ssm.${AWS::Region}.amazonaws.com"
+                  kms:EncryptionContext:PARAMETER_ARN: !Sub "arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter${GroqApiKeyParam}"
       Events:
         Ask:
           Type: HttpApi

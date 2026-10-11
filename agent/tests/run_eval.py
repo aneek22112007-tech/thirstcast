@@ -67,6 +67,8 @@ def main():
     ap.add_argument("--status-dir", default=str(HERE / "fixtures" / "status"))
     ap.add_argument("--mode", default="llm")
     ap.add_argument("--verbose", "-v", action="store_true")
+    ap.add_argument("--delay", type=float, default=1.0, help="seconds between remote requests (Groq free tier: ~15)")
+    ap.add_argument("--require-mode", choices=["llm", "template"], help="also fail answers not in this mode")
     args = ap.parse_args()
     items = load_questions()
     if not args.url:
@@ -80,6 +82,8 @@ def main():
             hint = it.get("hint")
             resp = ask_url(args.url, it["q"], hint) if args.url else handle_ask(it["q"], district=hint, repo=repo, mode=args.mode)
             errs = check(it, resp)
+            if args.require_mode and resp.get("mode") != args.require_mode:
+                errs.append(f"mode {resp.get('mode')} != {args.require_mode}")
         except Exception as e:  # noqa: BLE001
             resp, errs = {}, [f"request failed: {e!r}"]
         ok = not errs
@@ -91,7 +95,7 @@ def main():
         if args.verbose or errs:
             print("      ", (resp.get("answer") or "").replace("\n", " ")[:300])
         if args.url:
-            time.sleep(1)
+            time.sleep(args.delay)
     tot = sum(s[0] for s in stats.values()), sum(s[1] for s in stats.values())
     for lang, (p, n) in stats.items():
         print(f"{lang}: {p}/{n} passed")

@@ -3,13 +3,18 @@
 ## Region
 * **ap-south-1 (Mumbai)**. Stack `thirstcast`, first deployed 2026-10-11.
 
-## Bedrock model ID
-* **None yet: `ModelId` empty, `AskMode=template`** (MODEL_PROVIDER=none). On 2026-10-11 every Bedrock
-  `converse` call from this new account returned `ValidationException: Operation not allowed`
-  (tried apac.amazon.nova-lite-v1:0, apac.amazon.nova-micro-v1:0, apac.anthropic.claude-3-haiku-20240307-v1:0,
-  in.anthropic.claude-haiku-4-5-20251001-v1:0, global.amazon.nova-2-lite-v1:0), most likely because account
-  verification was still in progress. /ask serves the template advisory (EN + HI), which uses the same tool data.
-* When Bedrock works: preferred `apac.amazon.nova-lite-v1:0`; redeploy with `ModelId=apac.amazon.nova-lite-v1:0 AskMode=llm`.
+## LLM provider / model ID
+* **Live: `ModelProvider=groq`, `GroqModelId=openai/gpt-oss-120b`, `AskMode=llm`** (2026-10-11). Groq's
+  OpenAI-compatible API via Strands `OpenAIModel` (`strands-agents[openai]`, lighter than LiteLLM). The API key
+  lives only in SSM SecureString `/thirstcast/groq_api_key` (alias/aws/ssm); AgentFunction reads it once per cold
+  start (IAM: `ssm:GetParameter` on that parameter, `kms:Decrypt` only via SSM for that parameter ARN).
+* Groq free tier: 8,000 tokens/min per model (~1.7k tokens per question, so ~4 questions/min). On 429 or any
+  error/timeout, /ask returns the template advisory (`mode: "template"`); Strands retries are disabled so this is fast.
+* Bedrock: every `converse` call from this new account returned `ValidationException: Operation not allowed`
+  (apac.amazon.nova-lite-v1:0, apac.amazon.nova-micro-v1:0, apac.anthropic.claude-3-haiku-20240307-v1:0,
+  in.anthropic.claude-haiku-4-5-20251001-v1:0, global.amazon.nova-2-lite-v1:0), most likely pending account
+  verification. To switch back later: `ModelProvider=bedrock ModelId=apac.amazon.nova-lite-v1:0`.
+* Kill switch: `AskMode=template` (or `ModelProvider=none`).
 * `ReservedConcurrentExecutions` was removed from AgentFunction: the new account's concurrency quota is 10, so
   any reservation fails. The /ask route throttle (1 rps, burst 2) caps cost.
 

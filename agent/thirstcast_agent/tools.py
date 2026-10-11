@@ -79,6 +79,7 @@ def water_gap_data(district, crop, acres=1.0):
     lo, hi = farmer_range(excess, float(item["kc"]), acres)
     return {"district": district, "crop": crop, "acres": acres, "kc": item["kc"], "excess_mm_7d": excess,
             "extra_litres_range": [lo, hi], "label": "estimate",
+            "range_applies_to": f"TOTAL for {acres:g} acre(s), not per acre",
             "formula": "excess_mm_7d x Kc (+-10%) x 4047 L per acre per mm x acres", "caveat": CAVEAT}
 
 
