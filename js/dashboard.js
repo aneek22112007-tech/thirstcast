@@ -301,7 +301,8 @@ function renderOverview(detail) {
     </dl>
     ${detail.bias_note ? `<p class="note">${esc(detail.bias_note)}</p>` : ""}
     ${days.length ? `<details><summary>${esc(t("app.dataTable"))}</summary>${forecastTable(days)}</details>` : ""}
-    <p class="small">${esc(t("app.caveat"))}</p>`;
+    <p class="small">${esc(t("app.caveat"))}</p>
+    <p><button class="btn" type="button" id="save-card">${esc(t("card.save"))}</button></p>`;
 }
 
 function cropMeta(id) {
@@ -501,6 +502,94 @@ function renderActiveTab() {
   if (crop) crop.addEventListener("change", () => { state.crop = crop.value; paintFarmResult(); });
   if (acres) acres.addEventListener("input", () => { state.acres = acres.value; paintFarmResult(); });
   if ($("farm-result")) paintFarmResult();
+  const save = $("save-card");
+  if (save) save.addEventListener("click", saveDistrictCard);
+}
+
+function drawShareCard(spec) {
+  const canvas = document.createElement("canvas");
+  canvas.id = "share-canvas";
+  canvas.width = 1200;
+  canvas.height = 630;
+  const ctx = canvas.getContext("2d");
+  ctx.fillStyle = "#0c2340";
+  ctx.fillRect(0, 0, 1200, 630);
+  ctx.fillStyle = "#f6d27a";
+  ctx.beginPath();
+  ctx.arc(1060, 110, 58, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = "#7ec8e8";
+  ctx.beginPath();
+  ctx.moveTo(980, 250);
+  ctx.bezierCurveTo(900, 340, 860, 420, 860, 480);
+  ctx.lineTo(1100, 480);
+  ctx.bezierCurveTo(1100, 420, 1060, 340, 980, 250);
+  ctx.fill();
+  const lines = [];
+  const paint = (value, x, y, size, color) => {
+    ctx.fillStyle = color;
+    ctx.font = `${size}px Georgia, "Noto Sans Devanagari", sans-serif`;
+    ctx.fillText(String(value), x, y);
+    lines.push(String(value));
+  };
+  paint("ThirstCast", 72, 110, 54, "#f7f1e8");
+  paint(spec.headline, 72, 200, 34, "#f7f1e8");
+  spec.rows.forEach((row, i) => paint(row, 72, 270 + i * 44, 26, "#d7eef8"));
+  paint(spec.stamp, 72, 470, 24, "#f6d27a");
+  paint(spec.date, 72, 515, 24, "#d7eef8");
+  paint(spec.caveat, 72, 555, 22, "#d7eef8");
+  const url = location.href;
+  paint(url.length > 78 ? `${url.slice(0, 75)}…` : url, 72, 595, 18, "#9fd0ff");
+  lines.push(url);
+  canvas.dataset.lines = lines.join("\n");
+  $("share-holder").replaceChildren(canvas);
+  canvas.toBlob((blob) => {
+    if (!blob) return;
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = spec.filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1500);
+  });
+}
+
+function saveDistrictCard() {
+  const detail = state.detail[state.selected];
+  if (!detail) return;
+  const name = (state.districts[detail.district] && state.districts[detail.district].name) || detail.district;
+  const mock = !!(window.ThirstAPI && window.ThirstAPI.isMock) || !!detail.mock_note;
+  drawShareCard({
+    headline: `${name} · ${t("status." + (detail.status || "UNKNOWN"))}`,
+    rows: [
+      `${t("whyToday.excess")}: ${detail.excess_mm_7d == null ? "–" : formatMm(detail.excess_mm_7d)} mm`,
+      `${t("app.updated")}: ${detail.updated_at || "–"}`,
+    ],
+    stamp: mock ? `mock · ${t("card.mock")}` : t("card.live"),
+    date: String(detail.run_date || detail.updated_at || "").slice(0, 10),
+    caveat: t("app.caveat"),
+    filename: `thirstcast-${detail.district}.png`,
+  });
+}
+
+function saveReplayCard() {
+  const replay = state.replay[state.selected];
+  if (!replay) return;
+  const summary = replay.summary || {};
+  const last = replay.days[replay.days.length - 1];
+  drawShareCard({
+    headline: `${replay.name} · ${t("replay.summaryTitle")}`,
+    rows: [
+      `${summary.days_above_p90} / ${summary.days_total}`,
+      `${formatMm(summary.cum_excess_mm)} mm`,
+      `${formatNumber(summary.litres_per_acre_reference)} L/acre`,
+    ],
+    stamp: `historical · ${t("card.historical")}`,
+    date: last ? last.date : "",
+    caveat: t("app.caveat"),
+    filename: `thirstcast-replay-${state.selected}.png`,
+  });
 }
 
 async function selectDistrict(id, opts = {}) {
@@ -582,6 +671,7 @@ function renderReplay() {
       <p>${esc(t("evidence.tmax", { n: summary.tmax_days_above_p90, total: summary.days_total }))}</p>
       <p>${esc(t("replay.rank", { rank: summary.april_rank_1994_2024, years: summary.april_years_compared }))}</p>
       <p class="small">${esc(t("replay.endNote"))} ${esc(t("app.caveat"))}</p>
+      <p><button class="btn" type="button" id="replay-card">${esc(t("card.save"))}</button></p>
     </article>` : ""}`;
   $("replay-play").addEventListener("click", () => play(!state.timer));
   $("replay-slider").addEventListener("input", (event) => { play(false); setReplayDay(Number(event.target.value)); });
@@ -590,6 +680,8 @@ function renderReplay() {
     if (state.timer) play(true);
   });
   $("replay-stop").addEventListener("click", () => { userNav(); stopReplay(); });
+  const replayCard = $("replay-card");
+  if (replayCard) replayCard.addEventListener("click", saveReplayCard);
   $("replay-share").addEventListener("click", async () => {
     writeHash();
     try { await navigator.clipboard.writeText(location.href); } catch (e) { /* ignore */ }

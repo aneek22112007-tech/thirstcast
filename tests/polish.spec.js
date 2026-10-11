@@ -23,6 +23,34 @@ test("F-11 a stale forecast shows the cached badge", async ({ page }) => {
   await expect(page.locator("#forecast-note")).toContainText("Cached at 2023-10-04");
 });
 
+test("U-6 a share card is a 1200 by 630 canvas with the caveat", async ({ page }) => {
+  await page.goto("/app.html#d=Mandya&tab=overview");
+  await expect(page.locator("#save-card")).toBeVisible({ timeout: 20000 });
+  const [download] = await Promise.all([
+    page.waitForEvent("download"),
+    page.locator("#save-card").click(),
+  ]);
+  expect(download.suggestedFilename()).toMatch(/thirstcast-Mandya\.png$/);
+  const meta = await page.locator("#share-canvas").evaluate((canvas) => ({
+    w: canvas.width,
+    h: canvas.height,
+    lines: canvas.dataset.lines,
+    px: Array.from(canvas.getContext("2d").getImageData(10, 10, 1, 1).data).slice(0, 3),
+  }));
+  expect(meta).toMatchObject({ w: 1200, h: 630, px: [12, 35, 64] });
+  expect(meta.lines).toContain("District-centroid estimate (~10 km grid)");
+  expect(meta.lines).toContain("2023-10-05");
+  expect(meta.lines.toLowerCase()).toContain("mock");
+  expect(meta.lines).toContain("app.html");
+  await page.goto("/app.html#d=Bengaluru_Urban&replay=30");
+  await expect(page.locator("#replay-card")).toBeVisible({ timeout: 20000 });
+  await page.locator("#replay-card").click();
+  await expect(page.locator("#share-canvas")).toHaveAttribute("data-lines", /historical/);
+  const replayLines = await page.locator("#share-canvas").getAttribute("data-lines");
+  expect(replayLines).toContain("22 / 30");
+  expect(replayLines).toContain("District-centroid estimate (~10 km grid)");
+});
+
 test("U-5 compare shows the three districts from loaded data", async ({ page }) => {
   await page.goto("/app.html#view=compare");
   await expect(page.locator("#compare-grid [data-compare-col]")).toHaveCount(3, { timeout: 20000 });
