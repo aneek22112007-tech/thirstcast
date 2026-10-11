@@ -8,6 +8,74 @@ async function topElementId(page, selector) {
   });
 }
 
+test("F-04 back and forward restore district, tab, replay and chat", async ({ page }) => {
+  await page.goto("/app.html");
+  await expect(page.locator("#district-select")).toBeVisible({ timeout: 20000 });
+  await expect(page.locator("#district-select")).toHaveValue("Mandya");
+  const startLen = await page.evaluate(() => history.length);
+
+  await page.locator("#district-list button", { hasText: "Kolar" }).click();
+  await expect(page).toHaveURL(/d=Kolar/);
+  expect(await page.evaluate(() => history.length)).toBe(startLen + 1);
+
+  await page.getByRole("tab", { name: "Farmers" }).click();
+  await expect(page).toHaveURL(/tab=farmers/);
+  await expect(page.locator("#tab-farmers")).toHaveAttribute("aria-selected", "true");
+  await page.goBack();
+  await expect(page).toHaveURL(/tab=overview/);
+  await expect(page.locator("#tab-overview")).toHaveAttribute("aria-selected", "true");
+  await page.goBack();
+  await expect(page.locator("#district-select")).toHaveValue("Mandya");
+  await page.goForward();
+  await expect(page.locator("#district-select")).toHaveValue("Kolar");
+
+  await page.locator("#open-chat").click();
+  await expect(page.locator("#chat")).toBeVisible();
+  await expect(page).toHaveURL(/chat=1/);
+  await page.goBack();
+  await expect(page.locator("#chat")).toBeHidden();
+  await page.goForward();
+  await expect(page.locator("#chat")).toBeVisible();
+  await page.locator("#close-chat").click();
+  await expect(page.locator("#chat")).toBeHidden();
+
+  const beforeReplay = await page.evaluate(() => history.length);
+  await page.getByRole("button", { name: "Replay April 2024" }).click();
+  await expect(page.locator("#replay-slider")).toBeVisible();
+  await page.getByRole("button", { name: "Pause" }).click();
+  await expect(page).toHaveURL(/replay=/);
+  expect(await page.evaluate(() => history.length)).toBe(beforeReplay + 1);
+  await page.locator("#replay-slider").evaluate((el) => {
+    el.value = "10";
+    el.dispatchEvent(new Event("input", { bubbles: true }));
+  });
+  await expect(page).toHaveURL(/replay=10/);
+  expect(await page.evaluate(() => history.length)).toBe(beforeReplay + 1);
+  await page.goBack();
+  await expect(page.locator("#replay-panel")).toBeHidden();
+
+  await page.goto("/app.html#d=Atlantis&tab=overview");
+  await expect(page.locator("#toast")).toContainText("not in this pilot", { timeout: 20000 });
+  await expect(page).not.toHaveURL(/Atlantis/);
+
+  await page.goto("/app.html#d=Mandya&tab=nope");
+  await expect(page.locator("#toast")).toContainText("not available", { timeout: 20000 });
+  await expect(page).toHaveURL(/tab=overview/);
+  await expect(page.locator("#tab-overview")).toHaveAttribute("aria-selected", "true");
+
+  await page.goto("/app.html#d=Kolar&replay=99");
+  await expect(page.locator("#replay-slider")).toHaveValue("30", { timeout: 20000 });
+  await expect(page).toHaveURL(/replay=30/);
+  await expect(page.locator("#replay-summary")).toBeVisible();
+
+  await page.goto("/app.html#d=Kolar&replay=0");
+  await expect(page.locator("#replay-slider")).toBeVisible({ timeout: 20000 });
+  await expect(page).not.toHaveURL(/replay=0/);
+  const day = await page.evaluate(() => Number(new URLSearchParams(location.hash.slice(1)).get("replay")));
+  expect(day).toBeGreaterThanOrEqual(1);
+  expect(day).toBeLessThanOrEqual(30);
+});
+
 test("F-01 chat and alerts sit above the map at 360px", async ({ page }) => {
   await page.setViewportSize({ width: 360, height: 780 });
   await page.goto("/app.html");
