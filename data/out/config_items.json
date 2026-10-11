@@ -69,7 +69,7 @@
   "name": "Tomato",
   "name_hi": "टमाटर",
   "kc": 1.15,
-  "source": "Allen et al. (1998) FAO Irrigation and Drainage Paper 56, Table 12 (Table 12, b. Vegetables - Solanum Family: Tomato (Kc mid 1.15, Kc end 0.70-0.90))",
+  "source": "Allen et al. (1998) FAO Irrigation and Drainage Paper 56, Table 12 (Table 12, b. Vegetables - Solanum Family: Tomato (Kc mid 1.15, Kc end 0.70-0.90). Stalk tomatoes are footnoted at Kc mid 1.20; this project keeps 1.15.)",
   "url": "https://www.fao.org/4/x0490e/x0490e0b.htm",
   "verified": true
  },
@@ -80,7 +80,7 @@
   "name": "Ragi (finger millet)",
   "name_hi": "रागी",
   "kc": 1.0,
-  "source": "Allen et al. (1998) FAO Irrigation and Drainage Paper 56, Table 12 (Table 12, i. Cereals: Millet (Kc mid 1.00, Kc end 0.30). FAO-56 has no separate finger-millet row; the generic 'Millet' row is used.)",
+  "source": "Allen et al. (1998) FAO Irrigation and Drainage Paper 56, Table 12 (Table 12, i. Cereals: Millet (Kc ini 0.30, Kc mid 1.00, Kc end 0.30). FAO-56 has no separate finger-millet row; the generic 'Millet' row is used.)",
   "url": "https://www.fao.org/4/x0490e/x0490e0b.htm",
   "verified": true
  },
