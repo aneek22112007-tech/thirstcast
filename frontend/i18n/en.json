@@ -202,7 +202,8 @@
     "no": "No",
     "sources": "Sources for this lake",
     "kcNote": "Kc ±10%",
-    "mockOn": "MOCK DATA"
+    "mockOn": "MOCK DATA",
+    "offline": "Offline: showing saved data from {time}"
   },
   "card": {
     "save": "Save card",

@@ -1,4 +1,5 @@
 import { bindLangToggle, getLang, initI18n, initTheme, onLang, t } from "./i18n.js";
+import { initPwa, warmPwa } from "./pwa.js";
 
 const SOURCES = [
   ["Kukal & Hobbins 2025, Earth's Future", "https://doi.org/10.1029/2024EF004870"],
@@ -60,6 +61,7 @@ async function render() {
 }
 
 async function boot() {
+  initPwa();
   bindLangToggle();
   await initI18n("meta.methodsTitle");
   initTheme();
@@ -72,6 +74,7 @@ async function boot() {
     render();
   });
   await render();
+  warmPwa();
 }
 
 boot();

@@ -202,7 +202,8 @@
     "no": "नहीं",
     "sources": "इस झील के स्रोत",
     "kcNote": "Kc ±10%",
-    "mockOn": "MOCK DATA"
+    "mockOn": "MOCK DATA",
+    "offline": "ऑफ़लाइन: {time} का सहेजा डेटा दिख रहा है"
   },
   "card": {
     "save": "कार्ड सहेजें",
