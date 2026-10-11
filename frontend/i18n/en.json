@@ -204,6 +204,15 @@
     "kcNote": "Kc ±10%",
     "mockOn": "MOCK DATA"
   },
+  "compare": {
+    "open": "Compare",
+    "title": "Compare the three districts",
+    "close": "Back to map",
+    "label": "District comparison",
+    "excess": "Cumulative excess",
+    "updated": "Updated",
+    "live": "{name}, {status}, excess {excess} mm"
+  },
   "status": {
     "ACTIVE": "ACTIVE",
     "WATCH": "WATCH",

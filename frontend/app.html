@@ -59,6 +59,7 @@
         <button class="btn btn-ghost" type="button" data-set-lang="en" data-lang-pressed="en" aria-pressed="true">EN</button>
         <button class="btn btn-ghost" type="button" data-set-lang="hi" data-lang-pressed="hi" aria-pressed="false">हिंदी</button>
         <button class="btn icon-btn" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark theme"><span data-theme-label>Dark</span></button>
+        <button class="btn" type="button" id="open-compare" data-i18n="compare.open">Compare</button>
         <button class="btn" type="button" id="open-chat" data-i18n="nav.ask">Ask</button>
         <button class="btn btn-ghost" type="button" id="open-alerts" data-i18n="nav.alerts">Alerts</button>
         <button class="btn" type="button" id="replay-start" data-i18n="replay.start">Replay April 2024</button>
@@ -84,6 +85,14 @@
         <div id="replay-panel" class="replay-stage" hidden></div>
       </aside>
     </div>
+    <section id="compare" class="compare" hidden aria-labelledby="compare-title">
+      <div class="compare-bar">
+        <h2 id="compare-title" data-i18n="compare.title">Compare the three districts</h2>
+        <button class="btn" type="button" id="close-compare" data-i18n="compare.close">Back to map</button>
+      </div>
+      <div id="compare-grid" class="compare-grid" role="listbox"></div>
+      <p id="compare-live" class="sr-only" aria-live="polite"></p>
+    </section>
   </div>
 
   <div id="chat-backdrop" class="drawer-backdrop" hidden></div>

@@ -123,3 +123,10 @@ stored on the event. It does not keep a second copy of those figures in the page
 Open-Meteo (Zippenfeld 2023, doi:10.5281/ZENODO.7970649; ERA5/ERA5-Land © Copernicus C3S); Allen et al. 1998,
 FAO-56; Kukal & Hobbins 2025, Earth's Future; The Hindu, 24 June 2025; Ramachandra et al. 2017 (IISc ETR-116);
 IRJET 6(9) 2019 (KRS); DataMeet India district boundaries (CC BY 2.5 IN). Details: `docs/sources.md`.
+
+## 14. Compare view
+
+The compare view (`app.html#view=compare`) places the three pilot districts side by side.
+It reads the district list and each district's thirstwave response, the same JSON the map
+already loads. It does not call a new endpoint and it does not compute a new statistic.
+Arrow keys move between the three columns.

@@ -204,6 +204,15 @@
     "kcNote": "Kc ±10%",
     "mockOn": "MOCK DATA"
   },
+  "compare": {
+    "open": "तुलना",
+    "title": "तीनों ज़िलों की तुलना",
+    "close": "नक्शे पर वापस",
+    "label": "ज़िलों की तुलना",
+    "excess": "संचित अतिरिक्त",
+    "updated": "अपडेट",
+    "live": "{name}, {status}, अतिरिक्त {excess} मिमी"
+  },
   "status": {
     "ACTIVE": "ACTIVE",
     "WATCH": "WATCH",
